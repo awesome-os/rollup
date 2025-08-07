@@ -3,7 +3,6 @@ import type {
 	InputPluginOption,
 	LogHandler,
 	LogLevelOption,
-	NormalizedGeneratedCodeOptions,
 	NormalizedInputOptions,
 	NormalizedJsxOptions,
 	NormalizedOutputOptions,
@@ -20,8 +19,8 @@ import { EMPTY_ARRAY } from '../blank';
 import { LOGLEVEL_DEBUG, LOGLEVEL_ERROR, LOGLEVEL_WARN, logLevelPriority } from '../logging';
 import { error, logInvalidOption, logUnknownOption } from '../logs';
 import { printQuotedStringList } from '../printStringList';
-
-export type GenericConfigObject = Record<string, unknown>;
+import type { ObjectOptionWithPresets } from '../../../typings/ObjectOptionWithPresets';
+import type { ObjectValue } from '../../../typings/ObjectValue';
 
 export const getOnLog = (
 	config: InputOptions,
@@ -45,15 +44,15 @@ export const getOnLog = (
 	return defaultOnLog;
 };
 
-const getDefaultOnLog = (printLog: LogHandler, onwarn?: WarningHandlerWithDefault): LogHandler =>
+const getDefaultOnLog = (printLog: LogHandler, onwarn?: WarningHandlerWithDefault) =>
 	onwarn
-		? (level, log) => {
+		? /** @type {import('rollup').LogHandler} */ ((level, log) => {
 				if (level === LOGLEVEL_WARN) {
 					onwarn(addLogToString(log), warning => printLog(LOGLEVEL_WARN, normalizeLog(warning)));
 				} else {
 					printLog(level, log);
 				}
-			}
+			}) as LogHandler
 		: printLog;
 
 const addLogToString = (log: RollupLog): RollupLog => {
@@ -100,8 +99,6 @@ export function warnUnknownOptions(
 		log(LOGLEVEL_WARN, logUnknownOption(optionType, unknownOptions, [...validOptionSet].sort()));
 	}
 }
-
-type ObjectValue<Base> = Base extends Record<string, any> ? Base : never;
 
 export const treeshakePresets: Record<
 	NonNullable<ObjectValue<InputOptions['treeshake']>['preset']>,
@@ -185,11 +182,6 @@ export const generatedCodePresets: Record<
 		symbols: false
 	}
 };
-
-type ObjectOptionWithPresets =
-	| Partial<NormalizedTreeshakingOptions>
-	| Partial<NormalizedGeneratedCodeOptions>
-	| Partial<NormalizedJsxOptions>;
 
 export const objectifyOption = (value: unknown): Record<string, unknown> =>
 	value && typeof value === 'object' ? (value as Record<string, unknown>) : {};

@@ -28,7 +28,8 @@ import type {
 } from './rollup/types';
 import { createAddons } from './utils/addons';
 import { EMPTY_OBJECT } from './utils/blank';
-import { deconflictChunk, type DependenciesToBeDeconflicted } from './utils/deconflictChunk';
+import { deconflictChunk } from './utils/deconflictChunk';
+import { type DependenciesToBeDeconflicted } from './utils/DependenciesToBeDeconflicted';
 import { escapeId } from './utils/escapeId';
 import { assignExportsToMangledNames, assignExportsToNames } from './utils/exportNames';
 import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';

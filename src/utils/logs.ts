@@ -6,7 +6,7 @@ import type {
 	NormalizedInputOptions,
 	RollupLog
 } from '../rollup/types';
-import type { AnnotationType } from './astConverterHelpers';
+import type { AnnotationType } from './RollupAnnotation';
 import getCodeFrame from './getCodeFrame';
 import { LOGLEVEL_WARN } from './logging';
 import { extname } from './path';

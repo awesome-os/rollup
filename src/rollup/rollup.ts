@@ -1,6 +1,6 @@
 import { version as rollupVersion } from 'package.json';
 import Bundle from '../Bundle';
-import Graph from '../Graph';
+import Graph from '../Graph'; 
 import { catchUnfinishedHookActions } from '../utils/hookActions';
 import initWasm from '../utils/initWasm';
 import { getLogger } from '../utils/logger';
@@ -41,14 +41,14 @@ import type {
 // @ts-expect-error TS2540: the polyfill of `asyncDispose`.
 Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');
 
-export default function rollup(rawInputOptions: RollupOptions): Promise<RollupBuild> {
+export function rollup(rawInputOptions: RollupOptions) {
 	return rollupInternal(rawInputOptions, null);
 }
 
 export async function rollupInternal(
 	rawInputOptions: RollupOptions,
 	watcher: RollupWatcher | null
-): Promise<RollupBuild> {
+) {
 	const { options: inputOptions, unsetOptions: unsetInputOptions } = await getInputOptions(
 		rawInputOptions,
 		watcher !== null
@@ -137,7 +137,7 @@ export async function rollupInternal(
 async function getInputOptions(
 	initialInputOptions: InputOptions,
 	watchMode: boolean
-): Promise<{ options: NormalizedInputOptions; unsetOptions: Set<string> }> {
+) {
 	if (!initialInputOptions) {
 		throw new Error('You must supply an options object to rollup');
 	}
@@ -150,7 +150,7 @@ async function getInputOptions(
 async function getProcessedInputOptions(
 	inputOptions: InputOptions,
 	watchMode: boolean
-): Promise<InputOptions> {
+) {
 	const plugins = getSortedValidatedPlugins(
 		'options',
 		await normalizePluginOption(inputOptions.plugins)
@@ -193,7 +193,7 @@ async function handleGenerateWrite(
 	unsetInputOptions: ReadonlySet<string>,
 	rawOutputOptions: OutputOptions,
 	graph: Graph
-): Promise<RollupOutput> {
+) {
 	const {
 		options: outputOptions,
 		outputPluginDriver,
@@ -229,11 +229,7 @@ async function getOutputOptionsAndPluginDriver(
 	inputPluginDriver: PluginDriver,
 	inputOptions: NormalizedInputOptions,
 	unsetInputOptions: ReadonlySet<string>
-): Promise<{
-	options: NormalizedOutputOptions;
-	outputPluginDriver: PluginDriver;
-	unsetOptions: Set<string>;
-}> {
+) {
 	if (!rawOutputOptions) {
 		throw new Error('You must supply an options object');
 	}
@@ -257,7 +253,7 @@ function getOutputOptions(
 	unsetInputOptions: ReadonlySet<string>,
 	rawOutputOptions: OutputOptions,
 	outputPluginDriver: PluginDriver
-): Promise<{ options: NormalizedOutputOptions; unsetOptions: Set<string> }> {
+) {
 	return normalizeOutputOptions(
 		outputPluginDriver.hookReduceArg0Sync(
 			'outputOptions',
@@ -277,8 +273,8 @@ function getOutputOptions(
 	);
 }
 
-function createOutput(outputBundle: OutputBundle): RollupOutput {
-	return {
+function createOutput(outputBundle: OutputBundle) {
+	const options: RollupOutput = {
 		output: (
 			Object.values(outputBundle).filter(outputFile => Object.keys(outputFile).length > 0) as (
 				| OutputChunk
@@ -289,6 +285,7 @@ function createOutput(outputBundle: OutputBundle): RollupOutput {
 				getSortingFileType(outputFileA) - getSortingFileType(outputFileB)
 		) as [OutputChunk, ...(OutputChunk | OutputAsset)[]]
 	};
+	return options;
 }
 
 enum SortingFileType {
@@ -311,7 +308,7 @@ async function writeOutputFile(
 	outputFile: OutputAsset | OutputChunk,
 	outputOptions: NormalizedOutputOptions,
 	{ fs: { mkdir, writeFile } }: NormalizedInputOptions
-): Promise<unknown> {
+) {
 	const fileName = resolve(outputOptions.dir || dirname(outputOptions.file!), outputFile.fileName);
 
 	// 'recursive: true' does not throw if the folder structure, or parts of it, already exist
@@ -321,13 +318,31 @@ async function writeOutputFile(
 }
 
 /**
- * Auxiliary function for defining rollup configuration
+ * Auxiliary functions for defining rollup configuration
  * Mainly to facilitate IDE code prompts, after all, export default does not
  * prompt, even if you add @type annotations, it is not accurate
  * @param options
  */
 export function defineConfig<T extends RollupOptions | RollupOptions[] | RollupOptionsFunction>(
 	options: T
-): T {
+) {
 	return options;
 }
+
+export const useConfigs = async (rollupConfigs: RollupOptions | ConcatArray<RollupOptions> | (() => RollupOptions | ConcatArray<RollupOptions>)) => {
+	const configs: RollupOptions[] = []
+
+	if (typeof rollupConfigs === 'function') {
+		return configs.concat(await rollupConfigs());
+	}
+
+	if (typeof rollupConfigs === 'object') {
+		return configs.concat(await rollupConfigs);
+	}
+
+	throw new Error("Not a valid Rollup Config");
+}
+
+await useConfigs(()=>({
+	input: ""
+}))

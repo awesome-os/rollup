@@ -11,7 +11,7 @@ import type {
 	OutputChunk
 } from '../rollup/types';
 import { BuildPhase } from './buildPhase';
-import type { GetHash } from './crypto';
+import type { GetHash } from '../../typings/GetHash';
 import { getHash64, hasherByType } from './crypto';
 import { getOrCreate } from './getOrCreate';
 import { DEFAULT_HASH_SIZE, MAX_HASH_SIZE } from './hashPlaceholders';

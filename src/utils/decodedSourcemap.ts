@@ -2,23 +2,8 @@ import { decode, encode } from '@jridgewell/sourcemap-codec';
 import type {
 	DecodedSourceMapOrMissing,
 	ExistingDecodedSourceMap,
-	ExistingRawSourceMap,
-	SourceMapInput
-} from '../rollup/types';
-
-// While the types for SourceMapInput are what we expect to recieve from plugins, there are cases
-// in the wild where plugins return `{mappings: null}`, so we want this function to be a little more
-// permissive on the input end so that we can normalize the output when creating the decoded sourcemap.
-interface UnexpectedInput {
-	mappings: null | undefined;
-}
-
-type Input = SourceMapInput | UnexpectedInput | ExistingDecodedSourceMap | undefined;
-
-interface CachedSourcemapData {
-	encodedMappings: string | undefined;
-	decodedMappings: ExistingDecodedSourceMap['mappings'] | undefined;
-}
+	ExistingRawSourceMap} from '../rollup/types';
+import type { CachedSourcemapData, Input } from '../../typings/CachedSourcemapData';
 
 const sourceMapCache = new WeakMap<ExistingDecodedSourceMap, CachedSourcemapData>();
 
@@ -56,33 +41,46 @@ export function resetSourcemapCache(
 	}
 }
 
-export function decodedSourcemap(map: null | undefined): null;
-export function decodedSourcemap(map: Exclude<Input, null | undefined>): ExistingDecodedSourceMap;
-export function decodedSourcemap(map: Input): ExistingDecodedSourceMap | null;
-export function decodedSourcemap(map: Input): ExistingDecodedSourceMap | null {
+// export function decodedSourcemap(map: null | undefined): null;
+// export function decodedSourcemap(map: Exclude<Input, null | undefined>): ExistingDecodedSourceMap;
+// export function decodedSourcemap(map: Input): ExistingDecodedSourceMap | null;
+
+export const asExistingSourceMap = (map: ExistingRawSourceMap | {
+    mappings: "";
+} | ExistingDecodedSourceMap) => { 
+	if (Array.isArray(map.mappings)) {
+		return map as ExistingDecodedSourceMap;
+	}
+	return map as ExistingRawSourceMap | {
+		mappings: "";
+	}
+
+};
+export function decodedSourcemap(map: Input) {
 	if (!map) return null;
 
 	if (typeof map === 'string') {
-		map = JSON.parse(map) as ExistingRawSourceMap;
+		map = asExistingSourceMap(JSON.parse(map));
 	}
 	if (!map.mappings) {
-		return {
+		// is type UnexpectedInput plugin returned null 
+		return asExistingSourceMap({
 			mappings: [],
 			names: [],
 			sources: [],
 			version: 3
-		};
+		});
 	}
 
 	const originalMappings = map.mappings;
 	const isAlreadyDecoded = Array.isArray(originalMappings);
 	const cache: CachedSourcemapData = {
 		decodedMappings: isAlreadyDecoded ? originalMappings : undefined,
-		encodedMappings: isAlreadyDecoded ? undefined : originalMappings
+		encodedMappings: isAlreadyDecoded ? "" : originalMappings
 	};
 
 	const decodedMap = {
-		...(map as ExistingRawSourceMap | ExistingDecodedSourceMap),
+		...map,
 		// By moving mappings behind an accessor, we can avoid unneeded computation for cases
 		// where the mappings field is never actually accessed. This appears to greatly reduce
 		// the overhead of sourcemap decoding in terms of both compute time and memory usage.
@@ -98,7 +96,7 @@ export function decodedSourcemap(map: Input): ExistingDecodedSourceMap | null {
 			cache.encodedMappings = undefined;
 			return cache.decodedMappings;
 		}
-	};
+	} as ExistingDecodedSourceMap;
 
 	sourceMapCache.set(decodedMap, cache);
 

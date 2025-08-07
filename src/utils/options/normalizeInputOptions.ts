@@ -23,12 +23,6 @@ import {
 	warnUnknownOptions
 } from './options';
 
-export interface CommandConfigObject {
-	[key: string]: unknown;
-	external: (string | RegExp)[];
-	globals: Record<string, string> | undefined;
-}
-
 export async function normalizeInputOptions(
 	config: InputOptions,
 	watchMode: boolean

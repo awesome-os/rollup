@@ -7,6 +7,7 @@ import ExportDefaultVariable from '../ast/variables/ExportDefaultVariable';
 import type SyntheticNamedExportVariable from '../ast/variables/SyntheticNamedExportVariable';
 import type Variable from '../ast/variables/Variable';
 import type { GetInterop, InternalModuleFormat } from '../rollup/types';
+import type { DependenciesToBeDeconflicted } from '../../typings/DependenciesToBeDeconflicted';
 import { makeLegal } from './identifierHelpers';
 import {
 	canDefaultBeTakenFromNamespace,
@@ -15,12 +16,6 @@ import {
 	namespaceInteropHelpersByInteropType
 } from './interopHelpers';
 import { getSafeName } from './safeName';
-
-export interface DependenciesToBeDeconflicted {
-	deconflictedDefault: ReadonlySet<ExternalChunk>;
-	deconflictedNamespace: ReadonlySet<Chunk | ExternalChunk>;
-	dependencies: ReadonlySet<Chunk | ExternalChunk>;
-}
 
 const DECONFLICT_IMPORTED_VARIABLES_BY_FORMAT: Record<
 	InternalModuleFormat,
@@ -59,7 +54,7 @@ export function deconflictChunk(
 	exportNamesByVariable: ReadonlyMap<Variable, readonly string[]>,
 	accessedGlobalsByScope: ReadonlyMap<ChildScope, ReadonlySet<string>>,
 	includedNamespaces: ReadonlySet<Module>
-): void {
+) {
 	const reversedModules = [...modules].reverse();
 	for (const module of reversedModules) {
 		module.scope.addUsedOutsideNames(

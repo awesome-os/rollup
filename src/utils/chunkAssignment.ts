@@ -1,42 +1,11 @@
 import ExternalModule from '../ExternalModule';
 import Module from '../Module';
 import type { LogHandler } from '../rollup/types';
+import type { ChunkDefinitions, ModulesWithDependentEntries, ChunkDescription, ChunkPartition } from '../../typings/ChunkDefinitions';
 import { getNewSet, getOrCreate } from './getOrCreate';
 import { concatLazy } from './iterators';
 import { logOptimizeChunkStatus } from './logs';
 import { timeEnd, timeStart } from './timers';
-
-type ChunkDefinitions = { alias: string | null; modules: Module[] }[];
-
-interface ModulesWithDependentEntries {
-	/**
-	 * The indices of the entries depending on this chunk
-	 */
-	dependentEntries: Set<number>;
-	modules: Module[];
-}
-
-interface ChunkDescription extends ModulesWithDependentEntries {
-	/**
-	 * These are the atoms (=initial chunks) that are contained in this chunk
-	 */
-	containedAtoms: bigint;
-	/**
-	 * The signatures of all atoms that are included in or loaded with this
-	 * chunk. This is the intersection of all dependent entry modules. As chunks
-	 * are merged, these sets are intersected.
-	 */
-	correlatedAtoms: bigint;
-	dependencies: Set<ChunkDescription>;
-	dependentChunks: Set<ChunkDescription>;
-	pure: boolean;
-	size: number;
-}
-
-interface ChunkPartition {
-	big: Set<ChunkDescription>;
-	small: Set<ChunkDescription>;
-}
 
 /**
  * At its core, the algorithm first starts from each static or dynamic entry
@@ -154,7 +123,7 @@ export function getChunkAssignments(
 	manualChunkAliasByEntry: ReadonlyMap<Module, string>,
 	minChunkSize: number,
 	log: LogHandler
-): ChunkDefinitions {
+) {
 	const { chunkDefinitions, modulesInManualChunks } =
 		getChunkDefinitionsFromManualChunks(manualChunkAliasByEntry);
 	const {
@@ -212,7 +181,7 @@ export function getChunkAssignments(
 
 function getChunkDefinitionsFromManualChunks(
 	manualChunkAliasByEntry: ReadonlyMap<Module, string>
-): { chunkDefinitions: ChunkDefinitions; modulesInManualChunks: Set<Module> } {
+) {
 	const modulesInManualChunks = new Set(manualChunkAliasByEntry.keys());
 	const manualChunkModulesByAlias: Record<string, Module[]> = Object.create(null);
 	for (const [entry, alias] of manualChunkAliasByEntry) {
@@ -235,7 +204,7 @@ function addStaticDependenciesToManualChunk(
 	entry: Module,
 	manualChunkModules: Module[],
 	modulesInManualChunks: Set<Module>
-): void {
+) {
 	const modulesToHandle = new Set([entry]);
 	for (const module of modulesToHandle) {
 		modulesInManualChunks.add(module);
@@ -374,7 +343,7 @@ function getDynamicEntries(
 function getDynamicImportsByEntry(
 	dynamicImportModulesByEntry: Set<Module>[],
 	entryIndexByModule: Map<Module, number>
-): Set<number>[] {
+) {
 	const dynamicImportsByEntry: Set<number>[] = new Array(dynamicImportModulesByEntry.length);
 	let index = 0;
 	for (const dynamicImportModules of dynamicImportModulesByEntry) {

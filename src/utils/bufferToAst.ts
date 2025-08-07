@@ -4,7 +4,7 @@
 import type * as estree from 'estree';
 import { PanicError, ParseError } from '../ast/nodes/NodeType';
 import type { RollupAstNode } from '../rollup/types';
-import type { RollupAnnotation } from './astConverterHelpers';
+import type { RollupAnnotation } from './RollupAnnotation';
 import { ANNOTATION_KEY, convertAnnotations, INVALID_ANNOTATION_KEY } from './astConverterHelpers';
 import { EMPTY_ARRAY } from './blank';
 import FIXED_STRINGS from './convert-ast-strings';

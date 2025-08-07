@@ -86,13 +86,13 @@ const rustCode =
 
 const tsCode =
 	notEditFilesComment +
-	`export default ` +
-	JSON.stringify(
-		stringConstantsTemplate.map(([, value]) => value),
-		undefined,
-		2
-	) +
-	`;\n`;
+	`export default /** @type {const} */ (${
+		JSON.stringify(
+			stringConstantsTemplate.map(([, value]) => value),
+			undefined,
+			2
+		)
+	});\n`;
 
 await Promise.all([
 	writeFile(targetTsFile, tsCode).then(() => lintTsFile(targetTsFile)),

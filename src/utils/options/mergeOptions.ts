@@ -12,10 +12,9 @@ import { ensureArray } from '../ensureArray';
 import { getLogger } from '../logger';
 import { LOGLEVEL_INFO } from '../logging';
 import { URL_JSX, URL_OUTPUT_GENERATEDCODE, URL_TREESHAKE } from '../urls';
-import type { CommandConfigObject } from './normalizeInputOptions';
+import type { CommandConfigObject } from '../../../typings/CommandConfigObject';
 import {
 	generatedCodePresets,
-	type GenericConfigObject,
 	getOnLog,
 	jsxPresets,
 	normalizePluginOption,
@@ -24,6 +23,7 @@ import {
 	treeshakePresets,
 	warnUnknownOptions
 } from './options';
+import type { GenericConfigObject } from '../../../typings/GenericConfigObject';
 
 export const commandAliases: Record<string, string> = {
 	c: 'config',
@@ -59,9 +59,11 @@ export async function mergeOptions(
 		Object.assign(command, command.output);
 	}
 	const outputOptionsArray = ensureArray(config.output);
+
 	if (outputOptionsArray.length === 0) outputOptionsArray.push({});
+	
 	const outputOptions = await Promise.all(
-		outputOptionsArray.map(singleOutputOptions =>
+		outputOptionsArray.map((singleOutputOptions={}) =>
 			mergeOutputOptions(singleOutputOptions, command, log)
 		)
 	);

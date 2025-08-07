@@ -1,13 +1,7 @@
 import type { NormalizedOutputOptions, RenderedChunk } from '../rollup/types';
+import type { Addons } from './Addons.1';
 import type { PluginDriver } from './PluginDriver';
 import { error, logAddonNotGenerated } from './logs';
-
-export interface Addons {
-	banner: string;
-	footer: string;
-	intro: string;
-	outro: string;
-}
 
 const concatSeparator = (out: string, next: string) => (next ? `${out}\n${next}` : out);
 const concatDblSeparator = (out: string, next: string) => (next ? `${out}\n\n${next}` : out);

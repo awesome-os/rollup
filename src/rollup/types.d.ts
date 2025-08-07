@@ -27,13 +27,13 @@ type PartialNull<T> = {
 	[P in keyof T]: T[P] | null;
 };
 
-export interface RollupError extends RollupLog {
+export type RollupError = RollupLog & {
 	name?: string;
 	stack?: string;
 	watchFiles?: string[];
 }
 
-export interface RollupLog {
+export type RollupLog = {
 	binding?: string;
 	cause?: unknown;
 	code?: string;
@@ -66,9 +66,9 @@ export type SourceMapSegment =
 	| [number, number, number, number]
 	| [number, number, number, number, number];
 
-export interface ExistingDecodedSourceMap {
+export type ExistingSourceMap = {
 	file?: string;
-	readonly mappings: SourceMapSegment[][];
+	readonly mappings: SourceMapSegment[][] | string;
 	names: string[];
 	sourceRoot?: string;
 	sources: string[];
@@ -77,16 +77,15 @@ export interface ExistingDecodedSourceMap {
 	x_google_ignoreList?: number[];
 }
 
-export interface ExistingRawSourceMap {
-	file?: string;
-	mappings: string;
-	names: string[];
-	sourceRoot?: string;
-	sources: string[];
-	sourcesContent?: string[];
-	version: number;
-	x_google_ignoreList?: number[];
-}
+export type ExistingDecodedSourceMap = Omit<ExistingSourceMap, 'mappings'> & {
+  readonly mappings: SourceMapSegment[][];
+};
+
+export type ExistingEncodedSourceMap = Omit<ExistingSourceMap, 'mappings'> & {
+  mappings: string;
+};
+
+export type ExistingRawSourceMap = ExistingEncodedSourceMap;
 
 export type DecodedSourceMapOrMissing =
 	| {
@@ -95,7 +94,7 @@ export type DecodedSourceMapOrMissing =
 	  }
 	| (ExistingDecodedSourceMap & { missing?: false });
 
-export interface SourceMap {
+export type SourceMap = {
 	file: string;
 	mappings: string;
 	names: string[];
@@ -109,20 +108,20 @@ export interface SourceMap {
 
 export type SourceMapInput = ExistingRawSourceMap | string | null | { mappings: '' };
 
-interface ModuleOptions {
+export type ModuleOptions = {
 	attributes: Record<string, string>;
 	meta: CustomPluginOptions;
 	moduleSideEffects: boolean | 'no-treeshake';
 	syntheticNamedExports: boolean | string;
 }
 
-export interface SourceDescription extends Partial<PartialNull<ModuleOptions>> {
+export type SourceDescription = Partial<PartialNull<ModuleOptions>> & {
 	ast?: ProgramNode;
 	code: string;
 	map?: SourceMapInput;
 }
 
-export interface TransformModuleJSON {
+export type TransformModuleJSON = {
 	ast?: ProgramNode;
 	code: string;
 	// note if plugins use new this.cache to opt-out auto transform cache
@@ -133,7 +132,7 @@ export interface TransformModuleJSON {
 	transformDependencies: string[];
 }
 
-export interface ModuleJSON extends TransformModuleJSON, ModuleOptions {
+export type ModuleJSON = TransformModuleJSON & ModuleOptions & {
 	ast: ProgramNode;
 	dependencies: string[];
 	id: string;
@@ -141,7 +140,7 @@ export interface ModuleJSON extends TransformModuleJSON, ModuleOptions {
 	transformFiles: EmittedFile[] | undefined;
 }
 
-export interface PluginCache {
+export type PluginCache = {
 	delete(id: string): boolean;
 	get<T = any>(id: string): T;
 	has(id: string): boolean;
@@ -212,12 +211,11 @@ export interface ModuleInfo extends ModuleOptions {
 
 export type GetModuleInfo = (moduleId: string) => ModuleInfo | null;
 
-// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style -- this is an interface so that it can be extended by plugins
-export interface CustomPluginOptions {
+export type CustomPluginOptions = {
 	[plugin: string]: any;
 }
 
-type LoggingFunctionWithPosition = (
+export type LoggingFunctionWithPosition = (
 	log: RollupLog | string | (() => RollupLog | string),
 	pos?: number | { column: number; line: number }
 ) => void;
@@ -227,6 +225,7 @@ export type ParseAst = (
 	options?: { allowReturnOutsideFunction?: boolean; jsx?: boolean }
 ) => ProgramNode;
 
+// TODO: This should get removed no global declarations anymore!
 // declare AbortSignal here for environments without DOM lib or @types/node
 declare global {
 	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -238,7 +237,7 @@ export type ParseAstAsync = (
 	options?: { allowReturnOutsideFunction?: boolean; jsx?: boolean; signal?: AbortSignal }
 ) => Promise<ProgramNode>;
 
-export interface PluginContext extends MinimalPluginContext {
+export type PluginContext = MinimalPluginContext & {
 	addWatchFile: (id: string) => void;
 	cache: PluginCache;
 	debug: LoggingFunction;
@@ -287,7 +286,7 @@ export interface HookFilter {
 	code?: StringFilter;
 }
 
-export interface ResolvedId extends ModuleOptions {
+export type ResolvedId = ModuleOptions & {
 	external: boolean | 'absolute';
 	id: string;
 	resolvedBy: string;
@@ -295,7 +294,7 @@ export interface ResolvedId extends ModuleOptions {
 
 export type ResolvedIdMap = Record<string, ResolvedId>;
 
-export interface PartialResolvedId extends Partial<PartialNull<ModuleOptions>> {
+export type PartialResolvedId = Partial<PartialNull<ModuleOptions>> & {
 	external?: boolean | 'absolute' | 'relative';
 	id: string;
 	resolvedBy?: string;
@@ -337,7 +336,7 @@ export type LoadResult = SourceDescription | string | NullValue;
 
 export type LoadHook = (this: PluginContext, id: string) => LoadResult;
 
-export interface TransformPluginContext extends PluginContext {
+export type TransformPluginContext = PluginContext & {
 	debug: LoggingFunctionWithPosition;
 	error: (error: RollupError | string, pos?: number | { column: number; line: number }) => never;
 	getCombinedSourcemap: () => SourceMap;
@@ -417,14 +416,14 @@ export type OutputBundle = Record<string, OutputAsset | OutputChunk>;
 
 export type PreRenderedChunkWithFileName = PreRenderedChunk & { fileName: string };
 
-export interface ImportedInternalChunk {
+export type ImportedInternalChunk = {
 	type: 'internal';
 	fileName: string;
 	resolvedImportPath: string;
 	chunk: PreRenderedChunk;
 }
 
-export interface ImportedExternalChunk {
+export type ImportedExternalChunk = {
 	type: 'external';
 	fileName: string;
 	resolvedImportPath: string;
@@ -432,7 +431,7 @@ export interface ImportedExternalChunk {
 
 export type DynamicImportTargetChunk = ImportedInternalChunk | ImportedExternalChunk;
 
-export interface FunctionPluginHooks {
+export type FunctionPluginHooks = {
 	augmentChunkHash: (this: PluginContext, chunk: RenderedChunk) => string | void;
 	buildEnd: (this: PluginContext, error?: Error) => void;
 	buildStart: (this: PluginContext, options: NormalizedInputOptions) => void;
@@ -615,13 +614,12 @@ export interface NormalizedTreeshakingOptions {
 	unknownGlobalSideEffects: boolean;
 }
 
-export interface TreeshakingOptions
-	extends Partial<Omit<NormalizedTreeshakingOptions, 'moduleSideEffects'>> {
+export type TreeshakingOptions = Partial<Omit<NormalizedTreeshakingOptions, 'moduleSideEffects'>> & {
 	moduleSideEffects?: ModuleSideEffectsOption;
 	preset?: TreeshakingPreset;
 }
 
-interface ManualChunkMeta {
+export type ManualChunkMeta = {
 	getModuleIds: () => IterableIterator<string>;
 	getModuleInfo: GetModuleInfo;
 }
@@ -666,7 +664,7 @@ export type SourcemapIgnoreListOption = (
 
 export type InputPluginOption = MaybePromise<Plugin | NullValue | false | InputPluginOption[]>;
 
-export interface InputOptions {
+export type InputOptions = {
 	cache?: boolean | RollupCache;
 	context?: string;
 	experimentalCacheExpiry?: number;
@@ -689,10 +687,6 @@ export interface InputOptions {
 	strictDeprecations?: boolean;
 	treeshake?: boolean | TreeshakingPreset | TreeshakingOptions;
 	watch?: WatcherOptions | false;
-}
-
-export interface InputOptionsWithPlugins extends InputOptions {
-	plugins: Plugin[];
 }
 
 export interface NormalizedInputOptions {
@@ -776,13 +770,13 @@ export type NormalizedAmdOptions = (
 	forceJsExtensionForImports: boolean;
 };
 
-type AddonFunction = (chunk: RenderedChunk) => string | Promise<string>;
+export type AddonFunction = (chunk: RenderedChunk) => string | Promise<string>;
 
-type OutputPluginOption = MaybePromise<OutputPlugin | NullValue | false | OutputPluginOption[]>;
+export type OutputPluginOption = MaybePromise<OutputPlugin | NullValue | false | OutputPluginOption[]>;
 
-type HashCharacters = 'base64' | 'base36' | 'hex';
+export type HashCharacters = 'base64' | 'base36' | 'hex';
 
-export interface OutputOptions {
+export type OutputOptions = {
 	amd?: AmdOptions;
 	assetFileNames?: string | ((chunkInfo: PreRenderedAsset) => string);
 	banner?: string | AddonFunction;
@@ -839,7 +833,7 @@ export interface OutputOptions {
 	virtualDirname?: string;
 }
 
-export interface NormalizedOutputOptions {
+export type NormalizedOutputOptions = {
 	amd: NormalizedAmdOptions;
 	assetFileNames: string | ((chunkInfo: PreRenderedAsset) => string);
 	banner: AddonFunction;
@@ -912,12 +906,12 @@ export interface PreRenderedAsset {
 	type: 'asset';
 }
 
-export interface OutputAsset extends PreRenderedAsset {
+export type OutputAsset = PreRenderedAsset & {
 	fileName: string;
 	needsCodeReference: boolean;
 }
 
-export interface RenderedModule {
+export type RenderedModule = {
 	readonly code: string | null;
 	originalLength: number;
 	removedExports: string[];
@@ -925,7 +919,7 @@ export interface RenderedModule {
 	renderedLength: number;
 }
 
-export interface PreRenderedChunk {
+export type PreRenderedChunk = {
 	exports: string[];
 	facadeModuleId: string | null;
 	isDynamicEntry: boolean;
@@ -936,7 +930,7 @@ export interface PreRenderedChunk {
 	type: 'chunk';
 }
 
-export interface RenderedChunk extends PreRenderedChunk {
+export type RenderedChunk = PreRenderedChunk & {
 	dynamicImports: string[];
 	fileName: string;
 	implicitlyLoadedBefore: string[];
@@ -946,7 +940,7 @@ export interface RenderedChunk extends PreRenderedChunk {
 	referencedFiles: string[];
 }
 
-export interface OutputChunk extends RenderedChunk {
+export type OutputChunk = RenderedChunk & {
 	code: string;
 	map: SourceMap | null;
 	sourcemapFileName: string | null;
@@ -955,16 +949,16 @@ export interface OutputChunk extends RenderedChunk {
 
 export type SerializablePluginCache = Record<string, [number, any]>;
 
-export interface RollupCache {
+export type RollupCache = {
 	modules: ModuleJSON[];
 	plugins?: Record<string, SerializablePluginCache>;
 }
 
-export interface RollupOutput {
+export type RollupOutput = {
 	output: [OutputChunk, ...(OutputChunk | OutputAsset)[]];
 }
 
-export interface RollupBuild {
+export type RollupBuild = {
 	cache: RollupCache | undefined;
 	close: () => Promise<void>;
 	closed: boolean;
@@ -975,18 +969,20 @@ export interface RollupBuild {
 	write: (options: OutputOptions) => Promise<RollupOutput>;
 }
 
-export interface RollupOptions extends InputOptions {
+export type RollupOptions = InputOptions & {
 	// This is included for compatibility with config files but ignored by rollup.rollup
 	output?: OutputOptions | OutputOptions[];
 }
 
-export interface MergedRollupOptions extends InputOptionsWithPlugins {
+export type MergedRollupOptions = InputOptions & {
+	plugins: Plugin[];
+} & {
 	output: OutputOptions[];
 }
 
 export function rollup(options: RollupOptions): Promise<RollupBuild>;
 
-export interface ChokidarOptions {
+export type ChokidarOptions = {
 	alwaysStat?: boolean;
 	atomic?: boolean | number;
 	awaitWriteFinish?:
@@ -1011,7 +1007,7 @@ export interface ChokidarOptions {
 
 export type RollupWatchHooks = 'onError' | 'onStart' | 'onBundleStart' | 'onBundleEnd' | 'onEnd';
 
-export interface WatcherOptions {
+export type WatcherOptions = {
 	allowInputInsideOutputPath?: boolean;
 	buildDelay?: number;
 	chokidar?: ChokidarOptions;
@@ -1022,7 +1018,7 @@ export interface WatcherOptions {
 	onInvalidate?: (id: string) => void;
 }
 
-export interface RollupWatchOptions extends InputOptions {
+export type RollupWatchOptions = InputOptions & {
 	output?: OutputOptions | OutputOptions[];
 	watch?: WatcherOptions | false;
 }
@@ -1032,7 +1028,7 @@ export type AwaitedEventListener<
 	K extends keyof T
 > = (...parameters: Parameters<T[K]>) => void | Promise<void>;
 
-export interface AwaitingEventEmitter<T extends Record<string, (...parameters: any) => any>> {
+export type AwaitingEventEmitter<T extends Record<string, (...parameters: any) => any>> = {
 	close(): Promise<void>;
 	emit<K extends keyof T>(event: K, ...parameters: Parameters<T[K]>): Promise<unknown>;
 	/**
@@ -1082,32 +1078,32 @@ export type RollupWatcher = AwaitingEventEmitter<{
 
 export function watch(config: RollupWatchOptions | RollupWatchOptions[]): RollupWatcher;
 
-interface AstNodeLocation {
+export type AstNodeLocation = {
 	end: number;
 	start: number;
 }
 
-type OmittedEstreeKeys =
+export type OmittedEstreeKeys =
 	| 'loc'
 	| 'range'
 	| 'leadingComments'
 	| 'trailingComments'
 	| 'innerComments'
 	| 'comments';
-type RollupAstNode<T> = Omit<T, OmittedEstreeKeys> & AstNodeLocation;
+export type RollupAstNode<T> = Omit<T, OmittedEstreeKeys> & AstNodeLocation;
 
-type ProgramNode = RollupAstNode<estree.Program>;
+export type ProgramNode = RollupAstNode<estree.Program>;
 export type AstNode = RollupAstNode<estree.Node>;
 
-export function defineConfig(options: RollupOptions): RollupOptions;
-export function defineConfig(options: RollupOptions[]): RollupOptions[];
-export function defineConfig(optionsFunction: RollupOptionsFunction): RollupOptionsFunction;
+// export function defineConfig(options: RollupOptions): RollupOptions;
+// export function defineConfig(options: RollupOptions[]): RollupOptions[];
+// export function defineConfig(optionsFunction: RollupOptionsFunction): RollupOptionsFunction;
 
 export type RollupOptionsFunction = (
 	commandLineArguments: Record<string, any>
 ) => MaybePromise<RollupOptions | RollupOptions[]>;
 
-export interface RollupFsModule {
+export type RollupFsModule = {
 	appendFile(
 		path: string,
 		data: string | Uint8Array,
@@ -1162,14 +1158,14 @@ export type BufferEncoding =
 	| 'binary'
 	| 'hex';
 
-export interface RollupDirectoryEntry {
+export type RollupDirectoryEntry = {
 	isFile(): boolean;
 	isDirectory(): boolean;
 	isSymbolicLink(): boolean;
 	name: string;
 }
 
-export interface RollupFileStats {
+export type RollupFileStats = {
 	isFile(): boolean;
 	isDirectory(): boolean;
 	isSymbolicLink(): boolean;

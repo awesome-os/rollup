@@ -13,7 +13,7 @@ import {
 	logMissingConfig
 } from '../../src/utils/logs';
 import { mergeOptions } from '../../src/utils/options/mergeOptions';
-import type { GenericConfigObject } from '../../src/utils/options/options';
+import type { GenericConfigObject } from '../../typings/GenericConfigObject';
 import relativeId from '../../src/utils/relativeId';
 import { stderr } from '../logging';
 import batchWarnings from './batchWarnings';
@@ -160,7 +160,7 @@ async function loadConfigFromWrittenFile(
 	try {
 		return (await import(pathToFileURL(bundledFileName).href)).default;
 	} finally {
-		unlink(bundledFileName).catch(error => console.warn(error?.message || error));
+		unlink(bundledFileName).catch(console.warn);
 	}
 }
 

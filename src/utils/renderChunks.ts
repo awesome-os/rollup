@@ -8,7 +8,7 @@ import type {
 	RenderedChunk
 } from '../rollup/types';
 import { collapseSourcemaps } from './collapseSourcemaps';
-import type { GetHash } from './crypto';
+import type { GetHash } from '../../typings/GetHash';
 import { hasherByType } from './crypto';
 import { decodedSourcemap } from './decodedSourcemap';
 import {

@@ -1,11 +1,8 @@
 import type ExternalModule from '../ExternalModule';
 import Module from '../Module';
+import { OrderedExecutionUnit } from '../../typings/OrderedExecutionUnit';
 
-interface OrderedExecutionUnit {
-	execIndex: number;
-}
-
-const compareExecIndex = <T extends OrderedExecutionUnit>(unitA: T, unitB: T) =>
+export const compareExecIndex = <T extends OrderedExecutionUnit>(unitA: T, unitB: T) =>
 	unitA.execIndex > unitB.execIndex ? 1 : -1;
 
 export function sortByExecutionOrder(units: OrderedExecutionUnit[]): void {
@@ -82,11 +79,11 @@ export function analyseModuleExecution(entryModules: readonly Module[]): {
 	return { cyclePaths, orderedModules };
 }
 
-function getCyclePath(
+export function getCyclePath(
 	module: Module,
 	parent: Module,
 	parents: ReadonlyMap<Module | ExternalModule, Module | null>
-): string[] {
+) {
 	const cycleSymbol = Symbol(module.id);
 	const path = [module.id];
 	let nextModule = parent;
