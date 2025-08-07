@@ -1,14 +1,15 @@
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import Module from './Module';
-import type { 
+import type {
 	PreloadType,
 	LoadModulePromise,
 	UnresolvedModule,
 	ModuleLoaderResolveId,
 	ResolveDynamicDependencyPromise,
 	ResolveStaticDependencyPromise,
-	NormalizedResolveIdWithoutDefaults } from '../typings/PreloadType';
+	NormalizedResolveIdWithoutDefaults
+} from './rollup/types';
 import type {
 	AstNode,
 	EmittedChunk,

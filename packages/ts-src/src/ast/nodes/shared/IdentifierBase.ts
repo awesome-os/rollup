@@ -1,4 +1,4 @@
-import type { NormalizedTreeshakingOptions } from '../../../rollup/types';
+import type { NormalizedTreeshakingOptions } from 'rollup';
 import { logIllegalImportReassignment } from '../../../utils/logs';
 import { PureFunctionKey } from '../../../utils/pureFunctions';
 import { markModuleAndImpureDependenciesAsExecuted } from '../../../utils/traverseStaticDependencies';

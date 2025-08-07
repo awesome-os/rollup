@@ -1,4 +1,4 @@
-import type { NormalizedTreeshakingOptions } from '../../../rollup/types';
+import type { NormalizedTreeshakingOptions } from 'rollup';
 import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
 import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';

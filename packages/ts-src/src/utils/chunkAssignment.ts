@@ -1,7 +1,12 @@
+import type {
+	ChunkDefinitions,
+	ChunkDescription,
+	ChunkPartition,
+	LogHandler,
+	ModulesWithDependentEntries
+} from 'rollup';
 import ExternalModule from '../ExternalModule';
 import Module from '../Module';
-import type { LogHandler } from 'rollup';
-import type { ChunkDefinitions, ModulesWithDependentEntries, ChunkDescription, ChunkPartition } from '../rollup/types';
 import { getNewSet, getOrCreate } from './getOrCreate';
 import { concatLazy } from './iterators';
 import { logOptimizeChunkStatus } from './logs';
@@ -179,9 +184,7 @@ export function getChunkAssignments(
 	return chunkDefinitions;
 }
 
-function getChunkDefinitionsFromManualChunks(
-	manualChunkAliasByEntry: ReadonlyMap<Module, string>
-) {
+function getChunkDefinitionsFromManualChunks(manualChunkAliasByEntry: ReadonlyMap<Module, string>) {
 	const modulesInManualChunks = new Set(manualChunkAliasByEntry.keys());
 	const manualChunkModulesByAlias: Record<string, Module[]> = Object.create(null);
 	for (const [entry, alias] of manualChunkAliasByEntry) {

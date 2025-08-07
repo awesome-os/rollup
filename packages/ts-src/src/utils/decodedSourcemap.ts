@@ -1,5 +1,5 @@
 import { decode, encode } from '@jridgewell/sourcemap-codec';
-import type { CachedSourcemapData, Input } from '../rollup/types';
+import type { CachedSourcemapData, Input } from 'rollup';
 import type { DecodedSourceMapOrMissing, ExistingDecodedSourceMap } from 'rollup';
 
 const sourceMapCache = new WeakMap<ExistingDecodedSourceMap, CachedSourcemapData>();

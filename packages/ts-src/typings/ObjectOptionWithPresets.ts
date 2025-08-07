@@ -2,7 +2,7 @@ import type {
 	NormalizedGeneratedCodeOptions,
 	NormalizedJsxOptions,
 	NormalizedTreeshakingOptions
-} from '../src/rollup/types';
+} from 'rollup';
 
 export type ObjectOptionWithPresets =
 	| Partial<NormalizedTreeshakingOptions>

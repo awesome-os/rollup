@@ -2,7 +2,7 @@ import { locate, type Location } from 'locate-character';
 import type MagicString from 'magic-string';
 import type { RollupAnnotation } from '../../../../typings/RollupAnnotation';
 import type { AstContext } from '../../../Module';
-import type { AstNode } from '../../../rollup/types';
+import type { AstNode } from 'rollup';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from '../../../utils/astConverterHelpers';
 import type { NodeRenderOptions, RenderOptions } from '../../../utils/renderHelpers';
 import { childNodeKeys } from '../../childNodeKeys';

@@ -1,6 +1,7 @@
 // TODO: if this gets red then it is vite types defining it wrong
 import MagicString, { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
 import type {
+	DependenciesToBeDeconflicted,
 	GetInterop,
 	GlobalsOption,
 	InternalModuleFormat,
@@ -13,7 +14,6 @@ import type {
 	RenderedModule
 } from 'rollup';
 import { relative } from '../browser/src/path';
-import type { DependenciesToBeDeconflicted } from '../typings/DependenciesToBeDeconflicted';
 import ExportDefaultDeclaration from './ast/nodes/ExportDefaultDeclaration';
 import FunctionDeclaration from './ast/nodes/FunctionDeclaration';
 import type ImportExpression from './ast/nodes/ImportExpression';
