@@ -10,7 +10,7 @@ import type {
 	RollupCache,
 	RollupWatcher,
 	WatcherOptions
-} from '../rollup/types';
+} from 'rollup';
 import { FileWatcher } from './fileWatcher';
 
 const eventsRewrites: Record<ChangeEvent, Record<ChangeEvent, ChangeEvent | 'buggy' | null>> = {

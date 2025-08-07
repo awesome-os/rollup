@@ -225,11 +225,11 @@ export type ParseAst = (
 ) => ProgramNode;
 
 // TODO: This should get removed no global declarations anymore!
-// declare AbortSignal here for environments without DOM lib or @types/node
-declare global {
-	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-	interface AbortSignal {}
-}
+// // declare AbortSignal here for environments without DOM lib or @types/node
+// declare global {
+// 	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+// 	interface AbortSignal {}
+// }
 
 export type ParseAstAsync = (
 	input: string,

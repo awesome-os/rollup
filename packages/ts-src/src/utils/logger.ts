@@ -1,4 +1,3 @@
-import { version as rollupVersion } from '../../package.json';
 import type {
 	LoggingFunction,
 	LogHandler,
@@ -6,7 +5,8 @@ import type {
 	LogLevelOption,
 	Plugin,
 	RollupLog
-} from '../rollup/types';
+} from 'rollup';
+import { version as rollupVersion } from '../../package.json';
 import { getSortedValidatedPlugins } from './PluginDriver';
 import { EMPTY_SET } from './blank';
 import { doNothing } from './doNothing';

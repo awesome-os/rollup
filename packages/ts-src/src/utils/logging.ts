@@ -1,4 +1,4 @@
-import type { LogLevel, LogLevelOption } from '../rollup/types';
+import type { LogLevel, LogLevelOption } from 'rollup';
 
 export const LOGLEVEL_SILENT: LogLevelOption = 'silent';
 export const LOGLEVEL_ERROR = 'error';

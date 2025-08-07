@@ -6,7 +6,7 @@ import type {
 	LogHandler,
 	NormalizedInputOptions,
 	RollupLog
-} from '../rollup/types';
+} from 'rollup';
 import getCodeFrame from './getCodeFrame';
 import { LOGLEVEL_WARN } from './logging';
 import { extname } from './path';

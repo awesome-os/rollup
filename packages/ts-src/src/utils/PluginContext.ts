@@ -1,12 +1,12 @@
-import { version as rollupVersion } from '../../package.json' with { type: 'json' };
-import type Graph from '../Graph';
 import type {
 	NormalizedInputOptions,
 	Plugin,
 	PluginCache,
 	PluginContext,
 	SerializablePluginCache
-} from '../rollup/types';
+} from 'rollup';
+import { version as rollupVersion } from '../../package.json' with { type: 'json' };
+import type Graph from '../Graph';
 import { BLANK, EMPTY_OBJECT } from './blank';
 import type { FileEmitter } from './FileEmitter';
 import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from './logging';

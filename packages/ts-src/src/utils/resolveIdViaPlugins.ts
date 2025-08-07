@@ -1,5 +1,5 @@
 import type { ModuleLoaderResolveId } from '../../typings/PreloadType';
-import type { CustomPluginOptions, Plugin, PluginContext, ResolveIdResult } from '../rollup/types';
+import type { CustomPluginOptions, Plugin, PluginContext, ResolveIdResult } from 'rollup';
 import type { PluginDriver } from './PluginDriver';
 import type { ReplaceContext } from '../../typings/HookAction';
 import { BLANK, EMPTY_OBJECT } from './blank';

@@ -1,13 +1,13 @@
 import type { Bundle as MagicStringBundle, SourceMap } from 'magic-string';
-import type { GetHash } from '../../typings/GetHash';
-import type { default as Chunk, ChunkRenderResult } from '../Chunk';
-import type Module from '../Module';
 import type {
 	DecodedSourceMapOrMissing,
 	LogHandler,
 	NormalizedOutputOptions,
 	RenderedChunk
-} from '../rollup/types';
+} from 'rollup';
+import type { GetHash } from '../../typings/GetHash';
+import type { default as Chunk, ChunkRenderResult } from '../Chunk';
+import type Module from '../Module';
 import { collapseSourcemaps } from './collapseSourcemaps';
 import { hasherByType } from './crypto';
 import { decodedSourcemap } from './decodedSourcemap';

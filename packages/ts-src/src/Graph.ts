@@ -1,12 +1,4 @@
 import flru from 'flru';
-import type { UnresolvedModule } from '../typings/PreloadType';
-import { createInclusionContext } from './ast/ExecutionContext';
-import type { ExpressionEntity } from './ast/nodes/shared/Expression';
-import GlobalScope from './ast/scopes/GlobalScope';
-import { EntityPathTracker } from './ast/utils/PathTracker';
-import type ExternalModule from './ExternalModule';
-import Module from './Module';
-import { ModuleLoader } from './ModuleLoader';
 import type {
 	ModuleInfo,
 	ModuleJSON,
@@ -16,7 +8,15 @@ import type {
 	RollupWatcher,
 	SerializablePluginCache,
 	WatchChangeHook
-} from './rollup/types';
+} from 'rollup';
+import type { UnresolvedModule } from '../typings/PreloadType';
+import { createInclusionContext } from './ast/ExecutionContext';
+import type { ExpressionEntity } from './ast/nodes/shared/Expression';
+import GlobalScope from './ast/scopes/GlobalScope';
+import { EntityPathTracker } from './ast/utils/PathTracker';
+import type ExternalModule from './ExternalModule';
+import Module from './Module';
+import { ModuleLoader } from './ModuleLoader';
 import { BuildPhase } from './utils/buildPhase';
 import { analyseModuleExecution } from './utils/executionOrder';
 import { LOGLEVEL_WARN } from './utils/logging';

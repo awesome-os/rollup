@@ -1,5 +1,5 @@
 import ExternalVariable from './ast/variables/ExternalVariable';
-import type { CustomPluginOptions, ModuleInfo, NormalizedInputOptions } from './rollup/types';
+import type { CustomPluginOptions, ModuleInfo, NormalizedInputOptions } from 'rollup';
 import { EMPTY_ARRAY } from './utils/blank';
 import { cacheObjectGetters } from './utils/getter';
 import { makeLegal } from './utils/identifierHelpers';

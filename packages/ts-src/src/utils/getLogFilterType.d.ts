@@ -1,4 +1,4 @@
-import type { RollupLog } from '../rollup/types';
+import type { RollupLog } from 'rollup';
 
 export type GetLogFilter = typeof getLogFilter;
 

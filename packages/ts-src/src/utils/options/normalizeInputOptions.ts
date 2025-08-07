@@ -5,7 +5,7 @@ import type {
 	NormalizedInputOptions,
 	RollupBuild,
 	RollupFsModule
-} from '../../rollup/types';
+} from 'rollup';
 import { EMPTY_ARRAY } from '../blank';
 import { ensureArray } from '../ensureArray';
 import * as fs from '../fs';

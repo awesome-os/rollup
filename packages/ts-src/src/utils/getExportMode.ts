@@ -1,5 +1,5 @@
 import type Chunk from '../Chunk';
-import type { LogHandler, NormalizedOutputOptions } from '../rollup/types';
+import type { LogHandler, NormalizedOutputOptions } from 'rollup';
 import { LOGLEVEL_WARN } from './logging';
 import { error, logIncompatibleExportOptionValue, logMixedExport } from './logs';
 

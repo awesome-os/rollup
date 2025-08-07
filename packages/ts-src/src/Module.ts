@@ -50,7 +50,7 @@ import type {
 	RollupError,
 	RollupLog,
 	TransformModuleJSON
-} from './rollup/types';
+} from 'rollup';
 import { EMPTY_OBJECT } from './utils/blank';
 import type { LiteralStringNode, TemplateLiteralNode } from './utils/bufferToAst';
 import { BuildPhase } from './utils/buildPhase';

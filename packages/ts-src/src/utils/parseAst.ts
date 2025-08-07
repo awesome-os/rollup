@@ -1,5 +1,5 @@
 import { parse, parseAsync } from '../../native';
-import type { ParseAst, ParseAstAsync } from '../rollup/types';
+import type { ParseAst, ParseAstAsync } from 'rollup';
 import { convertProgram } from './bufferToAst';
 import { getAstBuffer } from './getAstBuffer';
 

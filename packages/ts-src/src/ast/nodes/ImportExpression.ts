@@ -9,7 +9,7 @@ import type {
 	GetInterop,
 	NormalizedOutputOptions,
 	PreRenderedChunkWithFileName
-} from '../../rollup/types';
+} from 'rollup';
 import { EMPTY_ARRAY } from '../../utils/blank';
 import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
 import {

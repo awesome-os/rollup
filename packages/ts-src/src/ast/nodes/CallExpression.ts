@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NormalizedTreeshakingOptions } from '../../rollup/types';
+import type { NormalizedTreeshakingOptions } from 'rollup';
 import { BLANK } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace, logEval } from '../../utils/logs';

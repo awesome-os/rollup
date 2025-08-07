@@ -4,7 +4,7 @@ import type {
 	MergedRollupOptions,
 	RollupOptions,
 	RollupWatcher
-} from '../rollup/types';
+} from 'rollup';
 import { ensureArray } from '../utils/ensureArray';
 import { error, logInvalidOption } from '../utils/logs';
 import { mergeOptions } from '../utils/options/mergeOptions';

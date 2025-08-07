@@ -6,7 +6,7 @@ import type ChildScope from '../ast/scopes/ChildScope';
 import ExportDefaultVariable from '../ast/variables/ExportDefaultVariable';
 import type SyntheticNamedExportVariable from '../ast/variables/SyntheticNamedExportVariable';
 import type Variable from '../ast/variables/Variable';
-import type { GetInterop, InternalModuleFormat } from '../rollup/types';
+import type { GetInterop, InternalModuleFormat } from 'rollup';
 import type { DependenciesToBeDeconflicted } from '../../typings/DependenciesToBeDeconflicted';
 import { makeLegal } from './identifierHelpers';
 import {

@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NormalizedJsxOptions } from '../../rollup/types';
+import type { NormalizedJsxOptions } from 'rollup';
 import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type JSXAttribute from './JSXAttribute';
 import type JSXIdentifier from './JSXIdentifier';

@@ -1,4 +1,4 @@
-import type { PluginCache, SerializablePluginCache } from '../rollup/types';
+import type { PluginCache, SerializablePluginCache } from 'rollup';
 import { error, logAnonymousPluginCache, logDuplicatePluginName } from './logs';
 import { ANONYMOUS_OUTPUT_PLUGIN_PREFIX, ANONYMOUS_PLUGIN_PREFIX } from './pluginNames';
 

@@ -1,5 +1,5 @@
 import type { AstContext } from '../../Module';
-import type { InternalModuleFormat } from '../../rollup/types';
+import type { InternalModuleFormat } from 'rollup';
 import { logRedeclarationError } from '../../utils/logs';
 import type ExportDefaultDeclaration from '../nodes/ExportDefaultDeclaration';
 import type Identifier from '../nodes/Identifier';

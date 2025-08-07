@@ -1,4 +1,4 @@
-import type { InteropType } from '../rollup/types';
+import type { InteropType } from 'rollup';
 import type { GenerateCodeSnippets } from './generateCodeSnippets';
 
 const INTEROP_DEFAULT_VARIABLE = '_interopDefault';

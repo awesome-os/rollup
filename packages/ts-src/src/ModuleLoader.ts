@@ -20,7 +20,7 @@ import type {
 	PartialNull,
 	ResolvedId,
 	ResolveIdResult
-} from './rollup/types';
+} from 'rollup';
 import { EMPTY_OBJECT } from './utils/blank';
 import { LOGLEVEL_WARN } from './utils/logging';
 import {

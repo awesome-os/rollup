@@ -1,6 +1,6 @@
 import builtinModules from 'builtin-modules';
 import type { ChunkDependency } from '../../Chunk';
-import type { LogHandler } from '../../rollup/types';
+import type { LogHandler } from 'rollup';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logMissingNodeBuiltins } from '../../utils/logs';
 

@@ -18,7 +18,7 @@ import type {
 	SequentialPluginHooks,
 	SerializablePluginCache,
 	SyncPluginHooks
-} from '../rollup/types';
+} from 'rollup';
 import { FileEmitter } from './FileEmitter';
 import { HookAction, ReplaceContext } from '../../typings/HookAction';
 import { getPluginContext } from './PluginContext';

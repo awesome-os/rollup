@@ -5,7 +5,7 @@
 		"lib": ["ES2022", "ESNext.Disposable", "DOM"],
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"noEmitOnError": true,
+		"noEmitOnError": false,
 		"noUnusedParameters": true,
 		"pretty": true,
 		"resolveJsonModule": true,

@@ -1,5 +1,5 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
-import type { NormalizedOutputOptions } from '../rollup/types';
+import type { NormalizedOutputOptions } from 'rollup';
 import type { FinaliserOptions } from './index';
 import getCompleteAmdId from './shared/getCompleteAmdId';
 import { getExportBlock, getNamespaceMarkers } from './shared/getExportBlock';

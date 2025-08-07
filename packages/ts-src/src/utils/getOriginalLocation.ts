@@ -1,4 +1,4 @@
-import type { DecodedSourceMapOrMissing, ExistingDecodedSourceMap } from '../rollup/types';
+import type { DecodedSourceMapOrMissing, ExistingDecodedSourceMap } from 'rollup';
 
 export function getOriginalLocation(
 	sourcemapChain: readonly DecodedSourceMapOrMissing[],

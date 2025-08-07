@@ -5,7 +5,7 @@ import type {
 	NormalizedOutputOptions,
 	OutputOptions,
 	SourcemapPathTransformOption
-} from '../../rollup/types';
+} from 'rollup';
 import { error, logInvalidExportOptionValue, logInvalidOption, warnDeprecation } from '../logs';
 import { resolve } from '../path';
 import { sanitizeFileName as defaultSanitizeFileName } from '../sanitizeFileName';

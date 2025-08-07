@@ -9,7 +9,7 @@ import type {
 	NormalizedInputOptions,
 	NormalizedOutputOptions,
 	OutputChunk
-} from '../rollup/types';
+} from 'rollup';
 import { BuildPhase } from './buildPhase';
 import type { GetHash } from '../../typings/GetHash';
 import { getHash64, hasherByType } from './crypto';

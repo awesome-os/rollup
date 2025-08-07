@@ -7,7 +7,7 @@ import type {
 	Plugin,
 	RollupCache,
 	RollupOptions
-} from '../../rollup/types';
+} from 'rollup';
 import { ensureArray } from '../ensureArray';
 import { getLogger } from '../logger';
 import { LOGLEVEL_INFO } from '../logging';

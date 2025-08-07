@@ -1,3 +1,18 @@
+import type {
+	InputOptions,
+	NormalizedInputOptions,
+	NormalizedOutputOptions,
+	OutputAsset,
+	OutputBundle,
+	OutputChunk,
+	OutputOptions,
+	Plugin,
+	RollupBuild,
+	RollupOptions,
+	RollupOptionsFunction,
+	RollupOutput,
+	RollupWatcher
+} from 'rollup';
 import { version as rollupVersion } from '../../package.json';
 import Bundle from '../Bundle';
 import Graph from '../Graph';
@@ -22,21 +37,6 @@ import type { PluginDriver } from '../utils/PluginDriver';
 import { getSortedValidatedPlugins } from '../utils/PluginDriver';
 import { ANONYMOUS_OUTPUT_PLUGIN_PREFIX, ANONYMOUS_PLUGIN_PREFIX } from '../utils/pluginNames';
 import { getTimings, initialiseTimers, timeEnd, timeStart } from '../utils/timers';
-import type {
-	InputOptions,
-	NormalizedInputOptions,
-	NormalizedOutputOptions,
-	OutputAsset,
-	OutputBundle,
-	OutputChunk,
-	OutputOptions,
-	Plugin,
-	RollupBuild,
-	RollupOptions,
-	RollupOptionsFunction,
-	RollupOutput,
-	RollupWatcher
-} from './types';
 
 // @ts-expect-error TS2540: the polyfill of `asyncDispose`.
 Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');

@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NormalizedTreeshakingOptions } from '../../rollup/types';
+import type { NormalizedTreeshakingOptions } from 'rollup';
 import { renderCallArguments } from '../../utils/renderCallArguments';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';

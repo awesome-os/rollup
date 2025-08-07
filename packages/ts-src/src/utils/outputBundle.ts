@@ -1,4 +1,4 @@
-import type { OutputAsset, OutputBundle, OutputChunk } from '../rollup/types';
+import type { OutputAsset, OutputBundle, OutputChunk } from 'rollup';
 
 export const lowercaseBundleKeys = Symbol('bundleKeys');
 

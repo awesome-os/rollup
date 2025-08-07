@@ -9,7 +9,7 @@ import type {
 	NormalizedInputOptions,
 	NormalizedOutputOptions,
 	OutputBundle
-} from './rollup/types';
+} from 'rollup';
 import { getChunkAssignments } from './utils/chunkAssignment';
 import commondir from './utils/commondir';
 import { sortByExecutionOrder } from './utils/executionOrder';

@@ -3,7 +3,7 @@ import type {
 	Plugin,
 	PluginHooks,
 	SerializedTimings
-} from '../rollup/types';
+} from 'rollup';
 import { doNothing } from './doNothing';
 import performance from './performance';
 import process from './process';

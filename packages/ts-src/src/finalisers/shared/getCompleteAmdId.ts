@@ -1,4 +1,4 @@
-import type { NormalizedOutputOptions } from '../../rollup/types';
+import type { NormalizedOutputOptions } from 'rollup';
 import removeJsExtension from './removeJsExtension';
 
 export default function getCompleteAmdId(

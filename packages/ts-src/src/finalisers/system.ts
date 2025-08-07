@@ -1,6 +1,6 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
 import type { ChunkDependency, ChunkExports, ModuleDeclarations } from '../Chunk';
-import type { NormalizedOutputOptions } from '../rollup/types';
+import type { NormalizedOutputOptions } from 'rollup';
 import type { GenerateCodeSnippets } from '../utils/generateCodeSnippets';
 import { stringifyObjectKeyIfNeeded } from '../utils/identifierHelpers';
 import { getHelpersBlock } from '../utils/interopHelpers';

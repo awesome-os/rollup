@@ -3,7 +3,7 @@ import type {
 	LogHandler,
 	LogLevel,
 	LogLevelOption
-} from '../rollup/types';
+} from 'rollup';
 import { doNothing } from './doNothing';
 import { LOGLEVEL_WARN, logLevelPriority } from './logging';
 import { logInvalidLogPosition } from './logs';

@@ -13,7 +13,7 @@ import type {
 	TransformModuleJSON,
 	TransformPluginContext,
 	TransformResult
-} from '../rollup/types';
+} from 'rollup';
 import { getTrackedPluginCache } from './PluginCache';
 import type { PluginDriver } from './PluginDriver';
 import { collapseSourcemap } from './collapseSourcemaps';

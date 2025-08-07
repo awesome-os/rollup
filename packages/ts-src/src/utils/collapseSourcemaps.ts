@@ -5,7 +5,7 @@ import type {
 	ExistingDecodedSourceMap,
 	LogHandler,
 	SourceMapSegment
-} from '../rollup/types';
+} from 'rollup';
 import { decodedSourcemap, resetSourcemapCache } from './decodedSourcemap';
 import { LOGLEVEL_WARN } from './logging';
 import { error, logConflictingSourcemapSources, logSourcemapBroken } from './logs';
