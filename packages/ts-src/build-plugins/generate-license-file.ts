@@ -1,7 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { PluginImpl } from 'rollup';
-import license, { type Dependency, type Person } from 'rollup-plugin-license';
+import license from 'rollup-plugin-license'; 
+import type { Dependency, Person } from 'rollup-plugin-license';
 
 async function generateLicenseFile(
 	directory: string,
@@ -21,8 +22,8 @@ async function generateLicenseFile(
 			if (author?.name) {
 				names.add(author.name);
 			}
-			// TODO there is an inconsistency in the rollup-plugin-license types
-			for (const person of [...contributors, ...(maintainers as unknown as Person[])]) {
+
+			for (const person of [...contributors, ...maintainers]) {
 				if (person?.name) {
 					names.add(person.name);
 				}
@@ -71,10 +72,11 @@ interface LicenseHandler {
 }
 
 export default function getLicenseHandler(directory: string): LicenseHandler {
-	const licenses = new Map<string, Dependency>();
-	function addLicenses(dependencies: readonly Dependency[]) {
+	const licenses: Record<string, Dependency> = {};
+
+	function addLicenses(dependencies: Dependency[]) {
 		for (const dependency of dependencies) {
-			licenses.set(dependency.name!, dependency);
+			Object.assign(licenses, { [dependency.name!]: dependency });
 		}
 	}
 	return {
@@ -85,7 +87,7 @@ export default function getLicenseHandler(directory: string): LicenseHandler {
 			return {
 				name: 'write-license',
 				writeBundle() {
-					return generateLicenseFile(directory, [...licenses.values()]);
+					return generateLicenseFile(directory, Object.values(licenses));
 				}
 			};
 		}

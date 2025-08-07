@@ -980,7 +980,7 @@ export type MergedRollupOptions = InputOptions & {
 	output: OutputOptions[];
 }
 
-export function rollup(options: RollupOptions): Promise<RollupBuild>;
+
 
 export type ChokidarOptions = {
 	alwaysStat?: boolean;
