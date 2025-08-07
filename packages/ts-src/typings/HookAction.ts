@@ -1,4 +1,4 @@
-import type { PluginContext, Plugin } from '../rollup/types';
+import type { PluginContext, Plugin } from '../packages/ts-src/src/rollup/types';
 
 
 export type ReplaceContext = (context: PluginContext, plugin: Plugin) => PluginContext;

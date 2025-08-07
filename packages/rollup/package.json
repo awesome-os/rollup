@@ -1,8 +1,10 @@
 {
-  "name": "@rollup/github-repo",
-  "private": true,
+  "name": "rollup",
   "version": "4.46.2",
   "description": "Next-generation ES module bundler",
+  "main": "dist/rollup.js",
+  "module": "dist/es/rollup.js",
+  "types": "dist/rollup.d.ts",
   "workspaces": ["packages/*"],
   "bin": {
     "rollup": "dist/bin/rollup"
@@ -217,5 +219,29 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/rollup.d.ts",
+      "import": "./dist/es/rollup.js",
+      "require": "./dist/rollup.js"
+    },
+    "./loadConfigFile": {
+      "types": "./dist/loadConfigFile.d.ts",
+      "require": "./dist/loadConfigFile.js",
+      "default": "./dist/loadConfigFile.js"
+    },
+    "./getLogFilter": {
+      "types": "./dist/getLogFilter.d.ts",
+      "import": "./dist/es/getLogFilter.js",
+      "require": "./dist/getLogFilter.js"
+    },
+    "./parseAst": {
+      "types": "./dist/parseAst.d.ts",
+      "import": "./dist/es/parseAst.js",
+      "require": "./dist/parseAst.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   }
 }

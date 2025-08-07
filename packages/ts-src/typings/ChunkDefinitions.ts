@@ -1,4 +1,4 @@
-import Module from '../Module';
+import Module from '../packages/ts-src/src/Module';
 
 export type ChunkDefinitions = { alias: string | null; modules: Module[]; }[];
 export interface ModulesWithDependentEntries {

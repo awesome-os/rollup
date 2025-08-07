@@ -1,5 +1,5 @@
-import type Chunk from '../Chunk';
-import ExternalChunk from '../ExternalChunk';
+import type Chunk from '../packages/ts-src/src/Chunk';
+import ExternalChunk from '../packages/ts-src/src/ExternalChunk';
 
 
 export type DependenciesToBeDeconflicted = {

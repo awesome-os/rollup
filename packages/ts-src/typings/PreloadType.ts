@@ -1,6 +1,5 @@
-import type { DynamicImport } from './Module';
-import type { CustomPluginOptions, Plugin, ResolvedId, PartialNull, ModuleOptions } from './rollup/types';
-
+import type { DynamicImport } from '../packages/ts-src/src/Module';
+import type { CustomPluginOptions, Plugin, ResolvedId, PartialNull, ModuleOptions } from '../packages/ts-src/src/rollup/types';
 
 export interface UnresolvedModule {
 	fileName: string | null;
