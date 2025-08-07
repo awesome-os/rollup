@@ -1,7 +1,7 @@
 import ExternalModule from '../ExternalModule';
 import Module from '../Module';
 import type { LogHandler } from 'rollup';
-import type { ChunkDefinitions, ModulesWithDependentEntries, ChunkDescription, ChunkPartition } from '../../typings/ChunkDefinitions';
+import type { ChunkDefinitions, ModulesWithDependentEntries, ChunkDescription, ChunkPartition } from '../rollup/types';
 import { getNewSet, getOrCreate } from './getOrCreate';
 import { concatLazy } from './iterators';
 import { logOptimizeChunkStatus } from './logs';

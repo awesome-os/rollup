@@ -1,4 +1,6 @@
 import type * as estree from 'estree';
+import type { ExistingDecodedSourceMap, SourceMapInput } from 'rollup';
+import type Module from '../Module';
 
 declare module 'estree' {
 	export type Decorator = {
@@ -1179,4 +1181,52 @@ export type RollupFileStats = {
 	ctime: Date;
 	atime: Date;
 	birthtime: Date;
+};
+
+export type Addons = {
+	banner: string;
+	footer: string;
+	intro: string;
+	outro: string;
+};
+export type ChunkDefinitions = { alias: string | null; modules: Module[] }[];
+export type ModulesWithDependentEntries = {
+	/**
+	 * The indices of the entries depending on this chunk
+	 */
+	dependentEntries: Set<number>;
+	modules: Module[];
+};
+export type ChunkDescription = {
+	/**
+	 * These are the atoms (=initial chunks) that are contained in this chunk
+	 */
+	containedAtoms: bigint;
+	/**
+	 * The signatures of all atoms that are included in or loaded with this
+	 * chunk. This is the intersection of all dependent entry modules. As chunks
+	 * are merged, these sets are intersected.
+	 */
+	correlatedAtoms: bigint;
+	dependencies: Set<ChunkDescription>;
+	dependentChunks: Set<ChunkDescription>;
+	pure: boolean;
+	size: number;
+} & ModulesWithDependentEntries;
+export type ChunkPartition = {
+	big: Set<ChunkDescription>;
+	small: Set<ChunkDescription>;
+}; // While the types for SourceMapInput are what we expect to recieve from plugins, there are cases
+// in the wild where plugins return `{mappings: null}`, so we want this function to be a little more
+// permissive on the input end so that we can normalize the output when creating the decoded sourcemap.
+
+export type UnexpectedInput = {
+	mappings: null | undefined;
+};
+
+export type Input = SourceMapInput | UnexpectedInput | ExistingDecodedSourceMap | undefined;
+
+export type CachedSourcemapData = {
+	encodedMappings?: string | undefined;
+	decodedMappings?: ExistingDecodedSourceMap['mappings'] | undefined;
 };
