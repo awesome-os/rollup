@@ -1,5 +1,6 @@
 import process from 'node:process';
-import type { HookAction, PluginDriver } from './PluginDriver';
+import type { PluginDriver } from './PluginDriver';
+import type { HookAction } from '../../typings/HookAction';
 
 function formatAction([pluginName, hookName, parameters]: HookAction): string {
 	const action = `(${pluginName}) ${hookName}`;

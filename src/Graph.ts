@@ -5,7 +5,8 @@ import GlobalScope from './ast/scopes/GlobalScope';
 import { EntityPathTracker } from './ast/utils/PathTracker';
 import type ExternalModule from './ExternalModule';
 import Module from './Module';
-import { ModuleLoader, type UnresolvedModule } from './ModuleLoader';
+import { ModuleLoader } from './ModuleLoader';
+import { type UnresolvedModule } from '../typings/PreloadType';
 import type {
 	ModuleInfo,
 	ModuleJSON,

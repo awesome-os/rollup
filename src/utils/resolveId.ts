@@ -1,4 +1,4 @@
-import type { ModuleLoaderResolveId } from '../ModuleLoader';
+import type { ModuleLoaderResolveId } from '../../typings/PreloadType';
 import type { CustomPluginOptions, Plugin, ResolveIdResult, RollupFsModule } from '../rollup/types';
 import { basename, dirname, isAbsolute, resolve } from './path';
 import type { PluginDriver } from './PluginDriver';

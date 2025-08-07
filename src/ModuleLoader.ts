@@ -1,9 +1,16 @@
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
-import Module, { type DynamicImport } from './Module';
+import Module from './Module';
+import type { 
+	PreloadType,
+	LoadModulePromise,
+	UnresolvedModule,
+	ModuleLoaderResolveId,
+	ResolveDynamicDependencyPromise,
+	ResolveStaticDependencyPromise,
+	NormalizedResolveIdWithoutDefaults } from '../typings/PreloadType';
 import type {
 	AstNode,
-	CustomPluginOptions,
 	EmittedChunk,
 	HasModuleSideEffects,
 	LoadResult,
@@ -11,7 +18,6 @@ import type {
 	ModuleOptions,
 	NormalizedInputOptions,
 	PartialNull,
-	Plugin,
 	ResolvedId,
 	ResolveIdResult
 } from './rollup/types';
@@ -36,47 +42,17 @@ import {
 	doAttributesDiffer,
 	getAttributesFromImportExpression
 } from './utils/parseImportAttributes';
-import { isAbsolute, isRelative, resolve } from './utils/path';
+import { 
+	isAbsolute,
+	isRelative, 
+	resolve 
+} from './utils/path';
 import type { PluginDriver } from './utils/PluginDriver';
-import relativeId from './utils/relativeId';
+import { relativeId } from './utils/relativeId';
 import { resolveId } from './utils/resolveId';
 import stripBom from './utils/stripBom';
 import transform from './utils/transform';
 
-export interface UnresolvedModule {
-	fileName: string | null;
-	id: string;
-	importer: string | undefined;
-	name: string | null;
-}
-
-export type ModuleLoaderResolveId = (
-	source: string,
-	importer: string | undefined,
-	customOptions: CustomPluginOptions | undefined,
-	isEntry: boolean | undefined,
-	attributes: Record<string, string>,
-	skip?: readonly { importer: string | undefined; plugin: Plugin; source: string }[] | null
-) => Promise<ResolvedId | null>;
-
-type NormalizedResolveIdWithoutDefaults = Partial<PartialNull<ModuleOptions>> & {
-	external?: boolean | 'absolute';
-	id: string;
-	resolvedBy?: string;
-};
-
-type ResolveStaticDependencyPromise = Promise<readonly [source: string, resolvedId: ResolvedId]>;
-type ResolveDynamicDependencyPromise = Promise<
-	readonly [dynamicImport: DynamicImport, resolvedId: ResolvedId | string | null]
->;
-type LoadModulePromise = Promise<
-	[
-		resolveStaticDependencies: ResolveStaticDependencyPromise[],
-		resolveDynamicDependencies: ResolveDynamicDependencyPromise[],
-		loadAndResolveDependencies: Promise<void>
-	]
->;
-type PreloadType = boolean | 'resolveDependencies';
 const RESOLVE_DEPENDENCIES: PreloadType = 'resolveDependencies';
 
 export class ModuleLoader {

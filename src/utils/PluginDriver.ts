@@ -20,6 +20,7 @@ import type {
 	SyncPluginHooks
 } from '../rollup/types';
 import { FileEmitter } from './FileEmitter';
+import { HookAction, ReplaceContext } from '../../typings/HookAction';
 import { getPluginContext } from './PluginContext';
 import { getOrCreate } from './getOrCreate';
 import { LOGLEVEL_WARN } from './logging';
@@ -66,10 +67,6 @@ const inputHookNames: Record<InputPluginHooks, 1> = {
 	watchChange: 1
 };
 const inputHooks = Object.keys(inputHookNames);
-
-export type ReplaceContext = (context: PluginContext, plugin: Plugin) => PluginContext;
-
-export type HookAction = [plugin: string, hook: string, args: unknown[]];
 
 export class PluginDriver {
 	public readonly emitFile: EmitFile;
