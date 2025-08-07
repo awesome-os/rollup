@@ -1,4 +1,5 @@
 import flru from 'flru';
+import type { UnresolvedModule } from '../typings/PreloadType';
 import { createInclusionContext } from './ast/ExecutionContext';
 import type { ExpressionEntity } from './ast/nodes/shared/Expression';
 import GlobalScope from './ast/scopes/GlobalScope';
@@ -6,7 +7,6 @@ import { EntityPathTracker } from './ast/utils/PathTracker';
 import type ExternalModule from './ExternalModule';
 import Module from './Module';
 import { ModuleLoader } from './ModuleLoader';
-import { type UnresolvedModule } from '../typings/PreloadType';
 import type {
 	ModuleInfo,
 	ModuleJSON,
@@ -64,7 +64,8 @@ export default class Graph {
 	readonly modulesById = new Map<string, Module | ExternalModule>();
 	needsTreeshakingPass = false;
 	readonly newlyIncludedVariableInits = new Set<ExpressionEntity>();
-	phase: BuildPhase = BuildPhase.LOAD_AND_PARSE;
+	phase: typeof BuildPhase.LOAD_AND_PARSE | typeof BuildPhase.ANALYSE | typeof BuildPhase.GENERATE =
+		BuildPhase.LOAD_AND_PARSE;
 	readonly pluginDriver: PluginDriver;
 	readonly pureFunctions: PureFunctions;
 	readonly scope = new GlobalScope();

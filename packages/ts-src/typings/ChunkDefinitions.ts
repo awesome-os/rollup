@@ -1,6 +1,6 @@
-import Module from '../packages/ts-src/src/Module';
+import type Module from '../src/Module';
 
-export type ChunkDefinitions = { alias: string | null; modules: Module[]; }[];
+export type ChunkDefinitions = { alias: string | null; modules: Module[] }[];
 export interface ModulesWithDependentEntries {
 	/**
 	 * The indices of the entries depending on this chunk

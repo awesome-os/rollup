@@ -4,7 +4,7 @@ import { rollup } from '../../src/node-entry';
 import type { MergedRollupOptions } from '../../src/rollup/types';
 import { bold, cyan, green } from '../../src/utils/colors';
 import { logOnlyInlineSourcemapsForStdout } from '../../src/utils/logs';
-import relativeId from '../../src/utils/relativeId';
+import { relativeId } from '../../src/utils/relativeId';
 import { handleError, stderr } from '../logging';
 import type { BatchWarnings } from './loadConfigFileType';
 import { printTimings } from './timings';

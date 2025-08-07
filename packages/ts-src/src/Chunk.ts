@@ -1,5 +1,6 @@
 import MagicString, { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
 import { relative } from '../browser/src/path';
+import type { DependenciesToBeDeconflicted } from '../typings/DependenciesToBeDeconflicted';
 import ExportDefaultDeclaration from './ast/nodes/ExportDefaultDeclaration';
 import FunctionDeclaration from './ast/nodes/FunctionDeclaration';
 import type ImportExpression from './ast/nodes/ImportExpression';
@@ -29,7 +30,6 @@ import type {
 import { createAddons } from './utils/addons';
 import { EMPTY_OBJECT } from './utils/blank';
 import { deconflictChunk } from './utils/deconflictChunk';
-import { type DependenciesToBeDeconflicted } from './utils/DependenciesToBeDeconflicted';
 import { escapeId } from './utils/escapeId';
 import { assignExportsToMangledNames, assignExportsToNames } from './utils/exportNames';
 import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
@@ -66,30 +66,30 @@ import type { RenderOptions } from './utils/renderHelpers';
 import { makeUnique, renderNamePattern } from './utils/renderNamePattern';
 import { MISSING_EXPORT_SHIM_VARIABLE } from './utils/variableNames';
 
-export interface ModuleDeclarations {
+export type ModuleDeclarations = {
 	dependencies: ChunkDependency[];
 	exports: ChunkExports;
-}
+};
 
 type PreliminaryFileName = PreliminaryFileNameWithPlaceholder | FixedPreliminaryFileName;
 
-export interface ChunkRenderResult {
+export type ChunkRenderResult = {
 	chunk: Chunk;
 	magicString: MagicStringBundle;
 	preliminaryFileName: PreliminaryFileName;
 	preliminarySourcemapFileName: PreliminaryFileName | null;
 	usedModules: Module[];
-}
+};
 
-interface PreliminaryFileNameWithPlaceholder {
+type PreliminaryFileNameWithPlaceholder = {
 	fileName: string;
 	hashPlaceholder: string;
-}
+};
 
-interface FixedPreliminaryFileName {
+type FixedPreliminaryFileName = {
 	fileName: string;
 	hashPlaceholder: null;
-}
+};
 
 export type ResolvedDynamicImport = (
 	| { chunk: Chunk; externalChunk: null; facadeChunk: Chunk | undefined; resolution: Module }
@@ -97,7 +97,7 @@ export type ResolvedDynamicImport = (
 	| { chunk: null; externalChunk: null; facadeChunk: null; resolution: string | null }
 ) & { node: ImportExpression };
 
-export interface ChunkDependency {
+export type ChunkDependency = {
 	attributes: string | null;
 	defaultVariableName: string | undefined;
 	globalName: string | false | undefined;
@@ -108,7 +108,7 @@ export interface ChunkDependency {
 	namedExportsMode: boolean;
 	namespaceVariableName: string | undefined;
 	reexports: ReexportSpecifier[] | null;
-}
+};
 
 export type ChunkExports = {
 	exported: string;
@@ -117,21 +117,21 @@ export type ChunkExports = {
 	local: string;
 }[];
 
-export interface ReexportSpecifier {
+export type ReexportSpecifier = {
 	imported: string;
 	needsLiveBinding: boolean;
 	reexported: string;
-}
+};
 
-export interface ImportSpecifier {
+export type ImportSpecifier = {
 	imported: string;
 	local: string;
-}
+};
 
-interface FacadeName {
+type FacadeName = {
 	fileName?: string;
 	name?: string;
-}
+};
 
 type RenderedDependencies = Map<Chunk | ExternalChunk, ChunkDependency>;
 

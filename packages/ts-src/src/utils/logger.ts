@@ -1,4 +1,4 @@
-import { version as rollupVersion } from 'package.json';
+import { version as rollupVersion } from '../../package.json';
 import type {
 	LoggingFunction,
 	LogHandler,

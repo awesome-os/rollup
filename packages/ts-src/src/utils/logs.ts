@@ -1,4 +1,5 @@
 import { locate } from 'locate-character';
+import type { AnnotationType } from '../../typings/RollupAnnotation';
 import type Module from '../Module';
 import type {
 	InternalModuleFormat,
@@ -6,12 +7,11 @@ import type {
 	NormalizedInputOptions,
 	RollupLog
 } from '../rollup/types';
-import type { AnnotationType } from './RollupAnnotation';
 import getCodeFrame from './getCodeFrame';
 import { LOGLEVEL_WARN } from './logging';
 import { extname } from './path';
 import { printQuotedStringList } from './printStringList';
-import relativeId from './relativeId';
+import { relativeId } from './relativeId';
 import { getRollupUrl } from './url';
 import {
 	URL_A_SIMPLE_EXAMPLE,
@@ -74,9 +74,9 @@ export function augmentCodeLocation(
 
 const symbolAugmented = Symbol('augmented');
 
-interface AugmentedRollupLog extends RollupLog {
+type AugmentedRollupLog = {
 	[symbolAugmented]?: boolean;
-}
+} & RollupLog;
 
 export function augmentLogMessage(log: AugmentedRollupLog): void {
 	// Make sure to only augment the log message once

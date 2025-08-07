@@ -1,5 +1,7 @@
 {
 	"compilerOptions": {
+		"composite": true,
+		"outDir": "out",
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"lib": ["ES2022", "ESNext.Disposable", "DOM"],
@@ -17,6 +19,6 @@
 			"rollup": ["./node_modules/rollup"]
 		}
 	},
-	"include": ["typings", "src", "cli", "browser", "rollup.config.ts", "native"],
+	"include": ["build-plugins", "typings", "src", "cli", "browser", "rollup.config.ts", "native", "**/*.ts","**/*.json" ],
 	"exclude": ["dist", "node_modules", "test/typescript", "browser/dist"]
 }

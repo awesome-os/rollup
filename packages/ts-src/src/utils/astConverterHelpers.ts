@@ -1,6 +1,6 @@
+import type { AnnotationType, RollupAnnotation } from '../../typings/RollupAnnotation';
 import { EMPTY_ARRAY } from './blank';
 import FIXED_STRINGS from './convert-ast-strings';
-import type { RollupAnnotation, AnnotationType } from './RollupAnnotation';
 
 export const ANNOTATION_KEY = '_rollupAnnotations';
 export const INVALID_ANNOTATION_KEY = '_rollupRemoved';

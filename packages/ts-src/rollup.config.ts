@@ -6,7 +6,7 @@ import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { fileURLToPath } from 'node:url';
-import type { Plugin, RollupOptions, WarningHandlerWithDefault } from 'rollup';
+import type { Plugin, RollupLog, RollupOptions, WarningHandlerWithDefault } from 'rollup';
 import { string } from 'rollup-plugin-string';
 import addCliEntry from './build-plugins/add-cli-entry';
 import { moduleAliases } from './build-plugins/aliases';
@@ -23,7 +23,7 @@ import getBanner from './build-plugins/get-banner';
 import replaceBrowserModules from './build-plugins/replace-browser-modules';
 import './typings/declarations';
 
-const onwarn: WarningHandlerWithDefault = warning => {
+const onwarn: WarningHandlerWithDefault = (warning: RollupLog) => {
 	console.error(
 		'Building Rollup produced warnings that need to be resolved. ' +
 			'Please keep in mind that the browser build may never have external dependencies!'

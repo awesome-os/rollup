@@ -8,7 +8,7 @@ import { onExit } from 'signal-exit';
 import * as rollup from '../../src/node-entry';
 import type { MergedRollupOptions, RollupWatcher } from '../../src/rollup/types';
 import { bold, cyan, green, underline } from '../../src/utils/colors';
-import relativeId from '../../src/utils/relativeId';
+import { relativeId } from '../../src/utils/relativeId';
 import { handleError, stderr } from '../logging';
 import { getConfigPath } from './getConfigPath';
 import { loadConfigFile } from './loadConfigFile';

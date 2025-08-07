@@ -11,11 +11,9 @@ const hashPlaceholderOverhead = hashPlaceholderLeft.length + hashPlaceholderRigh
 export const MAX_HASH_SIZE = 21;
 export const DEFAULT_HASH_SIZE = 8;
 
-
-
 export const getHashPlaceholderGenerator = () => {
 	let nextIndex = 0;
-	return (optionName="", hashSize=0) => {
+	return (optionName = '', hashSize = 0) => {
 		if (hashSize > MAX_HASH_SIZE) {
 			return error(
 				logFailedValidation(
@@ -38,7 +36,7 @@ export const getHashPlaceholderGenerator = () => {
 	};
 };
 
-export type HashPlaceholderGenerator = typeof Return<getHashPlaceholderGenerator>
+export type HashPlaceholderGenerator = ReturnType<typeof getHashPlaceholderGenerator>;
 //(optionName: string, hashSize: number) => string;
 
 const REPLACER_REGEX = new RegExp(

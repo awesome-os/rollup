@@ -1,4 +1,4 @@
-import type { SourceMapInput, ExistingDecodedSourceMap } from '../packages/ts-src/src/rollup/types';
+import type { ExistingDecodedSourceMap, SourceMapInput } from '../src/rollup/types';
 
 // While the types for SourceMapInput are what we expect to recieve from plugins, there are cases
 // in the wild where plugins return `{mappings: null}`, so we want this function to be a little more

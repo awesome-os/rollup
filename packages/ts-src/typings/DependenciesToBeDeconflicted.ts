@@ -1,9 +1,8 @@
-import type Chunk from '../packages/ts-src/src/Chunk';
-import ExternalChunk from '../packages/ts-src/src/ExternalChunk';
+import type Chunk from '../src/Chunk';
+import type ExternalChunk from '../src/ExternalChunk';
 
-
-export type DependenciesToBeDeconflicted = {
+export interface DependenciesToBeDeconflicted {
 	deconflictedDefault: ReadonlySet<ExternalChunk>;
 	deconflictedNamespace: ReadonlySet<Chunk | ExternalChunk>;
 	dependencies: ReadonlySet<Chunk | ExternalChunk>;
-};
+}

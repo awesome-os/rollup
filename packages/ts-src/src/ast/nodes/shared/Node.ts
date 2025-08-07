@@ -1,8 +1,8 @@
 import { locate, type Location } from 'locate-character';
 import type MagicString from 'magic-string';
+import type { RollupAnnotation } from '../../../../typings/RollupAnnotation';
 import type { AstContext } from '../../../Module';
 import type { AstNode } from '../../../rollup/types';
-import type { RollupAnnotation } from '../../../utils/RollupAnnotation';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from '../../../utils/astConverterHelpers';
 import type { NodeRenderOptions, RenderOptions } from '../../../utils/renderHelpers';
 import { childNodeKeys } from '../../childNodeKeys';
@@ -30,14 +30,14 @@ import type { InclusionOptions, LiteralValueOrUnknown } from './Expression';
 import { ExpressionEntity } from './Expression';
 
 // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-export interface GenericEsTreeNode extends AstNode {
+export type GenericEsTreeNode = {
 	[key: string]: any;
-}
+} & AstNode;
 
 export const INCLUDE_PARAMETERS = 'variables' as const;
 export type IncludeChildren = boolean | typeof INCLUDE_PARAMETERS;
 
-export interface Node extends Entity {
+export type Node = {
 	annotations?: readonly RollupAnnotation[];
 	end: number;
 	included: boolean;
@@ -132,23 +132,23 @@ export interface Node extends Entity {
 	 * statements.
 	 */
 	shouldBeIncluded(context: InclusionContext): boolean;
-}
+} & Entity;
 
 export type StatementNode = Node;
 
 export const IS_SKIPPED_CHAIN = Symbol('IS_SKIPPED_CHAIN');
 export type SkippedChain = typeof IS_SKIPPED_CHAIN;
 
-export interface ExpressionNode extends ExpressionEntity, Node, Partial<ChainElement> {}
+export type ExpressionNode = {} & ExpressionEntity & Node & Partial<ChainElement>;
 
-export interface ChainElement {
+export type ChainElement = {
 	getLiteralValueAtPathAsChainElement(
 		path: ObjectPath,
 		recursionTracker: EntityPathTracker,
 		origin: DeoptimizableEntity
 	): LiteralValueOrUnknown | SkippedChain;
 	hasEffectsAsChainElement(context: HasEffectsContext): boolean | SkippedChain;
-}
+};
 
 export class NodeBase extends ExpressionEntity implements ExpressionNode {
 	declare annotations?: readonly RollupAnnotation[];

@@ -1,9 +1,6 @@
 import { decode, encode } from '@jridgewell/sourcemap-codec';
-import type {
-	DecodedSourceMapOrMissing,
-	ExistingDecodedSourceMap,
-	ExistingRawSourceMap} from '../rollup/types';
 import type { CachedSourcemapData, Input } from '../../typings/CachedSourcemapData';
+import type { DecodedSourceMapOrMissing, ExistingDecodedSourceMap } from '../rollup/types';
 
 const sourceMapCache = new WeakMap<ExistingDecodedSourceMap, CachedSourcemapData>();
 
@@ -45,38 +42,28 @@ export function resetSourcemapCache(
 // export function decodedSourcemap(map: Exclude<Input, null | undefined>): ExistingDecodedSourceMap;
 // export function decodedSourcemap(map: Input): ExistingDecodedSourceMap | null;
 
-export const asExistingSourceMap = (map: ExistingRawSourceMap | {
-    mappings: "";
-} | ExistingDecodedSourceMap) => { 
-	if (Array.isArray(map.mappings)) {
-		return map as ExistingDecodedSourceMap;
-	}
-	return map as ExistingRawSourceMap | {
-		mappings: "";
-	}
-
-};
 export function decodedSourcemap(map: Input) {
 	if (!map) return null;
 
 	if (typeof map === 'string') {
-		map = asExistingSourceMap(JSON.parse(map));
+		map = JSON.parse(map) as Exclude<Input, string>;
 	}
-	if (!map.mappings) {
-		// is type UnexpectedInput plugin returned null 
-		return asExistingSourceMap({
+
+	if (!map?.mappings) {
+		// is type UnexpectedInput plugin returned null
+		return {
 			mappings: [],
 			names: [],
 			sources: [],
 			version: 3
-		});
+		};
 	}
 
 	const originalMappings = map.mappings;
 	const isAlreadyDecoded = Array.isArray(originalMappings);
 	const cache: CachedSourcemapData = {
 		decodedMappings: isAlreadyDecoded ? originalMappings : undefined,
-		encodedMappings: isAlreadyDecoded ? "" : originalMappings
+		encodedMappings: isAlreadyDecoded ? '' : originalMappings
 	};
 
 	const decodedMap = {

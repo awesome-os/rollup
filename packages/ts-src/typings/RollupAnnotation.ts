@@ -1,8 +1,7 @@
-
 export type AnnotationType = 'pure' | 'noSideEffects';
 
-export interface RollupAnnotation {
+export type RollupAnnotation = {
 	start: number;
 	end: number;
 	type: AnnotationType;
-}
+};

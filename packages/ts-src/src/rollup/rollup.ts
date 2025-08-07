@@ -1,6 +1,6 @@
-import { version as rollupVersion } from 'package.json';
+import { version as rollupVersion } from '../../package.json';
 import Bundle from '../Bundle';
-import Graph from '../Graph'; 
+import Graph from '../Graph';
 import { catchUnfinishedHookActions } from '../utils/hookActions';
 import initWasm from '../utils/initWasm';
 import { getLogger } from '../utils/logger';
@@ -134,10 +134,7 @@ export async function rollupInternal(
 	return result;
 }
 
-async function getInputOptions(
-	initialInputOptions: InputOptions,
-	watchMode: boolean
-) {
+async function getInputOptions(initialInputOptions: InputOptions, watchMode: boolean) {
 	if (!initialInputOptions) {
 		throw new Error('You must supply an options object to rollup');
 	}
@@ -147,10 +144,7 @@ async function getInputOptions(
 	return { options, unsetOptions };
 }
 
-async function getProcessedInputOptions(
-	inputOptions: InputOptions,
-	watchMode: boolean
-) {
+async function getProcessedInputOptions(inputOptions: InputOptions, watchMode: boolean) {
 	const plugins = getSortedValidatedPlugins(
 		'options',
 		await normalizePluginOption(inputOptions.plugins)
@@ -329,8 +323,13 @@ export function defineConfig<T extends RollupOptions | RollupOptions[] | RollupO
 	return options;
 }
 
-export const useConfigs = async (rollupConfigs: RollupOptions | ConcatArray<RollupOptions> | (() => RollupOptions | ConcatArray<RollupOptions>)) => {
-	const configs: RollupOptions[] = []
+export const useConfigs = async (
+	rollupConfigs:
+		| RollupOptions
+		| ConcatArray<RollupOptions>
+		| (() => RollupOptions | ConcatArray<RollupOptions>)
+) => {
+	const configs: RollupOptions[] = [];
 
 	if (typeof rollupConfigs === 'function') {
 		return configs.concat(await rollupConfigs());
@@ -340,9 +339,9 @@ export const useConfigs = async (rollupConfigs: RollupOptions | ConcatArray<Roll
 		return configs.concat(await rollupConfigs);
 	}
 
-	throw new Error("Not a valid Rollup Config");
-}
+	throw new Error('Not a valid Rollup Config');
+};
 
-await useConfigs(()=>({
-	input: ""
-}))
+await useConfigs(() => ({
+	input: ''
+}));

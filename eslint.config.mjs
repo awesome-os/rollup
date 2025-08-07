@@ -47,7 +47,7 @@ export default tseslint.config(
 					objectLiteralTypeAssertions: 'allow'
 				}
 			],
-			'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 			'@typescript-eslint/consistent-type-imports': 'error',
 			'@typescript-eslint/member-ordering': [
 				'error',
@@ -89,6 +89,7 @@ export default tseslint.config(
 				}
 			],
 			'prefer-object-spread': 'error',
+			'prettier/prettier': ['error', { endOfLine: 'auto' }],
 			'sort-imports': [
 				'error',
 				{
@@ -187,5 +188,5 @@ export default tseslint.config(
 			}
 		}
 	},
-	eslintPluginPrettierRecommended
+	eslintPluginPrettierRecommended,
 );

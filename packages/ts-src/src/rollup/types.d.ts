@@ -1,19 +1,19 @@
 import type * as estree from 'estree';
 
 declare module 'estree' {
-	export interface Decorator extends estree.BaseNode {
+	export type Decorator = {
 		type: 'Decorator';
 		expression: estree.Expression;
-	}
-	interface PropertyDefinition {
+	} & estree.BaseNode;
+	type PropertyDefinition = {
 		decorators: estree.Decorator[];
-	}
-	interface MethodDefinition {
+	};
+	type MethodDefinition = {
 		decorators: estree.Decorator[];
-	}
-	interface BaseClass {
+	};
+	type BaseClass = {
 		decorators: estree.Decorator[];
-	}
+	};
 }
 
 export const VERSION: string;
@@ -31,7 +31,7 @@ export type RollupError = RollupLog & {
 	name?: string;
 	stack?: string;
 	watchFiles?: string[];
-}
+};
 
 export type RollupLog = {
 	binding?: string;
@@ -56,7 +56,7 @@ export type RollupLog = {
 	reexporter?: string;
 	stack?: string;
 	url?: string;
-}
+};
 
 export type LogLevel = 'warn' | 'info' | 'debug';
 export type LogLevelOption = LogLevel | 'silent';
@@ -75,14 +75,14 @@ export type ExistingSourceMap = {
 	sourcesContent?: string[];
 	version: number;
 	x_google_ignoreList?: number[];
-}
+};
 
 export type ExistingDecodedSourceMap = Omit<ExistingSourceMap, 'mappings'> & {
-  readonly mappings: SourceMapSegment[][];
+	readonly mappings: SourceMapSegment[][];
 };
 
 export type ExistingEncodedSourceMap = Omit<ExistingSourceMap, 'mappings'> & {
-  mappings: string;
+	mappings: string;
 };
 
 export type ExistingRawSourceMap = ExistingEncodedSourceMap;
@@ -104,7 +104,7 @@ export type SourceMap = {
 	debugId?: string;
 	toString(): string;
 	toUrl(): string;
-}
+};
 
 export type SourceMapInput = ExistingRawSourceMap | string | null | { mappings: '' };
 
@@ -113,13 +113,13 @@ export type ModuleOptions = {
 	meta: CustomPluginOptions;
 	moduleSideEffects: boolean | 'no-treeshake';
 	syntheticNamedExports: boolean | string;
-}
+};
 
 export type SourceDescription = Partial<PartialNull<ModuleOptions>> & {
 	ast?: ProgramNode;
 	code: string;
 	map?: SourceMapInput;
-}
+};
 
 export type TransformModuleJSON = {
 	ast?: ProgramNode;
@@ -130,43 +130,44 @@ export type TransformModuleJSON = {
 	originalSourcemap: ExistingDecodedSourceMap | null;
 	sourcemapChain: DecodedSourceMapOrMissing[];
 	transformDependencies: string[];
-}
+};
 
-export type ModuleJSON = TransformModuleJSON & ModuleOptions & {
-	ast: ProgramNode;
-	dependencies: string[];
-	id: string;
-	resolvedIds: ResolvedIdMap;
-	transformFiles: EmittedFile[] | undefined;
-}
+export type ModuleJSON = TransformModuleJSON &
+	ModuleOptions & {
+		ast: ProgramNode;
+		dependencies: string[];
+		id: string;
+		resolvedIds: ResolvedIdMap;
+		transformFiles: EmittedFile[] | undefined;
+	};
 
 export type PluginCache = {
 	delete(id: string): boolean;
 	get<T = any>(id: string): T;
 	has(id: string): boolean;
 	set<T = any>(id: string, value: T): void;
-}
+};
 
 export type LoggingFunction = (log: RollupLog | string | (() => RollupLog | string)) => void;
 
-export interface MinimalPluginContext {
+export type MinimalPluginContext = {
 	debug: LoggingFunction;
 	error: (error: RollupError | string) => never;
 	info: LoggingFunction;
 	meta: PluginContextMeta;
 	warn: LoggingFunction;
-}
+};
 
-export interface EmittedAsset {
+export type EmittedAsset = {
 	fileName?: string;
 	name?: string;
 	needsCodeReference?: boolean;
 	originalFileName?: string | null;
 	source?: string | Uint8Array;
 	type: 'asset';
-}
+};
 
-export interface EmittedChunk {
+export type EmittedChunk = {
 	fileName?: string;
 	id: string;
 	implicitlyLoadedAfterOneOf?: string[];
@@ -174,22 +175,22 @@ export interface EmittedChunk {
 	name?: string;
 	preserveSignature?: PreserveEntrySignaturesOption;
 	type: 'chunk';
-}
+};
 
-export interface EmittedPrebuiltChunk {
+export type EmittedPrebuiltChunk = {
 	code: string;
 	exports?: string[];
 	fileName: string;
 	map?: SourceMap;
 	sourcemapFileName?: string;
 	type: 'prebuilt-chunk';
-}
+};
 
 export type EmittedFile = EmittedAsset | EmittedChunk | EmittedPrebuiltChunk;
 
 export type EmitFile = (emittedFile: EmittedFile) => string;
 
-export interface ModuleInfo extends ModuleOptions {
+export type ModuleInfo = {
 	ast: ProgramNode | null;
 	code: string | null;
 	dynamicImporters: readonly string[];
@@ -207,13 +208,11 @@ export interface ModuleInfo extends ModuleOptions {
 	isEntry: boolean;
 	isExternal: boolean;
 	isIncluded: boolean | null;
-}
+} & ModuleOptions;
 
 export type GetModuleInfo = (moduleId: string) => ModuleInfo | null;
 
-export type CustomPluginOptions = {
-	[plugin: string]: any;
-}
+export type CustomPluginOptions = Record<string, any>;
 
 export type LoggingFunctionWithPosition = (
 	log: RollupLog | string | (() => RollupLog | string),
@@ -265,12 +264,12 @@ export type PluginContext = MinimalPluginContext & {
 	) => Promise<ResolvedId | null>;
 	setAssetSource: (assetReferenceId: string, source: string | Uint8Array) => void;
 	warn: LoggingFunction;
-}
+};
 
-export interface PluginContextMeta {
+export type PluginContextMeta = {
 	rollupVersion: string;
 	watchMode: boolean;
-}
+};
 
 export type StringOrRegExp = string | RegExp;
 
@@ -281,16 +280,16 @@ export type StringFilter<Value = StringOrRegExp> =
 			exclude?: MaybeArray<Value>;
 	  };
 
-export interface HookFilter {
+export type HookFilter = {
 	id?: StringFilter;
 	code?: StringFilter;
-}
+};
 
 export type ResolvedId = ModuleOptions & {
 	external: boolean | 'absolute';
 	id: string;
 	resolvedBy: string;
-}
+};
 
 export type ResolvedIdMap = Record<string, ResolvedId>;
 
@@ -298,7 +297,7 @@ export type PartialResolvedId = Partial<PartialNull<ModuleOptions>> & {
 	external?: boolean | 'absolute' | 'relative';
 	id: string;
 	resolvedBy?: string;
-}
+};
 
 export type ResolveIdResult = string | NullValue | false | PartialResolvedId;
 
@@ -342,7 +341,7 @@ export type TransformPluginContext = PluginContext & {
 	getCombinedSourcemap: () => SourceMap;
 	info: LoggingFunctionWithPosition;
 	warn: LoggingFunctionWithPosition;
-}
+};
 
 export type TransformResult = string | NullValue | Partial<SourceDescription>;
 
@@ -421,13 +420,13 @@ export type ImportedInternalChunk = {
 	fileName: string;
 	resolvedImportPath: string;
 	chunk: PreRenderedChunk;
-}
+};
 
 export type ImportedExternalChunk = {
 	type: 'external';
 	fileName: string;
 	resolvedImportPath: string;
-}
+};
 
 export type DynamicImportTargetChunk = ImportedInternalChunk | ImportedExternalChunk;
 
@@ -479,7 +478,7 @@ export type FunctionPluginHooks = {
 		options: NormalizedOutputOptions,
 		bundle: OutputBundle
 	) => void;
-}
+};
 
 export type OutputPluginHooks =
 	| 'augmentChunkHash'
@@ -557,18 +556,18 @@ export type PluginHooks = {
 	>;
 };
 
-export interface OutputPlugin
-	extends Partial<{ [K in OutputPluginHooks]: PluginHooks[K] }>,
-		Partial<Record<AddonHooks, ObjectHook<AddonHook>>> {
+export type OutputPlugin = {
 	cacheKey?: string;
 	name: string;
 	version?: string;
-}
+} & Partial<{ [K in OutputPluginHooks]: PluginHooks[K] }> &
+	Partial<Record<AddonHooks, ObjectHook<AddonHook>>>;
 
-export interface Plugin<A = any> extends OutputPlugin, Partial<PluginHooks> {
+export type Plugin<A = any> = {
 	// for inter-plugin communication
 	api?: A;
-}
+} & OutputPlugin &
+	Partial<PluginHooks>;
 
 export type JsxPreset = 'react' | 'react-jsx' | 'preserve' | 'preserve-react';
 
@@ -577,26 +576,26 @@ export type NormalizedJsxOptions =
 	| NormalizedJsxClassicOptions
 	| NormalizedJsxAutomaticOptions;
 
-interface NormalizedJsxPreserveOptions {
+type NormalizedJsxPreserveOptions = {
 	factory: string | null;
 	fragment: string | null;
 	importSource: string | null;
 	mode: 'preserve';
-}
+};
 
-interface NormalizedJsxClassicOptions {
+type NormalizedJsxClassicOptions = {
 	factory: string;
 	fragment: string;
 	importSource: string | null;
 	mode: 'classic';
-}
+};
 
-interface NormalizedJsxAutomaticOptions {
+type NormalizedJsxAutomaticOptions = {
 	factory: string;
 	importSource: string | null;
 	jsxImportSource: string;
 	mode: 'automatic';
-}
+};
 
 export type JsxOptions = Partial<NormalizedJsxOptions> & {
 	preset?: JsxPreset;
@@ -604,7 +603,7 @@ export type JsxOptions = Partial<NormalizedJsxOptions> & {
 
 export type TreeshakingPreset = 'smallest' | 'safest' | 'recommended';
 
-export interface NormalizedTreeshakingOptions {
+export type NormalizedTreeshakingOptions = {
 	annotations: boolean;
 	correctVarValueBeforeDeclaration: boolean;
 	manualPureFunctions: readonly string[];
@@ -612,17 +611,19 @@ export interface NormalizedTreeshakingOptions {
 	propertyReadSideEffects: boolean | 'always';
 	tryCatchDeoptimization: boolean;
 	unknownGlobalSideEffects: boolean;
-}
+};
 
-export type TreeshakingOptions = Partial<Omit<NormalizedTreeshakingOptions, 'moduleSideEffects'>> & {
+export type TreeshakingOptions = Partial<
+	Omit<NormalizedTreeshakingOptions, 'moduleSideEffects'>
+> & {
 	moduleSideEffects?: ModuleSideEffectsOption;
 	preset?: TreeshakingPreset;
-}
+};
 
 export type ManualChunkMeta = {
 	getModuleIds: () => IterableIterator<string>;
 	getModuleInfo: GetModuleInfo;
-}
+};
 
 export type GetManualChunk = (id: string, meta: ManualChunkMeta) => string | NullValue;
 
@@ -687,9 +688,9 @@ export type InputOptions = {
 	strictDeprecations?: boolean;
 	treeshake?: boolean | TreeshakingPreset | TreeshakingOptions;
 	watch?: WatcherOptions | false;
-}
+};
 
-export interface NormalizedInputOptions {
+export type NormalizedInputOptions = {
 	cache: false | undefined | RollupCache;
 	context: string;
 	experimentalCacheExpiry: number;
@@ -710,7 +711,7 @@ export interface NormalizedInputOptions {
 	shimMissingExports: boolean;
 	strictDeprecations: boolean;
 	treeshake: false | NormalizedTreeshakingOptions;
-}
+};
 
 export type InternalModuleFormat = 'amd' | 'cjs' | 'es' | 'iife' | 'system' | 'umd';
 export type ImportAttributesKey = 'with' | 'assert';
@@ -719,17 +720,17 @@ export type ModuleFormat = InternalModuleFormat | 'commonjs' | 'esm' | 'module' 
 
 type GeneratedCodePreset = 'es5' | 'es2015';
 
-interface NormalizedGeneratedCodeOptions {
+type NormalizedGeneratedCodeOptions = {
 	arrowFunctions: boolean;
 	constBindings: boolean;
 	objectShorthand: boolean;
 	reservedNamesAsProps: boolean;
 	symbols: boolean;
-}
+};
 
-interface GeneratedCodeOptions extends Partial<NormalizedGeneratedCodeOptions> {
+type GeneratedCodeOptions = {
 	preset?: GeneratedCodePreset;
-}
+} & Partial<NormalizedGeneratedCodeOptions>;
 
 export type OptionsPaths = Record<string, string> | ((id: string) => string);
 
@@ -772,7 +773,9 @@ export type NormalizedAmdOptions = (
 
 export type AddonFunction = (chunk: RenderedChunk) => string | Promise<string>;
 
-export type OutputPluginOption = MaybePromise<OutputPlugin | NullValue | false | OutputPluginOption[]>;
+export type OutputPluginOption = MaybePromise<
+	OutputPlugin | NullValue | false | OutputPluginOption[]
+>;
 
 export type HashCharacters = 'base64' | 'base36' | 'hex';
 
@@ -831,7 +834,7 @@ export type OutputOptions = {
 	systemNullSetters?: boolean;
 	validate?: boolean;
 	virtualDirname?: string;
-}
+};
 
 export type NormalizedOutputOptions = {
 	amd: NormalizedAmdOptions;
@@ -886,7 +889,7 @@ export type NormalizedOutputOptions = {
 	systemNullSetters: boolean;
 	validate: boolean;
 	virtualDirname: string;
-}
+};
 
 export type WarningHandlerWithDefault = (
 	warning: RollupLog,
@@ -895,7 +898,7 @@ export type WarningHandlerWithDefault = (
 
 export type SerializedTimings = Record<string, [number, number, number]>;
 
-export interface PreRenderedAsset {
+export type PreRenderedAsset = {
 	/** @deprecated Use "names" instead. */
 	name: string | undefined;
 	names: string[];
@@ -904,12 +907,12 @@ export interface PreRenderedAsset {
 	originalFileNames: string[];
 	source: string | Uint8Array;
 	type: 'asset';
-}
+};
 
 export type OutputAsset = PreRenderedAsset & {
 	fileName: string;
 	needsCodeReference: boolean;
-}
+};
 
 export type RenderedModule = {
 	readonly code: string | null;
@@ -917,7 +920,7 @@ export type RenderedModule = {
 	removedExports: string[];
 	renderedExports: string[];
 	renderedLength: number;
-}
+};
 
 export type PreRenderedChunk = {
 	exports: string[];
@@ -928,7 +931,7 @@ export type PreRenderedChunk = {
 	moduleIds: string[];
 	name: string;
 	type: 'chunk';
-}
+};
 
 export type RenderedChunk = PreRenderedChunk & {
 	dynamicImports: string[];
@@ -938,25 +941,25 @@ export type RenderedChunk = PreRenderedChunk & {
 	imports: string[];
 	modules: Record<string, RenderedModule>;
 	referencedFiles: string[];
-}
+};
 
 export type OutputChunk = RenderedChunk & {
 	code: string;
 	map: SourceMap | null;
 	sourcemapFileName: string | null;
 	preliminaryFileName: string;
-}
+};
 
 export type SerializablePluginCache = Record<string, [number, any]>;
 
 export type RollupCache = {
 	modules: ModuleJSON[];
 	plugins?: Record<string, SerializablePluginCache>;
-}
+};
 
 export type RollupOutput = {
 	output: [OutputChunk, ...(OutputChunk | OutputAsset)[]];
-}
+};
 
 export type RollupBuild = {
 	cache: RollupCache | undefined;
@@ -967,20 +970,22 @@ export type RollupBuild = {
 	getTimings?: () => SerializedTimings;
 	watchFiles: string[];
 	write: (options: OutputOptions) => Promise<RollupOutput>;
-}
+};
 
 export type RollupOptions = InputOptions & {
 	// This is included for compatibility with config files but ignored by rollup.rollup
 	output?: OutputOptions | OutputOptions[];
-}
+};
+
+export type InputOptionsWithPlugins = InputOptions & {
+	plugins: Plugin[];
+};
 
 export type MergedRollupOptions = InputOptions & {
 	plugins: Plugin[];
 } & {
 	output: OutputOptions[];
-}
-
-
+};
 
 export type ChokidarOptions = {
 	alwaysStat?: boolean;
@@ -1003,7 +1008,7 @@ export type ChokidarOptions = {
 	persistent?: boolean;
 	useFsEvents?: boolean;
 	usePolling?: boolean;
-}
+};
 
 export type RollupWatchHooks = 'onError' | 'onStart' | 'onBundleStart' | 'onBundleEnd' | 'onEnd';
 
@@ -1016,12 +1021,12 @@ export type WatcherOptions = {
 	include?: string | RegExp | (string | RegExp)[];
 	skipWrite?: boolean;
 	onInvalidate?: (id: string) => void;
-}
+};
 
 export type RollupWatchOptions = InputOptions & {
 	output?: OutputOptions | OutputOptions[];
 	watch?: WatcherOptions | false;
-}
+};
 
 export type AwaitedEventListener<
 	T extends Record<string, (...parameters: any) => any>,
@@ -1054,7 +1059,7 @@ export type AwaitingEventEmitter<T extends Record<string, (...parameters: any) =
 	): this;
 	removeAllListeners(): this;
 	removeListenersForCurrentRun(): this;
-}
+};
 
 export type RollupWatcherEvent =
 	| { code: 'START' }
@@ -1081,7 +1086,7 @@ export function watch(config: RollupWatchOptions | RollupWatchOptions[]): Rollup
 export type AstNodeLocation = {
 	end: number;
 	start: number;
-}
+};
 
 export type OmittedEstreeKeys =
 	| 'loc'
@@ -1145,7 +1150,7 @@ export type RollupFsModule = {
 		data: string | Uint8Array,
 		options?: { encoding?: BufferEncoding | null; mode?: string | number; flag?: string | number }
 	): Promise<void>;
-}
+};
 
 export type BufferEncoding =
 	| 'ascii'
@@ -1163,7 +1168,7 @@ export type RollupDirectoryEntry = {
 	isDirectory(): boolean;
 	isSymbolicLink(): boolean;
 	name: string;
-}
+};
 
 export type RollupFileStats = {
 	isFile(): boolean;
@@ -1174,4 +1179,4 @@ export type RollupFileStats = {
 	ctime: Date;
 	atime: Date;
 	birthtime: Date;
-}
+};

@@ -6,7 +6,7 @@ import { getLogFilter } from '../../src/utils/getLogFilter';
 import { getNewArray, getOrCreate } from '../../src/utils/getOrCreate';
 import { LOGLEVEL_DEBUG, LOGLEVEL_WARN } from '../../src/utils/logging';
 import { printQuotedStringList } from '../../src/utils/printStringList';
-import relativeId from '../../src/utils/relativeId';
+import { relativeId } from '../../src/utils/relativeId';
 import { getRollupUrl } from '../../src/utils/url';
 import {
 	URL_AVOIDING_EVAL,
@@ -281,10 +281,10 @@ function info(url: string): void {
 	stderr(gray(url));
 }
 
-interface Nested<T> {
+type Nested<T> = {
 	items: T[];
 	key: string;
-}
+};
 
 function nest<T extends Record<string, any>>(array: readonly T[], property: string): Nested<T>[] {
 	const nested: Nested<T>[] = [];

@@ -91,26 +91,26 @@ import { timeEnd, timeStart } from './utils/timers';
 import { markModuleAndImpureDependenciesAsExecuted } from './utils/traverseStaticDependencies';
 import { MISSING_EXPORT_SHIM_VARIABLE } from './utils/variableNames';
 
-interface ImportDescription {
+type ImportDescription = {
 	module: Module | ExternalModule;
 	name: string;
 	source: string;
 	start: number;
-}
+};
 
-interface ExportDescription {
+type ExportDescription = {
 	identifier: string | null;
 	localName: string;
-}
+};
 
-interface ReexportDescription {
+type ReexportDescription = {
 	localName: string;
 	module: Module | ExternalModule;
 	source: string;
 	start: number;
-}
+};
 
-export interface AstContext {
+export type AstContext = {
 	addDynamicImport: (node: ImportExpression) => void;
 	addExport: (
 		node: ExportAllDeclaration | ExportNamedDeclaration | ExportDefaultDeclaration
@@ -147,14 +147,14 @@ export interface AstContext {
 	traceExport: (name: string) => [variable: Variable | null, options?: VariableOptions];
 	traceVariable: (name: string) => Variable | null;
 	usesTopLevelAwait: boolean;
-}
+};
 
-export interface DynamicImport {
+export type DynamicImport = {
 	argument: string | AstNode;
 	id: string | null;
 	node: ImportExpression;
 	resolution: Module | ExternalModule | string | null;
-}
+};
 
 const MISSING_EXPORT_SHIM_DESCRIPTION: ExportDescription = {
 	identifier: null,
@@ -859,7 +859,7 @@ export default class Module {
 		// RollupCache stores `ExistingDecodedSourcemap` instead of `ExistingRawSourcemap`
 		this.originalSourcemap = decodedSourcemap(originalSourcemap);
 		this.sourcemapChain = sourcemapChain.map(mapOrMissing =>
-			mapOrMissing.missing ? mapOrMissing : decodedSourcemap(mapOrMissing)
+			mapOrMissing.missing ? mapOrMissing : decodedSourcemap(mapOrMissing) || mapOrMissing
 		);
 
 		// If coming from cache and this value is already fully decoded, we want to re-encode here to save memory.
@@ -1475,7 +1475,7 @@ const copyNameToModulesMap = (
 	searchedNamesAndModules &&
 	new Map(Array.from(searchedNamesAndModules, ([name, modules]) => [name, new Set(modules)]));
 
-interface VariableOptions {
+type VariableOptions = {
 	indirectExternal?: boolean;
 	missingButExportExists?: boolean;
-}
+};

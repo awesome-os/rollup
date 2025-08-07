@@ -1,3 +1,4 @@
 {
-    "name": "@rollup/ts-src"
+    "name": "@rollup/ts-src",
+    "version": "0.0.0-pre0"
 }

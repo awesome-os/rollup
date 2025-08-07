@@ -1,5 +1,5 @@
+import type { Addons } from '../../typings/Addons.1';
 import type { NormalizedOutputOptions, RenderedChunk } from '../rollup/types';
-import type { Addons } from './Addons.1';
 import type { PluginDriver } from './PluginDriver';
 import { error, logAddonNotGenerated } from './logs';
 

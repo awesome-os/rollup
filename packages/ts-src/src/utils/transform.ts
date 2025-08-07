@@ -35,7 +35,7 @@ export default async function transform(
 	log: LogHandler
 ): Promise<TransformModuleJSON> {
 	const id = module.id;
-	const sourcemapChain: DecodedSourceMapOrMissing[] = [];
+	const sourcemapChain = [] as DecodedSourceMapOrMissing[];
 
 	let originalSourcemap = source.map === null ? null : decodedSourcemap(source.map);
 	const originalCode = source.code;
@@ -73,12 +73,11 @@ export default async function transform(
 		// strict null check allows 'null' maps to not be pushed to the chain,
 		// while 'undefined' gets the missing map warning
 		if (map !== null) {
-			sourcemapChain.push(
-				decodedSourcemap(typeof map === 'string' ? JSON.parse(map) : map) || {
-					missing: true,
-					plugin: plugin.name
-				}
-			);
+			const uff = decodedSourcemap(typeof map === 'string' ? JSON.parse(map) : map) || {
+				missing: true,
+				plugin: plugin.name
+			};
+			sourcemapChain.push(uff as DecodedSourceMapOrMissing);
 		}
 
 		currentSource = code;

@@ -1,4 +1,5 @@
 import type { Bundle as MagicStringBundle, SourceMap } from 'magic-string';
+import type { GetHash } from '../../typings/GetHash';
 import type { default as Chunk, ChunkRenderResult } from '../Chunk';
 import type Module from '../Module';
 import type {
@@ -8,7 +9,6 @@ import type {
 	RenderedChunk
 } from '../rollup/types';
 import { collapseSourcemaps } from './collapseSourcemaps';
-import type { GetHash } from '../../typings/GetHash';
 import { hasherByType } from './crypto';
 import { decodedSourcemap } from './decodedSourcemap';
 import {
@@ -24,18 +24,18 @@ import type { PluginDriver } from './PluginDriver';
 import { SOURCEMAPPING_URL } from './sourceMappingURL';
 import { timeEnd, timeStart } from './timers';
 
-interface HashResult {
+type HashResult = {
 	containedPlaceholders: Set<string>;
 	contentHash: string;
-}
+};
 
-interface RenderedChunkWithPlaceholders {
+type RenderedChunkWithPlaceholders = {
 	chunk: Chunk;
 	code: string;
 	fileName: string;
 	sourcemapFileName: string | null;
 	map: SourceMap | null;
-}
+};
 
 export async function renderChunks(
 	chunks: Chunk[],
