@@ -14,7 +14,7 @@ import {
 } from '../../src/utils/logs';
 import { mergeOptions } from '../../src/utils/options/mergeOptions';
 import { relativeId } from '../../src/utils/relativeId';
-import type { GenericConfigObject } from '../../typings/GenericConfigObject';
+import type { GenericConfigObject } from "../../src/rollup/types";
 import { stderr } from '../logging';
 import batchWarnings from './batchWarnings';
 import { addCommandPluginsToInputOptions, addPluginsFromCommandOption } from './commandPlugins';

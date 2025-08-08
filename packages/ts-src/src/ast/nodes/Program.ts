@@ -1,6 +1,6 @@
 import { locate } from 'locate-character';
 import type MagicString from 'magic-string';
-import type { RollupAnnotation } from '../../../typings/RollupAnnotation';
+import type { RollupAnnotation } from "../../rollup/types";
 import { LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../utils/logging';
 import { logFirstSideEffect, logInvalidAnnotation } from '../../utils/logs';
 import {

@@ -1,7 +1,7 @@
 import type { ModuleLoaderResolveId } from '../rollup/types';
 import type { CustomPluginOptions, Plugin, PluginContext, ResolveIdResult } from 'rollup';
 import type { PluginDriver } from './PluginDriver';
-import type { ReplaceContext } from '../../typings/HookAction';
+import type { ReplaceContext } from '../rollup/types';
 import { BLANK, EMPTY_OBJECT } from './blank';
 
 export function resolveIdViaPlugins(

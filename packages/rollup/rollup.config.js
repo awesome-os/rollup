@@ -7,7 +7,6 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import '@rollup/types/declarations';
 import { fileURLToPath } from 'node:url';
-import type { Plugin, RollupLog, RollupOptions, WarningHandlerWithDefault } from 'rollup';
 import { string } from 'rollup-plugin-string';
 import addCliEntry from './build-plugins/add-cli-entry';
 import { moduleAliases } from './build-plugins/aliases';
@@ -22,23 +21,19 @@ import { fsEventsReplacement } from './build-plugins/fs-events-replacement';
 import getLicenseHandler from './build-plugins/generate-license-file';
 import getBanner from './build-plugins/get-banner';
 import replaceBrowserModules from './build-plugins/replace-browser-modules';
-
-const onwarn: WarningHandlerWithDefault = (warning: RollupLog) => {
+const onwarn = warning => {
 	console.error(
 		'Building Rollup produced warnings that need to be resolved. ' +
 			'Please keep in mind that the browser build may never have external dependencies!'
 	);
-
 	throw Object.assign(new Error(), warning);
 };
-
 const treeshake = {
 	moduleSideEffects: false,
 	propertyReadSideEffects: false,
 	tryCatchDeoptimization: false
 };
-
-const nodePlugins: readonly Plugin[] = [
+const nodePlugins = [
 	replace(fsEventsReplacement),
 	alias(moduleAliases),
 	nodeResolve({ preferBuiltins: true }),
@@ -52,15 +47,11 @@ const nodePlugins: readonly Plugin[] = [
 	cleanBeforeWrite('dist'),
 	externalNativeImport()
 ];
-
-export default async function getConfig(
-	command: Record<string, unknown>
-): Promise<RollupOptions | RollupOptions[]> {
+export default async function getConfig(command) {
 	const { collectLicenses, writeLicense } = getLicenseHandler(
 		fileURLToPath(new URL('.', import.meta.url))
 	);
-
-	const commonJSBuild: RollupOptions = {
+	const commonJSBuild = {
 		// 'fsevents' is a dependency of 'chokidar' that cannot be bundled as it contains binary code
 		external: ['fsevents'],
 		input: {
@@ -94,12 +85,10 @@ export default async function getConfig(
 		strictDeprecations: true,
 		treeshake
 	};
-
 	if (command.configTest) {
 		return commonJSBuild;
 	}
-
-	const esmBuild: RollupOptions = {
+	const esmBuild = {
 		...commonJSBuild,
 		input: {
 			'getLogFilter.js': 'src/utils/getLogFilter.ts',
@@ -115,15 +104,12 @@ export default async function getConfig(
 		},
 		plugins: [...nodePlugins, emitModulePackageFile(), collectLicenses(), writeLicense()]
 	};
-
 	if (command.configIsBuildNode) {
 		return [commonJSBuild, esmBuild];
 	}
-
 	const { collectLicenses: collectLicensesBrowser, writeLicense: writeLicenseBrowser } =
 		getLicenseHandler(fileURLToPath(new URL('browser', import.meta.url)));
-
-	const browserBuilds: RollupOptions = {
+	const browserBuilds = {
 		input: 'src/browser-entry.ts',
 		onwarn,
 		output: [
@@ -158,6 +144,5 @@ export default async function getConfig(
 		strictDeprecations: true,
 		treeshake
 	};
-
 	return [commonJSBuild, esmBuild, browserBuilds];
 }

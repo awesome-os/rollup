@@ -3,8 +3,8 @@
 
 import type * as estree from 'estree';
 import type { RollupAstNode } from 'rollup';
-import type { RollupAnnotation } from '../../typings/RollupAnnotation';
 import { PanicError, ParseError } from '../ast/nodes/NodeType';
+import type { RollupAnnotation } from '../rollup/types';
 import { ANNOTATION_KEY, convertAnnotations, INVALID_ANNOTATION_KEY } from './astConverterHelpers';
 import { EMPTY_ARRAY } from './blank';
 import FIXED_STRINGS from './convert-ast-strings';
@@ -176,6 +176,7 @@ const nodeConverters: ((position: number, buffer: AstBuffer) => any)[] = [
 			type: 'ClassDeclaration',
 			start: buffer[position],
 			end: buffer[position + 1],
+			// @ts-expect-error because its bad
 			decorators: convertNodeList(buffer[position + 2], buffer),
 			id: idPosition === 0 ? null : convertNode(idPosition, buffer),
 			superClass: superClassPosition === 0 ? null : convertNode(superClassPosition, buffer),
@@ -189,6 +190,7 @@ const nodeConverters: ((position: number, buffer: AstBuffer) => any)[] = [
 			type: 'ClassExpression',
 			start: buffer[position],
 			end: buffer[position + 1],
+			// @ts-expect-error because its bad
 			decorators: convertNodeList(buffer[position + 2], buffer),
 			id: idPosition === 0 ? null : convertNode(idPosition, buffer),
 			superClass: superClassPosition === 0 ? null : convertNode(superClassPosition, buffer),
@@ -694,6 +696,7 @@ const nodeConverters: ((position: number, buffer: AstBuffer) => any)[] = [
 			end: buffer[position + 1],
 			static: (flags & 1) === 1,
 			computed: (flags & 2) === 2,
+			// @ts-expect-error because its bad
 			decorators: convertNodeList(buffer[position + 3], buffer),
 			key: convertNode(buffer[position + 4], buffer),
 			value: convertNode(buffer[position + 5], buffer),
@@ -771,6 +774,7 @@ const nodeConverters: ((position: number, buffer: AstBuffer) => any)[] = [
 			end: buffer[position + 1],
 			static: (flags & 1) === 1,
 			computed: (flags & 2) === 2,
+			// @ts-expect-error because its bad
 			decorators: convertNodeList(buffer[position + 3], buffer),
 			key: convertNode(buffer[position + 4], buffer),
 			value: valuePosition === 0 ? null : convertNode(valuePosition, buffer)

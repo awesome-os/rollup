@@ -1,0 +1,5 @@
+{
+    "name": "@rollup/types",
+    "type": "module",
+    "types": "rollup.d.ts"
+}

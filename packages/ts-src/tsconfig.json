@@ -19,6 +19,6 @@
 			"rollup": ["./node_modules/rollup"]
 		}
 	},
-	"include": ["build-plugins", "typings", "src", "cli", "browser", "rollup.config.ts", "native", "**/*.ts","**/*.json" ],
+	"include": ["build-plugins", "src", "cli", "browser", "rollup.config.ts", "native", "**/*.ts", "**/*.json" ],
 	"exclude": ["dist", "node_modules", "test/typescript", "browser/dist", "out", "tsconfig.json"]
 }

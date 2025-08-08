@@ -1,5 +1,5 @@
+import '@rollup/types/fsevents';
 import type FsEvents from 'fsevents';
-import '../../typings/fsevents';
 
 let fsEvents: typeof FsEvents;
 let fsEventsImportError: Error | undefined;

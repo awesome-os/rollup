@@ -12,7 +12,7 @@ import { ensureArray } from '../ensureArray';
 import { getLogger } from '../logger';
 import { LOGLEVEL_INFO } from '../logging';
 import { URL_JSX, URL_OUTPUT_GENERATEDCODE, URL_TREESHAKE } from '../urls';
-import type { CommandConfigObject } from '../../../typings/CommandConfigObject';
+import type { CommandConfigObject } from "../../rollup/types";
 import {
 	generatedCodePresets,
 	getOnLog,
@@ -23,7 +23,7 @@ import {
 	treeshakePresets,
 	warnUnknownOptions
 } from './options';
-import type { GenericConfigObject } from '../../../typings/GenericConfigObject';
+import type { GenericConfigObject } from "../../rollup/types";
 
 export const commandAliases: Record<string, string> = {
 	c: 'config',
