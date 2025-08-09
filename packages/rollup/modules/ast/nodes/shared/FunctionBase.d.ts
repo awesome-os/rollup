@@ -5,7 +5,8 @@ import type ReturnValueScope from '../../scopes/ReturnValueScope';
 import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import BlockStatement from '../BlockStatement';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
-import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren, NodeBase } from './Node';
+import { NodeBase } from './Node';
+import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren } from '@rollup/types';
 import type { ObjectEntity } from './ObjectEntity';
 import type { DeclarationPatternNode } from './Pattern';
 export default abstract class FunctionBase extends NodeBase {

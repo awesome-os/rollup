@@ -13,7 +13,7 @@ import {
 	UNKNOWN_PATH
 } from '../utils/PathTracker';
 import { getRenderedLiteralValue } from '../utils/renderLiteralValue';
-import ExternalVariable from '../variables/ExternalVariable';
+import { ExternalVariable } from '../variables/ExternalVariable';
 import NamespaceVariable from '../variables/NamespaceVariable';
 import ExpressionStatement from './ExpressionStatement';
 import type { LiteralValue } from './Literal';
@@ -25,10 +25,12 @@ import {
 } from './shared/Expression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	NodeBase
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren
+} from '@rollup/types';
 
 type Operator =
 	| '!='

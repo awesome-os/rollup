@@ -4,6 +4,7 @@ import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class ForInStatement extends StatementBase {
     createScope(parentScope) {
         this.scope = new BlockScope(parentScope);

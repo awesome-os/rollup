@@ -2,7 +2,7 @@ import type { InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH } from '../utils/PathTracker';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 

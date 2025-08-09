@@ -1,6 +1,6 @@
-import chokidar, { type FSWatcher } from 'chokidar';
-import { platform } from 'node:os';
 import type { ChangeEvent, ChokidarOptions } from '@rollup/types';
+import { type FSWatcher, watch } from 'chokidar';
+import { platform } from 'node:os';
 import type { Task } from './watch';
 
 export class FileWatcher {
@@ -57,8 +57,7 @@ export class FileWatcher {
 			}
 			task.invalidate(changedId, { event, isTransformDependency });
 		};
-		const watcher = chokidar
-			.watch([], this.chokidarOptions)
+		const watcher = watch([], this.chokidarOptions)
 			.on('add', id => handleChange(id, 'create'))
 			.on('change', id => handleChange(id, 'update'))
 			.on('unlink', id => handleChange(id, 'delete'));

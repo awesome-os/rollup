@@ -11,8 +11,11 @@ import ChildScope from './ChildScope';
 import type ParameterScope from './ParameterScope';
 
 export default class CatchBodyScope extends ChildScope {
-	constructor(readonly parent: ParameterScope) {
+	readonly parent: ParameterScope;
+
+	constructor(parent: ParameterScope) {
 		super(parent, parent.context);
+		this.parent = parent;
 	}
 
 	addDeclaration(

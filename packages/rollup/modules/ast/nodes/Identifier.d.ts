@@ -4,7 +4,7 @@ import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { ObjectPath } from '../utils/PathTracker';
 import type LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import * as NodeType from './NodeType';
 import { type ExpressionEntity } from './shared/Expression';
 import IdentifierBase from './shared/IdentifierBase';

@@ -1,5 +1,5 @@
 import { env } from 'node:process';
-import pc from 'picocolors';
+import * as pc from 'picocolors';
 
 // @see https://no-color.org
 // @see https://www.npmjs.com/package/chalk

@@ -1,0 +1,13 @@
+export declare const appendFile: () => never;
+export declare const copyFile: () => never;
+export declare const mkdir: () => never;
+export declare const mkdtemp: () => never;
+export declare const readdir: () => never;
+export declare const readFile: () => never;
+export declare const realpath: () => never;
+export declare const rename: () => never;
+export declare const rmdir: () => never;
+export declare const stat: () => never;
+export declare const lstat: () => never;
+export declare const unlink: () => never;
+export declare const writeFile: () => never;

@@ -2,6 +2,7 @@ import { INTERACTION_ACCESSED, INTERACTION_ASSIGNED, INTERACTION_CALLED } from '
 import { getLiteralMembersForValue, getMemberReturnExpressionWhenCalled, hasMemberEffectWhenCalled } from '../values';
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import {} from '@rollup/types';
 export default class Literal extends NodeBase {
     deoptimizeArgumentsOnInteractionAtPath() { }
     getLiteralValueAtPath(path) {

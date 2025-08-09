@@ -9,11 +9,12 @@ import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../utils/PathTracker';
 import type Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
 import * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import CallExpressionBase from './shared/CallExpressionBase';
 import type { ExpressionEntity } from './shared/Expression';
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION } from './shared/Expression';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import { onlyIncludeSelf } from './shared/Node';
 import type TemplateLiteral from './TemplateLiteral';
 

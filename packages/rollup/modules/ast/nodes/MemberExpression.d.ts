@@ -1,14 +1,14 @@
+import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from '@rollup/types';
 import type MagicString from 'magic-string';
 import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction, NodeInteractionAssigned, NodeInteractionCalled } from '../NodeInteractions';
 import { type EntityPathTracker, type ObjectPath, type ObjectPathKey } from '../utils/PathTracker';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
-import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from './shared/Node';
 import { NodeBase } from './shared/Node';
 import type { PatternNode } from './shared/Pattern';
 import type Super from './Super';

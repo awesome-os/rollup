@@ -3,7 +3,8 @@ import { type RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import type { DeclarationPatternNode } from './shared/Pattern';
 import type { VariableKind } from './shared/VariableKinds';
 export default class VariableDeclarator extends NodeBase {

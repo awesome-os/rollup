@@ -1,4 +1,4 @@
-import type { NormalizedInputOptions } from 'rollup';
+import type { NormalizedInputOptions } from '@rollup/types';
 export declare const PureFunctionKey: unique symbol;
 export interface PureFunctions {
     [pathSegment: string]: PureFunctions;

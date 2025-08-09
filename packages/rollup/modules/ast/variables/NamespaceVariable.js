@@ -4,7 +4,7 @@ import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import { INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../NodeInteractions';
 import { deoptimizeInteraction, UnknownValue } from '../nodes/shared/Expression';
 import { SymbolToStringTag } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class NamespaceVariable extends Variable {
     constructor(context) {
         super(context.getModuleName());

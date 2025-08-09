@@ -1,8 +1,10 @@
 import { BLANK } from '../../utils/blank';
 import { getCommaSeparatedNodesWithBoundaries, removeLineBreaks } from '../../utils/renderHelpers';
 import { treeshakeNode } from '../../utils/treeshakeNode';
+import {} from '../utils/PathTracker';
 import ExpressionStatement from './ExpressionStatement';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import {} from '@rollup/types';
 export default class SequenceExpression extends NodeBase {
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         this.expressions[this.expressions.length - 1].deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker);

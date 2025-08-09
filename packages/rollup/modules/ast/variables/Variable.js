@@ -1,13 +1,12 @@
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import * as NodeType from '../nodes/NodeType';
 import { ExpressionEntity } from '../nodes/shared/Expression';
-export default class Variable extends ExpressionEntity {
+export class Variable extends ExpressionEntity {
     markReassigned() {
         this.isReassigned = true;
     }
     constructor(name) {
         super();
-        this.name = name;
         this.alwaysRendered = false;
         this.forbiddenNames = null;
         this.globalName = null;
@@ -18,6 +17,7 @@ export default class Variable extends ExpressionEntity {
         this.renderName = null;
         this.isReassigned = false;
         this.onlyFunctionCallUsed = true;
+        this.name = name;
     }
     /**
      * Binds identifiers that reference this variable to this variable.

@@ -1,18 +1,20 @@
 import { INTERACTION_ACCESSED, INTERACTION_ASSIGNED, INTERACTION_CALLED, NODE_INTERACTION_UNKNOWN_CALL } from '../../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../../utils/PathTracker';
 import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import { UNKNOWN_RETURN_EXPRESSION } from './Expression';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './Node';
+import {} from '@rollup/types';
 export default class MethodBase extends NodeBase {
     constructor() {
         super(...arguments);
         this.accessedValue = null;
     }
     get computed() {
-        return isFlagSet(this.flags, 1024 /* Flag.computed */);
+        return isFlagSet(this.flags, Flag.computed);
     }
     set computed(value) {
-        this.flags = setFlag(this.flags, 1024 /* Flag.computed */, value);
+        this.flags = setFlag(this.flags, Flag.computed, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         if (interaction.type === INTERACTION_ACCESSED && this.kind === 'get' && path.length === 0) {

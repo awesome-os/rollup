@@ -1,4 +1,4 @@
-import chokidar from 'chokidar';
+import chokidar, {} from 'chokidar';
 import { platform } from 'node:os';
 export class FileWatcher {
     constructor(task, chokidarOptions) {

@@ -2,6 +2,7 @@ import { findFirstOccurrenceOutsideComment, renderStatementList } from '../../ut
 import BlockScope from '../scopes/BlockScope';
 import * as NodeType from './NodeType';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class StaticBlock extends StatementBase {
     createScope(parentScope) {
         this.scope = new BlockScope(parentScope);

@@ -3,7 +3,7 @@ import { type RenderOptions } from '../../utils/renderHelpers';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import type ChildScope from '../scopes/ChildScope';
 import type * as NodeType from './NodeType';
-import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from '@rollup/types';
 import { StatementBase } from './shared/Node';
 import type SwitchCase from './SwitchCase';
 export default class SwitchStatement extends StatementBase {

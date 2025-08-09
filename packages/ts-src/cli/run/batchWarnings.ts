@@ -1,4 +1,5 @@
 import type { RollupLog } from '@rollup/types';
+// @ts-expect-error is a CJS Only module
 import pc from 'picocolors';
 import { bold, gray, yellow } from '../../src/utils/colors';
 import { ensureArray } from '../../src/utils/ensureArray';

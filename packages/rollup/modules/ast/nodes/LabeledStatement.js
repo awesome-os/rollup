@@ -1,6 +1,8 @@
 import { findFirstOccurrenceOutsideComment, findNonWhiteSpace } from '../../utils/renderHelpers';
+import {} from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { doNotDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class LabeledStatement extends StatementBase {
     hasEffects(context) {
         const { brokenFlow, includedLabels } = context;

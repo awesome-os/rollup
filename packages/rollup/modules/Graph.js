@@ -33,7 +33,6 @@ function normalizeEntryModules(entryModules) {
 }
 export default class Graph {
     constructor(options, watcher) {
-        this.options = options;
         this.astLru = flru(5);
         this.cachedModules = new Map();
         this.deoptimizationTracker = new EntityPathTracker();
@@ -54,6 +53,8 @@ export default class Graph {
                 return null;
             return foundModule.info;
         };
+        this.options = options;
+        this.watcher = watcher;
         if (options.cache !== false) {
             if (options.cache?.modules) {
                 for (const module of options.cache.modules)

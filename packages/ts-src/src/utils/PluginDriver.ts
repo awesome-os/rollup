@@ -1,6 +1,4 @@
-import type Chunk from '../Chunk';
-import type Graph from '../Graph';
-import type Module from '../Module';
+import type { HookAction, ReplaceContext } from '@rollup/types';
 import type {
 	AddonHookFunction,
 	AddonHooks,
@@ -19,8 +17,10 @@ import type {
 	SerializablePluginCache,
 	SyncPluginHooks
 } from 'rollup';
+import type Chunk from '../Chunk';
+import type Graph from '../Graph';
+import type Module from '../Module';
 import { FileEmitter } from './FileEmitter';
-import { HookAction, ReplaceContext } from '@rollup/types';
 import { getPluginContext } from './PluginContext';
 import { getOrCreate } from './getOrCreate';
 import { LOGLEVEL_WARN } from './logging';
@@ -88,13 +88,20 @@ export class PluginDriver {
 		transformFilter: new WeakMap<HookFilter, TransformHookFilter | undefined>()
 	};
 
+	private readonly graph: Graph;
+	private readonly options: NormalizedInputOptions;
+	private readonly pluginCache?: Record<string, SerializablePluginCache>;
+
 	constructor(
-		private readonly graph: Graph,
-		private readonly options: NormalizedInputOptions,
+		graph: Graph,
+		options: NormalizedInputOptions,
 		userPlugins: readonly Plugin[],
-		private readonly pluginCache: Record<string, SerializablePluginCache> | undefined,
+		pluginCache?: Record<string, SerializablePluginCache>,
 		basePluginDriver?: PluginDriver
 	) {
+		this.graph = graph;
+		this.options = options;
+		this.pluginCache = pluginCache;
 		this.fileEmitter = new FileEmitter(
 			graph,
 			options,

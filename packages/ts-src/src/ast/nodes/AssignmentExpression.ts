@@ -21,11 +21,12 @@ import {
 } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import type { PatternNode } from './shared/Pattern';
 
 export default class AssignmentExpression extends NodeBase {

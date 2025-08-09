@@ -1,6 +1,7 @@
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren, type StatementNode } from '@rollup/types';
 export default class DoWhileStatement extends StatementBase {
     body: StatementNode;
     test: ExpressionNode;

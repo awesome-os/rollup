@@ -35,8 +35,11 @@ type MethodDescription = {
 );
 
 export class Method extends ExpressionEntity {
-	constructor(private readonly description: MethodDescription) {
+	private readonly description: MethodDescription;
+
+	constructor(description: MethodDescription) {
 		super();
+		this.description = description;
 	}
 
 	deoptimizeArgumentsOnInteractionAtPath({ args, type }: NodeInteraction, path: ObjectPath): void {

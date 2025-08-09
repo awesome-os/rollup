@@ -1,3 +1,4 @@
+import {} from '../../ExecutionContext';
 import { INTERACTION_CALLED, NODE_INTERACTION_UNKNOWN_ACCESS, NODE_INTERACTION_UNKNOWN_CALL } from '../../NodeInteractions';
 import { EMPTY_PATH, UNKNOWN_PATH, UnknownKey } from '../../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../../values';
@@ -5,8 +6,10 @@ import BlockStatement from '../BlockStatement';
 import * as NodeType from '../NodeType';
 import RestElement from '../RestElement';
 import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION } from './Expression';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './Node';
+import {} from '@rollup/types';
 export default class FunctionBase extends NodeBase {
     constructor() {
         super(...arguments);
@@ -14,28 +17,28 @@ export default class FunctionBase extends NodeBase {
         this.includeCallArguments = this.scope.includeCallArguments.bind(this.scope);
     }
     get async() {
-        return isFlagSet(this.flags, 256 /* Flag.async */);
+        return isFlagSet(this.flags, Flag.async);
     }
     set async(value) {
-        this.flags = setFlag(this.flags, 256 /* Flag.async */, value);
+        this.flags = setFlag(this.flags, Flag.async, value);
     }
     get deoptimizedReturn() {
-        return isFlagSet(this.flags, 512 /* Flag.deoptimizedReturn */);
+        return isFlagSet(this.flags, Flag.deoptimizedReturn);
     }
     set deoptimizedReturn(value) {
-        this.flags = setFlag(this.flags, 512 /* Flag.deoptimizedReturn */, value);
+        this.flags = setFlag(this.flags, Flag.deoptimizedReturn, value);
     }
     get generator() {
-        return isFlagSet(this.flags, 4194304 /* Flag.generator */);
+        return isFlagSet(this.flags, Flag.generator);
     }
     set generator(value) {
-        this.flags = setFlag(this.flags, 4194304 /* Flag.generator */, value);
+        this.flags = setFlag(this.flags, Flag.generator, value);
     }
     get hasCachedEffects() {
-        return isFlagSet(this.flags, 67108864 /* Flag.hasEffects */);
+        return isFlagSet(this.flags, Flag.hasEffects);
     }
     set hasCachedEffects(value) {
-        this.flags = setFlag(this.flags, 67108864 /* Flag.hasEffects */, value);
+        this.flags = setFlag(this.flags, Flag.hasEffects, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         if (interaction.type === INTERACTION_CALLED && path.length === 0) {

@@ -1,6 +1,6 @@
-import process from 'node:process';
+
 import ms from 'pretty-ms';
-import { rollup } from '../../src/node-entry';
+import { rollup } from '../node-entry';
 import type { MergedRollupOptions } from '../../src/rollup/types';
 import { bold, cyan, green } from '../../src/utils/colors';
 import { logOnlyInlineSourcemapsForStdout } from '../../src/utils/logs';

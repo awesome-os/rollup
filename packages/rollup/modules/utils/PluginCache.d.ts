@@ -1,4 +1,4 @@
-import type { PluginCache, SerializablePluginCache } from 'rollup';
+import type { PluginCache, SerializablePluginCache } from '@rollup/types';
 export declare function createPluginCache(cache: SerializablePluginCache): PluginCache;
 export declare function getTrackedPluginCache(pluginCache: PluginCache, onUse: () => void): PluginCache;
 export declare const NO_CACHE: PluginCache;

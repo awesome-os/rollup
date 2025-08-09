@@ -1,6 +1,6 @@
 import type { PluginImpl } from '@rollup/types';
 import { readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { join } from 'node:path';
 import type { Dependency } from 'rollup-plugin-license';
 import license from 'rollup-plugin-license';
 
@@ -58,7 +58,7 @@ async function generateLicenseFile(
 		`${[...licenses].join(', ')}\n\n` +
 		`# Bundled dependencies:\n` +
 		dependencyLicenseTexts;
-	const licenseFile = path.join(directory, 'LICENSE.md');
+	const licenseFile = join(directory, 'LICENSE.md');
 	const existingLicenseText = await readFile(licenseFile, 'utf8');
 	if (existingLicenseText !== licenseText) {
 		await writeFile(licenseFile, licenseText);

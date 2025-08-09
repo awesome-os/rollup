@@ -1,5 +1,6 @@
 import type * as NodeType from './NodeType';
-import { type GenericEsTreeNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 export default class TemplateElement extends NodeBase {
     type: NodeType.tTemplateElement;
     value: {

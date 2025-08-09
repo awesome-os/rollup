@@ -17,13 +17,13 @@ import { timeEnd, timeStart } from './utils/timers';
 import { URL_OUTPUT_AMD_ID, URL_OUTPUT_DIR, URL_OUTPUT_FORMAT, URL_OUTPUT_SOURCEMAPFILE } from './utils/urls';
 export default class Bundle {
     constructor(outputOptions, unsetOptions, inputOptions, pluginDriver, graph) {
-        this.outputOptions = outputOptions;
-        this.unsetOptions = unsetOptions;
-        this.inputOptions = inputOptions;
-        this.pluginDriver = pluginDriver;
-        this.graph = graph;
         this.facadeChunkByModule = new Map();
         this.includedNamespaces = new Set();
+        this.graph = graph;
+        this.inputOptions = inputOptions;
+        this.outputOptions = outputOptions;
+        this.pluginDriver = pluginDriver;
+        this.unsetOptions = unsetOptions;
     }
     async generate(isWrite) {
         timeStart('GENERATE', 1);

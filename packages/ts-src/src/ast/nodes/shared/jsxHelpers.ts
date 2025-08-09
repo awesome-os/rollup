@@ -1,7 +1,7 @@
 import type { InclusionContext } from '../../ExecutionContext';
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
 import LocalVariable from '../../variables/LocalVariable';
-import type Variable from '../../variables/Variable';
+import type { Variable } from '../../variables/Variable';
 import type JSXElement from '../JSXElement';
 import type JSXExpressionContainer from '../JSXExpressionContainer';
 import type JSXFragment from '../JSXFragment';

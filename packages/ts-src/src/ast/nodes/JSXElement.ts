@@ -9,7 +9,7 @@ import JSXSpreadAttribute from './JSXSpreadAttribute';
 import type * as NodeType from './NodeType';
 import JSXElementBase from './shared/JSXElementBase';
 import type { JSXChild, JsxMode } from './shared/jsxHelpers';
-import type { IncludeChildren } from './shared/Node';
+import type { IncludeChildren } from '@rollup/types';
 
 export default class JSXElement extends JSXElementBase {
 	type!: NodeType.tJSXElement;

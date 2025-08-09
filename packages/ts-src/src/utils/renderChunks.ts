@@ -5,7 +5,7 @@ import type {
 	NormalizedOutputOptions,
 	RenderedChunk
 } from 'rollup';
-import type { GetHash } from "../rollup/types";
+import type { GetHash } from "@rollup/types";
 import type { default as Chunk, ChunkRenderResult } from '../Chunk';
 import type Module from '../Module';
 import { collapseSourcemaps } from './collapseSourcemaps';

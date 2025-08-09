@@ -5,7 +5,7 @@ import type { EntityPathTracker } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
 import CallExpressionBase from './shared/CallExpressionBase';
 import type { ExpressionEntity } from './shared/Expression';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import type TemplateLiteral from './TemplateLiteral';
 export default class TaggedTemplateExpression extends CallExpressionBase {
     quasi: TemplateLiteral;

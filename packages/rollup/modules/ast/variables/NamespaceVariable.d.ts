@@ -6,7 +6,7 @@ import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';
 import type ChildScope from '../scopes/ChildScope';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class NamespaceVariable extends Variable {
     readonly context: AstContext;
     isNamespace: true;

@@ -1,28 +1,30 @@
+import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
 import { BLANK } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace, logEval } from '../../utils/logs';
 import { renderCallArguments } from '../../utils/renderCallArguments';
+import {} from '../../utils/renderHelpers';
 import { INTERACTION_CALLED } from '../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
-import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import CallExpressionBase from './shared/CallExpressionBase';
 import { getChainElementLiteralValueAtPath } from './shared/chainElements';
 import { UNKNOWN_RETURN_EXPRESSION } from './shared/Expression';
-import { INCLUDE_PARAMETERS, IS_SKIPPED_CHAIN } from './shared/Node';
+import { INCLUDE_PARAMETERS } from './shared/Node';
 export default class CallExpression extends CallExpressionBase {
     get hasCheckedForWarnings() {
-        return isFlagSet(this.flags, 268435456 /* Flag.checkedForWarnings */);
+        return isFlagSet(this.flags, Flag.checkedForWarnings);
     }
     set hasCheckedForWarnings(value) {
-        this.flags = setFlag(this.flags, 268435456 /* Flag.checkedForWarnings */, value);
+        this.flags = setFlag(this.flags, Flag.checkedForWarnings, value);
     }
     get optional() {
-        return isFlagSet(this.flags, 128 /* Flag.optional */);
+        return isFlagSet(this.flags, Flag.optional);
     }
     set optional(value) {
-        this.flags = setFlag(this.flags, 128 /* Flag.optional */, value);
+        this.flags = setFlag(this.flags, Flag.optional, value);
     }
     bind() {
         super.bind();

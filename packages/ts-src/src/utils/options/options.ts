@@ -20,7 +20,7 @@ import { LOGLEVEL_DEBUG, LOGLEVEL_ERROR, LOGLEVEL_WARN, logLevelPriority } from 
 import { error, logInvalidOption, logUnknownOption } from '../logs';
 import { printQuotedStringList } from '../printStringList';
 import type { ObjectOptionWithPresets } from '@rollup/types';
-import type { ObjectValue } from "../../rollup/types";
+import type { ObjectValue } from "@rollup/types";
 
 export const getOnLog = (
 	config: InputOptions,

@@ -8,7 +8,7 @@ import type MemberExpression from '../nodes/MemberExpression';
 import type ObjectExpression from '../nodes/ObjectExpression';
 import type Property from '../nodes/Property';
 import type { ExpressionEntity } from '../nodes/shared/Expression';
-import type { ExpressionNode } from '../nodes/shared/Node';
+import type { ExpressionNode } from '@rollup/types';
 export declare function isObjectExpressionNode(node: ExpressionEntity): node is ObjectExpression;
 export declare function isPropertyNode(node: unknown): node is Property;
 export declare function isArrowFunctionExpressionNode(node: unknown): node is ArrowFunctionExpression;

@@ -170,7 +170,7 @@
     "nodemon": "^3.1.10",
     "nyc": "^17.1.0",
     "picocolors": "^1.1.1",
-    "picomatch": "^4.0.3",
+    "picomatch": "github:awesome-os/modern-picomatch",
     "pinia": "^3.0.3",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.2.0",

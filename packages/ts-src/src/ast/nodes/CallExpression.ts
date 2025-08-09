@@ -1,10 +1,17 @@
+import type {
+	ChainElement,
+	ExpressionNode,
+	IncludeChildren,
+	NormalizedTreeshakingOptions,
+	SkippedChain
+} from '@rollup/types';
 import type MagicString from 'magic-string';
-import type { NormalizedTreeshakingOptions } from '@rollup/types';
+import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
 import { BLANK } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace, logEval } from '../../utils/logs';
 import { renderCallArguments } from '../../utils/renderCallArguments';
-import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { INTERACTION_CALLED } from '../NodeInteractions';
@@ -18,8 +25,7 @@ import CallExpressionBase from './shared/CallExpressionBase';
 import { getChainElementLiteralValueAtPath } from './shared/chainElements';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
 import { UNKNOWN_RETURN_EXPRESSION } from './shared/Expression';
-import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from './shared/Node';
-import { INCLUDE_PARAMETERS, IS_SKIPPED_CHAIN } from './shared/Node';
+import { INCLUDE_PARAMETERS } from './shared/Node';
 import type SpreadElement from './SpreadElement';
 import type Super from './Super';
 

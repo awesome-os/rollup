@@ -1,15 +1,31 @@
 import type {
+	AstNode,
 	NormalizedGeneratedCodeOptions,
 	NormalizedJsxOptions,
 	NormalizedTreeshakingOptions,
 	Plugin,
-	PluginContext
+	PluginContext,
+	RollupAnnotation
 } from '@rollup/types';
 import type * as estree from 'estree';
+import type MagicString from 'magic-string';
+import type { DeoptimizableEntity } from '../ast/DeoptimizableEntity';
+import type { Entity } from '../ast/Entity';
+import type { HasEffectsContext, InclusionContext } from '../ast/ExecutionContext';
+import type {
+	ExpressionEntity,
+	InclusionOptions,
+	LiteralValueOrUnknown
+} from '../ast/nodes/shared/Expression';
+import type ChildScope from '../ast/scopes/ChildScope';
+import type { EntityPathTracker, ObjectPath } from '../ast/utils/PathTracker';
+import type { Variable } from '../ast/variables/Variable';
 import type Chunk from '../Chunk';
 import type ExternalChunk from '../ExternalChunk';
 import type Module from '../Module';
 import type { DynamicImport } from '../Module';
+import type { NodeRenderOptions, RenderOptions } from '../utils/renderHelpers';
+import type { IS_SKIPPED_CHAIN } from './IS_SKIPPED_CHAIN';
 
 declare module 'estree' {
 	export type Decorator = {
@@ -1304,3 +1320,122 @@ export type ReplaceContext = (context: PluginContext, plugin: Plugin) => PluginC
 
 export type HookAction = [plugin: string, hook: string, args: unknown[]];
 export type GetHash = (input: string | Uint8Array) => string;
+export declare const INCLUDE_PARAMETERS: 'variables';
+// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
+export type GenericEsTreeNode = {
+	[key: string]: any;
+} & AstNode;
+
+export type IncludeChildren = boolean | typeof INCLUDE_PARAMETERS;
+
+export type Node = {
+	annotations?: readonly RollupAnnotation[];
+	end: number;
+	included: boolean;
+	needsBoundaries?: boolean;
+	parent: Node | { type?: string };
+	scope: ChildScope;
+	preventChildBlockScope?: boolean;
+	start: number;
+	type: string;
+	variable?: Variable | null;
+
+	addExportedVariables(
+		variables: readonly Variable[],
+		exportNamesByVariable: ReadonlyMap<Variable, readonly string[]>
+	): void;
+
+	/**
+	 * Called once all nodes have been initialised and the scopes have been
+	 * populated.
+	 */
+	bind(): void;
+
+	/**
+	 * Determine if this Node would have an effect on the bundle. This is usually
+	 * true for already included nodes. Exceptions are e.g. break statements which
+	 * only have an effect if their surrounding loop or switch statement is
+	 * included.
+	 * The options pass on information like this about the current execution path.
+	 */
+	hasEffects(context: HasEffectsContext): boolean;
+
+	/**
+	 * Special version of hasEffects for assignment left-hand sides which ensures
+	 * that accessor effects are checked as well. This is necessary to do from the
+	 * child so that member expressions can use the correct this value.
+	 * setAssignedValue needs to be called during initialise to use this.
+	 */
+	hasEffectsAsAssignmentTarget(context: HasEffectsContext, checkAccess: boolean): boolean;
+
+	/**
+	 * Includes the node in the bundle. If the flag is not set, children are
+	 * usually included if they are necessary for this node (e.g. a function body)
+	 * or if they have effects. Necessary variables need to be included as well.
+	 * This is called repeatedly for each tree-shaking pass.
+	 */
+	include(
+		context: InclusionContext,
+		includeChildrenRecursively: IncludeChildren,
+		options?: InclusionOptions
+	): void;
+
+	/**
+	 * Includes this node for the first time in the bundle and ensures that all
+	 * paths that this node relies on are included as well. Does not include
+	 * child nodes by default, though.
+	 */
+	includeNode(context: InclusionContext): void;
+
+	/**
+	 * Explicitly include a path of this Node.
+	 */
+	includePath(path: ObjectPath, context: InclusionContext): void;
+
+	/**
+	 * Special version of include for assignment left-hand sides which ensures
+	 * that accessors are handled correctly. This is necessary to do from the
+	 * child so that member expressions can use the correct this value.
+	 * setAssignedValue needs to be called during initialise to use this.
+	 */
+	includeAsAssignmentTarget(
+		context: InclusionContext,
+		includeChildrenRecursively: IncludeChildren,
+		deoptimizeAccess: boolean
+	): void;
+
+	removeAnnotations(code: MagicString): void;
+
+	render(code: MagicString, options: RenderOptions, nodeRenderOptions?: NodeRenderOptions): void;
+
+	/**
+	 * Sets the assigned value e.g. for assignment expression left. This must be
+	 * called during initialise in case hasEffects/includeAsAssignmentTarget are
+	 * used.
+	 */
+	setAssignedValue(value: ExpressionEntity): void;
+
+	/**
+	 * Start a new execution path to determine if this node has an effect on the
+	 * bundle and should therefore be included. Included nodes should always be
+	 * included again in subsequent visits as the inclusion of additional
+	 * variables may require the inclusion of more child nodes in e.g. block
+	 * statements.
+	 */
+	shouldBeIncluded(context: InclusionContext): boolean;
+} & Entity;
+
+export type StatementNode = Node;
+
+export type SkippedChain = typeof IS_SKIPPED_CHAIN;
+
+export type ExpressionNode = {} & ExpressionEntity & Node & Partial<ChainElement>;
+
+export type ChainElement = {
+	getLiteralValueAtPathAsChainElement(
+		path: ObjectPath,
+		recursionTracker: EntityPathTracker,
+		origin: DeoptimizableEntity
+	): LiteralValueOrUnknown | SkippedChain;
+	hasEffectsAsChainElement(context: HasEffectsContext): boolean | SkippedChain;
+};

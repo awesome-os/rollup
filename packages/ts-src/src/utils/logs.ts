@@ -1,5 +1,5 @@
 import { locate } from 'locate-character';
-import type { AnnotationType } from "../rollup/types";
+import type { AnnotationType } from "@rollup/types";
 import type Module from '../Module';
 import type {
 	InternalModuleFormat,

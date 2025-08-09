@@ -7,14 +7,16 @@ import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type Decorator from './Decorator';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import {
 	type ExpressionEntity,
 	type LiteralValueOrUnknown,
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
-import { doNotDeoptimize, type ExpressionNode, NodeBase } from './shared/Node';
+import { doNotDeoptimize, NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 export default class PropertyDefinition extends NodeBase {
 	declare key: ExpressionNode | PrivateIdentifier;

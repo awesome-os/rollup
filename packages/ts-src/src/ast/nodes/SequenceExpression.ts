@@ -16,11 +16,13 @@ import type * as NodeType from './NodeType';
 import type { LiteralValueOrUnknown } from './shared/Expression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren
+} from '@rollup/types';
 
 export default class SequenceExpression extends NodeBase {
 	declare expressions: ExpressionNode[];

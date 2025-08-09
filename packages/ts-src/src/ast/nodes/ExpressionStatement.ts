@@ -6,10 +6,10 @@ import type { InclusionContext } from '../ExecutionContext';
 import * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
 	onlyIncludeSelfNoDeoptimize,
 	StatementBase
 } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 export default class ExpressionStatement extends StatementBase {
 	declare directive?: string;

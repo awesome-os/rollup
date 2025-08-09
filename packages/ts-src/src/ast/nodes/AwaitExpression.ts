@@ -3,7 +3,8 @@ import type { ObjectPath } from '../utils/PathTracker';
 import ArrowFunctionExpression from './ArrowFunctionExpression';
 import type * as NodeType from './NodeType';
 import FunctionNode from './shared/FunctionNode';
-import { type ExpressionNode, type IncludeChildren, type Node, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren, type Node } from '@rollup/types';
 
 export default class AwaitExpression extends NodeBase {
 	declare argument: ExpressionNode;

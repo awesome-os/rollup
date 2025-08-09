@@ -4,7 +4,8 @@ import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 import SpreadElement from './SpreadElement';
 export default class ArrayExpression extends NodeBase {
     elements: readonly (ExpressionNode | SpreadElement | null)[];

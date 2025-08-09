@@ -2,15 +2,17 @@ import { NO_SEMICOLON } from '../../utils/renderHelpers';
 import BlockScope from '../scopes/BlockScope';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { includeLoopBody } from './shared/loops';
 import { StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class ForOfStatement extends StatementBase {
     get await() {
-        return isFlagSet(this.flags, 131072 /* Flag.await */);
+        return isFlagSet(this.flags, Flag.await);
     }
     set await(value) {
-        this.flags = setFlag(this.flags, 131072 /* Flag.await */, value);
+        this.flags = setFlag(this.flags, Flag.await, value);
     }
     createScope(parentScope) {
         this.scope = new BlockScope(parentScope);

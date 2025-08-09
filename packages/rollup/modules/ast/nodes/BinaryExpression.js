@@ -2,11 +2,12 @@ import { BLANK } from '../../utils/blank';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import { getRenderedLiteralValue } from '../utils/renderLiteralValue';
-import ExternalVariable from '../variables/ExternalVariable';
+import { ExternalVariable } from '../variables/ExternalVariable';
 import NamespaceVariable from '../variables/NamespaceVariable';
 import ExpressionStatement from './ExpressionStatement';
 import { UnknownValue } from './shared/Expression';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 const binaryOperators = {
     '!=': (left, right) => left != right,
     '!==': (left, right) => left !== right,

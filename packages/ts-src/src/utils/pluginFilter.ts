@@ -1,15 +1,15 @@
-import picomatch from 'picomatch';
 import type { StringFilter, StringOrRegExp } from '@rollup/types';
+import * as picomatch from 'picomatch';
 import { ensureArray } from './ensureArray';
 import { isAbsolute, normalize, resolve } from './path';
 
 export type PluginFilter = (input: string) => boolean;
 export type TransformHookFilter = (id: string, code: string) => boolean;
 
-interface NormalizedStringFilter {
+type NormalizedStringFilter = {
 	include?: StringOrRegExp[];
 	exclude?: StringOrRegExp[];
-}
+};
 
 function getMatcherString(glob: string, cwd: string) {
 	if (glob.startsWith('**') || isAbsolute(glob)) {

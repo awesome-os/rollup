@@ -3,13 +3,13 @@ import { normalize, relative } from './utils/path';
 import { getImportPath } from './utils/relativeId';
 export default class ExternalChunk {
     constructor(module, options, inputBase) {
-        this.options = options;
-        this.inputBase = inputBase;
         this.defaultVariableName = '';
         this.namespaceVariableName = '';
         this.variableName = '';
         this.fileName = null;
         this.importAttributes = null;
+        this.options = options;
+        this.inputBase = inputBase;
         this.id = module.id;
         this.moduleInfo = module.info;
         this.renormalizeRenderPath = module.renormalizeRenderPath;

@@ -3,7 +3,7 @@ import type { HasEffectsContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class GlobalVariable extends Variable {
     constructor(name: string);
     deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;

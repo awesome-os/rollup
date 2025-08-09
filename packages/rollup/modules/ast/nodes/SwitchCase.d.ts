@@ -2,7 +2,8 @@ import type MagicString from 'magic-string';
 import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, NodeBase, type StatementNode } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren, type StatementNode } from '@rollup/types';
 export default class SwitchCase extends NodeBase {
     consequent: readonly StatementNode[];
     needsBoundaries: true;

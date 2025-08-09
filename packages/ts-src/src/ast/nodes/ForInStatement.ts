@@ -8,11 +8,11 @@ import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import {
+	StatementBase} from './shared/Node';
+import {
 	type ExpressionNode,
-	type IncludeChildren,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+	type IncludeChildren, type StatementNode
+} from '@rollup/types';
 import type { PatternNode } from './shared/Pattern';
 import type VariableDeclaration from './VariableDeclaration';
 

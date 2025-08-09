@@ -6,10 +6,12 @@ import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	StatementBase
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren
+} from '@rollup/types';
 
 export default class ReturnStatement extends StatementBase {
 	declare argument: ExpressionNode | null;

@@ -9,11 +9,13 @@ import type PropertyDefinition from './PropertyDefinition';
 import type ClassNode from './shared/ClassNode';
 import {
 	doNotDeoptimize,
-	type GenericEsTreeNode,
-	type IncludeChildren,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './shared/Node';
+import {
+	type GenericEsTreeNode,
+	type IncludeChildren
+} from '@rollup/types';
 import type StaticBlock from './StaticBlock';
 
 export default class ClassBody extends NodeBase {

@@ -45,10 +45,10 @@ import type { ObjectPath } from './ast/utils/PathTracker';
 import { type EntityPathTracker, UNKNOWN_PATH } from './ast/utils/PathTracker';
 import ExportDefaultVariable from './ast/variables/ExportDefaultVariable';
 import ExportShimVariable from './ast/variables/ExportShimVariable';
-import ExternalVariable from './ast/variables/ExternalVariable';
+import { ExternalVariable } from './ast/variables/ExternalVariable';
 import NamespaceVariable from './ast/variables/NamespaceVariable';
 import SyntheticNamedExportVariable from './ast/variables/SyntheticNamedExportVariable';
-import type Variable from './ast/variables/Variable';
+import type { Variable } from './ast/variables/Variable';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import { EMPTY_OBJECT } from './utils/blank';
@@ -280,16 +280,33 @@ export default class Module {
 	private transformDependencies: string[] = [];
 	private transitiveReexports: string[] | null = null;
 
+	private readonly graph: Graph;
+	public readonly id: string;
+	private readonly options: NormalizedInputOptions;
+	private isEntry: boolean;
+	private moduleSideEffects: boolean | 'no-treeshake';
+	private syntheticNamedExports: boolean | string;
+	private meta: CustomPluginOptions;
+	private attributes: Record<string, string>;
+
 	constructor(
-		private readonly graph: Graph,
-		public readonly id: string,
-		private readonly options: NormalizedInputOptions,
+		graph: Graph,
+		id: string,
+		options: NormalizedInputOptions,
 		isEntry: boolean,
 		moduleSideEffects: boolean | 'no-treeshake',
 		syntheticNamedExports: boolean | string,
 		meta: CustomPluginOptions,
 		attributes: Record<string, string>
 	) {
+		this.graph = graph;
+		this.id = id;
+		this.options = options;
+		this.isEntry = isEntry;
+		this.moduleSideEffects = moduleSideEffects;
+		this.syntheticNamedExports = syntheticNamedExports;
+		this.meta = meta;
+		this.attributes = attributes;
 		this.excludeFromSourcemap = /\0/.test(id);
 		this.context = options.moduleContext(id);
 		this.preserveSignature = this.options.preserveEntrySignatures;

@@ -3,6 +3,7 @@ import { EMPTY_PATH } from '../utils/PathTracker';
 import BlockStatement from './BlockStatement';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import {} from '@rollup/types';
 export default class CatchClause extends NodeBase {
     createScope(parentScope) {
         this.scope = new ParameterScope(parentScope, true);

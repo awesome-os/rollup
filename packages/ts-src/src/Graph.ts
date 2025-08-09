@@ -1,4 +1,3 @@
-import flru from 'flru';
 import type {
 	ModuleInfo,
 	ModuleJSON,
@@ -7,9 +6,10 @@ import type {
 	RollupCache,
 	RollupWatcher,
 	SerializablePluginCache,
+	UnresolvedModule,
 	WatchChangeHook
-} from 'rollup';
-import type { UnresolvedModule } from '@rollup/types';
+} from '@rollup/types';
+import flru from 'flru';
 import { createInclusionContext } from './ast/ExecutionContext';
 import type { ExpressionEntity } from './ast/nodes/shared/Expression';
 import GlobalScope from './ast/scopes/GlobalScope';
@@ -77,10 +77,12 @@ export default class Graph {
 	private modules: Module[] = [];
 	declare private pluginCache?: Record<string, SerializablePluginCache>;
 
-	constructor(
-		private readonly options: NormalizedInputOptions,
-		watcher: RollupWatcher | null
-	) {
+	private readonly options: NormalizedInputOptions;
+	private watcher: RollupWatcher | null;
+
+	constructor(options: NormalizedInputOptions, watcher: RollupWatcher | null) {
+		this.options = options;
+		this.watcher = watcher;
 		if (options.cache !== false) {
 			if (options.cache?.modules) {
 				for (const module of options.cache.modules) this.cachedModules.set(module.id, module);

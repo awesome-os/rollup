@@ -1,9 +1,11 @@
+import {} from '../../ExecutionContext';
 import { INTERACTION_CALLED } from '../../NodeInteractions';
 import FunctionScope from '../../scopes/FunctionScope';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
-import Identifier from '../Identifier';
+import Identifier, {} from '../Identifier';
 import { UNKNOWN_EXPRESSION } from './Expression';
 import FunctionBase from './FunctionBase';
+import {} from '@rollup/types';
 import { ObjectEntity } from './ObjectEntity';
 import { OBJECT_PROTOTYPE } from './ObjectPrototype';
 export default class FunctionNode extends FunctionBase {

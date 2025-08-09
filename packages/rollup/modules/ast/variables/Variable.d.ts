@@ -8,8 +8,7 @@ import type IdentifierBase from '../nodes/shared/IdentifierBase';
 import type { NodeBase } from '../nodes/shared/Node';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import type { ObjectPath } from '../utils/PathTracker';
-export default class Variable extends ExpressionEntity {
-    name: string;
+export declare class Variable extends ExpressionEntity {
     alwaysRendered: boolean;
     forbiddenNames: Set<string> | null;
     globalName: string | null;
@@ -23,6 +22,7 @@ export default class Variable extends ExpressionEntity {
     private renderedLikeHoisted?;
     readonly isReassigned = false;
     markReassigned(): void;
+    name: string;
     constructor(name: string);
     /**
      * Binds identifiers that reference this variable to this variable.

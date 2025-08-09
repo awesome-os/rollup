@@ -1,6 +1,7 @@
 import ClassBodyScope from '../scopes/ClassBodyScope';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import {} from '@rollup/types';
 export default class ClassBody extends NodeBase {
     createScope(parentScope) {
         this.scope = new ClassBodyScope(parentScope, this.parent);

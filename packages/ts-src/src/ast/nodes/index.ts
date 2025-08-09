@@ -14,7 +14,7 @@ import CallExpression from './CallExpression';
 import CatchClause from './CatchClause';
 import ChainExpression from './ChainExpression';
 import ClassBody from './ClassBody';
-import ClassDeclaration from './ClassDeclaration';
+import { ClassDeclaration } from './ClassDeclaration';
 import ClassExpression from './ClassExpression';
 import ConditionalExpression from './ConditionalExpression';
 import ContinueStatement from './ContinueStatement';

@@ -1,7 +1,8 @@
 import { INTERACTION_ACCESSED, INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../NodeInteractions';
 import { UnknownValue } from '../nodes/shared/Expression';
 import { getGlobalAtPath } from '../nodes/shared/knownGlobals';
-import Variable from './Variable';
+import {} from '../utils/PathTracker';
+import { Variable } from './Variable';
 export default class GlobalVariable extends Variable {
     constructor(name) {
         super(name);

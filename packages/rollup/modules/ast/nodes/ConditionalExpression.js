@@ -4,6 +4,7 @@ import { createInclusionContext } from '../ExecutionContext';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import { tryCastLiteralValueToBoolean } from '../utils/tryCastLiteralValueToBoolean';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from './shared/Expression';
 import { MultiExpression } from './shared/MultiExpression';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
@@ -14,16 +15,16 @@ export default class ConditionalExpression extends NodeBase {
         this.usedBranch = null;
     }
     get isBranchResolutionAnalysed() {
-        return isFlagSet(this.flags, 65536 /* Flag.isBranchResolutionAnalysed */);
+        return isFlagSet(this.flags, Flag.isBranchResolutionAnalysed);
     }
     set isBranchResolutionAnalysed(value) {
-        this.flags = setFlag(this.flags, 65536 /* Flag.isBranchResolutionAnalysed */, value);
+        this.flags = setFlag(this.flags, Flag.isBranchResolutionAnalysed, value);
     }
     get hasDeoptimizedCache() {
-        return isFlagSet(this.flags, 33554432 /* Flag.hasDeoptimizedCache */);
+        return isFlagSet(this.flags, Flag.hasDeoptimizedCache);
     }
     set hasDeoptimizedCache(value) {
-        this.flags = setFlag(this.flags, 33554432 /* Flag.hasDeoptimizedCache */, value);
+        this.flags = setFlag(this.flags, Flag.hasDeoptimizedCache, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         this.consequent.deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker);

@@ -3,7 +3,8 @@ import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHe
 import type { InclusionContext } from '../ExecutionContext';
 import * as NodeType from './NodeType';
 import type { InclusionOptions } from './shared/Expression';
-import { type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type IncludeChildren } from '@rollup/types';
 import type { VariableDeclarationKind } from './shared/VariableKinds';
 import type VariableDeclarator from './VariableDeclarator';
 export default class VariableDeclaration extends NodeBase {

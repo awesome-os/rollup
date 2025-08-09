@@ -2,6 +2,7 @@ import { NO_SEMICOLON } from '../../utils/renderHelpers';
 import BlockScope from '../scopes/BlockScope';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class ForStatement extends StatementBase {
     createScope(parentScope) {
         this.scope = new BlockScope(parentScope);

@@ -1,5 +1,5 @@
 import type * as estree from 'estree';
-import type { RollupAstNode } from 'rollup';
+import type { RollupAstNode } from '@rollup/types';
 import type { RollupAnnotation } from '@rollup/types';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from './astConverterHelpers';
 import type { AstBuffer } from './getAstBuffer';

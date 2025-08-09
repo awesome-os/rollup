@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import help from 'help.md';
-import process from 'node:process';
+
 import { VERSION } from 'rollup/version';
-import argParser from 'yargs-parser';
+// @ts-expect-error index.d.ts is wrong we get a esmodule from package.json with default export
+//import { yargsParser as argumentParser } from 'yargs-parser';
+import { default as yargsParser } from 'yargs-parser';
 import { commandAliases } from '../src/utils/options/mergeOptions';
 import run from './run/index';
 
-const command = argParser(process.argv.slice(2), {
+const command = yargsParser(process.argv.slice(2), {
 	alias: commandAliases,
 	configuration: { 'camel-case-expansion': false }
 });

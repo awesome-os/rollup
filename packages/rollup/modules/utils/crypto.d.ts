@@ -1,5 +1,5 @@
-import type { HashCharacters } from 'rollup';
-import type { GetHash } from "../rollup/types";
+import type { HashCharacters } from '@rollup/types';
+import type { GetHash } from "@rollup/types";
 export declare const getHash64: GetHash;
 export declare const getHash36: GetHash;
 export declare const getHash16: GetHash;

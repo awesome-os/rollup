@@ -23,15 +23,15 @@ const inputHookNames = {
 const inputHooks = Object.keys(inputHookNames);
 export class PluginDriver {
     constructor(graph, options, userPlugins, pluginCache, basePluginDriver) {
-        this.graph = graph;
-        this.options = options;
-        this.pluginCache = pluginCache;
         this.sortedPlugins = new Map();
         this.unfulfilledActions = new Set();
         this.compiledPluginFilters = {
             idOnlyFilter: new WeakMap(),
             transformFilter: new WeakMap()
         };
+        this.graph = graph;
+        this.options = options;
+        this.pluginCache = pluginCache;
         this.fileEmitter = new FileEmitter(graph, options, basePluginDriver && basePluginDriver.fileEmitter);
         this.emitFile = this.fileEmitter.emitFile.bind(this.fileEmitter);
         this.getFileName = this.fileEmitter.getFileName.bind(this.fileEmitter);

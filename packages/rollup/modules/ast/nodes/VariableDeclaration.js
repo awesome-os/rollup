@@ -5,10 +5,11 @@ import { getSystemExportStatement, renderSystemExportExpression } from '../../ut
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import ArrayPattern from './ArrayPattern';
-import Identifier from './Identifier';
+import Identifier, {} from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import {} from '@rollup/types';
 function areAllDeclarationsIncludedAndNotExported(declarations, exportNamesByVariable) {
     for (const declarator of declarations) {
         if (!declarator.id.included)

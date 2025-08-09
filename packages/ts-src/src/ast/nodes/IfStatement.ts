@@ -11,13 +11,13 @@ import * as NodeType from './NodeType';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
 import {
 	doNotDeoptimize,
+	onlyIncludeSelfNoDeoptimize,
+	StatementBase} from './shared/Node';
+import {
 	type ExpressionNode,
 	type GenericEsTreeNode,
-	type IncludeChildren,
-	onlyIncludeSelfNoDeoptimize,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+	type IncludeChildren, type StatementNode
+} from '@rollup/types';
 
 const unset = Symbol('unset');
 

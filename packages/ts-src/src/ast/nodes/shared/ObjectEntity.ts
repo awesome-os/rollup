@@ -1,3 +1,4 @@
+import type { IncludeChildren } from '@rollup/types';
 import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
@@ -19,13 +20,12 @@ import {
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './Expression';
-import type { IncludeChildren } from './Node';
 
-export interface ObjectProperty {
+export type ObjectProperty = {
 	key: ObjectPathKey;
 	kind: 'init' | 'set' | 'get';
 	property: ExpressionEntity;
-}
+};
 
 export type PropertyMap = Record<string, ExpressionEntity[]>;
 const INTEGER_REG_EXP = /^\d+$/;
@@ -68,14 +68,19 @@ export class ObjectEntity extends ExpressionEntity {
 	private readonly unmatchablePropertiesAndSetters: ExpressionEntity[] = [];
 	private readonly unmatchableSetters: ExpressionEntity[] = [];
 
+	private prototypeExpression: ExpressionEntity | null;
+	private immutable: boolean;
 	// If a PropertyMap is used, this will be taken as propertiesAndGettersByKey
 	// and we assume there are no setters or getters
 	constructor(
 		properties: ObjectProperty[] | PropertyMap,
-		private prototypeExpression: ExpressionEntity | null,
-		private immutable = false
+		prototypeExpression: ExpressionEntity | null,
+		immutable = false
 	) {
 		super();
+		this.prototypeExpression = prototypeExpression;
+		this.immutable = immutable;
+
 		if (Array.isArray(properties)) {
 			this.buildPropertyMaps(properties);
 		} else {

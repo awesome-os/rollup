@@ -5,8 +5,11 @@ import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import { ExpressionEntity } from './Expression';
 
 export class MultiExpression extends ExpressionEntity {
-	constructor(private expressions: readonly ExpressionEntity[]) {
+	private expressions: readonly ExpressionEntity[];
+
+	constructor(expressions: readonly ExpressionEntity[]) {
 		super();
+		this.expressions = expressions;
 	}
 
 	deoptimizePath(path: ObjectPath): void {

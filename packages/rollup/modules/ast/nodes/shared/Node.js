@@ -6,8 +6,7 @@ import { INTERACTION_ASSIGNED } from '../../NodeInteractions';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
 import { isFlagSet, setFlag } from './BitFlags';
 import { ExpressionEntity } from './Expression';
-export const INCLUDE_PARAMETERS = 'variables';
-export const IS_SKIPPED_CHAIN = Symbol('IS_SKIPPED_CHAIN');
+import { Flag } from "./BitFlags";
 export class NodeBase extends ExpressionEntity {
     /**
      * Nodes can apply custom deoptimizations once they become part of the
@@ -16,10 +15,10 @@ export class NodeBase extends ExpressionEntity {
      * custom handlers
      */
     get deoptimized() {
-        return isFlagSet(this.flags, 2 /* Flag.deoptimized */);
+        return isFlagSet(this.flags, Flag.deoptimized);
     }
     set deoptimized(value) {
-        this.flags = setFlag(this.flags, 2 /* Flag.deoptimized */, value);
+        this.flags = setFlag(this.flags, Flag.deoptimized, value);
     }
     constructor(parent, parentScope) {
         super();
@@ -237,3 +236,4 @@ export function onlyIncludeSelfNoDeoptimize() {
 export function doNotDeoptimize() {
     this.deoptimized = true;
 }
+export const INCLUDE_PARAMETERS = 'variables';

@@ -1,9 +1,7 @@
+import type { NormalizedOutputOptions } from '@rollup/types';
 import type ExternalModule from './ExternalModule';
-import type { NormalizedOutputOptions } from 'rollup';
 import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
 export default class ExternalChunk {
-    private options;
-    private inputBase;
     defaultVariableName: string;
     id: string;
     namespaceVariableName: string;
@@ -13,6 +11,8 @@ export default class ExternalChunk {
     private importAttributes;
     private moduleInfo;
     private renormalizeRenderPath;
+    private options;
+    private inputBase;
     constructor(module: ExternalModule, options: NormalizedOutputOptions, inputBase: string);
     getFileName(): string;
     getImportAttributes(snippets: GenerateCodeSnippets): string | null;

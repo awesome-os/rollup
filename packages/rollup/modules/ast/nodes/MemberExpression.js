@@ -1,3 +1,4 @@
+import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logIllegalImportReassignment, logMissingExport } from '../../utils/logs';
@@ -7,14 +8,14 @@ import { isAwaitExpressionNode, isImportExpressionNode } from '../utils/identify
 import { MAX_PATH_DEPTH } from '../utils/limitPathLength';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, SymbolToStringTag, UNKNOWN_PATH, UnknownKey, UnknownNonAccessorKey } from '../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../values';
-import ExternalVariable from '../variables/ExternalVariable';
+import { ExternalVariable } from '../variables/ExternalVariable';
 import LocalVariable from '../variables/LocalVariable';
 import Identifier from './Identifier';
 import Literal from './Literal';
-import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { getChainElementLiteralValueAtPath } from './shared/chainElements';
 import { deoptimizeInteraction, includeInteraction, includeInteractionWithoutThis, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
-import { IS_SKIPPED_CHAIN, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 function getResolvablePropertyKey(memberExpression) {
     return memberExpression.computed
         ? getResolvableComputedPropertyKey(memberExpression.property)
@@ -57,34 +58,34 @@ export default class MemberExpression extends NodeBase {
         this.expressionsToBeDeoptimized = [];
     }
     get computed() {
-        return isFlagSet(this.flags, 1024 /* Flag.computed */);
+        return isFlagSet(this.flags, Flag.computed);
     }
     set computed(value) {
-        this.flags = setFlag(this.flags, 1024 /* Flag.computed */, value);
+        this.flags = setFlag(this.flags, Flag.computed, value);
     }
     get optional() {
-        return isFlagSet(this.flags, 128 /* Flag.optional */);
+        return isFlagSet(this.flags, Flag.optional);
     }
     set optional(value) {
-        this.flags = setFlag(this.flags, 128 /* Flag.optional */, value);
+        this.flags = setFlag(this.flags, Flag.optional, value);
     }
     get assignmentDeoptimized() {
-        return isFlagSet(this.flags, 16 /* Flag.assignmentDeoptimized */);
+        return isFlagSet(this.flags, Flag.assignmentDeoptimized);
     }
     set assignmentDeoptimized(value) {
-        this.flags = setFlag(this.flags, 16 /* Flag.assignmentDeoptimized */, value);
+        this.flags = setFlag(this.flags, Flag.assignmentDeoptimized, value);
     }
     get bound() {
-        return isFlagSet(this.flags, 32 /* Flag.bound */);
+        return isFlagSet(this.flags, Flag.bound);
     }
     set bound(value) {
-        this.flags = setFlag(this.flags, 32 /* Flag.bound */, value);
+        this.flags = setFlag(this.flags, Flag.bound, value);
     }
     get isUndefined() {
-        return isFlagSet(this.flags, 64 /* Flag.isUndefined */);
+        return isFlagSet(this.flags, Flag.isUndefined);
     }
     set isUndefined(value) {
-        this.flags = setFlag(this.flags, 64 /* Flag.isUndefined */, value);
+        this.flags = setFlag(this.flags, Flag.isUndefined, value);
     }
     bind() {
         this.bound = true;

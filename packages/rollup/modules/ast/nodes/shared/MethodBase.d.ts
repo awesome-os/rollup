@@ -4,7 +4,8 @@ import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteracti
 import { type EntityPathTracker, type ObjectPath } from '../../utils/PathTracker';
 import type PrivateIdentifier from '../PrivateIdentifier';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
-import { type ExpressionNode, NodeBase } from './Node';
+import { NodeBase } from './Node';
+import { type ExpressionNode } from '@rollup/types';
 import type { DeclarationPatternNode } from './Pattern';
 export default class MethodBase extends NodeBase implements DeoptimizableEntity {
     key: ExpressionNode | PrivateIdentifier;

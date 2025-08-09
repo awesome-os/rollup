@@ -21,7 +21,8 @@ import {
 } from '../utils/PathTracker';
 import { tryCastLiteralValueToBoolean } from '../utils/tryCastLiteralValueToBoolean';
 import type * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import {
 	type ExpressionEntity,
 	type LiteralValueOrUnknown,
@@ -32,11 +33,13 @@ import {
 import { MultiExpression } from './shared/MultiExpression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren
+} from '@rollup/types';
 
 export type LogicalOperator = '||' | '&&' | '??';
 

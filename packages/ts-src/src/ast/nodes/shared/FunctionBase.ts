@@ -12,23 +12,26 @@ import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import { EMPTY_PATH, UNKNOWN_PATH, UnknownKey } from '../../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../../values';
 import type ParameterVariable from '../../variables/ParameterVariable';
-import type Variable from '../../variables/Variable';
+import type { Variable } from '../../variables/Variable';
 import BlockStatement from '../BlockStatement';
 import type ExportDefaultDeclaration from '../ExportDefaultDeclaration';
 import * as NodeType from '../NodeType';
 import RestElement from '../RestElement';
 import type VariableDeclarator from '../VariableDeclarator';
-import { Flag, isFlagSet, setFlag } from './BitFlags';
+import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION } from './Expression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type GenericEsTreeNode,
-	type IncludeChildren,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './Node';
+import {
+	type ExpressionNode,
+	type GenericEsTreeNode,
+	type IncludeChildren
+} from '@rollup/types';
 import type { ObjectEntity } from './ObjectEntity';
 import type { DeclarationPatternNode } from './Pattern';
 

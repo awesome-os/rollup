@@ -4,10 +4,11 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteractionAssigned } from '../NodeInteractions';
 import { type ObjectPath } from '../utils/PathTracker';
 import type LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 import type { DeclarationPatternNode, PatternNode } from './shared/Pattern';
 import type { VariableKind } from './shared/VariableKinds';
 export default class AssignmentPattern extends NodeBase implements DeclarationPatternNode {

@@ -4,7 +4,7 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 export default class UpdateExpression extends NodeBase {
     argument: ExpressionNode;

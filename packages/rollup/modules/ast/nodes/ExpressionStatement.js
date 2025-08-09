@@ -2,6 +2,7 @@ import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logModuleLevelDirective } from '../../utils/logs';
 import * as NodeType from './NodeType';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class ExpressionStatement extends StatementBase {
     initialise() {
         super.initialise();

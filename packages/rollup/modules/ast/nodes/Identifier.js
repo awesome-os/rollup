@@ -1,11 +1,13 @@
 import '@rollup/types/declarations';
-import isReference from 'is-reference';
+import isReference, {} from 'is-reference';
 import { BLANK } from '../../utils/blank';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { INTERACTION_ACCESSED, NODE_INTERACTION_UNKNOWN_ACCESS } from '../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UnknownKey } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
+import {} from './shared/Expression';
 import IdentifierBase from './shared/IdentifierBase';
 import { ObjectMember } from './shared/ObjectMember';
 export default class Identifier extends IdentifierBase {
@@ -14,10 +16,10 @@ export default class Identifier extends IdentifierBase {
         this.variable = null;
     }
     get isDestructuringDeoptimized() {
-        return isFlagSet(this.flags, 16777216 /* Flag.destructuringDeoptimized */);
+        return isFlagSet(this.flags, Flag.destructuringDeoptimized);
     }
     set isDestructuringDeoptimized(value) {
-        this.flags = setFlag(this.flags, 16777216 /* Flag.destructuringDeoptimized */, value);
+        this.flags = setFlag(this.flags, Flag.destructuringDeoptimized, value);
     }
     addExportedVariables(variables, exportNamesByVariable) {
         if (exportNamesByVariable.has(this.variable)) {

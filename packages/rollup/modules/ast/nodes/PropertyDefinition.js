@@ -1,14 +1,16 @@
 import { checkEffectForNodes } from '../utils/checkEffectForNodes';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class PropertyDefinition extends NodeBase {
     get computed() {
-        return isFlagSet(this.flags, 1024 /* Flag.computed */);
+        return isFlagSet(this.flags, Flag.computed);
     }
     set computed(value) {
-        this.flags = setFlag(this.flags, 1024 /* Flag.computed */, value);
+        this.flags = setFlag(this.flags, Flag.computed, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         this.value?.deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker);

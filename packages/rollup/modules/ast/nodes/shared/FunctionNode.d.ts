@@ -6,7 +6,7 @@ import { type EntityPathTracker, type ObjectPath } from '../../utils/PathTracker
 import type BlockStatement from '../BlockStatement';
 import { type IdentifierWithVariable } from '../Identifier';
 import FunctionBase from './FunctionBase';
-import { type IncludeChildren } from './Node';
+import { type IncludeChildren } from '@rollup/types';
 import { ObjectEntity } from './ObjectEntity';
 import type { DeclarationPatternNode } from './Pattern';
 export default class FunctionNode extends FunctionBase {

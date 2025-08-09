@@ -1,6 +1,13 @@
+import type {
+	ChainElement,
+	ExpressionNode,
+	IncludeChildren,
+	NormalizedTreeshakingOptions,
+	SkippedChain
+} from '@rollup/types';
 import type MagicString from 'magic-string';
 import type { AstContext } from '../../Module';
-import type { NormalizedTreeshakingOptions } from '@rollup/types';
+import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logIllegalImportReassignment, logMissingExport } from '../../utils/logs';
@@ -33,10 +40,10 @@ import {
 	UnknownNonAccessorKey
 } from '../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../values';
-import ExternalVariable from '../variables/ExternalVariable';
+import { ExternalVariable } from '../variables/ExternalVariable';
 import LocalVariable from '../variables/LocalVariable';
 import type NamespaceVariable from '../variables/NamespaceVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import Identifier from './Identifier';
 import Literal from './Literal';
 import type * as NodeType from './NodeType';
@@ -52,8 +59,7 @@ import {
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
-import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from './shared/Node';
-import { IS_SKIPPED_CHAIN, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 import type { PatternNode } from './shared/Pattern';
 import type Super from './Super';
 

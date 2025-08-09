@@ -7,9 +7,9 @@ import ThisVariable from '../variables/ThisVariable';
 import type ChildScope from './ChildScope';
 import ReturnValueScope from './ReturnValueScope';
 export default class FunctionScope extends ReturnValueScope {
-    readonly functionNode: NodeBase;
     readonly argumentsVariable: ArgumentsVariable;
     readonly thisVariable: ThisVariable;
+    readonly functionNode: NodeBase;
     constructor(parent: ChildScope, functionNode: NodeBase);
     findLexicalBoundary(): ChildScope;
     includeCallArguments(interaction: NodeInteractionCalled, context: InclusionContext): void;

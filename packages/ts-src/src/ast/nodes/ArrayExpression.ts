@@ -11,7 +11,8 @@ import { UNDEFINED_EXPRESSION, UNKNOWN_LITERAL_NUMBER } from '../values';
 import type * as NodeType from './NodeType';
 import { ARRAY_PROTOTYPE } from './shared/ArrayPrototype';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 import { ObjectEntity, type ObjectProperty } from './shared/ObjectEntity';
 import SpreadElement from './SpreadElement';
 

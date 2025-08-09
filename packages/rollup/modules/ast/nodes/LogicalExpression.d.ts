@@ -6,7 +6,8 @@ import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 export type LogicalOperator = '||' | '&&' | '??';
 export default class LogicalExpression extends NodeBase implements DeoptimizableEntity {
     left: ExpressionNode;

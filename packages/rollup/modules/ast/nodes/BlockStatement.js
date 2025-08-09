@@ -1,22 +1,24 @@
+import {} from '@rollup/types';
 import { renderStatementList } from '../../utils/renderHelpers';
 import BlockScope from '../scopes/BlockScope';
 import ExpressionStatement from './ExpressionStatement';
 import * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
+import { Flag } from "./shared/BitFlags";
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 export default class BlockStatement extends StatementBase {
     get deoptimizeBody() {
-        return isFlagSet(this.flags, 32768 /* Flag.deoptimizeBody */);
+        return isFlagSet(this.flags, Flag.deoptimizeBody);
     }
     set deoptimizeBody(value) {
-        this.flags = setFlag(this.flags, 32768 /* Flag.deoptimizeBody */, value);
+        this.flags = setFlag(this.flags, Flag.deoptimizeBody, value);
     }
     get directlyIncluded() {
-        return isFlagSet(this.flags, 16384 /* Flag.directlyIncluded */);
+        return isFlagSet(this.flags, Flag.directlyIncluded);
     }
     set directlyIncluded(value) {
-        this.flags = setFlag(this.flags, 16384 /* Flag.directlyIncluded */, value);
+        this.flags = setFlag(this.flags, Flag.directlyIncluded, value);
     }
     addImplicitReturnExpressionToScope() {
         const lastStatement = this.body[this.body.length - 1];

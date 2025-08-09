@@ -1,6 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
-import path from 'node:path';
-import process from 'node:process';
+import { resolve } from 'node:path';
 import { rollupInternal } from '../rollup/rollup';
 import { FileWatcher } from './fileWatcher';
 const eventsRewrites = {
@@ -124,7 +123,7 @@ export class Task {
         this.outputs = this.options.output;
         this.outputFiles = this.outputs.map(output => {
             if (output.file || output.dir)
-                return path.resolve(output.file || output.dir);
+                return resolve(output.file || output.dir);
             return undefined;
         });
         this.watchOptions = this.options.watch || {};

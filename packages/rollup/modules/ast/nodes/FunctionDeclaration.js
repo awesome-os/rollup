@@ -1,4 +1,4 @@
-import Identifier from './Identifier';
+import Identifier, {} from './Identifier';
 import FunctionNode from './shared/FunctionNode';
 export default class FunctionDeclaration extends FunctionNode {
     initialise() {

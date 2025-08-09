@@ -1,5 +1,6 @@
+import {} from '../utils/PathTracker';
 import ExportDefaultVariable from './ExportDefaultVariable';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class SyntheticNamedExportVariable extends Variable {
     constructor(context, name, syntheticNamespace) {
         super(name);

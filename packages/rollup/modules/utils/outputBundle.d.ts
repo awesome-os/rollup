@@ -1,4 +1,4 @@
-import type { OutputAsset, OutputBundle, OutputChunk } from 'rollup';
+import type { OutputAsset, OutputBundle, OutputChunk } from '@rollup/types';
 export declare const lowercaseBundleKeys: unique symbol;
 export declare const FILE_PLACEHOLDER: {
     type: "placeholder";

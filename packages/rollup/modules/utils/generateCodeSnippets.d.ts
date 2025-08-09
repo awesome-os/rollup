@@ -1,4 +1,4 @@
-import type { NormalizedOutputOptions } from 'rollup';
+import type { NormalizedOutputOptions } from '@rollup/types';
 export interface GenerateCodeSnippets {
     _: string;
     cnst: string;

@@ -1,4 +1,5 @@
-import ClassDeclaration from './ClassDeclaration';
+import {} from '@rollup/types';
+import { ClassDeclaration } from './ClassDeclaration';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 export default class ExportNamedDeclaration extends NodeBase {
     bind() {

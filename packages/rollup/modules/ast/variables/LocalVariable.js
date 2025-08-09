@@ -5,19 +5,18 @@ import { deoptimizeInteraction, includeInteraction, UNKNOWN_EXPRESSION, UNKNOWN_
 import { isArrowFunctionExpressionNode, isCallExpressionNode, isFunctionExpressionNode, isIdentifierNode, isImportExpressionNode, isMemberExpressionNode } from '../utils/identifyNode';
 import { limitConcatenatedPathDepth, MAX_PATH_DEPTH } from '../utils/limitPathLength';
 import { IncludedFullPathTracker, UNKNOWN_PATH, UnknownKey } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class LocalVariable extends Variable {
-    constructor(name, declarator, init, 
-    /** if this is non-empty, the actual init is this path of this.init */
-    initPath, context, kind) {
+    constructor(name, declarator, init, initPath, context, kind) {
         super(name);
-        this.init = init;
-        this.initPath = initPath;
-        this.kind = kind;
         this.calledFromTryStatement = false;
         this.additionalInitializers = null;
         this.includedPathTracker = new IncludedFullPathTracker();
         this.expressionsToBeDeoptimized = [];
+        this.init = init;
+        this.initPath = initPath;
+        this.kind = kind;
+        super(name);
         this.declarations = declarator ? [declarator] : [];
         this.deoptimizationTracker = context.deoptimizationTracker;
         this.module = context.module;

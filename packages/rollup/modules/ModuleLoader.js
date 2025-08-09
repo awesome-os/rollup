@@ -12,10 +12,6 @@ import transform from './utils/transform';
 const RESOLVE_DEPENDENCIES = 'resolveDependencies';
 export class ModuleLoader {
     constructor(graph, modulesById, options, pluginDriver) {
-        this.graph = graph;
-        this.modulesById = modulesById;
-        this.options = options;
-        this.pluginDriver = pluginDriver;
         this.implicitEntryModules = new Set();
         this.indexedEntryModules = [];
         this.latestLoadModulesPromise = Promise.resolve();
@@ -26,6 +22,10 @@ export class ModuleLoader {
         this.resolveId = async (source, importer, customOptions, isEntry, attributes, skip = null) => this.getResolvedIdWithDefaults(this.getNormalizedResolvedIdWithoutDefaults(this.options.external(source, importer, false)
             ? false
             : await resolveId(source, importer, this.options.preserveSymlinks, this.pluginDriver, this.resolveId, skip, customOptions, typeof isEntry === 'boolean' ? isEntry : !importer, attributes, this.options.fs), importer, source), attributes);
+        this.graph = graph;
+        this.modulesById = modulesById;
+        this.options = options;
+        this.pluginDriver = pluginDriver;
         this.hasModuleSideEffects = options.treeshake
             ? options.treeshake.moduleSideEffects
             : () => true;

@@ -1,6 +1,6 @@
 import type { InputOptions, InputPluginOption, LogHandler, LogLevelOption, NormalizedInputOptions, NormalizedJsxOptions, NormalizedOutputOptions, NormalizedTreeshakingOptions, OutputOptions, OutputPlugin, OutputPluginOption, Plugin, RollupLog } from 'rollup';
 import type { ObjectOptionWithPresets } from '@rollup/types';
-import type { ObjectValue } from "../../rollup/types";
+import type { ObjectValue } from "@rollup/types";
 export declare const getOnLog: (config: InputOptions, logLevel: LogLevelOption, printLog?: LogHandler) => NormalizedInputOptions["onLog"];
 export declare const normalizeLog: (log: RollupLog | string | (() => RollupLog | string)) => RollupLog;
 export declare function warnUnknownOptions(passedOptions: object, validOptions: readonly string[], optionType: string, log: LogHandler, ignoredKeys?: RegExp): void;

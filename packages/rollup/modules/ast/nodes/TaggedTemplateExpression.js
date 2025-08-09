@@ -1,19 +1,21 @@
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace } from '../../utils/logs';
+import {} from '../../utils/renderHelpers';
 import { INTERACTION_CALLED } from '../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../utils/PathTracker';
 import MemberExpression from './MemberExpression';
 import * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import CallExpressionBase from './shared/CallExpressionBase';
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION } from './shared/Expression';
 import { onlyIncludeSelf } from './shared/Node';
 export default class TaggedTemplateExpression extends CallExpressionBase {
     get hasCheckedForWarnings() {
-        return isFlagSet(this.flags, 268435456 /* Flag.checkedForWarnings */);
+        return isFlagSet(this.flags, Flag.checkedForWarnings);
     }
     set hasCheckedForWarnings(value) {
-        this.flags = setFlag(this.flags, 268435456 /* Flag.checkedForWarnings */, value);
+        this.flags = setFlag(this.flags, Flag.checkedForWarnings, value);
     }
     bind() {
         super.bind();

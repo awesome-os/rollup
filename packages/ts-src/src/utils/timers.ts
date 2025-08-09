@@ -1,20 +1,14 @@
-import type {
-	NormalizedInputOptions,
-	Plugin,
-	PluginHooks,
-	SerializedTimings
-} from 'rollup';
+import type { NormalizedInputOptions, Plugin, PluginHooks, SerializedTimings } from '@rollup/types';
 import { doNothing } from './doNothing';
 import performance from './performance';
-import process from './process';
 
-interface Timer {
+type Timer = {
 	memory: number;
 	startMemory: number;
 	startTime: number;
 	time: number;
 	totalMemory: number;
-}
+};
 
 let timers = new Map<string, Timer>();
 

@@ -3,7 +3,8 @@ import { type RenderOptions } from '../../utils/renderHelpers';
 import type { InclusionContext } from '../ExecutionContext';
 import type ChildScope from '../scopes/ChildScope';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren, type StatementNode } from '@rollup/types';
 import type { PatternNode } from './shared/Pattern';
 import type VariableDeclaration from './VariableDeclaration';
 export default class ForOfStatement extends StatementBase {

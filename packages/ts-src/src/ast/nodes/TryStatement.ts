@@ -5,11 +5,11 @@ import type CatchClause from './CatchClause';
 import type * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	INCLUDE_PARAMETERS,
-	type IncludeChildren,
 	onlyIncludeSelfNoDeoptimize,
 	StatementBase
 } from './shared/Node';
+import { type IncludeChildren } from '@rollup/types';
+import { INCLUDE_PARAMETERS } from './shared/Node';
 
 export default class TryStatement extends StatementBase {
 	declare block: BlockStatement;

@@ -1,6 +1,6 @@
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
-import Variable from './Variable';
-export default class ExternalVariable extends Variable {
+import { Variable } from './Variable';
+export class ExternalVariable extends Variable {
     constructor(module, name) {
         super(name);
         this.referenced = false;

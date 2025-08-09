@@ -3,7 +3,7 @@ import type ExportDefaultDeclaration from '../nodes/ExportDefaultDeclaration';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';
 import type { NodeBase } from '../nodes/shared/Node';
 import LocalVariable from './LocalVariable';
-import type Variable from './Variable';
+import type { Variable } from './Variable';
 export default class ExportDefaultVariable extends LocalVariable {
     hasId: boolean;
     private readonly originalId;

@@ -1,5 +1,6 @@
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
 import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 export const UnknownValue = Symbol('Unknown Value');
 export const UnknownTruthyValue = Symbol('Unknown Truthy Value');
 export const UnknownFalsyValue = Symbol('Unknown Falsy Value');
@@ -8,10 +9,10 @@ export class ExpressionEntity {
         this.flags = 0;
     }
     get included() {
-        return isFlagSet(this.flags, 1 /* Flag.included */);
+        return isFlagSet(this.flags, Flag.included);
     }
     set included(value) {
-        this.flags = setFlag(this.flags, 1 /* Flag.included */, value);
+        this.flags = setFlag(this.flags, Flag.included, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, _path, _recursionTracker) {
         deoptimizeInteraction(interaction);

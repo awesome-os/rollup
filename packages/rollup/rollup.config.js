@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import addCliEntry from '@rollup/build-plugins/add-cli-entry';
 import { moduleAliases } from '@rollup/build-plugins/aliases';
 import cleanBeforeWrite from '@rollup/build-plugins/clean-before-write';
@@ -16,7 +17,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import terser from '@rollup/plugin-terser';
+// import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import '@rollup/types/declarations';
 import { fileURLToPath } from 'node:url';
@@ -47,33 +48,74 @@ const nodePlugins = [
 	cleanBeforeWrite('dist'),
 	externalNativeImport()
 ];
+export const { collectLicenses, writeLicense } = getLicenseHandler(
+	fileURLToPath(new URL('.', import.meta.url))
+);
+
+export const { collectLicenses: collectLicensesBrowser, writeLicense: writeLicenseBrowser } =
+	getLicenseHandler(fileURLToPath(new URL('browser', import.meta.url)));
+export const browserBuilds = {
+	input: 'src/browser-entry.ts',
+	onwarn,
+	output: [
+		{
+			banner: getBanner,
+			file: 'browser/dist/rollup.browser.js',
+			format: 'umd',
+			name: 'rollup',
+			plugins: [copyBrowserTypes()],
+			sourcemap: true
+		},
+		{
+			banner: getBanner,
+			file: 'browser/dist/es/rollup.browser.js',
+			format: 'es',
+			plugins: [emitModulePackageFile()]
+		}
+	],
+	plugins: [
+		replaceBrowserModules(),
+		alias(moduleAliases),
+		nodeResolve({ browser: true }),
+		json(),
+		//commonjs(),
+		//typescript(),
+		//terser({ module: true, output: { comments: 'some' } }),
+		collectLicensesBrowser(),
+		writeLicenseBrowser(),
+		cleanBeforeWrite('browser/dist'),
+		emitWasmFile()
+	],
+	strictDeprecations: true,
+	treeshake
+};
+
+// TODO: at present the cjs build builds the cli which is not needed anymore.
 export default async function getConfig(command) {
-	const { collectLicenses, writeLicense } = getLicenseHandler(
-		fileURLToPath(new URL('.', import.meta.url))
-	);
+	const cjsOutputConfig = {
+		banner: getBanner,
+		chunkFileNames: 'shared/[name].js',
+		dir: 'dist',
+		entryFileNames: '[name]',
+		exports: 'named',
+		externalLiveBindings: false,
+		format: 'cjs',
+		freeze: false,
+		generatedCode: 'es2015',
+		interop: 'default',
+		sourcemap: true
+	};
 	const commonJSBuild = {
-		// 'fsevents' is a dependency of 'chokidar' that cannot be bundled as it contains binary code
-		external: ['fsevents'],
 		input: {
 			'getLogFilter.js': 'src/utils/getLogFilter.ts',
 			'loadConfigFile.js': 'cli/run/loadConfigFile.ts',
 			'parseAst.js': 'src/utils/parseAst.ts',
 			'rollup.js': 'src/node-entry.ts'
 		},
+		output: cjsOutputConfig,
+		// 'fsevents' is a dependency of 'chokidar' that cannot be bundled as it contains binary code
+		external: ['fsevents'],
 		onwarn,
-		output: {
-			banner: getBanner,
-			chunkFileNames: 'shared/[name].js',
-			dir: 'dist',
-			entryFileNames: '[name]',
-			exports: 'named',
-			externalLiveBindings: false,
-			format: 'cjs',
-			freeze: false,
-			generatedCode: 'es2015',
-			interop: 'default',
-			sourcemap: true
-		},
 		plugins: [
 			...nodePlugins,
 			emitNativeEntry(),
@@ -85,9 +127,6 @@ export default async function getConfig(command) {
 		strictDeprecations: true,
 		treeshake
 	};
-	if (command.configTest) {
-		return commonJSBuild;
-	}
 	const esmBuild = {
 		...commonJSBuild,
 		input: {
@@ -107,42 +146,10 @@ export default async function getConfig(command) {
 	if (command.configIsBuildNode) {
 		return [commonJSBuild, esmBuild];
 	}
-	const { collectLicenses: collectLicensesBrowser, writeLicense: writeLicenseBrowser } =
-		getLicenseHandler(fileURLToPath(new URL('browser', import.meta.url)));
-	const browserBuilds = {
-		input: 'src/browser-entry.ts',
-		onwarn,
-		output: [
-			{
-				banner: getBanner,
-				file: 'browser/dist/rollup.browser.js',
-				format: 'umd',
-				name: 'rollup',
-				plugins: [copyBrowserTypes()],
-				sourcemap: true
-			},
-			{
-				banner: getBanner,
-				file: 'browser/dist/es/rollup.browser.js',
-				format: 'es',
-				plugins: [emitModulePackageFile()]
-			}
-		],
-		plugins: [
-			replaceBrowserModules(),
-			alias(moduleAliases),
-			nodeResolve({ browser: true }),
-			json(),
-			commonjs(),
-			typescript(),
-			terser({ module: true, output: { comments: 'some' } }),
-			collectLicensesBrowser(),
-			writeLicenseBrowser(),
-			cleanBeforeWrite('browser/dist'),
-			emitWasmFile()
-		],
-		strictDeprecations: true,
-		treeshake
-	};
-	return [commonJSBuild, esmBuild, browserBuilds];
+
+	return [
+		esmBuild
+		// TODO: Enable Browser build maybe later
+		//	browserBuilds
+	];
 }

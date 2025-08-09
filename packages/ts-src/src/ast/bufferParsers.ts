@@ -3,6 +3,7 @@
 
 import type * as estree from 'estree';
 import type { AstContext } from '../Module';
+import type { Node } from '@rollup/types';
 import { convertAnnotations } from '../utils/astConverterHelpers';
 import { EMPTY_ARRAY } from '../utils/blank';
 import { convertNode as convertJsonNode } from '../utils/bufferToAst';
@@ -22,7 +23,7 @@ import CallExpression from './nodes/CallExpression';
 import CatchClause from './nodes/CatchClause';
 import ChainExpression from './nodes/ChainExpression';
 import ClassBody from './nodes/ClassBody';
-import ClassDeclaration from './nodes/ClassDeclaration';
+import { ClassDeclaration } from './nodes/ClassDeclaration';
 import ClassExpression from './nodes/ClassExpression';
 import ConditionalExpression from './nodes/ConditionalExpression';
 import ContinueStatement from './nodes/ContinueStatement';
@@ -99,7 +100,7 @@ import VariableDeclarator from './nodes/VariableDeclarator';
 import WhileStatement from './nodes/WhileStatement';
 import YieldExpression from './nodes/YieldExpression';
 import { UNKNOWN_EXPRESSION } from './nodes/shared/Expression';
-import type { Node, NodeBase } from './nodes/shared/Node';
+import type { NodeBase } from './nodes/shared/Node';
 import type ChildScope from './scopes/ChildScope';
 import type ModuleScope from './scopes/ModuleScope';
 import TrackingScope from './scopes/TrackingScope';

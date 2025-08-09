@@ -1,19 +1,17 @@
+import type { IncludeChildren } from '@rollup/types';
 import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type { EntityPathTracker, ObjectPath, ObjectPathKey } from '../../utils/PathTracker';
 import type { LiteralValueOrUnknown } from './Expression';
 import { ExpressionEntity } from './Expression';
-import type { IncludeChildren } from './Node';
-export interface ObjectProperty {
+export type ObjectProperty = {
     key: ObjectPathKey;
     kind: 'init' | 'set' | 'get';
     property: ExpressionEntity;
-}
+};
 export type PropertyMap = Record<string, ExpressionEntity[]>;
 export declare class ObjectEntity extends ExpressionEntity {
-    private prototypeExpression;
-    private immutable;
     private get hasLostTrack();
     private set hasLostTrack(value);
     private get hasUnknownDeoptimizedInteger();
@@ -33,6 +31,8 @@ export declare class ObjectEntity extends ExpressionEntity {
     private readonly unmatchablePropertiesAndGetters;
     private readonly unmatchablePropertiesAndSetters;
     private readonly unmatchableSetters;
+    private prototypeExpression;
+    private immutable;
     constructor(properties: ObjectProperty[] | PropertyMap, prototypeExpression: ExpressionEntity | null, immutable?: boolean);
     deoptimizeAllProperties(noAccessors?: boolean): void;
     deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;

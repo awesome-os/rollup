@@ -8,12 +8,8 @@ import { type ExpressionEntity, type LiteralValueOrUnknown } from '../nodes/shar
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import type { IncludedPathTracker } from '../utils/PathTracker';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 export default class LocalVariable extends Variable {
-    init: ExpressionEntity;
-    /** if this is non-empty, the actual init is this path of this.init */
-    protected initPath: ObjectPath;
-    readonly kind: VariableKind;
     calledFromTryStatement: boolean;
     readonly declarations: (Identifier | ExportDefaultDeclaration)[];
     readonly module: Module;
@@ -21,9 +17,11 @@ export default class LocalVariable extends Variable {
     protected deoptimizationTracker: EntityPathTracker;
     protected includedPathTracker: IncludedPathTracker;
     private expressionsToBeDeoptimized;
-    constructor(name: string, declarator: Identifier | ExportDefaultDeclaration | null, init: ExpressionEntity, 
+    init: ExpressionEntity;
     /** if this is non-empty, the actual init is this path of this.init */
-    initPath: ObjectPath, context: AstContext, kind: VariableKind);
+    protected initPath: ObjectPath;
+    readonly kind: VariableKind;
+    constructor(name: string, declarator: Identifier | ExportDefaultDeclaration | null, init: ExpressionEntity, initPath: ObjectPath, context: AstContext, kind: VariableKind);
     addDeclaration(identifier: Identifier, init: ExpressionEntity): void;
     consolidateInitializers(): void;
     deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;

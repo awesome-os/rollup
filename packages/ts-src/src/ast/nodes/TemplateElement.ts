@@ -1,6 +1,8 @@
 import type * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
-import { type GenericEsTreeNode, NodeBase, onlyIncludeSelf } from './shared/Node';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
+import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 
 export default class TemplateElement extends NodeBase {
 	declare type: NodeType.tTemplateElement;

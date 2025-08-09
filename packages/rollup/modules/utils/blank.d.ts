@@ -8,9 +8,9 @@ export declare const EMPTY_SET: Readonly<{
     forEach(callbackfn: (value: any, value2: any, set: Set<any>) => void, thisArg?: any): void;
     has(value: any): boolean;
     readonly size: number;
-    entries(): IterableIterator<[any, any]>;
-    keys(): IterableIterator<any>;
-    values(): IterableIterator<any>;
-    [Symbol.iterator](): IterableIterator<any>;
+    entries(): SetIterator<[any, any]>;
+    keys(): SetIterator<any>;
+    values(): SetIterator<any>;
+    [Symbol.iterator](): SetIterator<any>;
     readonly [Symbol.toStringTag]: string;
 }>;

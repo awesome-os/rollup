@@ -6,7 +6,7 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteractionAssigned } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';
 import type LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import * as NodeType from './NodeType';
 import type Property from './Property';
 import type RestElement from './RestElement';

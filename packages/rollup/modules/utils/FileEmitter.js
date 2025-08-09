@@ -76,8 +76,6 @@ function getChunkFileName(file, facadeChunkByModule) {
 }
 export class FileEmitter {
     constructor(graph, options, baseFileEmitter) {
-        this.graph = graph;
-        this.options = options;
         this.facadeChunkByModule = null;
         this.nextIdBase = 1;
         this.output = null;
@@ -171,6 +169,9 @@ export class FileEmitter {
                 this.finalizeAssetsWithSameSource(consumedFiles, sourceHash, output);
             }
         };
+        this.graph = graph;
+        this.options = options;
+        this.baseFileEmitter = baseFileEmitter;
         this.filesByReferenceId = baseFileEmitter
             ? new Map(baseFileEmitter.filesByReferenceId)
             : new Map();

@@ -15,7 +15,7 @@ import {
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import type { InclusionContext } from '../ExecutionContext';
 import { EMPTY_PATH } from '../utils/PathTracker';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import ArrayPattern from './ArrayPattern';
 import Identifier, { type IdentifierWithVariable } from './Identifier';
 import * as NodeType from './NodeType';
@@ -23,10 +23,10 @@ import ObjectPattern from './ObjectPattern';
 import type { InclusionOptions } from './shared/Expression';
 import {
 	doNotDeoptimize,
-	type IncludeChildren,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './shared/Node';
+import { type IncludeChildren } from '@rollup/types';
 import type { VariableDeclarationKind } from './shared/VariableKinds';
 import type VariableDeclarator from './VariableDeclarator';
 

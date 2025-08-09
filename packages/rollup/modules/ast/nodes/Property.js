@@ -2,22 +2,24 @@ import { createHasEffectsContext } from '../ExecutionContext';
 import { UnknownKey } from '../utils/PathTracker';
 import Identifier from './Identifier';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
+import {} from './shared/Expression';
 import MethodBase from './shared/MethodBase';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 export default class Property extends MethodBase {
     //declare method: boolean;
     get method() {
-        return isFlagSet(this.flags, 262144 /* Flag.method */);
+        return isFlagSet(this.flags, Flag.method);
     }
     set method(value) {
-        this.flags = setFlag(this.flags, 262144 /* Flag.method */, value);
+        this.flags = setFlag(this.flags, Flag.method, value);
     }
     //declare shorthand: boolean;
     get shorthand() {
-        return isFlagSet(this.flags, 524288 /* Flag.shorthand */);
+        return isFlagSet(this.flags, Flag.shorthand);
     }
     set shorthand(value) {
-        this.flags = setFlag(this.flags, 524288 /* Flag.shorthand */, value);
+        this.flags = setFlag(this.flags, Flag.shorthand, value);
     }
     declare(kind, destructuredInitPath, init) {
         return this.value.declare(kind, this.getPathInProperty(destructuredInitPath), init);

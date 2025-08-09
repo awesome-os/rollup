@@ -13,8 +13,10 @@ import Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
 import ObjectPattern from './ObjectPattern';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import FunctionNode from './shared/FunctionNode';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 import VariableDeclarator from './VariableDeclarator';
 function getChunkInfoWithPath(chunk) {
     return { fileName: chunk.getFileName(), ...chunk.getPreRenderedChunkInfo() };
@@ -32,10 +34,10 @@ export default class ImportExpression extends NodeBase {
         this.resolutionString = null;
     }
     get withinTopLevelAwait() {
-        return isFlagSet(this.flags, 134217728 /* Flag.withinTopLevelAwait */);
+        return isFlagSet(this.flags, Flag.withinTopLevelAwait);
     }
     set withinTopLevelAwait(value) {
-        this.flags = setFlag(this.flags, 134217728 /* Flag.withinTopLevelAwait */, value);
+        this.flags = setFlag(this.flags, Flag.withinTopLevelAwait, value);
     }
     // Do not bind attributes
     bind() {

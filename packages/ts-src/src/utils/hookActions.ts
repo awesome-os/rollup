@@ -1,6 +1,5 @@
-import process from 'node:process';
-import type { PluginDriver } from './PluginDriver';
 import type { HookAction } from '@rollup/types';
+import type { PluginDriver } from './PluginDriver';
 
 function formatAction([pluginName, hookName, parameters]: HookAction): string {
 	const action = `(${pluginName}) ${hookName}`;

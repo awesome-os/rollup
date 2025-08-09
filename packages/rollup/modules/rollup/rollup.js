@@ -1,19 +1,20 @@
 import { rollupVersion } from 'rollup/version.js';
-import Bundle from '../Bundle';
-import Graph from '../Graph';
-import { catchUnfinishedHookActions } from '../utils/hookActions';
-import initWasm from '../utils/initWasm';
-import { getLogger } from '../utils/logger';
-import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '../utils/logging';
-import { getLogHandler } from '../utils/logHandler';
-import { error, getRollupError, logAlreadyClosed, logCannotEmitFromOptionsHook, logMissingFileOrDirOption, logPluginError } from '../utils/logs';
-import { normalizeInputOptions } from '../utils/options/normalizeInputOptions';
-import { normalizeOutputOptions } from '../utils/options/normalizeOutputOptions';
-import { getOnLog, normalizeLog, normalizePluginOption } from '../utils/options/options';
-import { dirname, resolve } from '../utils/path';
-import { getSortedValidatedPlugins } from '../utils/PluginDriver';
-import { ANONYMOUS_OUTPUT_PLUGIN_PREFIX, ANONYMOUS_PLUGIN_PREFIX } from '../utils/pluginNames';
-import { getTimings, initialiseTimers, timeEnd, timeStart } from '../utils/timers';
+import Bundle from '../../src/Bundle';
+import Graph from '../../src/Graph';
+import { catchUnfinishedHookActions } from '../../src/utils/hookActions';
+import initWasm from '../../src/utils/initWasm';
+import { getLogger } from '../../src/utils/logger';
+import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../src/utils/logging';
+import { getLogHandler } from '../../src/utils/logHandler';
+import { error, getRollupError, logAlreadyClosed, logCannotEmitFromOptionsHook, logMissingFileOrDirOption, logPluginError } from '../../src/utils/logs';
+import { normalizeInputOptions } from '../../src/utils/options/normalizeInputOptions';
+import { normalizeOutputOptions } from '../../src/utils/options/normalizeOutputOptions';
+import { getOnLog, normalizeLog, normalizePluginOption } from '../../src/utils/options/options';
+import { dirname, resolve } from '../../src/utils/path';
+import { getSortedValidatedPlugins } from '../../src/utils/PluginDriver';
+import { ANONYMOUS_OUTPUT_PLUGIN_PREFIX, ANONYMOUS_PLUGIN_PREFIX } from '../../src/utils/pluginNames';
+import { getTimings, initialiseTimers, timeEnd, timeStart } from '../../src/utils/timers';
+import { makeMap, SortingFileTypeArray } from './makeMap';
 // @ts-expect-error TS2540: the polyfill of `asyncDispose`.
 Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');
 export function rollup(rawInputOptions) {
@@ -178,20 +179,15 @@ function createOutput(outputBundle) {
     };
     return options;
 }
-var SortingFileType;
-(function (SortingFileType) {
-    SortingFileType[SortingFileType["ENTRY_CHUNK"] = 0] = "ENTRY_CHUNK";
-    SortingFileType[SortingFileType["SECONDARY_CHUNK"] = 1] = "SECONDARY_CHUNK";
-    SortingFileType[SortingFileType["ASSET"] = 2] = "ASSET";
-})(SortingFileType || (SortingFileType = {}));
+const SortingFileTypeMap = makeMap(SortingFileTypeArray);
 function getSortingFileType(file) {
     if (file.type === 'asset') {
-        return SortingFileType.ASSET;
+        return SortingFileTypeMap.ASSET;
     }
     if (file.isEntry) {
-        return SortingFileType.ENTRY_CHUNK;
+        return SortingFileTypeMap.ENTRY_CHUNK;
     }
-    return SortingFileType.SECONDARY_CHUNK;
+    return SortingFileTypeMap.SECONDARY_CHUNK;
 }
 async function writeOutputFile(outputFile, outputOptions, { fs: { mkdir, writeFile } }) {
     const fileName = resolve(outputOptions.dir || dirname(outputOptions.file), outputFile.fileName);

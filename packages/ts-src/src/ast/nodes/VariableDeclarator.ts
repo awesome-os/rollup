@@ -15,10 +15,12 @@ import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	NodeBase
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren
+} from '@rollup/types';
 import type { DeclarationPatternNode } from './shared/Pattern';
 import type { VariableKind } from './shared/VariableKinds';
 

@@ -1,5 +1,7 @@
+import { makeMap } from '../../rollup/makeMap';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import IdentifierBase from './shared/IdentifierBase';
+const IdentifierType = makeMap(['Reference', 'NativeElementName', 'Other']);
 export default class JSXIdentifier extends IdentifierBase {
     constructor() {
         super(...arguments);
@@ -7,11 +9,11 @@ export default class JSXIdentifier extends IdentifierBase {
     }
     bind() {
         const type = this.getType();
-        if (type === 0 /* IdentifierType.Reference */) {
+        if (type === IdentifierType.Reference) {
             this.variable = this.scope.findVariable(this.name);
             this.variable.addReference(this);
         }
-        else if (type === 1 /* IdentifierType.NativeElementName */) {
+        else if (type === IdentifierType.NativeElementName) {
             this.isNativeElement = true;
         }
     }
@@ -58,17 +60,17 @@ export default class JSXIdentifier extends IdentifierBase {
             case 'JSXOpeningElement':
             case 'JSXClosingElement': {
                 return this.name.startsWith(this.name.charAt(0).toUpperCase())
-                    ? 0 /* IdentifierType.Reference */
-                    : 1 /* IdentifierType.NativeElementName */;
+                    ? IdentifierType.Reference
+                    : IdentifierType.NativeElementName;
             }
             case 'JSXMemberExpression': {
                 return this.parent.object === this
-                    ? 0 /* IdentifierType.Reference */
-                    : 2 /* IdentifierType.Other */;
+                    ? IdentifierType.Reference
+                    : IdentifierType.Other;
             }
             case 'JSXAttribute':
             case 'JSXNamespacedName': {
-                return 2 /* IdentifierType.Other */;
+                return IdentifierType.Other;
             }
             default: {
                 /* istanbul ignore next */

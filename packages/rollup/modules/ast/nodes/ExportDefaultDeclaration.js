@@ -1,8 +1,9 @@
+import {} from '@rollup/types';
 import { findFirstOccurrenceOutsideComment, findNonWhiteSpace } from '../../utils/renderHelpers';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
-import ClassDeclaration from './ClassDeclaration';
+import { ClassDeclaration } from './ClassDeclaration';
 import FunctionDeclaration from './FunctionDeclaration';
 import * as NodeType from './NodeType';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';

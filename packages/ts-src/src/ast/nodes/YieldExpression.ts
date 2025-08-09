@@ -3,7 +3,8 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 export default class YieldExpression extends NodeBase {
 	declare argument: ExpressionNode | null;

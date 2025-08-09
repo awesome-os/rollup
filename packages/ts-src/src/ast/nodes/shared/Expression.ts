@@ -5,8 +5,9 @@ import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteracti
 import type { EntityPathTracker, ObjectPath, SymbolToStringTag } from '../../utils/PathTracker';
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
 import type { LiteralValue } from '../Literal';
-import { Flag, isFlagSet, setFlag } from './BitFlags';
-import type { IncludeChildren } from './Node';
+import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
+import type { IncludeChildren } from '@rollup/types';
 
 export const UnknownValue = Symbol('Unknown Value');
 export const UnknownTruthyValue = Symbol('Unknown Truthy Value');

@@ -1,14 +1,11 @@
-import ExternalModule from './ExternalModule';
-import type Graph from './Graph';
-import Module from './Module';
 import type {
-	PreloadType,
 	LoadModulePromise,
-	UnresolvedModule,
 	ModuleLoaderResolveId,
+	NormalizedResolveIdWithoutDefaults,
+	PreloadType,
 	ResolveDynamicDependencyPromise,
 	ResolveStaticDependencyPromise,
-	NormalizedResolveIdWithoutDefaults
+	UnresolvedModule
 } from '@rollup/types';
 import type {
 	AstNode,
@@ -22,6 +19,9 @@ import type {
 	ResolvedId,
 	ResolveIdResult
 } from 'rollup';
+import ExternalModule from './ExternalModule';
+import type Graph from './Graph';
+import Module from './Module';
 import { EMPTY_OBJECT } from './utils/blank';
 import { LOGLEVEL_WARN } from './utils/logging';
 import {
@@ -43,11 +43,7 @@ import {
 	doAttributesDiffer,
 	getAttributesFromImportExpression
 } from './utils/parseImportAttributes';
-import { 
-	isAbsolute,
-	isRelative, 
-	resolve 
-} from './utils/path';
+import { isAbsolute, isRelative, resolve } from './utils/path';
 import type { PluginDriver } from './utils/PluginDriver';
 import { relativeId } from './utils/relativeId';
 import { resolveId } from './utils/resolveId';
@@ -66,12 +62,21 @@ export class ModuleLoader {
 	private nextChunkNamePriority = 0;
 	private nextEntryModuleIndex = 0;
 
+	private readonly graph: Graph;
+	private readonly modulesById: Map<string, Module | ExternalModule>;
+	private readonly options: NormalizedInputOptions;
+	private readonly pluginDriver: PluginDriver;
+
 	constructor(
-		private readonly graph: Graph,
-		private readonly modulesById: Map<string, Module | ExternalModule>,
-		private readonly options: NormalizedInputOptions,
-		private readonly pluginDriver: PluginDriver
+		graph: Graph,
+		modulesById: Map<string, Module | ExternalModule>,
+		options: NormalizedInputOptions,
+		pluginDriver: PluginDriver
 	) {
+		this.graph = graph;
+		this.modulesById = modulesById;
+		this.options = options;
+		this.pluginDriver = pluginDriver;
 		this.hasModuleSideEffects = options.treeshake
 			? options.treeshake.moduleSideEffects
 			: () => true;

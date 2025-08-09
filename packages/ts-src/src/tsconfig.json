@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"composite": true,
 		"rewriteRelativeImportExtensions": true,
-		"erasableSyntaxOnly": true,
+		"erasableSyntaxOnly": false,
 		"verbatimModuleSyntax": true,
 		"outDir": "../../rollup/modules",
 		"allowSyntheticDefaultImports": false,
@@ -10,7 +10,7 @@
 		"lib": ["ES2022", "ESNext.Disposable", "DOM"],
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"noEmitOnError": false,
+		"noEmitOnError": true,
 		"noUnusedParameters": true,
 		"pretty": true,
 		"resolveJsonModule": true,

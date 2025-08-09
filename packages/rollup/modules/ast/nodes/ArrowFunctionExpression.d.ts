@@ -1,3 +1,4 @@
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import type ChildScope from '../scopes/ChildScope';
@@ -6,7 +7,6 @@ import { type ObjectPath } from '../utils/PathTracker';
 import type BlockStatement from './BlockStatement';
 import * as NodeType from './NodeType';
 import FunctionBase from './shared/FunctionBase';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
 import { ObjectEntity } from './shared/ObjectEntity';
 import type { DeclarationPatternNode } from './shared/Pattern';
 export default class ArrowFunctionExpression extends FunctionBase {

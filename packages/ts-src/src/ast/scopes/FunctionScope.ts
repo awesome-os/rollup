@@ -12,11 +12,11 @@ export default class FunctionScope extends ReturnValueScope {
 	readonly argumentsVariable: ArgumentsVariable;
 	readonly thisVariable: ThisVariable;
 
-	constructor(
-		parent: ChildScope,
-		readonly functionNode: NodeBase
-	) {
+	readonly functionNode: NodeBase;
+
+	constructor(parent: ChildScope, functionNode: NodeBase) {
 		super(parent, false);
+		this.functionNode = functionNode;
 		const { context } = parent;
 		this.variables.set('arguments', (this.argumentsVariable = new ArgumentsVariable(context)));
 		this.variables.set('this', (this.thisVariable = new ThisVariable(context)));

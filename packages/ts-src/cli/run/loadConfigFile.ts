@@ -1,9 +1,12 @@
 import { unlink, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import process from 'node:process';
+import { dirname, isAbsolute, join } from 'node:path';
+
 import { pathToFileURL } from 'node:url';
-import * as rollup from '../../src/node-entry';
-import type { ImportAttributesKey, MergedRollupOptions } from '../../src/rollup/types';
+import type {
+	GenericConfigObject,
+	ImportAttributesKey,
+	MergedRollupOptions
+} from '../../src/rollup/types';
 import { bold } from '../../src/utils/colors';
 import {
 	error,
@@ -14,8 +17,8 @@ import {
 } from '../../src/utils/logs';
 import { mergeOptions } from '../../src/utils/options/mergeOptions';
 import { relativeId } from '../../src/utils/relativeId';
-import type { GenericConfigObject } from "../../src/rollup/types";
 import { stderr } from '../logging';
+import * as rollup from '../node-entry';
 import batchWarnings from './batchWarnings';
 import { addCommandPluginsToInputOptions, addPluginsFromCommandOption } from './commandPlugins';
 import type { LoadConfigFile } from './loadConfigFileType';
@@ -105,7 +108,7 @@ async function loadTranspiledConfigFile(
 	const { bundleConfigAsCjs, configPlugin, configImportAttributesKey, silent } = commandOptions;
 	const warnings = batchWarnings(commandOptions);
 	const inputOptions = {
-		external: (id: string) => (id[0] !== '.' && !path.isAbsolute(id)) || id.slice(-5) === '.json',
+		external: (id: string) => (id[0] !== '.' && !isAbsolute(id)) || id.slice(-5) === '.json',
 		input: fileName,
 		onwarn: warnings.add,
 		plugins: [],
@@ -130,10 +133,10 @@ async function loadTranspiledConfigFile(
 						return `'${moduleId}'`;
 					}
 					if (property == 'dirname') {
-						return `'${path.dirname(moduleId)}'`;
+						return `'${dirname(moduleId)}'`;
 					}
 					if (property == null) {
-						return `{url:'${pathToFileURL(moduleId).href}', filename: '${moduleId}', dirname: '${path.dirname(moduleId)}'}`;
+						return `{url:'${pathToFileURL(moduleId).href}', filename: '${moduleId}', dirname: '${dirname(moduleId)}'}`;
 					}
 				}
 			}
@@ -144,10 +147,7 @@ async function loadTranspiledConfigFile(
 		warnings.flush();
 	}
 	return loadConfigFromWrittenFile(
-		path.join(
-			path.dirname(fileName),
-			`rollup.config-${Date.now()}.${bundleConfigAsCjs ? 'cjs' : 'mjs'}`
-		),
+		join(dirname(fileName), `rollup.config-${Date.now()}.${bundleConfigAsCjs ? 'cjs' : 'mjs'}`),
 		code
 	);
 }

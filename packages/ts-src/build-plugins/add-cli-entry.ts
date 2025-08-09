@@ -1,6 +1,6 @@
 import type { Plugin } from '@rollup/types';
 import { chmod } from 'node:fs/promises';
-import path from 'node:path';
+import { resolve } from 'node:path';
 
 const CLI_CHUNK = 'bin/rollup';
 
@@ -16,7 +16,7 @@ export default function addCliEntry(): Plugin {
 		},
 		name: 'add-cli-entry',
 		writeBundle({ dir }) {
-			return chmod(path.resolve(dir!, CLI_CHUNK), '755');
+			return chmod(resolve(dir!, CLI_CHUNK), '755');
 		}
 	};
 }

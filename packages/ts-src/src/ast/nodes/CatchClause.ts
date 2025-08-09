@@ -4,7 +4,8 @@ import { EMPTY_PATH } from '../utils/PathTracker';
 import BlockStatement from './BlockStatement';
 import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
-import { type GenericEsTreeNode, NodeBase, onlyIncludeSelf } from './shared/Node';
+import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 import type { DeclarationPatternNode } from './shared/Pattern';
 
 export default class CatchClause extends NodeBase {

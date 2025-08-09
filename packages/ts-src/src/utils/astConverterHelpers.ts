@@ -1,4 +1,4 @@
-import type { AnnotationType, RollupAnnotation } from "../rollup/types";
+import type { AnnotationType, RollupAnnotation } from "@rollup/types";
 import { EMPTY_ARRAY } from './blank';
 import FIXED_STRINGS from './convert-ast-strings';
 

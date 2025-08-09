@@ -1,7 +1,8 @@
 import type { InclusionContext } from '../ExecutionContext';
 import type { ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 export default class AwaitExpression extends NodeBase {
     argument: ExpressionNode;
     type: NodeType.tAwaitExpression;

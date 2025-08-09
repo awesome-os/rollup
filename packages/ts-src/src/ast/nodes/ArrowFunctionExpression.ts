@@ -1,3 +1,4 @@
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_CALLED } from '../NodeInteractions';
@@ -8,9 +9,9 @@ import type BlockStatement from './BlockStatement';
 import type CallExpression from './CallExpression';
 import Identifier from './Identifier';
 import * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import FunctionBase from './shared/FunctionBase';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
 import { ObjectEntity } from './shared/ObjectEntity';
 import { OBJECT_PROTOTYPE } from './shared/ObjectPrototype';
 import type { DeclarationPatternNode } from './shared/Pattern';

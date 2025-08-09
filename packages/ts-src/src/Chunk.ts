@@ -13,7 +13,6 @@ import type {
 	RenderedModule
 } from '@rollup/types';
 import MagicString, { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
-import { relative } from '../browser/src/path';
 import ExportDefaultDeclaration from './ast/nodes/ExportDefaultDeclaration';
 import FunctionDeclaration from './ast/nodes/FunctionDeclaration';
 import type ImportExpression from './ast/nodes/ImportExpression';
@@ -24,6 +23,7 @@ import LocalVariable from './ast/variables/LocalVariable';
 import NamespaceVariable from './ast/variables/NamespaceVariable';
 import SyntheticNamedExportVariable from './ast/variables/SyntheticNamedExportVariable';
 import type { Variable } from './ast/variables/Variable';
+import { relative } from './browser/path';
 import ExternalChunk, { formatAttributes } from './ExternalChunk';
 import ExternalModule from './ExternalModule';
 import finalisers from './finalisers/index';

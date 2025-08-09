@@ -4,7 +4,8 @@ import type { NodeInteraction } from '../NodeInteractions';
 import type { ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
-import { type GenericEsTreeNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 export type LiteralValue = string | boolean | null | number | RegExp | undefined;
 export type LiteralValueOrBigInt = LiteralValue | bigint;
 export default class Literal<T extends LiteralValueOrBigInt = LiteralValueOrBigInt> extends NodeBase {

@@ -1,4 +1,4 @@
-import type { ModuleInfo, ModuleJSON, NormalizedInputOptions, ProgramNode, RollupCache, RollupWatcher } from 'rollup';
+import type { ModuleInfo, ModuleJSON, NormalizedInputOptions, ProgramNode, RollupCache, RollupWatcher } from '@rollup/types';
 import type { ExpressionEntity } from './ast/nodes/shared/Expression';
 import GlobalScope from './ast/scopes/GlobalScope';
 import { EntityPathTracker } from './ast/utils/PathTracker';
@@ -10,7 +10,6 @@ import { PluginDriver } from './utils/PluginDriver';
 import type { PureFunctions } from './utils/pureFunctions';
 import Queue from './utils/Queue';
 export default class Graph {
-    private readonly options;
     readonly astLru: import("flru").flruCache<ProgramNode>;
     readonly cachedModules: Map<string, ModuleJSON>;
     readonly deoptimizationTracker: EntityPathTracker;
@@ -30,6 +29,8 @@ export default class Graph {
     private implicitEntryModules;
     private modules;
     private pluginCache?;
+    private readonly options;
+    private watcher;
     constructor(options: NormalizedInputOptions, watcher: RollupWatcher | null);
     build(): Promise<void>;
     getCache(): RollupCache;

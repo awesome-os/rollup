@@ -5,7 +5,7 @@ import type { InclusionContext } from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type JSXEmptyExpression from './JSXEmptyExpression';
 import type * as NodeType from './NodeType';
-import type { ExpressionNode } from './shared/Node';
+import type { ExpressionNode } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 
 export default class JSXExpressionContainer extends NodeBase {

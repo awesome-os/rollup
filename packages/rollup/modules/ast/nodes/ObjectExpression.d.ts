@@ -7,7 +7,7 @@ import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
 import type Property from './Property';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import type { IncludeChildren } from './shared/Node';
+import type { IncludeChildren } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import SpreadElement from './SpreadElement';
 export default class ObjectExpression extends NodeBase implements DeoptimizableEntity {

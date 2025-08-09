@@ -1,9 +1,9 @@
 import type { MaybeArray, MergedRollupOptions, RollupOptions, RollupWatcher } from '@rollup/types';
-import { handleError } from '../../cli/logging';
-import { ensureArray } from '../utils/ensureArray';
-import { error, logInvalidOption } from '../utils/logs';
-import { mergeOptions } from '../utils/options/mergeOptions';
-import { URL_WATCH } from '../utils/urls';
+import { ensureArray } from '../../../ts-src/src/utils/ensureArray';
+import { error, logInvalidOption } from '../../../ts-src/src/utils/logs';
+import { mergeOptions } from '../../../ts-src/src/utils/options/mergeOptions';
+import { URL_WATCH } from '../../../ts-src/src/utils/urls';
+import { handleError } from '../logging';
 import { loadFsEvents } from './fsevents-importer';
 import { WatchEmitter } from './WatchEmitter';
 

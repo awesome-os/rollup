@@ -1,6 +1,5 @@
 import { doNothing } from './doNothing';
 import performance from './performance';
-import process from './process';
 let timers = new Map();
 function getPersistedLabel(label, level) {
     switch (level) {

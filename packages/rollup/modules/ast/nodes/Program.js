@@ -4,6 +4,7 @@ import { logFirstSideEffect, logInvalidAnnotation } from '../../utils/logs';
 import { findFirstLineBreakOutsideComment, renderStatementList } from '../../utils/renderHelpers';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import {} from '@rollup/types';
 export default class Program extends NodeBase {
     constructor() {
         super(...arguments);

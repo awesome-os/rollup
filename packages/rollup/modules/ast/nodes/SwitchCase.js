@@ -1,5 +1,6 @@
 import { findFirstOccurrenceOutsideComment, renderStatementList } from '../../utils/renderHelpers';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import {} from '@rollup/types';
 export default class SwitchCase extends NodeBase {
     hasEffects(context) {
         if (this.test?.hasEffects(context))

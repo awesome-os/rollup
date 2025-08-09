@@ -1,14 +1,14 @@
-import type MagicString from 'magic-string';
 import type { NormalizedJsxOptions } from '@rollup/types';
+import type MagicString from 'magic-string';
+import type { IncludeChildren } from '@rollup/types';
 import { getRenderedJsxChildren } from '../../../utils/jsx';
 import type { RenderOptions } from '../../../utils/renderHelpers';
 import type { InclusionContext } from '../../ExecutionContext';
-import type Variable from '../../variables/Variable';
+import type { Variable } from '../../variables/Variable';
 import JSXEmptyExpression from '../JSXEmptyExpression';
 import JSXExpressionContainer from '../JSXExpressionContainer';
 import type { JSXChild, JsxMode } from './jsxHelpers';
 import { getAndIncludeFactoryVariable } from './jsxHelpers';
-import type { IncludeChildren } from './Node';
 import { doNotDeoptimize, NodeBase } from './Node';
 
 export default class JSXElementBase extends NodeBase {

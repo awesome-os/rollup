@@ -11,7 +11,8 @@ import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import type NamespaceVariable from '../variables/NamespaceVariable';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren } from '@rollup/types';
 export default class ImportExpression extends NodeBase {
     options: ExpressionNode | null;
     inlineNamespace: NamespaceVariable | null;

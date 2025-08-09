@@ -1,4 +1,4 @@
-import type { AnnotationType } from "../rollup/types";
+import type { AnnotationType } from "@rollup/types";
 import type Module from '../Module';
 import type { InternalModuleFormat, LogHandler, NormalizedInputOptions, RollupLog } from 'rollup';
 export declare function error(base: Error | RollupLog): never;

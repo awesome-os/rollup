@@ -1,14 +1,10 @@
+import type { ModuleLoaderResolveId, UnresolvedModule } from '@rollup/types';
+import type { EmittedChunk, ModuleInfo, ModuleOptions, NormalizedInputOptions, PartialNull } from 'rollup';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import Module from './Module';
-import type { UnresolvedModule, ModuleLoaderResolveId } from '@rollup/types';
-import type { EmittedChunk, ModuleInfo, ModuleOptions, NormalizedInputOptions, PartialNull } from 'rollup';
 import type { PluginDriver } from './utils/PluginDriver';
 export declare class ModuleLoader {
-    private readonly graph;
-    private readonly modulesById;
-    private readonly options;
-    private readonly pluginDriver;
     private readonly hasModuleSideEffects;
     private readonly implicitEntryModules;
     private readonly indexedEntryModules;
@@ -17,6 +13,10 @@ export declare class ModuleLoader {
     private readonly modulesWithLoadedDependencies;
     private nextChunkNamePriority;
     private nextEntryModuleIndex;
+    private readonly graph;
+    private readonly modulesById;
+    private readonly options;
+    private readonly pluginDriver;
     constructor(graph: Graph, modulesById: Map<string, Module | ExternalModule>, options: NormalizedInputOptions, pluginDriver: PluginDriver);
     addAdditionalModules(unresolvedModules: readonly string[], isAddForManualChunks: boolean): Promise<Module[]>;
     addEntryModules(unresolvedEntryModules: readonly UnresolvedModule[], isUserDefined: boolean): Promise<{

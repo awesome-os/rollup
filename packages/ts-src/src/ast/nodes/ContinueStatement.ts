@@ -3,10 +3,10 @@ import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type IncludeChildren,
 	onlyIncludeSelfNoDeoptimize,
 	StatementBase
 } from './shared/Node';
+import { type IncludeChildren } from '@rollup/types';
 
 export default class ContinueStatement extends StatementBase {
 	declare label: Identifier | null;

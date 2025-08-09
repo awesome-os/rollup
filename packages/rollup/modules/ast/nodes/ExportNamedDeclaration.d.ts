@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext } from '../ExecutionContext';
-import ClassDeclaration from './ClassDeclaration';
+import { ClassDeclaration } from './ClassDeclaration';
 import type ExportSpecifier from './ExportSpecifier';
 import type FunctionDeclaration from './FunctionDeclaration';
 import type ImportAttribute from './ImportAttribute';

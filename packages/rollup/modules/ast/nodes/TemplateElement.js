@@ -1,11 +1,13 @@
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import {} from '@rollup/types';
 export default class TemplateElement extends NodeBase {
     get tail() {
-        return isFlagSet(this.flags, 1048576 /* Flag.tail */);
+        return isFlagSet(this.flags, Flag.tail);
     }
     set tail(value) {
-        this.flags = setFlag(this.flags, 1048576 /* Flag.tail */, value);
+        this.flags = setFlag(this.flags, Flag.tail, value);
     }
     // Do not try to bind value
     bind() { }

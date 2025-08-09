@@ -1,6 +1,7 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import type { Plugin as RollupPlugin } from '@rollup/types';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+// TODO: Replace vite why should we use that?
 import type { Plugin } from 'vite';
 
 const resolve = (path: string) => fileURLToPath(new URL(`../${path}`, import.meta.url));
@@ -29,7 +30,7 @@ export default function replaceBrowserModules(): Plugin & RollupPlugin {
 		name: 'replace-browser-modules',
 		resolveId(source: string, importer: string | undefined) {
 			if (importer && source[0] === '.') {
-				return resolutions.get(path.join(path.dirname(importer), source));
+				return resolutions.get(join(dirname(importer), source));
 			}
 		},
 		transformIndexHtml(html) {

@@ -11,7 +11,7 @@ import { UNDEFINED_EXPRESSION } from '../values';
 import ExportDefaultVariable from '../variables/ExportDefaultVariable';
 import GlobalVariable from '../variables/GlobalVariable';
 import LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import ChildScope from './ChildScope';
 import type GlobalScope from './GlobalScope';
 

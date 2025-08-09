@@ -17,7 +17,7 @@ import ModuleScope from './ast/scopes/ModuleScope';
 import { UNKNOWN_PATH } from './ast/utils/PathTracker';
 import ExportDefaultVariable from './ast/variables/ExportDefaultVariable';
 import ExportShimVariable from './ast/variables/ExportShimVariable';
-import ExternalVariable from './ast/variables/ExternalVariable';
+import { ExternalVariable } from './ast/variables/ExternalVariable';
 import NamespaceVariable from './ast/variables/NamespaceVariable';
 import SyntheticNamedExportVariable from './ast/variables/SyntheticNamedExportVariable';
 import ExternalModule from './ExternalModule';
@@ -86,9 +86,6 @@ function getAndExtendSideEffectModules(variable, module) {
 }
 export default class Module {
     constructor(graph, id, options, isEntry, moduleSideEffects, syntheticNamedExports, meta, attributes) {
-        this.graph = graph;
-        this.id = id;
-        this.options = options;
         this.alternativeReexportModules = new Map();
         this.chunkFileNames = new Set();
         this.chunkNames = [];
@@ -128,6 +125,14 @@ export default class Module {
         this.syntheticNamespace = null;
         this.transformDependencies = [];
         this.transitiveReexports = null;
+        this.graph = graph;
+        this.id = id;
+        this.options = options;
+        this.isEntry = isEntry;
+        this.moduleSideEffects = moduleSideEffects;
+        this.syntheticNamedExports = syntheticNamedExports;
+        this.meta = meta;
+        this.attributes = attributes;
         this.excludeFromSourcemap = /\0/.test(id);
         this.context = options.moduleContext(id);
         this.preserveSignature = this.options.preserveEntrySignatures;

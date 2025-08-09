@@ -1,6 +1,6 @@
+import type { OrderedExecutionUnit } from '@rollup/types';
 import type ExternalModule from '../ExternalModule';
 import Module from '../Module';
-import { OrderedExecutionUnit } from "../rollup/types";
 
 export const compareExecIndex = <T extends OrderedExecutionUnit>(unitA: T, unitB: T) =>
 	unitA.execIndex > unitB.execIndex ? 1 : -1;

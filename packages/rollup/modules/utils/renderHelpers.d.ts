@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
-import type { Node, StatementNode } from '../ast/nodes/shared/Node';
-import type Variable from '../ast/variables/Variable';
-import type { ImportAttributesKey, InternalModuleFormat } from 'rollup';
+import type { Node, StatementNode } from '@rollup/types';
+import type { Variable } from '../ast/variables/Variable';
+import type { ImportAttributesKey, InternalModuleFormat } from '@rollup/types';
 import type { GenerateCodeSnippets } from './generateCodeSnippets';
 import type { PluginDriver } from './PluginDriver';
 export interface RenderOptions {

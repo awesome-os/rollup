@@ -2,7 +2,8 @@ import type MagicString from 'magic-string';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 export default class YieldExpression extends NodeBase {
     argument: ExpressionNode | null;
     delegate: boolean;

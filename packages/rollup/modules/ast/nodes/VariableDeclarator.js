@@ -7,6 +7,7 @@ import ClassExpression from './ClassExpression';
 import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class VariableDeclarator extends NodeBase {
     declareDeclarator(kind, isUsingDeclaration) {
         this.isUsingDeclaration = isUsingDeclaration;

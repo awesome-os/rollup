@@ -2,6 +2,7 @@ import { UNKNOWN_PATH, UnknownInteger } from '../utils/PathTracker';
 import { UNDEFINED_EXPRESSION, UNKNOWN_LITERAL_NUMBER } from '../values';
 import { ARRAY_PROTOTYPE } from './shared/ArrayPrototype';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 import { ObjectEntity } from './shared/ObjectEntity';
 import SpreadElement from './SpreadElement';
 export default class ArrayExpression extends NodeBase {

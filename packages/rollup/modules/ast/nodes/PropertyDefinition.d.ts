@@ -6,7 +6,8 @@ import type Decorator from './Decorator';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 export default class PropertyDefinition extends NodeBase {
     key: ExpressionNode | PrivateIdentifier;
     static: boolean;

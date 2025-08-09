@@ -1,4 +1,3 @@
-import process from 'node:process';
 function formatAction([pluginName, hookName, parameters]) {
     const action = `(${pluginName}) ${hookName}`;
     const s = JSON.stringify;

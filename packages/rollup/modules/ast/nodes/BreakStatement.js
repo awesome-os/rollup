@@ -1,4 +1,6 @@
+import {} from '../ExecutionContext';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class BreakStatement extends StatementBase {
     hasEffects(context) {
         if (this.label) {

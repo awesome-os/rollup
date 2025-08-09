@@ -1,6 +1,6 @@
-import ClassDeclaration from '../nodes/ClassDeclaration';
+import { ClassDeclaration } from '../nodes/ClassDeclaration';
 import FunctionDeclaration from '../nodes/FunctionDeclaration';
-import Identifier from '../nodes/Identifier';
+import Identifier, {} from '../nodes/Identifier';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import LocalVariable from './LocalVariable';
 import UndefinedVariable from './UndefinedVariable';

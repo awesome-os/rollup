@@ -14,11 +14,12 @@ import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import { tryCastLiteralValueToBoolean } from '../utils/tryCastLiteralValueToBoolean';
 import type * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from './shared/Expression';
 import { MultiExpression } from './shared/MultiExpression';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 
 export default class ConditionalExpression extends NodeBase implements DeoptimizableEntity {

@@ -1,28 +1,3 @@
-import Chunk from '@rollup/ts-src/src/Chunk';
-import ExternalChunk from '@rollup/ts-src/src/ExternalChunk';
-import ExternalModule from '@rollup/ts-src/src/ExternalModule';
-import type Graph from '@rollup/ts-src/src/Graph';
-import Module from '@rollup/ts-src/src/Module';
-import { getChunkAssignments } from '@rollup/ts-src/src/utils/chunkAssignment';
-import commondir from '@rollup/ts-src/src/utils/commondir';
-import { sortByExecutionOrder } from '@rollup/ts-src/src/utils/executionOrder';
-import { getGenerateCodeSnippets } from '@rollup/ts-src/src/utils/generateCodeSnippets';
-import type { HashPlaceholderGenerator } from '@rollup/ts-src/src/utils/hashPlaceholders';
-import { getHashPlaceholderGenerator } from '@rollup/ts-src/src/utils/hashPlaceholders';
-import { LOGLEVEL_WARN } from '@rollup/ts-src/src/utils/logging';
-import {
-	error,
-	logCannotAssignModuleToChunk,
-	logChunkInvalid,
-	logInvalidOption
-} from '@rollup/ts-src/src/utils/logs';
-import type { OutputBundleWithPlaceholders } from '@rollup/ts-src/src/utils/outputBundle';
-import { getOutputBundle, removeUnreferencedAssets } from '@rollup/ts-src/src/utils/outputBundle';
-import { parseAst } from '@rollup/ts-src/src/utils/parseAst';
-import { isAbsolute } from '@rollup/ts-src/src/utils/path';
-import type { PluginDriver } from '@rollup/ts-src/src/utils/PluginDriver';
-import { renderChunks } from '@rollup/ts-src/src/utils/renderChunks';
-import { timeEnd, timeStart } from '@rollup/ts-src/src/utils/timers';
 import type {
 	GetManualChunk,
 	LogHandler,
@@ -30,6 +5,31 @@ import type {
 	NormalizedOutputOptions,
 	OutputBundle
 } from '@rollup/types';
+import Chunk from './Chunk';
+import ExternalChunk from './ExternalChunk';
+import ExternalModule from './ExternalModule';
+import type Graph from './Graph';
+import Module from './Module';
+import { getChunkAssignments } from './utils/chunkAssignment';
+import commondir from './utils/commondir';
+import { sortByExecutionOrder } from './utils/executionOrder';
+import { getGenerateCodeSnippets } from './utils/generateCodeSnippets';
+import type { HashPlaceholderGenerator } from './utils/hashPlaceholders';
+import { getHashPlaceholderGenerator } from './utils/hashPlaceholders';
+import { LOGLEVEL_WARN } from './utils/logging';
+import {
+	error,
+	logCannotAssignModuleToChunk,
+	logChunkInvalid,
+	logInvalidOption
+} from './utils/logs';
+import type { OutputBundleWithPlaceholders } from './utils/outputBundle';
+import { getOutputBundle, removeUnreferencedAssets } from './utils/outputBundle';
+import { parseAst } from './utils/parseAst';
+import { isAbsolute } from './utils/path';
+import type { PluginDriver } from './utils/PluginDriver';
+import { renderChunks } from './utils/renderChunks';
+import { timeEnd, timeStart } from './utils/timers';
 import {
 	URL_OUTPUT_AMD_ID,
 	URL_OUTPUT_DIR,

@@ -1,5 +1,6 @@
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class WhileStatement extends StatementBase {
     hasEffects(context) {
         if (this.test.hasEffects(context))

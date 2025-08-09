@@ -1,4 +1,5 @@
-import { doNotDeoptimize, IS_SKIPPED_CHAIN, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
+import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 export default class ChainExpression extends NodeBase {
     // deoptimizations are not relevant as we are not caching values
     deoptimizeCache() { }

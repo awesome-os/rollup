@@ -13,7 +13,7 @@ import ModuleScope from './ast/scopes/ModuleScope';
 import type { ObjectPath } from './ast/utils/PathTracker';
 import { type EntityPathTracker } from './ast/utils/PathTracker';
 import NamespaceVariable from './ast/variables/NamespaceVariable';
-import type Variable from './ast/variables/Variable';
+import type { Variable } from './ast/variables/Variable';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import type { PureFunctions } from './utils/pureFunctions';
@@ -63,9 +63,6 @@ export type DynamicImport = {
     resolution: Module | ExternalModule | string | null;
 };
 export default class Module {
-    private readonly graph;
-    readonly id: string;
-    private readonly options;
     readonly alternativeReexportModules: Map<Variable, Module>;
     readonly chunkFileNames: Set<string>;
     chunkNames: {
@@ -124,6 +121,14 @@ export default class Module {
     private syntheticNamespace;
     private transformDependencies;
     private transitiveReexports;
+    private readonly graph;
+    readonly id: string;
+    private readonly options;
+    private isEntry;
+    private moduleSideEffects;
+    private syntheticNamedExports;
+    private meta;
+    private attributes;
     constructor(graph: Graph, id: string, options: NormalizedInputOptions, isEntry: boolean, moduleSideEffects: boolean | 'no-treeshake', syntheticNamedExports: boolean | string, meta: CustomPluginOptions, attributes: Record<string, string>);
     basename(): string;
     bindReferences(): void;

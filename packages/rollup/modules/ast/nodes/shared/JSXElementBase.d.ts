@@ -1,9 +1,9 @@
 import type MagicString from 'magic-string';
+import type { IncludeChildren } from '@rollup/types';
 import type { RenderOptions } from '../../../utils/renderHelpers';
 import type { InclusionContext } from '../../ExecutionContext';
-import type Variable from '../../variables/Variable';
+import type { Variable } from '../../variables/Variable';
 import type { JSXChild, JsxMode } from './jsxHelpers';
-import type { IncludeChildren } from './Node';
 import { NodeBase } from './Node';
 export default class JSXElementBase extends NodeBase {
     children: JSXChild[];

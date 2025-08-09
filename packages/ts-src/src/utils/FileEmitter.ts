@@ -1,6 +1,3 @@
-import type Chunk from '../Chunk';
-import type Graph from '../Graph';
-import type Module from '../Module';
 import type {
 	EmittedAsset,
 	EmittedChunk,
@@ -10,8 +7,11 @@ import type {
 	NormalizedOutputOptions,
 	OutputChunk
 } from 'rollup';
+import type Chunk from '../Chunk';
+import type Graph from '../Graph';
+import type Module from '../Module';
+import type { GetHash } from '@rollup/types';
 import { BuildPhase } from './buildPhase';
-import type { GetHash } from "../rollup/types";
 import { getHash64, hasherByType } from './crypto';
 import { getOrCreate } from './getOrCreate';
 import { DEFAULT_HASH_SIZE, MAX_HASH_SIZE } from './hashPlaceholders';
@@ -120,13 +120,13 @@ type ConsumedFile = ConsumedChunk | ConsumedAsset | ConsumedPrebuiltChunk;
 
 type EmittedFileType = ConsumedFile['type'];
 
-interface EmittedFile {
+type EmittedFile = {
 	[key: string]: unknown;
 	fileName?: string;
 	name?: string;
 	originalFileName?: string | null;
 	type: EmittedFileType;
-}
+};
 
 const emittedFileTypes = new Set<EmittedFileType>(['chunk', 'asset', 'prebuilt-chunk']);
 
@@ -186,12 +186,12 @@ function getChunkFileName(
 	return error(logChunkNotGeneratedForFileName(file.fileName || file.name));
 }
 
-interface FileEmitterOutput {
+type FileEmitterOutput = {
 	bundle: OutputBundleWithPlaceholders;
 	fileNamesBySourceHash: Map<string, string>;
 	outputOptions: NormalizedOutputOptions;
 	getHash: GetHash;
-}
+};
 
 export class FileEmitter {
 	private facadeChunkByModule: ReadonlyMap<Module, Chunk> | null = null;
@@ -200,11 +200,14 @@ export class FileEmitter {
 	private output: FileEmitterOutput | null = null;
 	private outputFileEmitters: FileEmitter[] = [];
 
-	constructor(
-		private readonly graph: Graph,
-		private readonly options: NormalizedInputOptions,
-		baseFileEmitter?: FileEmitter
-	) {
+	private readonly graph: Graph;
+	private readonly options: NormalizedInputOptions;
+	private readonly baseFileEmitter?: FileEmitter;
+
+	constructor(graph: Graph, options: NormalizedInputOptions, baseFileEmitter?: FileEmitter) {
+		this.graph = graph;
+		this.options = options;
+		this.baseFileEmitter = baseFileEmitter;
 		this.filesByReferenceId = baseFileEmitter
 			? new Map(baseFileEmitter.filesByReferenceId)
 			: new Map();

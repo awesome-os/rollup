@@ -3,8 +3,10 @@ import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../utils/PathTracker';
 import { getRenderedLiteralValue } from '../utils/renderLiteralValue';
 import Identifier from './Identifier';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from './shared/Expression';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import {} from '@rollup/types';
 const unaryOperators = {
     '!': value => !value,
     '+': value => +value,
@@ -21,10 +23,10 @@ export default class UnaryExpression extends NodeBase {
         this.renderedLiteralValue = UNASSIGNED;
     }
     get prefix() {
-        return isFlagSet(this.flags, 2097152 /* Flag.prefix */);
+        return isFlagSet(this.flags, Flag.prefix);
     }
     set prefix(value) {
-        this.flags = setFlag(this.flags, 2097152 /* Flag.prefix */, value);
+        this.flags = setFlag(this.flags, Flag.prefix, value);
     }
     deoptimizeCache() {
         this.renderedLiteralValue = UnknownValue;

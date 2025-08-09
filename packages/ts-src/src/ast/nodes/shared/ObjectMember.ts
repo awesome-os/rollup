@@ -5,11 +5,13 @@ import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import { ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
 
 export class ObjectMember extends ExpressionEntity {
-	constructor(
-		private readonly object: ExpressionEntity,
-		private readonly path: ObjectPath
-	) {
+	private readonly object: ExpressionEntity;
+	private readonly path: ObjectPath;
+
+	constructor(object: ExpressionEntity, path: ObjectPath) {
 		super();
+		this.object = object;
+		this.path = path;
 	}
 
 	deoptimizeArgumentsOnInteractionAtPath(

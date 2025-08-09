@@ -1,14 +1,14 @@
 import type MagicString from 'magic-string';
+import type { GenericEsTreeNode } from '@rollup/types';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import type ChildScope from '../scopes/ChildScope';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import Identifier, { type IdentifierWithVariable } from './Identifier';
 import type * as NodeType from './NodeType';
 import ClassNode from './shared/ClassNode';
-import type { GenericEsTreeNode } from './shared/Node';
 
-export default class ClassDeclaration extends ClassNode {
+export class ClassDeclaration extends ClassNode {
 	declare id: IdentifierWithVariable | null;
 	declare type: NodeType.tClassDeclaration;
 

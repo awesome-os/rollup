@@ -1,5 +1,6 @@
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class YieldExpression extends NodeBase {
     applyDeoptimizations() {
         this.deoptimized = true;

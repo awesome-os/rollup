@@ -4,6 +4,7 @@ import { UNKNOWN_PATH } from '../utils/PathTracker';
 import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import FunctionBase from './shared/FunctionBase';
 import { ObjectEntity } from './shared/ObjectEntity';
 import { OBJECT_PROTOTYPE } from './shared/ObjectPrototype';
@@ -13,10 +14,10 @@ export default class ArrowFunctionExpression extends FunctionBase {
         this.objectEntity = null;
     }
     get expression() {
-        return isFlagSet(this.flags, 8388608 /* Flag.expression */);
+        return isFlagSet(this.flags, Flag.expression);
     }
     set expression(value) {
-        this.flags = setFlag(this.flags, 8388608 /* Flag.expression */, value);
+        this.flags = setFlag(this.flags, Flag.expression, value);
     }
     createScope(parentScope) {
         this.scope = new ReturnValueScope(parentScope, false);

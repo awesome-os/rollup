@@ -14,7 +14,8 @@ import {
 	SHARED_RECURSION_TRACKER
 } from '../../utils/PathTracker';
 import type PrivateIdentifier from '../PrivateIdentifier';
-import { Flag, isFlagSet, setFlag } from './BitFlags';
+import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import {
 	type ExpressionEntity,
 	type LiteralValueOrUnknown,
@@ -22,10 +23,10 @@ import {
 } from './Expression';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
 	NodeBase,
 	onlyIncludeSelfNoDeoptimize
 } from './Node';
+import { type ExpressionNode } from '@rollup/types';
 import type { DeclarationPatternNode } from './Pattern';
 
 export default class MethodBase extends NodeBase implements DeoptimizableEntity {

@@ -9,7 +9,8 @@ import {
 	UnknownKey
 } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 export default class SpreadElement extends NodeBase {
 	declare argument: ExpressionNode;

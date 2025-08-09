@@ -3,7 +3,8 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import { type InclusionContext } from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, StatementBase } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 
 export default class ThrowStatement extends StatementBase {
 	declare argument: ExpressionNode;

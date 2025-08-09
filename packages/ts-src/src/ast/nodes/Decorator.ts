@@ -2,7 +2,8 @@ import type { HasEffectsContext } from '../ExecutionContext';
 import { NODE_INTERACTION_UNKNOWN_CALL } from '../NodeInteractions';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionNode, NodeBase, onlyIncludeSelf } from './shared/Node';
+import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 export default class Decorator extends NodeBase {
 	declare type: NodeType.tDecorator;

@@ -1,3 +1,4 @@
+import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from '@rollup/types';
 import type MagicString from 'magic-string';
 import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
@@ -6,7 +7,6 @@ import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import CallExpressionBase from './shared/CallExpressionBase';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import type { ChainElement, ExpressionNode, IncludeChildren, SkippedChain } from './shared/Node';
 import type SpreadElement from './SpreadElement';
 import type Super from './Super';
 export default class CallExpression extends CallExpressionBase implements DeoptimizableEntity, ChainElement {

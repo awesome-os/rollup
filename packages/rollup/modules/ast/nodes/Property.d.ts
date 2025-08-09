@@ -6,7 +6,7 @@ import type LocalVariable from '../variables/LocalVariable';
 import type * as NodeType from './NodeType';
 import { type ExpressionEntity } from './shared/Expression';
 import MethodBase from './shared/MethodBase';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import type { DeclarationPatternNode } from './shared/Pattern';
 import type { VariableKind } from './shared/VariableKinds';
 export default class Property extends MethodBase implements DeclarationPatternNode {

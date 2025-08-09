@@ -1,15 +1,14 @@
 import type { FSWatcher } from 'chokidar';
-import chokidar from 'chokidar';
+import { watch } from 'chokidar';
 import dateTime from 'date-time';
 import { readFile } from 'node:fs/promises';
-import process from 'node:process';
 import ms from 'pretty-ms';
 import { onExit } from 'signal-exit';
-import * as rollup from '../../src/node-entry';
 import type { MergedRollupOptions, RollupWatcher } from '../../src/rollup/types';
 import { bold, cyan, green, underline } from '../../src/utils/colors';
 import { relativeId } from '../../src/utils/relativeId';
 import { handleError, stderr } from '../logging';
+import * as rollup from '../node-entry';
 import { getConfigPath } from './getConfigPath';
 import { loadConfigFile } from './loadConfigFile';
 import type { BatchWarnings } from './loadConfigFileType';
@@ -18,7 +17,7 @@ import { getResetScreen } from './resetScreen';
 import { printTimings } from './timings';
 import { createWatchHooks } from './watchHooks';
 
-export async function watch(command: Record<string, any>): Promise<void> {
+export async function watchRollup(command: Record<string, any>): Promise<void> {
 	process.env.ROLLUP_WATCH = 'true';
 	const isTTY = process.stderr.isTTY;
 	const silent = command.silent;
@@ -35,7 +34,7 @@ export async function watch(command: Record<string, any>): Promise<void> {
 		let configFileData: string | null = null;
 		let configFileRevision = 0;
 
-		configWatcher = chokidar.watch(configFile).on('change', reloadConfigFile);
+		configWatcher = watch(configFile).on('change', reloadConfigFile);
 		await reloadConfigFile();
 
 		async function reloadConfigFile() {

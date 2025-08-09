@@ -1,8 +1,8 @@
 export default class Queue {
     constructor(maxParallel) {
-        this.maxParallel = maxParallel;
         this.queue = [];
         this.workerCount = 0;
+        this.maxParallel = maxParallel;
     }
     run(task) {
         return new Promise((resolve, reject) => {

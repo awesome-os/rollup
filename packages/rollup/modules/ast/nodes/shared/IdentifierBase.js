@@ -6,8 +6,10 @@ import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
 import GlobalVariable from '../../variables/GlobalVariable';
 import LocalVariable from '../../variables/LocalVariable';
 import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import { UNKNOWN_EXPRESSION } from './Expression';
 import { NodeBase } from './Node';
+import {} from '@rollup/types';
 const tdzVariableKinds = new Set(['class', 'const', 'let', 'var', 'using', 'await using']);
 export default class IdentifierBase extends NodeBase {
     constructor() {
@@ -16,14 +18,14 @@ export default class IdentifierBase extends NodeBase {
         this.isVariableReference = false;
     }
     get isTDZAccess() {
-        if (!isFlagSet(this.flags, 4 /* Flag.tdzAccessDefined */)) {
+        if (!isFlagSet(this.flags, Flag.tdzAccessDefined)) {
             return null;
         }
-        return isFlagSet(this.flags, 8 /* Flag.tdzAccess */);
+        return isFlagSet(this.flags, Flag.tdzAccess);
     }
     set isTDZAccess(value) {
-        this.flags = setFlag(this.flags, 4 /* Flag.tdzAccessDefined */, true);
-        this.flags = setFlag(this.flags, 8 /* Flag.tdzAccess */, value);
+        this.flags = setFlag(this.flags, Flag.tdzAccessDefined, true);
+        this.flags = setFlag(this.flags, Flag.tdzAccess, value);
     }
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         this.variable.deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker);

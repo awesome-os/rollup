@@ -7,8 +7,9 @@ import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import type { InclusionOptions } from './shared/Expression';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
-import type { IncludeChildren } from './shared/Node';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import type { IncludeChildren } from '@rollup/types';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 declare const UNASSIGNED: unique symbol;
 export default class UnaryExpression extends NodeBase {
     argument: ExpressionNode;

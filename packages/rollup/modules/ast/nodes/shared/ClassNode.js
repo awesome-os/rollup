@@ -1,3 +1,4 @@
+import {} from '../../ExecutionContext';
 import { INTERACTION_CALLED } from '../../NodeInteractions';
 import ChildScope from '../../scopes/ChildScope';
 import { checkEffectForNodes } from '../../utils/checkEffectForNodes';
@@ -5,7 +6,9 @@ import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH, UnknownKey } from '
 import Identifier from '../Identifier';
 import MethodDefinition from '../MethodDefinition';
 import { isStaticBlock } from '../StaticBlock';
+import {} from './Expression';
 import { NodeBase, onlyIncludeSelf } from './Node';
+import {} from '@rollup/types';
 import { ObjectEntity } from './ObjectEntity';
 import { ObjectMember } from './ObjectMember';
 import { OBJECT_PROTOTYPE } from './ObjectPrototype';

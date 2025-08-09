@@ -1,4 +1,5 @@
 import type MagicString from 'magic-string';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace,
@@ -12,17 +13,11 @@ import type ModuleScope from '../scopes/ModuleScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type ExportDefaultVariable from '../variables/ExportDefaultVariable';
-import ClassDeclaration from './ClassDeclaration';
+import { ClassDeclaration } from './ClassDeclaration';
 import FunctionDeclaration from './FunctionDeclaration';
 import type Identifier from './Identifier';
 import * as NodeType from './NodeType';
-import {
-	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
-	NodeBase,
-	onlyIncludeSelfNoDeoptimize
-} from './shared/Node';
+import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 
 // The header ends at the first non-white-space after "default"
 function getDeclarationStart(code: string, start: number): number {

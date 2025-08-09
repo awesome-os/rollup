@@ -7,7 +7,8 @@ import type ClassBody from '../ClassBody';
 import type Decorator from '../Decorator';
 import Identifier from '../Identifier';
 import { type ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './Node';
+import { NodeBase } from './Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 export default class ClassNode extends NodeBase implements DeoptimizableEntity {
     body: ClassBody;
     id: Identifier | null;

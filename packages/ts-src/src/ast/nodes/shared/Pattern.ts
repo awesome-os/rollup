@@ -3,7 +3,7 @@ import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext
 import type { ObjectPath } from '../../utils/PathTracker';
 import type LocalVariable from '../../variables/LocalVariable';
 import type { ExpressionEntity } from './Expression';
-import type { Node } from './Node';
+import type { Node } from '@rollup/types';
 import type { VariableKind } from './VariableKinds';
 
 export interface PatternNode extends WritableEntity, Node {

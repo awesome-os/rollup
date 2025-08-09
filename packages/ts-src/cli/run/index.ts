@@ -3,8 +3,8 @@ import type { MergedRollupOptions } from '../../src/rollup/types';
 import { logDuplicateImportOptions, logFailAfterWarnings } from '../../src/utils/logs';
 import { isWatchEnabled } from '../../src/utils/options/mergeOptions';
 import { getAliasName } from '../../src/utils/relativeId';
-import { loadFsEvents } from '../../src/watch/fsevents-importer';
 import { handleError } from '../logging';
+import { loadFsEvents } from '../watch/fsevents-importer';
 import build from './build';
 import { getConfigPath } from './getConfigPath';
 import { loadConfigFile } from './loadConfigFile';
@@ -54,8 +54,8 @@ export default async function runRollup(command: Record<string, any>): Promise<v
 
 	if (isWatchEnabled(command.watch)) {
 		await loadFsEvents();
-		const { watch } = await import('./watch-cli');
-		await watch(command);
+		const { watchRollup } = await import('./watch-cli');
+		await watchRollup(command);
 	} else {
 		try {
 			const { options, warnings } = await getConfigs(command);

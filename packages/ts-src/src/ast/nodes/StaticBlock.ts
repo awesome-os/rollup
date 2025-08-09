@@ -10,11 +10,9 @@ import type ChildScope from '../scopes/ChildScope';
 import * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type IncludeChildren,
 	onlyIncludeSelfNoDeoptimize,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+	StatementBase} from './shared/Node';
+import { type IncludeChildren, type StatementNode } from '@rollup/types';
 
 export default class StaticBlock extends StatementBase {
 	declare body: readonly StatementNode[];

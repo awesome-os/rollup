@@ -1,6 +1,7 @@
 import { BLANK } from '../../utils/blank';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class AssignmentPattern extends NodeBase {
     addExportedVariables(variables, exportNamesByVariable) {
         this.left.addExportedVariables(variables, exportNamesByVariable);

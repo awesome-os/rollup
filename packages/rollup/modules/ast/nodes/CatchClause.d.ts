@@ -2,7 +2,8 @@ import type ChildScope from '../scopes/ChildScope';
 import ParameterScope from '../scopes/ParameterScope';
 import BlockStatement from './BlockStatement';
 import type * as NodeType from './NodeType';
-import { type GenericEsTreeNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 import type { DeclarationPatternNode } from './shared/Pattern';
 export default class CatchClause extends NodeBase {
     body: BlockStatement;

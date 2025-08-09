@@ -1,4 +1,4 @@
-import ExternalVariable from './ast/variables/ExternalVariable';
+import { ExternalVariable } from './ast/variables/ExternalVariable';
 import { EMPTY_ARRAY } from './utils/blank';
 import { cacheObjectGetters } from './utils/getter';
 import { makeLegal } from './utils/identifierHelpers';
@@ -6,9 +6,6 @@ import { LOGLEVEL_WARN } from './utils/logging';
 import { logUnusedExternalImports } from './utils/logs';
 export default class ExternalModule {
     constructor(options, id, moduleSideEffects, meta, renormalizeRenderPath, attributes) {
-        this.options = options;
-        this.id = id;
-        this.renormalizeRenderPath = renormalizeRenderPath;
         this.dynamicImporters = [];
         this.execIndex = Infinity;
         this.exportedVariables = new Map();
@@ -18,6 +15,9 @@ export default class ExternalModule {
         this.declarations = new Map();
         this.mostCommonSuggestion = 0;
         this.nameSuggestions = new Map();
+        this.options = options;
+        this.id = id;
+        this.renormalizeRenderPath = renormalizeRenderPath;
         this.suggestedVariableName = makeLegal(id.split(/[/\\]/).pop());
         const { importers, dynamicImporters } = this;
         this.info = {

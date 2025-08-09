@@ -5,7 +5,8 @@ import type { NodeInteraction } from '../NodeInteractions';
 import type { ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 import type TemplateElement from './TemplateElement';
 export default class TemplateLiteral extends NodeBase {
     expressions: ExpressionNode[];

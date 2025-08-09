@@ -1,6 +1,7 @@
 import { NODE_INTERACTION_UNKNOWN_ACCESS } from '../NodeInteractions';
 import { UNKNOWN_PATH, UnknownKey } from '../utils/PathTracker';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class SpreadElement extends NodeBase {
     deoptimizeArgumentsOnInteractionAtPath(interaction, path, recursionTracker) {
         if (path.length > 0) {

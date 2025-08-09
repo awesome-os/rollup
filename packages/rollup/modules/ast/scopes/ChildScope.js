@@ -3,9 +3,9 @@ import Scope from './Scope';
 export default class ChildScope extends Scope {
     constructor(parent, context) {
         super();
+        this.accessedOutsideVariables = new Map();
         this.parent = parent;
         this.context = context;
-        this.accessedOutsideVariables = new Map();
         parent.children.push(this);
     }
     addAccessedDynamicImport(importExpression) {

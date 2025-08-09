@@ -4,7 +4,7 @@ import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type { EntityPathTracker, ObjectPath, SymbolToStringTag } from '../../utils/PathTracker';
 import type { LiteralValue } from '../Literal';
-import type { IncludeChildren } from './Node';
+import type { IncludeChildren } from '@rollup/types';
 export declare const UnknownValue: unique symbol;
 export declare const UnknownTruthyValue: unique symbol;
 export declare const UnknownFalsyValue: unique symbol;

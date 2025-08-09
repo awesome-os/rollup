@@ -1,7 +1,7 @@
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
-import Identifier from './Identifier';
+import Identifier, {} from './Identifier';
 import ClassNode from './shared/ClassNode';
-export default class ClassDeclaration extends ClassNode {
+export class ClassDeclaration extends ClassNode {
     initialise() {
         super.initialise();
         if (this.id !== null) {

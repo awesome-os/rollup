@@ -3,6 +3,7 @@ import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { getMemberReturnExpressionWhenCalled, hasMemberEffectWhenCalled, literalStringMembers } from '../values';
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class TemplateLiteral extends NodeBase {
     deoptimizeArgumentsOnInteractionAtPath() { }
     getLiteralValueAtPath(path) {

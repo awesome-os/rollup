@@ -1,5 +1,5 @@
 import type { AstContext } from '../../Module';
-import ClassDeclaration from '../nodes/ClassDeclaration';
+import { ClassDeclaration } from '../nodes/ClassDeclaration';
 import type ExportDefaultDeclaration from '../nodes/ExportDefaultDeclaration';
 import FunctionDeclaration from '../nodes/FunctionDeclaration';
 import Identifier, { type IdentifierWithVariable } from '../nodes/Identifier';
@@ -8,7 +8,7 @@ import type { NodeBase } from '../nodes/shared/Node';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import LocalVariable from './LocalVariable';
 import UndefinedVariable from './UndefinedVariable';
-import type Variable from './Variable';
+import type { Variable } from './Variable';
 
 export default class ExportDefaultVariable extends LocalVariable {
 	hasId = false;

@@ -1,5 +1,5 @@
 import type { InclusionContext } from '../../ExecutionContext';
-import type Variable from '../../variables/Variable';
+import type { Variable } from '../../variables/Variable';
 import type JSXElement from '../JSXElement';
 import type JSXExpressionContainer from '../JSXExpressionContainer';
 import type JSXFragment from '../JSXFragment';

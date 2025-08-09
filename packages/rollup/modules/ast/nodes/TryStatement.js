@@ -1,4 +1,6 @@
-import { doNotDeoptimize, INCLUDE_PARAMETERS, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
+import {} from '@rollup/types';
+import { INCLUDE_PARAMETERS } from './shared/Node';
 export default class TryStatement extends StatementBase {
     constructor() {
         super(...arguments);

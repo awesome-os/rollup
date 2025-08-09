@@ -2,7 +2,7 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteractionAssigned } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath, UnknownInteger, UnknownKey } from '../utils/PathTracker';
 import type LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity } from './shared/Expression';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';

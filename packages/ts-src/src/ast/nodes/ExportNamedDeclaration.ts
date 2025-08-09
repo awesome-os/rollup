@@ -1,13 +1,14 @@
 import type MagicString from 'magic-string';
+import { type Node } from '@rollup/types';
 import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext } from '../ExecutionContext';
-import ClassDeclaration from './ClassDeclaration';
+import { ClassDeclaration } from './ClassDeclaration';
 import type ExportSpecifier from './ExportSpecifier';
 import type FunctionDeclaration from './FunctionDeclaration';
 import type ImportAttribute from './ImportAttribute';
 import type Literal from './Literal';
 import type * as NodeType from './NodeType';
-import { doNotDeoptimize, type Node, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
+import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 import type VariableDeclaration from './VariableDeclaration';
 
 export default class ExportNamedDeclaration extends NodeBase {

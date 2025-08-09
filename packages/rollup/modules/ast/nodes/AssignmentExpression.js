@@ -9,6 +9,7 @@ import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class AssignmentExpression extends NodeBase {
     constructor() {
         super(...arguments);

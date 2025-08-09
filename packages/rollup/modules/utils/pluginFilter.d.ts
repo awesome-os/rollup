@@ -1,4 +1,4 @@
-import type { StringFilter } from 'rollup';
+import type { StringFilter } from '@rollup/types';
 export type PluginFilter = (input: string) => boolean;
 export type TransformHookFilter = (id: string, code: string) => boolean;
 export declare function createFilterForId(filter: StringFilter | undefined): PluginFilter | undefined;

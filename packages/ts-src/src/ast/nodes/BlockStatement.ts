@@ -1,20 +1,15 @@
 import type MagicString from 'magic-string';
+import { type IncludeChildren, type Node, type StatementNode } from '@rollup/types';
 import { type RenderOptions, renderStatementList } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import ExpressionStatement from './ExpressionStatement';
 import * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
-import {
-	doNotDeoptimize,
-	type IncludeChildren,
-	type Node,
-	onlyIncludeSelfNoDeoptimize,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+import { Flag } from "./shared/BitFlags";
+import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 
 export default class BlockStatement extends StatementBase {
 	declare body: readonly StatementNode[];

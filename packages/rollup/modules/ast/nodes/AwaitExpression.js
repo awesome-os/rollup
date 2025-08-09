@@ -1,6 +1,7 @@
 import ArrowFunctionExpression from './ArrowFunctionExpression';
 import FunctionNode from './shared/FunctionNode';
 import { NodeBase } from './shared/Node';
+import {} from '@rollup/types';
 export default class AwaitExpression extends NodeBase {
     hasEffects() {
         if (!this.deoptimized)

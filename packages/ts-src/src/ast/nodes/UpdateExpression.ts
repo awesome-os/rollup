@@ -12,7 +12,7 @@ import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';
 import Identifier from './Identifier';
 import * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 
 export default class UpdateExpression extends NodeBase {

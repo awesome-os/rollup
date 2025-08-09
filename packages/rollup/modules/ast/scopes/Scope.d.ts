@@ -4,7 +4,7 @@ import type { ExpressionEntity } from '../nodes/shared/Expression';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import type { ObjectPath } from '../utils/PathTracker';
 import LocalVariable from '../variables/LocalVariable';
-import type Variable from '../variables/Variable';
+import type { Variable } from '../variables/Variable';
 import type ChildScope from './ChildScope';
 export default class Scope {
     readonly children: ChildScope[];

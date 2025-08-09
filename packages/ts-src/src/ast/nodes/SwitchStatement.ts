@@ -8,7 +8,7 @@ import {
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import type * as NodeType from './NodeType';
-import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from '@rollup/types';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 import type SwitchCase from './SwitchCase';
 

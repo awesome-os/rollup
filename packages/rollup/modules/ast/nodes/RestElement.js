@@ -1,4 +1,5 @@
 import { EMPTY_PATH, UnknownKey } from '../utils/PathTracker';
+import {} from './shared/Expression';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 export default class RestElement extends NodeBase {
     constructor() {

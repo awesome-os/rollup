@@ -2,7 +2,8 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type BlockStatement from './BlockStatement';
 import type CatchClause from './CatchClause';
 import type * as NodeType from './NodeType';
-import { type IncludeChildren, StatementBase } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type IncludeChildren } from '@rollup/types';
 export default class TryStatement extends StatementBase {
     block: BlockStatement;
     finalizer: BlockStatement | null;

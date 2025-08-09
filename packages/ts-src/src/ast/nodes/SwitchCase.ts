@@ -9,12 +9,12 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	NodeBase,
-	onlyIncludeSelfNoDeoptimize,
-	type StatementNode
-} from './shared/Node';
+	onlyIncludeSelfNoDeoptimize} from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren, type StatementNode
+} from '@rollup/types';
 
 export default class SwitchCase extends NodeBase {
 	declare consequent: readonly StatementNode[];

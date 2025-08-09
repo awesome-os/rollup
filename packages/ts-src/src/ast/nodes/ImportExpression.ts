@@ -32,16 +32,19 @@ import Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
 import type * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import FunctionNode from './shared/FunctionNode';
-import type { Node } from './shared/Node';
+import type { Node } from '@rollup/types';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type GenericEsTreeNode,
-	type IncludeChildren,
 	NodeBase
 } from './shared/Node';
+import {
+	type ExpressionNode,
+	type GenericEsTreeNode,
+	type IncludeChildren
+} from '@rollup/types';
 import VariableDeclarator from './VariableDeclarator';
 
 interface DynamicImportMechanism {

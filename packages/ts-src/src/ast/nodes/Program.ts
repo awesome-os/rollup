@@ -1,6 +1,6 @@
 import { locate } from 'locate-character';
 import type MagicString from 'magic-string';
-import type { RollupAnnotation } from "../../rollup/types";
+import type { RollupAnnotation } from "@rollup/types";
 import { LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../utils/logging';
 import { logFirstSideEffect, logInvalidAnnotation } from '../../utils/logs';
 import {
@@ -13,11 +13,9 @@ import { createHasEffectsContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type IncludeChildren,
 	NodeBase,
-	onlyIncludeSelfNoDeoptimize,
-	type StatementNode
-} from './shared/Node';
+	onlyIncludeSelfNoDeoptimize} from './shared/Node';
+import { type IncludeChildren, type StatementNode } from '@rollup/types';
 
 export default class Program extends NodeBase {
 	declare body: readonly StatementNode[];

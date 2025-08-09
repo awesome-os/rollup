@@ -1,4 +1,3 @@
-import process from 'node:process';
 import type { MergedRollupOptions } from '../../src/rollup/types';
 import { mergeOptions } from '../../src/utils/options/mergeOptions';
 import batchWarnings from './batchWarnings';

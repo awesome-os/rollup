@@ -1,33 +1,3 @@
-import Bundle from '@rollup/ts-src/src/Bundle';
-import Graph from '@rollup/ts-src/src/Graph';
-import { catchUnfinishedHookActions } from '@rollup/ts-src/src/utils/hookActions';
-import initWasm from '@rollup/ts-src/src/utils/initWasm';
-import { getLogger } from '@rollup/ts-src/src/utils/logger';
-import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '@rollup/ts-src/src/utils/logging';
-import { getLogHandler } from '@rollup/ts-src/src/utils/logHandler';
-import {
-	error,
-	getRollupError,
-	logAlreadyClosed,
-	logCannotEmitFromOptionsHook,
-	logMissingFileOrDirOption,
-	logPluginError
-} from '@rollup/ts-src/src/utils/logs';
-import { normalizeInputOptions } from '@rollup/ts-src/src/utils/options/normalizeInputOptions';
-import { normalizeOutputOptions } from '@rollup/ts-src/src/utils/options/normalizeOutputOptions';
-import {
-	getOnLog,
-	normalizeLog,
-	normalizePluginOption
-} from '@rollup/ts-src/src/utils/options/options';
-import { dirname, resolve } from '@rollup/ts-src/src/utils/path';
-import type { PluginDriver } from '@rollup/ts-src/src/utils/PluginDriver';
-import { getSortedValidatedPlugins } from '@rollup/ts-src/src/utils/PluginDriver';
-import {
-	ANONYMOUS_OUTPUT_PLUGIN_PREFIX,
-	ANONYMOUS_PLUGIN_PREFIX
-} from '@rollup/ts-src/src/utils/pluginNames';
-import { getTimings, initialiseTimers, timeEnd, timeStart } from '@rollup/ts-src/src/utils/timers';
 import type {
 	InputOptions,
 	NormalizedInputOptions,
@@ -44,6 +14,32 @@ import type {
 	RollupWatcher
 } from '@rollup/types';
 import { rollupVersion } from 'rollup/version.js';
+import Bundle from '../../src/Bundle';
+import Graph from '../../src/Graph';
+import { catchUnfinishedHookActions } from '../../src/utils/hookActions';
+import initWasm from '../../src/utils/initWasm';
+import { getLogger } from '../../src/utils/logger';
+import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../src/utils/logging';
+import { getLogHandler } from '../../src/utils/logHandler';
+import {
+	error,
+	getRollupError,
+	logAlreadyClosed,
+	logCannotEmitFromOptionsHook,
+	logMissingFileOrDirOption,
+	logPluginError
+} from '../../src/utils/logs';
+import { normalizeInputOptions } from '../../src/utils/options/normalizeInputOptions';
+import { normalizeOutputOptions } from '../../src/utils/options/normalizeOutputOptions';
+import { getOnLog, normalizeLog, normalizePluginOption } from '../../src/utils/options/options';
+import { dirname, resolve } from '../../src/utils/path';
+import type { PluginDriver } from '../../src/utils/PluginDriver';
+import { getSortedValidatedPlugins } from '../../src/utils/PluginDriver';
+import {
+	ANONYMOUS_OUTPUT_PLUGIN_PREFIX,
+	ANONYMOUS_PLUGIN_PREFIX
+} from '../../src/utils/pluginNames';
+import { getTimings, initialiseTimers, timeEnd, timeStart } from '../../src/utils/timers';
 import { makeMap, SortingFileTypeArray } from './makeMap';
 
 // @ts-expect-error TS2540: the polyfill of `asyncDispose`.

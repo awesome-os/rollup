@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { InternalModuleFormat } from 'rollup';
+import type { InternalModuleFormat } from '@rollup/types';
 import type { PluginDriver } from '../../utils/PluginDriver';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { NodeInteraction } from '../NodeInteractions';

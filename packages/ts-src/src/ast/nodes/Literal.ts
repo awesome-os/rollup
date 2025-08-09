@@ -20,7 +20,8 @@ import {
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
-import { type GenericEsTreeNode, NodeBase, onlyIncludeSelf } from './shared/Node';
+import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import { type GenericEsTreeNode } from '@rollup/types';
 
 export type LiteralValue = string | boolean | null | number | RegExp | undefined;
 export type LiteralValueOrBigInt = LiteralValue | bigint;

@@ -14,7 +14,8 @@ import { getRenderedLiteralValue } from '../utils/renderLiteralValue';
 import Identifier from './Identifier';
 import type { LiteralValue } from './Literal';
 import type * as NodeType from './NodeType';
-import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
+import { isFlagSet, setFlag } from './shared/BitFlags';
+import { Flag } from "./shared/BitFlags";
 import type { InclusionOptions } from './shared/Expression';
 import {
 	type LiteralValueOrUnknown,
@@ -22,8 +23,9 @@ import {
 	UnknownTruthyValue,
 	UnknownValue
 } from './shared/Expression';
-import type { IncludeChildren } from './shared/Node';
-import { type ExpressionNode, NodeBase, onlyIncludeSelf } from './shared/Node';
+import type { IncludeChildren } from '@rollup/types';
+import { NodeBase, onlyIncludeSelf } from './shared/Node';
+import { type ExpressionNode } from '@rollup/types';
 
 const unaryOperators: Record<string, (value: LiteralValue) => LiteralValueOrUnknown> = {
 	'!': value => !value,

@@ -1,8 +1,8 @@
+import type { HookAction, ReplaceContext } from '@rollup/types';
+import type { AddonHookFunction, AddonHooks, AsyncPluginHooks, EmitFile, FirstPluginHooks, FunctionPluginHooks, NormalizedInputOptions, NormalizedOutputOptions, ParallelPluginHooks, Plugin, SequentialPluginHooks, SerializablePluginCache, SyncPluginHooks } from 'rollup';
 import type Chunk from '../Chunk';
 import type Graph from '../Graph';
 import type Module from '../Module';
-import type { AddonHookFunction, AddonHooks, AsyncPluginHooks, EmitFile, FirstPluginHooks, FunctionPluginHooks, NormalizedInputOptions, NormalizedOutputOptions, ParallelPluginHooks, Plugin, SequentialPluginHooks, SerializablePluginCache, SyncPluginHooks } from 'rollup';
-import { HookAction, ReplaceContext } from '@rollup/types';
 import type { OutputBundleWithPlaceholders } from './outputBundle';
 /**
  * Get the type of the first argument in a function.
@@ -10,9 +10,6 @@ import type { OutputBundleWithPlaceholders } from './outputBundle';
  */
 type Argument0<H extends keyof FunctionPluginHooks> = Parameters<FunctionPluginHooks[H]>[0];
 export declare class PluginDriver {
-    private readonly graph;
-    private readonly options;
-    private readonly pluginCache;
     readonly emitFile: EmitFile;
     finaliseAssets: () => void;
     getFileName: (fileReferenceId: string) => string;
@@ -24,7 +21,10 @@ export declare class PluginDriver {
     private readonly sortedPlugins;
     private readonly unfulfilledActions;
     private readonly compiledPluginFilters;
-    constructor(graph: Graph, options: NormalizedInputOptions, userPlugins: readonly Plugin[], pluginCache: Record<string, SerializablePluginCache> | undefined, basePluginDriver?: PluginDriver);
+    private readonly graph;
+    private readonly options;
+    private readonly pluginCache?;
+    constructor(graph: Graph, options: NormalizedInputOptions, userPlugins: readonly Plugin[], pluginCache?: Record<string, SerializablePluginCache>, basePluginDriver?: PluginDriver);
     createOutputPluginDriver(plugins: readonly Plugin[]): PluginDriver;
     getUnfulfilledHookActions(): Set<HookAction>;
     hookFirst<H extends AsyncPluginHooks & FirstPluginHooks>(hookName: H, parameters: Parameters<FunctionPluginHooks[H]>, replaceContext?: ReplaceContext | null, skipped?: ReadonlySet<Plugin> | null): Promise<ReturnType<FunctionPluginHooks[H]> | null>;

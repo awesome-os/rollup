@@ -4,7 +4,8 @@ import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import TrackingScope from '../scopes/TrackingScope';
 import * as NodeType from './NodeType';
-import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren, type StatementNode } from '@rollup/types';
 export default class IfStatement extends StatementBase implements DeoptimizableEntity {
     alternate: StatementNode | null;
     consequent: StatementNode;

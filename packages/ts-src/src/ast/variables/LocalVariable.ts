@@ -1,3 +1,4 @@
+import type { Node } from '@rollup/types';
 import type { AstContext, default as Module } from '../../Module';
 import { EMPTY_ARRAY } from '../../utils/blank';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
@@ -20,7 +21,6 @@ import {
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from '../nodes/shared/Expression';
-import type { Node } from '../nodes/shared/Node';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import {
 	isArrowFunctionExpressionNode,
@@ -54,15 +54,23 @@ export default class LocalVariable extends Variable {
 	protected includedPathTracker: IncludedPathTracker = new IncludedFullPathTracker();
 	private expressionsToBeDeoptimized: DeoptimizableEntity[] = [];
 
+	public init: ExpressionEntity;
+	/** if this is non-empty, the actual init is this path of this.init */
+	protected initPath: ObjectPath;
+	public readonly kind: VariableKind;
+
 	constructor(
 		name: string,
 		declarator: Identifier | ExportDefaultDeclaration | null,
-		public init: ExpressionEntity,
-		/** if this is non-empty, the actual init is this path of this.init */
-		protected initPath: ObjectPath,
+		init: ExpressionEntity,
+		initPath: ObjectPath,
 		context: AstContext,
-		readonly kind: VariableKind
+		kind: VariableKind
 	) {
+		super(name);
+		this.init = init;
+		this.initPath = initPath;
+		this.kind = kind;
 		super(name);
 		this.declarations = declarator ? [declarator] : [];
 		this.deoptimizationTracker = context.deoptimizationTracker;

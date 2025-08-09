@@ -1,7 +1,7 @@
+import type { NormalizedInputOptions, NormalizedOutputOptions, OutputChunk, PreRenderedChunk, RenderedChunk } from '@rollup/types';
 import { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
-import type { NormalizedInputOptions, NormalizedOutputOptions, OutputChunk, PreRenderedChunk, RenderedChunk } from 'rollup';
 import type ImportExpression from './ast/nodes/ImportExpression';
-import type Variable from './ast/variables/Variable';
+import type { Variable } from './ast/variables/Variable';
 import ExternalChunk from './ExternalChunk';
 import ExternalModule from './ExternalModule';
 import Module from './Module';
@@ -75,21 +75,6 @@ export type ImportSpecifier = {
     local: string;
 };
 export default class Chunk {
-    private readonly orderedModules;
-    private readonly inputOptions;
-    private readonly outputOptions;
-    private readonly unsetOptions;
-    private readonly pluginDriver;
-    private readonly modulesById;
-    private readonly chunkByModule;
-    private readonly externalChunkByModule;
-    private readonly facadeChunkByModule;
-    private readonly includedNamespaces;
-    private readonly manualChunkAlias;
-    private readonly getPlaceholder;
-    private readonly bundle;
-    private readonly inputBase;
-    private readonly snippets;
     defaultVariableName?: undefined;
     dependencies: Set<Chunk | ExternalChunk>;
     readonly entryModules: Module[];
@@ -124,6 +109,21 @@ export default class Chunk {
     private strictFacade;
     /** Modules with 'allow-extension' that should have preserved exports within the chunk */
     private allowExtensionModules;
+    private readonly orderedModules;
+    private readonly inputOptions;
+    private readonly outputOptions;
+    private readonly unsetOptions;
+    private readonly pluginDriver;
+    private readonly modulesById;
+    private readonly chunkByModule;
+    private readonly externalChunkByModule;
+    private readonly facadeChunkByModule;
+    private readonly includedNamespaces;
+    private readonly manualChunkAlias;
+    private readonly getPlaceholder;
+    private readonly bundle;
+    private readonly inputBase;
+    private readonly snippets;
     constructor(orderedModules: readonly Module[], inputOptions: NormalizedInputOptions, outputOptions: NormalizedOutputOptions, unsetOptions: ReadonlySet<string>, pluginDriver: PluginDriver, modulesById: ReadonlyMap<string, Module | ExternalModule>, chunkByModule: Map<Module, Chunk>, externalChunkByModule: ReadonlyMap<ExternalModule, ExternalChunk>, facadeChunkByModule: Map<Module, Chunk>, includedNamespaces: Set<Module>, manualChunkAlias: string | null, getPlaceholder: HashPlaceholderGenerator, bundle: OutputBundleWithPlaceholders, inputBase: string, snippets: GenerateCodeSnippets);
     private static generateFacade;
     canModuleBeFacade(module: Module, exposedVariables: ReadonlySet<Variable>): boolean;

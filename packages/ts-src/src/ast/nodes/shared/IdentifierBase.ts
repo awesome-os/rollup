@@ -15,11 +15,13 @@ import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
 import GlobalVariable from '../../variables/GlobalVariable';
 import LocalVariable from '../../variables/LocalVariable';
-import type Variable from '../../variables/Variable';
-import { Flag, isFlagSet, setFlag } from './BitFlags';
+import type { Variable } from '../../variables/Variable';
+import { isFlagSet, setFlag } from './BitFlags';
+import { Flag } from "./BitFlags";
 import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
 import { UNKNOWN_EXPRESSION } from './Expression';
-import { type IncludeChildren, NodeBase } from './Node';
+import { NodeBase } from './Node';
+import { type IncludeChildren } from '@rollup/types';
 
 const tdzVariableKinds = new Set(['class', 'const', 'let', 'var', 'using', 'await using']);
 

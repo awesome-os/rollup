@@ -10,10 +10,8 @@ import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,
-	type IncludeChildren,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+	StatementBase} from './shared/Node';
+import { type IncludeChildren, type StatementNode } from '@rollup/types';
 
 export default class LabeledStatement extends StatementBase {
 	declare body: StatementNode;

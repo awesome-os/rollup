@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type Variable from '../ast/variables/Variable';
+import type { Variable } from '../ast/variables/Variable';
 import type { RenderOptions } from './renderHelpers';
 
 export function getSystemExportStatement(

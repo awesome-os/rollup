@@ -1,16 +1,20 @@
 type Task<T> = () => Promise<T>;
 
-interface QueueItem {
+type QueueItem = {
 	reject: (reason?: unknown) => void;
 	resolve: (value: any) => void;
 	task: Task<unknown>;
-}
+};
 
 export default class Queue {
 	private readonly queue: QueueItem[] = [];
 	private workerCount = 0;
 
-	constructor(private maxParallel: number) {}
+	private maxParallel: number;
+
+	constructor(maxParallel: number) {
+		this.maxParallel = maxParallel;
+	}
 
 	run<T>(task: Task<T>): Promise<T> {
 		return new Promise((resolve, reject) => {

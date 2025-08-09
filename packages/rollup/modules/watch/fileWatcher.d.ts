@@ -1,4 +1,4 @@
-import type { ChokidarOptions } from 'rollup';
+import type { ChokidarOptions } from '@rollup/types';
 import type { Task } from './watch';
 export declare class FileWatcher {
     private readonly chokidarOptions;

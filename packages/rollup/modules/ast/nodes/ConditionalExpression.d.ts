@@ -6,7 +6,7 @@ import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
-import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { ExpressionNode, IncludeChildren } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 export default class ConditionalExpression extends NodeBase implements DeoptimizableEntity {
     alternate: ExpressionNode;

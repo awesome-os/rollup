@@ -1,4 +1,4 @@
-import picomatch from 'picomatch';
+import * as picomatch from 'picomatch';
 import { ensureArray } from './ensureArray';
 import { isAbsolute, normalize, resolve } from './path';
 function getMatcherString(glob, cwd) {

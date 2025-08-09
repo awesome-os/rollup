@@ -7,12 +7,12 @@ import type * as NodeType from './NodeType';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import {
 	doNotDeoptimize,
-	type ExpressionNode,
-	type IncludeChildren,
 	onlyIncludeSelfNoDeoptimize,
-	StatementBase,
-	type StatementNode
-} from './shared/Node';
+	StatementBase} from './shared/Node';
+import {
+	type ExpressionNode,
+	type IncludeChildren, type StatementNode
+} from '@rollup/types';
 import type VariableDeclaration from './VariableDeclaration';
 
 export default class ForStatement extends StatementBase {

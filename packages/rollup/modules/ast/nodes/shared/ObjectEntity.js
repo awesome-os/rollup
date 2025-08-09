@@ -1,33 +1,31 @@
 import { INTERACTION_ACCESSED, INTERACTION_CALLED } from '../../NodeInteractions';
 import { UNKNOWN_INTEGER_PATH, UNKNOWN_PATH, UnknownInteger, UnknownKey, UnknownNonAccessorKey } from '../../utils/PathTracker';
-import { isFlagSet, setFlag } from './BitFlags';
+import { Flag, isFlagSet, setFlag } from './BitFlags';
 import { deoptimizeInteraction, ExpressionEntity, UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './Expression';
 const INTEGER_REG_EXP = /^\d+$/;
 export class ObjectEntity extends ExpressionEntity {
     get hasLostTrack() {
-        return isFlagSet(this.flags, 2048 /* Flag.hasLostTrack */);
+        return isFlagSet(this.flags, Flag.hasLostTrack);
     }
     set hasLostTrack(value) {
-        this.flags = setFlag(this.flags, 2048 /* Flag.hasLostTrack */, value);
+        this.flags = setFlag(this.flags, Flag.hasLostTrack, value);
     }
     get hasUnknownDeoptimizedInteger() {
-        return isFlagSet(this.flags, 4096 /* Flag.hasUnknownDeoptimizedInteger */);
+        return isFlagSet(this.flags, Flag.hasUnknownDeoptimizedInteger);
     }
     set hasUnknownDeoptimizedInteger(value) {
-        this.flags = setFlag(this.flags, 4096 /* Flag.hasUnknownDeoptimizedInteger */, value);
+        this.flags = setFlag(this.flags, Flag.hasUnknownDeoptimizedInteger, value);
     }
     get hasUnknownDeoptimizedProperty() {
-        return isFlagSet(this.flags, 8192 /* Flag.hasUnknownDeoptimizedProperty */);
+        return isFlagSet(this.flags, Flag.hasUnknownDeoptimizedProperty);
     }
     set hasUnknownDeoptimizedProperty(value) {
-        this.flags = setFlag(this.flags, 8192 /* Flag.hasUnknownDeoptimizedProperty */, value);
+        this.flags = setFlag(this.flags, Flag.hasUnknownDeoptimizedProperty, value);
     }
     // If a PropertyMap is used, this will be taken as propertiesAndGettersByKey
     // and we assume there are no setters or getters
     constructor(properties, prototypeExpression, immutable = false) {
         super();
-        this.prototypeExpression = prototypeExpression;
-        this.immutable = immutable;
         this.additionalExpressionsToBeDeoptimized = new Set();
         this.allProperties = [];
         this.deoptimizedPaths = Object.create(null);
@@ -41,6 +39,8 @@ export class ObjectEntity extends ExpressionEntity {
         this.unmatchablePropertiesAndGetters = [];
         this.unmatchablePropertiesAndSetters = [];
         this.unmatchableSetters = [];
+        this.prototypeExpression = prototypeExpression;
+        this.immutable = immutable;
         if (Array.isArray(properties)) {
             this.buildPropertyMaps(properties);
         }

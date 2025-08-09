@@ -3,7 +3,8 @@ import { type RenderOptions } from '../../utils/renderHelpers';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
-import { type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
+import { StatementBase } from './shared/Node';
+import { type IncludeChildren, type StatementNode } from '@rollup/types';
 export default class LabeledStatement extends StatementBase {
     body: StatementNode;
     label: Identifier;

@@ -1,5 +1,5 @@
 import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
-import type { StatementNode } from './Node';
+import type { StatementNode } from '@rollup/types';
 
 export function hasLoopBodyEffects(context: HasEffectsContext, body: StatementNode): boolean {
 	const { brokenFlow, hasBreak, hasContinue, ignore } = context;

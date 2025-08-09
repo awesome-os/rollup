@@ -4,7 +4,8 @@ import { type HasEffectsContext, type InclusionContext } from '../ExecutionConte
 import type { NodeInteraction } from '../NodeInteractions';
 import { type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
-import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import type { PatternNode } from './shared/Pattern';
 export default class AssignmentExpression extends NodeBase {
     left: PatternNode;

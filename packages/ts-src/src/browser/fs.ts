@@ -1,5 +1,5 @@
-import type { RollupFsModule } from '../../src/rollup/types';
-import { throwNoFileSystem } from './error';
+import type { RollupFsModule } from '@rollup/types';
+import { throwNoFileSystem } from './error.ts';
 import type * as FsType from './fs.ts';
 
 // Ensure this satisfies the RollupFsModule API, will be removed by tree-shaking
