@@ -1,0 +1,30 @@
+import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
+import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
+import ChildScope from '../../scopes/ChildScope';
+import { type EntityPathTracker, type ObjectPath } from '../../utils/PathTracker';
+import type ClassBody from '../ClassBody';
+import type Decorator from '../Decorator';
+import Identifier from '../Identifier';
+import { type ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
+import { type ExpressionNode, type IncludeChildren, NodeBase } from './Node';
+export default class ClassNode extends NodeBase implements DeoptimizableEntity {
+    body: ClassBody;
+    id: Identifier | null;
+    superClass: ExpressionNode | null;
+    decorators: Decorator[];
+    private classConstructor;
+    private objectEntity;
+    createScope(parentScope: ChildScope): void;
+    deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;
+    deoptimizeCache(): void;
+    deoptimizePath(path: ObjectPath): void;
+    getLiteralValueAtPath(path: ObjectPath, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): LiteralValueOrUnknown;
+    getReturnExpressionWhenCalledAtPath(path: ObjectPath, interaction: NodeInteractionCalled, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): [expression: ExpressionEntity, isPure: boolean];
+    hasEffects(context: HasEffectsContext): boolean;
+    hasEffectsOnInteractionAtPath(path: ObjectPath, interaction: NodeInteraction, context: HasEffectsContext): boolean;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren): void;
+    initialise(): void;
+    applyDeoptimizations(): void;
+    private getObjectEntity;
+}

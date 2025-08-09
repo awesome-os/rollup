@@ -1,4 +1,4 @@
-import type { NormalizedInputOptions } from 'rollup';
+import type { NormalizedInputOptions } from '@rollup/types';
 
 export const PureFunctionKey = Symbol('PureFunction');
 

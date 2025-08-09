@@ -1,5 +1,5 @@
 import picomatch from 'picomatch';
-import type { StringFilter, StringOrRegExp } from 'rollup';
+import type { StringFilter, StringOrRegExp } from '@rollup/types';
 import { ensureArray } from './ensureArray';
 import { isAbsolute, normalize, resolve } from './path';
 

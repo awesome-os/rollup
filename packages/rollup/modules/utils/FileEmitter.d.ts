@@ -1,0 +1,30 @@
+import type Chunk from '../Chunk';
+import type Graph from '../Graph';
+import type Module from '../Module';
+import type { NormalizedInputOptions, NormalizedOutputOptions } from 'rollup';
+import type { OutputBundleWithPlaceholders } from './outputBundle';
+export declare class FileEmitter {
+    private readonly graph;
+    private readonly options;
+    private facadeChunkByModule;
+    private readonly filesByReferenceId;
+    private nextIdBase;
+    private output;
+    private outputFileEmitters;
+    constructor(graph: Graph, options: NormalizedInputOptions, baseFileEmitter?: FileEmitter);
+    emitFile: (emittedFile: unknown) => string;
+    finaliseAssets: () => void;
+    getFileName: (fileReferenceId: string) => string;
+    setAssetSource: (referenceId: string, requestedSource: unknown) => void;
+    setChunkInformation: (facadeChunkByModule: ReadonlyMap<Module, Chunk>) => void;
+    setOutputBundle: (bundle: OutputBundleWithPlaceholders, outputOptions: NormalizedOutputOptions) => void;
+    private addOutputFileEmitter;
+    private assignReferenceId;
+    private createPrebuiltChunk;
+    private emitAsset;
+    private emitAssetWithReferenceId;
+    private emitChunk;
+    private emitPrebuiltChunk;
+    private finalizeAdditionalAsset;
+    private finalizeAssetsWithSameSource;
+}

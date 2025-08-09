@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import help from 'help.md';
 import process from 'node:process';
-import { VERSION } from 'rollup';
+import { VERSION } from 'rollup/version';
 import argParser from 'yargs-parser';
 import { commandAliases } from '../src/utils/options/mergeOptions';
 import run from './run/index';

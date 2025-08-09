@@ -1,35 +1,35 @@
-import Chunk from './Chunk';
-import ExternalChunk from './ExternalChunk';
-import ExternalModule from './ExternalModule';
-import type Graph from './Graph';
-import Module from './Module';
+import Chunk from '@rollup/ts-src/src/Chunk';
+import ExternalChunk from '@rollup/ts-src/src/ExternalChunk';
+import ExternalModule from '@rollup/ts-src/src/ExternalModule';
+import type Graph from '@rollup/ts-src/src/Graph';
+import Module from '@rollup/ts-src/src/Module';
+import { getChunkAssignments } from '@rollup/ts-src/src/utils/chunkAssignment';
+import commondir from '@rollup/ts-src/src/utils/commondir';
+import { sortByExecutionOrder } from '@rollup/ts-src/src/utils/executionOrder';
+import { getGenerateCodeSnippets } from '@rollup/ts-src/src/utils/generateCodeSnippets';
+import type { HashPlaceholderGenerator } from '@rollup/ts-src/src/utils/hashPlaceholders';
+import { getHashPlaceholderGenerator } from '@rollup/ts-src/src/utils/hashPlaceholders';
+import { LOGLEVEL_WARN } from '@rollup/ts-src/src/utils/logging';
+import {
+	error,
+	logCannotAssignModuleToChunk,
+	logChunkInvalid,
+	logInvalidOption
+} from '@rollup/ts-src/src/utils/logs';
+import type { OutputBundleWithPlaceholders } from '@rollup/ts-src/src/utils/outputBundle';
+import { getOutputBundle, removeUnreferencedAssets } from '@rollup/ts-src/src/utils/outputBundle';
+import { parseAst } from '@rollup/ts-src/src/utils/parseAst';
+import { isAbsolute } from '@rollup/ts-src/src/utils/path';
+import type { PluginDriver } from '@rollup/ts-src/src/utils/PluginDriver';
+import { renderChunks } from '@rollup/ts-src/src/utils/renderChunks';
+import { timeEnd, timeStart } from '@rollup/ts-src/src/utils/timers';
 import type {
 	GetManualChunk,
 	LogHandler,
 	NormalizedInputOptions,
 	NormalizedOutputOptions,
 	OutputBundle
-} from 'rollup';
-import { getChunkAssignments } from './utils/chunkAssignment';
-import commondir from './utils/commondir';
-import { sortByExecutionOrder } from './utils/executionOrder';
-import { getGenerateCodeSnippets } from './utils/generateCodeSnippets';
-import type { HashPlaceholderGenerator } from './utils/hashPlaceholders';
-import { getHashPlaceholderGenerator } from './utils/hashPlaceholders';
-import { LOGLEVEL_WARN } from './utils/logging';
-import {
-	error,
-	logCannotAssignModuleToChunk,
-	logChunkInvalid,
-	logInvalidOption
-} from './utils/logs';
-import type { OutputBundleWithPlaceholders } from './utils/outputBundle';
-import { getOutputBundle, removeUnreferencedAssets } from './utils/outputBundle';
-import { parseAst } from './utils/parseAst';
-import { isAbsolute } from './utils/path';
-import type { PluginDriver } from './utils/PluginDriver';
-import { renderChunks } from './utils/renderChunks';
-import { timeEnd, timeStart } from './utils/timers';
+} from '@rollup/types';
 import {
 	URL_OUTPUT_AMD_ID,
 	URL_OUTPUT_DIR,
@@ -40,14 +40,24 @@ import {
 export default class Bundle {
 	private readonly facadeChunkByModule = new Map<Module, Chunk>();
 	private readonly includedNamespaces = new Set<Module>();
-
+	outputOptions: NormalizedOutputOptions;
+	unsetOptions: ReadonlySet<string>;
+	inputOptions: NormalizedInputOptions;
+	pluginDriver: PluginDriver;
+	graph: Graph;
 	constructor(
-		private readonly outputOptions: NormalizedOutputOptions,
-		private readonly unsetOptions: ReadonlySet<string>,
-		private readonly inputOptions: NormalizedInputOptions,
-		private readonly pluginDriver: PluginDriver,
-		private readonly graph: Graph
-	) {}
+		outputOptions: NormalizedOutputOptions,
+		unsetOptions: ReadonlySet<string>,
+		inputOptions: NormalizedInputOptions,
+		pluginDriver: PluginDriver,
+		graph: Graph
+	) {
+		this.graph = graph;
+		this.inputOptions = inputOptions;
+		this.outputOptions = outputOptions;
+		this.pluginDriver = pluginDriver;
+		this.unsetOptions = unsetOptions;
+	}
 
 	async generate(isWrite: boolean): Promise<OutputBundle> {
 		timeStart('GENERATE', 1);

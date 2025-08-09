@@ -3,10 +3,10 @@ import type { InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';
-import { type ObjectPath } from '../utils/PathTracker';
-import Variable from './Variable';
+import type { ObjectPath } from '../utils/PathTracker';
+import { Variable } from './Variable';
 
-export default class ExternalVariable extends Variable {
+export class ExternalVariable extends Variable {
 	readonly isNamespace: boolean;
 	readonly module: ExternalModule;
 	referenced = false;

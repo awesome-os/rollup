@@ -1,6 +1,9 @@
 {
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
+		"rewriteRelativeImportExtensions": true,
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+		"allowSyntheticDefaultImports": false,
 		"forceConsistentCasingInFileNames": true,
 		"lib": ["ES2022", "ESNext.Disposable", "DOM"],
 		"module": "ESNext",

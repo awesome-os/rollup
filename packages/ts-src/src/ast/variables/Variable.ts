@@ -12,7 +12,7 @@ import type { NodeBase } from '../nodes/shared/Node';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import type { ObjectPath } from '../utils/PathTracker';
 
-export default class Variable extends ExpressionEntity {
+export class Variable extends ExpressionEntity {
 	alwaysRendered = false;
 	forbiddenNames: Set<string> | null = null;
 	globalName: string | null = null;
@@ -32,8 +32,11 @@ export default class Variable extends ExpressionEntity {
 		(this as { isReassigned: boolean }).isReassigned = true;
 	}
 
-	constructor(public name: string) {
+	public name: string;
+
+	constructor(name: string) {
 		super();
+		this.name = name;
 	}
 
 	/**

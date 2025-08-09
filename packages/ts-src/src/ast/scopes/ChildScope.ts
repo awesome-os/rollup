@@ -1,5 +1,5 @@
 import type { AstContext } from '../../Module';
-import type { InternalModuleFormat } from 'rollup';
+import type { InternalModuleFormat } from '@rollup/types';
 import { getSafeName } from '../../utils/safeName';
 import type ImportExpression from '../nodes/ImportExpression';
 import type { ExpressionEntity } from '../nodes/shared/Expression';

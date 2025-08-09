@@ -39,7 +39,7 @@ import {
 	UNKNOWN_PATH,
 	UnknownKey
 } from '../utils/PathTracker';
-import Variable from './Variable';
+import { Variable } from './Variable';
 
 export default class LocalVariable extends Variable {
 	calledFromTryStatement = false;

@@ -1,0 +1,50 @@
+import ExternalModule from './ExternalModule';
+import type Graph from './Graph';
+import Module from './Module';
+import type { UnresolvedModule, ModuleLoaderResolveId } from '@rollup/types';
+import type { EmittedChunk, ModuleInfo, ModuleOptions, NormalizedInputOptions, PartialNull } from 'rollup';
+import type { PluginDriver } from './utils/PluginDriver';
+export declare class ModuleLoader {
+    private readonly graph;
+    private readonly modulesById;
+    private readonly options;
+    private readonly pluginDriver;
+    private readonly hasModuleSideEffects;
+    private readonly implicitEntryModules;
+    private readonly indexedEntryModules;
+    private latestLoadModulesPromise;
+    private readonly moduleLoadPromises;
+    private readonly modulesWithLoadedDependencies;
+    private nextChunkNamePriority;
+    private nextEntryModuleIndex;
+    constructor(graph: Graph, modulesById: Map<string, Module | ExternalModule>, options: NormalizedInputOptions, pluginDriver: PluginDriver);
+    addAdditionalModules(unresolvedModules: readonly string[], isAddForManualChunks: boolean): Promise<Module[]>;
+    addEntryModules(unresolvedEntryModules: readonly UnresolvedModule[], isUserDefined: boolean): Promise<{
+        entryModules: Module[];
+        implicitEntryModules: Module[];
+        newEntryModules: Module[];
+    }>;
+    emitChunk({ fileName, id, importer, name, implicitlyLoadedAfterOneOf, preserveSignature }: EmittedChunk): Promise<Module>;
+    preloadModule(resolvedId: {
+        id: string;
+        resolveDependencies?: boolean;
+    } & Partial<PartialNull<ModuleOptions>>): Promise<ModuleInfo>;
+    resolveId: ModuleLoaderResolveId;
+    private addEntryWithImplicitDependants;
+    private addModuleSource;
+    private awaitLoadModulesPromise;
+    private extendLoadModulesPromise;
+    private fetchDynamicDependencies;
+    private fetchModule;
+    private fetchModuleDependencies;
+    private fetchResolvedDependency;
+    private fetchStaticDependencies;
+    private getNormalizedResolvedIdWithoutDefaults;
+    private getResolveDynamicImportPromises;
+    private getResolveStaticDependencyPromises;
+    private getResolvedIdWithDefaults;
+    private handleExistingModule;
+    private handleInvalidResolvedId;
+    private loadEntryModule;
+    private resolveDynamicImport;
+}

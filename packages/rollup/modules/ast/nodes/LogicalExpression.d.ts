@@ -1,0 +1,34 @@
+import type MagicString from 'magic-string';
+import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
+import type { DeoptimizableEntity } from '../DeoptimizableEntity';
+import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
+import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
+import type * as NodeType from './NodeType';
+import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
+import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+export type LogicalOperator = '||' | '&&' | '??';
+export default class LogicalExpression extends NodeBase implements DeoptimizableEntity {
+    left: ExpressionNode;
+    operator: LogicalOperator;
+    right: ExpressionNode;
+    type: NodeType.tLogicalExpression;
+    private get isBranchResolutionAnalysed();
+    private set isBranchResolutionAnalysed(value);
+    private expressionsToBeDeoptimized;
+    private usedBranch;
+    private get hasDeoptimizedCache();
+    private set hasDeoptimizedCache(value);
+    deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;
+    deoptimizeCache(): void;
+    deoptimizePath(path: ObjectPath): void;
+    getLiteralValueAtPath(path: ObjectPath, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): LiteralValueOrUnknown;
+    getReturnExpressionWhenCalledAtPath(path: ObjectPath, interaction: NodeInteractionCalled, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): [expression: ExpressionEntity, isPure: boolean];
+    hasEffects(context: HasEffectsContext): boolean;
+    hasEffectsOnInteractionAtPath(path: ObjectPath, interaction: NodeInteraction, context: HasEffectsContext): boolean;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren): void;
+    includePath(path: ObjectPath, context: InclusionContext): void;
+    removeAnnotations(code: MagicString): void;
+    render(code: MagicString, options: RenderOptions, { isCalleeOfRenderedParent, preventASI, renderedParentType, renderedSurroundingElement }?: NodeRenderOptions): void;
+    private getUsedBranch;
+}

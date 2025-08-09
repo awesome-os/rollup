@@ -1,4 +1,4 @@
-import type { RollupLog } from 'rollup';
+import type { RollupLog } from '@rollup/types';
 import type { GetLogFilter } from './getLogFilterType';
 
 export const getLogFilter: GetLogFilter = filters => {

@@ -1,0 +1,12 @@
+import type { InteropType } from 'rollup';
+import type { GenerateCodeSnippets } from './generateCodeSnippets';
+export declare const INTEROP_NAMESPACE_DEFAULT_ONLY_VARIABLE = "_interopNamespaceDefaultOnly";
+export declare const MERGE_NAMESPACES_VARIABLE = "_mergeNamespaces";
+export declare const DOCUMENT_CURRENT_SCRIPT = "_documentCurrentScript";
+export declare const defaultInteropHelpersByInteropType: Record<InteropType, string | null>;
+export declare const isDefaultAProperty: (interopType: InteropType, externalLiveBindings: boolean) => boolean;
+export declare const namespaceInteropHelpersByInteropType: Record<InteropType, string | null>;
+export declare const canDefaultBeTakenFromNamespace: (interopType: InteropType, externalLiveBindings: boolean) => boolean;
+export declare const getHelpersBlock: (additionalHelpers: ReadonlySet<string> | null, accessedGlobals: ReadonlySet<string>, indent: string, snippets: GenerateCodeSnippets, liveBindings: boolean, freeze: boolean, symbols: boolean) => string;
+export declare const HELPER_NAMES: string[];
+export declare function getToStringTagValue(getObject: GenerateCodeSnippets['getObject']): string;

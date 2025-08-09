@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { AstContext } from '../../Module';
-import type { NormalizedTreeshakingOptions } from 'rollup';
+import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logIllegalImportReassignment, logMissingExport } from '../../utils/logs';

@@ -1,0 +1,4 @@
+{ "name": "@rollup/cli", "main": "./cli.js", "exports": {
+    ".": "./cli.js",
+    "./*": "./*"
+}}

@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { InternalModuleFormat } from 'rollup';
+import type { InternalModuleFormat } from '@rollup/types';
 import { escapeId } from '../../utils/escapeId';
 import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
 import { DOCUMENT_CURRENT_SCRIPT } from '../../utils/interopHelpers';

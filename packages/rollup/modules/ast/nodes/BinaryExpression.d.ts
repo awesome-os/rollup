@@ -1,0 +1,30 @@
+import type MagicString from 'magic-string';
+import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { DeoptimizableEntity } from '../DeoptimizableEntity';
+import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { NodeInteraction } from '../NodeInteractions';
+import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
+import type { LiteralValue } from './Literal';
+import type * as NodeType from './NodeType';
+import { type InclusionOptions, type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
+import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
+type Operator = '!=' | '!==' | '%' | '&' | '*' | '**' | '+' | '-' | '/' | '<' | '<<' | '<=' | '==' | '===' | '>' | '>=' | '>>' | '>>>' | '^' | '|' | 'in' | 'instanceof';
+declare const binaryOperators: Partial<Record<Operator, (left: LiteralValue, right: LiteralValue) => LiteralValueOrUnknown>>;
+declare const UNASSIGNED: unique symbol;
+export default class BinaryExpression extends NodeBase implements DeoptimizableEntity {
+    left: ExpressionNode;
+    operator: keyof typeof binaryOperators;
+    right: ExpressionNode;
+    type: NodeType.tBinaryExpression;
+    renderedLiteralValue: string | typeof UnknownValue | typeof UNASSIGNED;
+    deoptimizeCache(): void;
+    getLiteralValueAtPath(path: ObjectPath, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): LiteralValueOrUnknown;
+    getRenderedLiteralValue(): string | typeof UnknownValue;
+    hasEffects(context: HasEffectsContext): boolean;
+    hasEffectsOnInteractionAtPath(path: ObjectPath, { type }: NodeInteraction): boolean;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren, options?: InclusionOptions): void;
+    includeNode(context: InclusionContext): void;
+    removeAnnotations(code: MagicString): void;
+    render(code: MagicString, options: RenderOptions, { renderedSurroundingElement }?: NodeRenderOptions): void;
+}
+export {};

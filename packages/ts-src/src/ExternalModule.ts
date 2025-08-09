@@ -1,5 +1,5 @@
-import ExternalVariable from './ast/variables/ExternalVariable';
-import type { CustomPluginOptions, ModuleInfo, NormalizedInputOptions } from 'rollup';
+import type { CustomPluginOptions, ModuleInfo, NormalizedInputOptions } from '@rollup/types';
+import { ExternalVariable } from './ast/variables/ExternalVariable';
 import { EMPTY_ARRAY } from './utils/blank';
 import { cacheObjectGetters } from './utils/getter';
 import { makeLegal } from './utils/identifierHelpers';
@@ -20,14 +20,21 @@ export default class ExternalModule {
 	private mostCommonSuggestion = 0;
 	private readonly nameSuggestions = new Map<string, number>();
 
+	private readonly options: NormalizedInputOptions;
+	public readonly id: string;
+	public readonly renormalizeRenderPath: boolean;
+
 	constructor(
-		private readonly options: NormalizedInputOptions,
-		public readonly id: string,
+		options: NormalizedInputOptions,
+		id: string,
 		moduleSideEffects: boolean | 'no-treeshake',
 		meta: CustomPluginOptions,
-		public readonly renormalizeRenderPath: boolean,
+		renormalizeRenderPath: boolean,
 		attributes: Record<string, string>
 	) {
+		this.options = options;
+		this.id = id;
+		this.renormalizeRenderPath = renormalizeRenderPath;
 		this.suggestedVariableName = makeLegal(id.split(/[/\\]/).pop()!);
 
 		const { importers, dynamicImporters } = this;

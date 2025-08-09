@@ -1,0 +1,29 @@
+import type MagicString from 'magic-string';
+import type { RenderOptions } from '../../utils/renderHelpers';
+import type { DeoptimizableEntity } from '../DeoptimizableEntity';
+import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { NodeInteraction } from '../NodeInteractions';
+import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
+import type * as NodeType from './NodeType';
+import type { InclusionOptions } from './shared/Expression';
+import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
+import type { IncludeChildren } from './shared/Node';
+import { type ExpressionNode, NodeBase } from './shared/Node';
+declare const UNASSIGNED: unique symbol;
+export default class UnaryExpression extends NodeBase {
+    argument: ExpressionNode;
+    operator: '!' | '+' | '-' | 'delete' | 'typeof' | 'void' | '~';
+    type: NodeType.tUnaryExpression;
+    renderedLiteralValue: string | typeof UnknownValue | typeof UNASSIGNED;
+    get prefix(): boolean;
+    set prefix(value: boolean);
+    deoptimizeCache(): void;
+    getLiteralValueAtPath(path: ObjectPath, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): LiteralValueOrUnknown;
+    hasEffects(context: HasEffectsContext): boolean;
+    hasEffectsOnInteractionAtPath(path: ObjectPath, { type }: NodeInteraction): boolean;
+    applyDeoptimizations(): void;
+    getRenderedLiteralValue(includeChildrenRecursively: IncludeChildren): string | typeof UnknownValue;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren, _options?: InclusionOptions): void;
+    render(code: MagicString, options: RenderOptions): void;
+}
+export {};

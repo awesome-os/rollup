@@ -19,7 +19,7 @@ import { EMPTY_ARRAY } from '../blank';
 import { LOGLEVEL_DEBUG, LOGLEVEL_ERROR, LOGLEVEL_WARN, logLevelPriority } from '../logging';
 import { error, logInvalidOption, logUnknownOption } from '../logs';
 import { printQuotedStringList } from '../printStringList';
-import type { ObjectOptionWithPresets } from '../../rollup/types';
+import type { ObjectOptionWithPresets } from '@rollup/types';
 import type { ObjectValue } from "../../rollup/types";
 
 export const getOnLog = (

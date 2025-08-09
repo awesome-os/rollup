@@ -1,0 +1,1 @@
+export declare const bold: import("picocolors/types").Formatter, cyan: import("picocolors/types").Formatter, dim: import("picocolors/types").Formatter, gray: import("picocolors/types").Formatter, green: import("picocolors/types").Formatter, red: import("picocolors/types").Formatter, underline: import("picocolors/types").Formatter, yellow: import("picocolors/types").Formatter;

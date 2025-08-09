@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NormalizedTreeshakingOptions } from 'rollup';
+import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { BLANK } from '../../utils/blank';
 import { isReassignedExportsMember } from '../../utils/reassignedExportsMember';
 import {

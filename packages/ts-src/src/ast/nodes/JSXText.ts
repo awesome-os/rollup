@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NormalizedJsxOptions } from 'rollup';
+import type { NormalizedJsxOptions } from '@rollup/types';
 import type * as NodeType from './NodeType';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 

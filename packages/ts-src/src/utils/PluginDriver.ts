@@ -20,7 +20,7 @@ import type {
 	SyncPluginHooks
 } from 'rollup';
 import { FileEmitter } from './FileEmitter';
-import { HookAction, ReplaceContext } from '../rollup/types';
+import { HookAction, ReplaceContext } from '@rollup/types';
 import { getPluginContext } from './PluginContext';
 import { getOrCreate } from './getOrCreate';
 import { LOGLEVEL_WARN } from './logging';

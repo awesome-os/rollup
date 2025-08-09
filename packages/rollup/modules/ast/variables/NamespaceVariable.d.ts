@@ -1,0 +1,30 @@
+import type { AstContext, default as Module } from '../../Module';
+import type { RenderOptions } from '../../utils/renderHelpers';
+import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { NodeInteraction } from '../NodeInteractions';
+import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type IdentifierBase from '../nodes/shared/IdentifierBase';
+import type ChildScope from '../scopes/ChildScope';
+import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
+import Variable from './Variable';
+export default class NamespaceVariable extends Variable {
+    readonly context: AstContext;
+    isNamespace: true;
+    readonly module: Module;
+    private memberVariables;
+    private mergedNamespaces;
+    private referencedEarly;
+    private references;
+    constructor(context: AstContext);
+    addReference(identifier: IdentifierBase): void;
+    deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;
+    deoptimizePath(path: ObjectPath): void;
+    getLiteralValueAtPath(path: ObjectPath): LiteralValueOrUnknown;
+    getMemberVariables(): Record<string, Variable>;
+    hasEffectsOnInteractionAtPath(path: ObjectPath, interaction: NodeInteraction, context: HasEffectsContext): boolean;
+    includePath(path: ObjectPath, context: InclusionContext): void;
+    prepare(accessedGlobalsByScope: Map<ChildScope, Set<string>>): void;
+    renderBlock(options: RenderOptions): string;
+    renderFirst(): boolean;
+    setMergedNamespaces(mergedNamespaces: readonly Variable[]): void;
+}

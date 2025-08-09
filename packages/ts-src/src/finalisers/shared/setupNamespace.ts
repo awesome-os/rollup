@@ -1,5 +1,5 @@
-import type { LogHandler } from 'rollup';
-import type { GlobalsOption } from 'rollup';
+import type { LogHandler } from '@rollup/types';
+import type { GlobalsOption } from '@rollup/types';
 import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logReservedNamespace } from '../../utils/logs';

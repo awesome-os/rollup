@@ -7,7 +7,7 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import '@rollup/types/declarations';
 import { fileURLToPath } from 'node:url';
-import type { Plugin, RollupLog, RollupOptions, WarningHandlerWithDefault } from 'rollup';
+import type { Plugin, RollupLog, RollupOptions, WarningHandlerWithDefault } from '@rollup/types';
 import { string } from 'rollup-plugin-string';
 import addCliEntry from './build-plugins/add-cli-entry';
 import { moduleAliases } from './build-plugins/aliases';

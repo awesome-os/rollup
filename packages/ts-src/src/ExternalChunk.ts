@@ -1,5 +1,5 @@
+import type { ModuleInfo, NormalizedOutputOptions } from '@rollup/types';
 import type ExternalModule from './ExternalModule';
-import type { ModuleInfo, NormalizedOutputOptions } from 'rollup';
 import { escapeId } from './utils/escapeId';
 import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
 import { normalize, relative } from './utils/path';
@@ -17,11 +17,12 @@ export default class ExternalChunk {
 	private moduleInfo: ModuleInfo;
 	private renormalizeRenderPath: boolean;
 
-	constructor(
-		module: ExternalModule,
-		private options: NormalizedOutputOptions,
-		private inputBase: string
-	) {
+	private options: NormalizedOutputOptions;
+	private inputBase: string;
+
+	constructor(module: ExternalModule, options: NormalizedOutputOptions, inputBase: string) {
+		this.options = options;
+		this.inputBase = inputBase;
 		this.id = module.id;
 		this.moduleInfo = module.info;
 		this.renormalizeRenderPath = module.renormalizeRenderPath;

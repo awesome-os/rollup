@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { Plugin as RollupPlugin } from 'rollup';
+import type { Plugin as RollupPlugin } from '@rollup/types';
 import type { Plugin } from 'vite';
 
 const resolve = (path: string) => fileURLToPath(new URL(`../${path}`, import.meta.url));

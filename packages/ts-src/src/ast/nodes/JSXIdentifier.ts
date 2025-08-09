@@ -1,5 +1,6 @@
+import type { NormalizedJsxOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
-import type { NormalizedJsxOptions } from 'rollup';
+import { makeMap } from '../../rollup/makeMap';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { InclusionContext } from '../ExecutionContext';
 import type { ObjectPath } from '../utils/PathTracker';
@@ -7,12 +8,7 @@ import { EMPTY_PATH } from '../utils/PathTracker';
 import type JSXMemberExpression from './JSXMemberExpression';
 import type * as NodeType from './NodeType';
 import IdentifierBase from './shared/IdentifierBase';
-
-const enum IdentifierType {
-	Reference,
-	NativeElementName,
-	Other
-}
+const IdentifierType = makeMap(['Reference', 'NativeElementName', 'Other']);
 
 export default class JSXIdentifier extends IdentifierBase {
 	type!: NodeType.tJSXIdentifier;
@@ -74,7 +70,7 @@ export default class JSXIdentifier extends IdentifierBase {
 		}
 	}
 
-	private getType(): IdentifierType {
+	private getType() {
 		switch (this.parent.type) {
 			case 'JSXOpeningElement':
 			case 'JSXClosingElement': {

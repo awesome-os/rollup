@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"rewriteRelativeImportExtensions": true,
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+		"outDir": "../../rollup/modules",
+		"allowSyntheticDefaultImports": false,
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["ES2022", "ESNext.Disposable", "DOM"],
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"noEmitOnError": false,
+		"noUnusedParameters": true,
+		"pretty": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ES2022",
+		"useDefineForClassFields": false,
+		"paths": {
+			"rollup": ["./node_modules/rollup"]
+		}
+	},
+	"include": ["build-plugins", "src", "cli", "browser", "rollup.config.ts", "native", "**/*.ts", "**/*.json"],
+	"exclude": ["dist", "node_modules", "test/typescript", "browser/dist", "out", "tsconfig.json"]
+}

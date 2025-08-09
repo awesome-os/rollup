@@ -3,7 +3,7 @@ import type { AstContext } from '../../Module';
 import type { InclusionContext } from '../ExecutionContext';
 import { type ObjectPath } from '../utils/PathTracker';
 import ExportDefaultVariable from './ExportDefaultVariable';
-import Variable from './Variable';
+import { Variable } from './Variable';
 
 export default class SyntheticNamedExportVariable extends Variable {
 	readonly context: AstContext;

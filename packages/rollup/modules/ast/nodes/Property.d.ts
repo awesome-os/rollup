@@ -1,0 +1,30 @@
+import type MagicString from 'magic-string';
+import type { RenderOptions } from '../../utils/renderHelpers';
+import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { ObjectPath } from '../utils/PathTracker';
+import type LocalVariable from '../variables/LocalVariable';
+import type * as NodeType from './NodeType';
+import { type ExpressionEntity } from './shared/Expression';
+import MethodBase from './shared/MethodBase';
+import type { ExpressionNode, IncludeChildren } from './shared/Node';
+import type { DeclarationPatternNode } from './shared/Pattern';
+import type { VariableKind } from './shared/VariableKinds';
+export default class Property extends MethodBase implements DeclarationPatternNode {
+    key: ExpressionNode;
+    kind: 'init' | 'get' | 'set';
+    type: NodeType.tProperty;
+    get method(): boolean;
+    set method(value: boolean);
+    get shorthand(): boolean;
+    set shorthand(value: boolean);
+    declare(kind: VariableKind, destructuredInitPath: ObjectPath, init: ExpressionEntity): LocalVariable[];
+    deoptimizeAssignment(destructuredInitPath: ObjectPath, init: ExpressionEntity): void;
+    hasEffects(context: HasEffectsContext): boolean;
+    hasEffectsWhenDestructuring(context: HasEffectsContext, destructuredInitPath: ObjectPath, init: ExpressionEntity): boolean;
+    includeDestructuredIfNecessary(context: InclusionContext, destructuredInitPath: ObjectPath, init: ExpressionEntity): boolean;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren): void;
+    includePath(path: ObjectPath, context: InclusionContext): void;
+    markDeclarationReached(): void;
+    render(code: MagicString, options: RenderOptions): void;
+    private getPathInProperty;
+}

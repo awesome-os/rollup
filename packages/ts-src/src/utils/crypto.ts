@@ -1,5 +1,5 @@
 import { xxhashBase16, xxhashBase36, xxhashBase64Url } from '../../native';
-import type { HashCharacters } from 'rollup';
+import type { HashCharacters } from '@rollup/types';
 import type { GetHash } from "../rollup/types";
 
 export const getHash64: GetHash = input => xxhashBase64Url(ensureBuffer(input));

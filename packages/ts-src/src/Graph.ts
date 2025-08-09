@@ -9,7 +9,7 @@ import type {
 	SerializablePluginCache,
 	WatchChangeHook
 } from 'rollup';
-import type { UnresolvedModule } from './rollup/types';
+import type { UnresolvedModule } from '@rollup/types';
 import { createInclusionContext } from './ast/ExecutionContext';
 import type { ExpressionEntity } from './ast/nodes/shared/Expression';
 import GlobalScope from './ast/scopes/GlobalScope';

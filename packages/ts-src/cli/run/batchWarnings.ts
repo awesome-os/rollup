@@ -1,5 +1,5 @@
+import type { RollupLog } from '@rollup/types';
 import pc from 'picocolors';
-import type { RollupLog } from '../../src/rollup/types';
 import { bold, gray, yellow } from '../../src/utils/colors';
 import { ensureArray } from '../../src/utils/ensureArray';
 import { getLogFilter } from '../../src/utils/getLogFilter';

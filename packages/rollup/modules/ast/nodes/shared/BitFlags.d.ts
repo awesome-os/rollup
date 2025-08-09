@@ -1,0 +1,33 @@
+export declare const enum Flag {
+    included = 1,
+    deoptimized = 2,
+    tdzAccessDefined = 4,
+    tdzAccess = 8,
+    assignmentDeoptimized = 16,
+    bound = 32,
+    isUndefined = 64,
+    optional = 128,
+    async = 256,
+    deoptimizedReturn = 512,
+    computed = 1024,
+    hasLostTrack = 2048,
+    hasUnknownDeoptimizedInteger = 4096,
+    hasUnknownDeoptimizedProperty = 8192,
+    directlyIncluded = 16384,
+    deoptimizeBody = 32768,
+    isBranchResolutionAnalysed = 65536,
+    await = 131072,
+    method = 262144,
+    shorthand = 524288,
+    tail = 1048576,
+    prefix = 2097152,
+    generator = 4194304,
+    expression = 8388608,
+    destructuringDeoptimized = 16777216,
+    hasDeoptimizedCache = 33554432,
+    hasEffects = 67108864,
+    withinTopLevelAwait = 134217728,
+    checkedForWarnings = 268435456
+}
+export declare function isFlagSet(flags: number, flag: Flag): boolean;
+export declare function setFlag(flags: number, flag: Flag, value: boolean): number;

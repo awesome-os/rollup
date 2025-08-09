@@ -1,3 +1,33 @@
+import Bundle from '@rollup/ts-src/src/Bundle';
+import Graph from '@rollup/ts-src/src/Graph';
+import { catchUnfinishedHookActions } from '@rollup/ts-src/src/utils/hookActions';
+import initWasm from '@rollup/ts-src/src/utils/initWasm';
+import { getLogger } from '@rollup/ts-src/src/utils/logger';
+import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '@rollup/ts-src/src/utils/logging';
+import { getLogHandler } from '@rollup/ts-src/src/utils/logHandler';
+import {
+	error,
+	getRollupError,
+	logAlreadyClosed,
+	logCannotEmitFromOptionsHook,
+	logMissingFileOrDirOption,
+	logPluginError
+} from '@rollup/ts-src/src/utils/logs';
+import { normalizeInputOptions } from '@rollup/ts-src/src/utils/options/normalizeInputOptions';
+import { normalizeOutputOptions } from '@rollup/ts-src/src/utils/options/normalizeOutputOptions';
+import {
+	getOnLog,
+	normalizeLog,
+	normalizePluginOption
+} from '@rollup/ts-src/src/utils/options/options';
+import { dirname, resolve } from '@rollup/ts-src/src/utils/path';
+import type { PluginDriver } from '@rollup/ts-src/src/utils/PluginDriver';
+import { getSortedValidatedPlugins } from '@rollup/ts-src/src/utils/PluginDriver';
+import {
+	ANONYMOUS_OUTPUT_PLUGIN_PREFIX,
+	ANONYMOUS_PLUGIN_PREFIX
+} from '@rollup/ts-src/src/utils/pluginNames';
+import { getTimings, initialiseTimers, timeEnd, timeStart } from '@rollup/ts-src/src/utils/timers';
 import type {
 	InputOptions,
 	NormalizedInputOptions,
@@ -14,29 +44,7 @@ import type {
 	RollupWatcher
 } from '@rollup/types';
 import { rollupVersion } from 'rollup/version.js';
-import Bundle from '../Bundle';
-import Graph from '../Graph';
-import { catchUnfinishedHookActions } from '../utils/hookActions';
-import initWasm from '../utils/initWasm';
-import { getLogger } from '../utils/logger';
-import { LOGLEVEL_DEBUG, LOGLEVEL_INFO, LOGLEVEL_WARN } from '../utils/logging';
-import { getLogHandler } from '../utils/logHandler';
-import {
-	error,
-	getRollupError,
-	logAlreadyClosed,
-	logCannotEmitFromOptionsHook,
-	logMissingFileOrDirOption,
-	logPluginError
-} from '../utils/logs';
-import { normalizeInputOptions } from '../utils/options/normalizeInputOptions';
-import { normalizeOutputOptions } from '../utils/options/normalizeOutputOptions';
-import { getOnLog, normalizeLog, normalizePluginOption } from '../utils/options/options';
-import { dirname, resolve } from '../utils/path';
-import type { PluginDriver } from '../utils/PluginDriver';
-import { getSortedValidatedPlugins } from '../utils/PluginDriver';
-import { ANONYMOUS_OUTPUT_PLUGIN_PREFIX, ANONYMOUS_PLUGIN_PREFIX } from '../utils/pluginNames';
-import { getTimings, initialiseTimers, timeEnd, timeStart } from '../utils/timers';
+import { makeMap, SortingFileTypeArray } from './makeMap';
 
 // @ts-expect-error TS2540: the polyfill of `asyncDispose`.
 Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');
@@ -282,20 +290,16 @@ function createOutput(outputBundle: OutputBundle) {
 	return options;
 }
 
-enum SortingFileType {
-	ENTRY_CHUNK = 0,
-	SECONDARY_CHUNK = 1,
-	ASSET = 2
-}
+const SortingFileTypeMap = makeMap(SortingFileTypeArray);
 
-function getSortingFileType(file: OutputAsset | OutputChunk): SortingFileType {
+function getSortingFileType(file: OutputAsset | OutputChunk) {
 	if (file.type === 'asset') {
-		return SortingFileType.ASSET;
+		return SortingFileTypeMap.ASSET;
 	}
 	if (file.isEntry) {
-		return SortingFileType.ENTRY_CHUNK;
+		return SortingFileTypeMap.ENTRY_CHUNK;
 	}
-	return SortingFileType.SECONDARY_CHUNK;
+	return SortingFileTypeMap.SECONDARY_CHUNK;
 }
 
 async function writeOutputFile(

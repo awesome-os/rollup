@@ -9,7 +9,7 @@ import type {
 	ResolveDynamicDependencyPromise,
 	ResolveStaticDependencyPromise,
 	NormalizedResolveIdWithoutDefaults
-} from './rollup/types';
+} from '@rollup/types';
 import type {
 	AstNode,
 	EmittedChunk,

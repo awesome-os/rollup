@@ -1,5 +1,4 @@
 // TODO: if this gets red then it is vite types defining it wrong
-import MagicString, { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
 import type {
 	DependenciesToBeDeconflicted,
 	GetInterop,
@@ -12,7 +11,8 @@ import type {
 	PreRenderedChunk,
 	RenderedChunk,
 	RenderedModule
-} from 'rollup';
+} from '@rollup/types';
+import MagicString, { Bundle as MagicStringBundle, type SourceMap } from 'magic-string';
 import { relative } from '../browser/src/path';
 import ExportDefaultDeclaration from './ast/nodes/ExportDefaultDeclaration';
 import FunctionDeclaration from './ast/nodes/FunctionDeclaration';
@@ -23,7 +23,7 @@ import ExportDefaultVariable from './ast/variables/ExportDefaultVariable';
 import LocalVariable from './ast/variables/LocalVariable';
 import NamespaceVariable from './ast/variables/NamespaceVariable';
 import SyntheticNamedExportVariable from './ast/variables/SyntheticNamedExportVariable';
-import type Variable from './ast/variables/Variable';
+import type { Variable } from './ast/variables/Variable';
 import ExternalChunk, { formatAttributes } from './ExternalChunk';
 import ExternalModule from './ExternalModule';
 import finalisers from './finalisers/index';
@@ -202,24 +202,55 @@ export default class Chunk {
 	private strictFacade = false;
 	/** Modules with 'allow-extension' that should have preserved exports within the chunk */
 	private allowExtensionModules = new Set<Module>();
-
+	// Fields moved out of constructor for eraseAbleSyntax compatibility
+	private readonly orderedModules: readonly Module[];
+	private readonly inputOptions: NormalizedInputOptions;
+	private readonly outputOptions: NormalizedOutputOptions;
+	private readonly unsetOptions: ReadonlySet<string>;
+	private readonly pluginDriver: PluginDriver;
+	private readonly modulesById: ReadonlyMap<string, Module | ExternalModule>;
+	private readonly chunkByModule: Map<Module, Chunk>;
+	private readonly externalChunkByModule: ReadonlyMap<ExternalModule, ExternalChunk>;
+	private readonly facadeChunkByModule: Map<Module, Chunk>;
+	private readonly includedNamespaces: Set<Module>;
+	private readonly manualChunkAlias: string | null;
+	private readonly getPlaceholder: HashPlaceholderGenerator;
+	private readonly bundle: OutputBundleWithPlaceholders;
+	private readonly inputBase: string;
+	private readonly snippets: GenerateCodeSnippets;
 	constructor(
-		private readonly orderedModules: readonly Module[],
-		private readonly inputOptions: NormalizedInputOptions,
-		private readonly outputOptions: NormalizedOutputOptions,
-		private readonly unsetOptions: ReadonlySet<string>,
-		private readonly pluginDriver: PluginDriver,
-		private readonly modulesById: ReadonlyMap<string, Module | ExternalModule>,
-		private readonly chunkByModule: Map<Module, Chunk>,
-		private readonly externalChunkByModule: ReadonlyMap<ExternalModule, ExternalChunk>,
-		private readonly facadeChunkByModule: Map<Module, Chunk>,
-		private readonly includedNamespaces: Set<Module>,
-		private readonly manualChunkAlias: string | null,
-		private readonly getPlaceholder: HashPlaceholderGenerator,
-		private readonly bundle: OutputBundleWithPlaceholders,
-		private readonly inputBase: string,
-		private readonly snippets: GenerateCodeSnippets
+		orderedModules: readonly Module[],
+		inputOptions: NormalizedInputOptions,
+		outputOptions: NormalizedOutputOptions,
+		unsetOptions: ReadonlySet<string>,
+		pluginDriver: PluginDriver,
+		modulesById: ReadonlyMap<string, Module | ExternalModule>,
+		chunkByModule: Map<Module, Chunk>,
+		externalChunkByModule: ReadonlyMap<ExternalModule, ExternalChunk>,
+		facadeChunkByModule: Map<Module, Chunk>,
+		includedNamespaces: Set<Module>,
+		manualChunkAlias: string | null,
+		getPlaceholder: HashPlaceholderGenerator,
+		bundle: OutputBundleWithPlaceholders,
+		inputBase: string,
+		snippets: GenerateCodeSnippets
 	) {
+		this.orderedModules = orderedModules;
+		this.inputOptions = inputOptions;
+		this.outputOptions = outputOptions;
+		this.unsetOptions = unsetOptions;
+		this.pluginDriver = pluginDriver;
+		this.modulesById = modulesById;
+		this.chunkByModule = chunkByModule;
+		this.externalChunkByModule = externalChunkByModule;
+		this.facadeChunkByModule = facadeChunkByModule;
+		this.includedNamespaces = includedNamespaces;
+		this.manualChunkAlias = manualChunkAlias;
+		this.getPlaceholder = getPlaceholder;
+		this.bundle = bundle;
+		this.inputBase = inputBase;
+		this.snippets = snippets;
+
 		this.execIndex = orderedModules.length > 0 ? orderedModules[0].execIndex : Infinity;
 		const chunkModules = new Set(orderedModules);
 

@@ -1,4 +1,4 @@
-import type { NormalizedOutputOptions } from 'rollup';
+import type { NormalizedOutputOptions } from '@rollup/types';
 import RESERVED_NAMES from './RESERVED_NAMES';
 import { stringifyObjectKeyIfNeeded, VALID_IDENTIFIER_REGEXP } from './identifierHelpers';
 

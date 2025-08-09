@@ -1,5 +1,5 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
-import type { NormalizedOutputOptions } from 'rollup';
+import type { NormalizedOutputOptions } from '@rollup/types';
 import { isLegal } from '../utils/identifierHelpers';
 import { LOGLEVEL_WARN } from '../utils/logging';
 import {

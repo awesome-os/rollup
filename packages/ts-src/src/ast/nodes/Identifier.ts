@@ -1,7 +1,7 @@
 import '@rollup/types/declarations';
 import isReference, { type NodeWithFieldDefinition } from 'is-reference';
 import type MagicString from 'magic-string';
-import type { NormalizedTreeshakingOptions } from 'rollup';
+import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { BLANK } from '../../utils/blank';
 import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';

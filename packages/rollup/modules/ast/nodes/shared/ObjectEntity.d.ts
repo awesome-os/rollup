@@ -1,0 +1,51 @@
+import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
+import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
+import type { EntityPathTracker, ObjectPath, ObjectPathKey } from '../../utils/PathTracker';
+import type { LiteralValueOrUnknown } from './Expression';
+import { ExpressionEntity } from './Expression';
+import type { IncludeChildren } from './Node';
+export interface ObjectProperty {
+    key: ObjectPathKey;
+    kind: 'init' | 'set' | 'get';
+    property: ExpressionEntity;
+}
+export type PropertyMap = Record<string, ExpressionEntity[]>;
+export declare class ObjectEntity extends ExpressionEntity {
+    private prototypeExpression;
+    private immutable;
+    private get hasLostTrack();
+    private set hasLostTrack(value);
+    private get hasUnknownDeoptimizedInteger();
+    private set hasUnknownDeoptimizedInteger(value);
+    private get hasUnknownDeoptimizedProperty();
+    private set hasUnknownDeoptimizedProperty(value);
+    private readonly additionalExpressionsToBeDeoptimized;
+    private readonly allProperties;
+    private readonly deoptimizedPaths;
+    private readonly expressionsToBeDeoptimizedByKey;
+    private readonly gettersByKey;
+    private readonly propertiesAndGettersByKey;
+    private readonly propertiesAndSettersByKey;
+    private readonly settersByKey;
+    private readonly unknownIntegerProps;
+    private readonly unmatchableGetters;
+    private readonly unmatchablePropertiesAndGetters;
+    private readonly unmatchablePropertiesAndSetters;
+    private readonly unmatchableSetters;
+    constructor(properties: ObjectProperty[] | PropertyMap, prototypeExpression: ExpressionEntity | null, immutable?: boolean);
+    deoptimizeAllProperties(noAccessors?: boolean): void;
+    deoptimizeArgumentsOnInteractionAtPath(interaction: NodeInteraction, path: ObjectPath, recursionTracker: EntityPathTracker): void;
+    deoptimizeIntegerProperties(): void;
+    deoptimizePath(path: ObjectPath): void;
+    getLiteralValueAtPath(path: ObjectPath, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): LiteralValueOrUnknown;
+    getReturnExpressionWhenCalledAtPath(path: ObjectPath, interaction: NodeInteractionCalled, recursionTracker: EntityPathTracker, origin: DeoptimizableEntity): [expression: ExpressionEntity, isPure: boolean];
+    hasEffectsOnInteractionAtPath(path: ObjectPath, interaction: NodeInteraction, context: HasEffectsContext): boolean;
+    include(context: InclusionContext, includeChildrenRecursively: IncludeChildren): void;
+    includePath(path: ObjectPath, context: InclusionContext): void;
+    private buildPropertyMaps;
+    private deoptimizeCachedEntities;
+    private deoptimizeCachedIntegerEntities;
+    private getMemberExpression;
+    private getMemberExpressionAndTrackDeopt;
+}
