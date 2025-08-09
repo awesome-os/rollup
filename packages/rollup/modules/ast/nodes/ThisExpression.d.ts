@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type { Variable } from '../variables/Variable';

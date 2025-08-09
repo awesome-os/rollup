@@ -6,6 +6,7 @@ import { ExternalVariable } from '../variables/ExternalVariable';
 import NamespaceVariable from '../variables/NamespaceVariable';
 import ExpressionStatement from './ExpressionStatement';
 import { UnknownValue } from './shared/Expression';
+import {} from '@rollup/types';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
 import {} from '@rollup/types';
 const binaryOperators = {

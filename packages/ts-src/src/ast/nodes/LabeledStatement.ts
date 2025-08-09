@@ -3,7 +3,7 @@ import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace} from '../../utils/renderHelpers';
 import { type RenderOptions } from '@rollup/types';
-import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';

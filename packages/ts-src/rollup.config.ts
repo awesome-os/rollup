@@ -1,3 +1,4 @@
+/// <reference types="@rollup/types/declarations" />
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -5,9 +6,8 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import '@rollup/types/declarations';
-import { fileURLToPath } from 'node:url';
 import type { Plugin, RollupLog, RollupOptions, WarningHandlerWithDefault } from '@rollup/types';
+import { fileURLToPath } from 'node:url';
 import { string } from 'rollup-plugin-string';
 import addCliEntry from './build-plugins/add-cli-entry';
 import { moduleAliases } from './build-plugins/aliases';

@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import { checkEffectForNodes } from '../utils/checkEffectForNodes';
 import type Decorator from './Decorator';
 import type FunctionExpression from './FunctionExpression';

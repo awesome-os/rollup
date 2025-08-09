@@ -1,4 +1,4 @@
-import type { HookAction, ReplaceContext } from '@rollup/types';
+import type { Argument0, EnsurePromise, HookAction, ReplaceContext } from '@rollup/types';
 import type {
 	AddonHookFunction,
 	AddonHooks,
@@ -38,17 +38,6 @@ import {
 	type PluginFilter,
 	type TransformHookFilter
 } from './pluginFilter';
-
-/**
- * Coerce a promise union to always be a promise.
- * @example EnsurePromise<string | Promise<string>> -> Promise<string>
- */
-type EnsurePromise<T> = Promise<Awaited<T>>;
-/**
- * Get the type of the first argument in a function.
- * @example Arg0<(a: string, b: number) => void> -> string
- */
-type Argument0<H extends keyof FunctionPluginHooks> = Parameters<FunctionPluginHooks[H]>[0];
 
 // This will make sure no input hook is omitted
 const inputHookNames: Record<InputPluginHooks, 1> = {

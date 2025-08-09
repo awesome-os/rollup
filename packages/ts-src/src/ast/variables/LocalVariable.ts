@@ -1,8 +1,8 @@
 import type { Node } from '@rollup/types';
 import type { AstContext, default as Module } from '../../Module';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { EMPTY_ARRAY } from '../../utils/blank';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import {
 	INTERACTION_ACCESSED,
@@ -16,11 +16,11 @@ import {
 	deoptimizeInteraction,
 	type ExpressionEntity,
 	includeInteraction,
-	type LiteralValueOrUnknown,
 	UNKNOWN_EXPRESSION,
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from '../nodes/shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import {
 	isArrowFunctionExpressionNode,

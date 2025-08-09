@@ -1,8 +1,9 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext } from '../../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
-import { ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
+import { ExpressionEntity } from './Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 export declare class ObjectMember extends ExpressionEntity {
     private readonly object;
     private readonly path;

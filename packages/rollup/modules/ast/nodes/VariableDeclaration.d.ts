@@ -1,10 +1,9 @@
+import type { IncludeChildren, NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
-import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import * as NodeType from './NodeType';
-import type { InclusionOptions } from './shared/Expression';
+import type { InclusionOptions } from '@rollup/types';
 import { NodeBase } from './shared/Node';
-import { type IncludeChildren } from '@rollup/types';
 import type { VariableDeclarationKind } from './shared/VariableKinds';
 import type VariableDeclarator from './VariableDeclarator';
 export default class VariableDeclaration extends NodeBase {

@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from './ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from './NodeInteractions';
 import {
 	INTERACTION_ACCESSED,
@@ -6,7 +6,7 @@ import {
 	NODE_INTERACTION_UNKNOWN_CALL
 } from './NodeInteractions';
 import type { LiteralValueOrBigInt } from './nodes/Literal';
-import type { LiteralValueOrUnknown } from './nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import {
 	ExpressionEntity,
 	UNKNOWN_EXPRESSION,

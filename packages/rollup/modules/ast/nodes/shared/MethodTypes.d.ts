@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from '../../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import { type ObjectPath } from '../../utils/PathTracker';
 import { ExpressionEntity } from './Expression';

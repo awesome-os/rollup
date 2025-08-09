@@ -1,5 +1,6 @@
 import { findFirstOccurrenceOutsideComment, findNonWhiteSpace } from '../../utils/renderHelpers';
-import {} from '../ExecutionContext';
+import {} from '@rollup/types';
+import {} from '@rollup/types';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { doNotDeoptimize, StatementBase } from './shared/Node';
 import {} from '@rollup/types';

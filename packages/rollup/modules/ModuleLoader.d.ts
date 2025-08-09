@@ -1,5 +1,4 @@
-import type { ModuleLoaderResolveId, UnresolvedModule } from '@rollup/types';
-import type { EmittedChunk, ModuleInfo, ModuleOptions, NormalizedInputOptions, PartialNull } from 'rollup';
+import type { EmittedChunk, ModuleInfo, ModuleLoaderResolveId, ModuleOptions, NormalizedInputOptions, PartialNull, UnresolvedModule } from '@rollup/types';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import Module from './Module';

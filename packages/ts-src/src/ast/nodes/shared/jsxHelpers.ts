@@ -1,4 +1,4 @@
-import type { InclusionContext } from '../../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
 import LocalVariable from '../../variables/LocalVariable';
 import type { Variable } from '../../variables/Variable';

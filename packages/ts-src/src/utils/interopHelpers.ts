@@ -1,5 +1,5 @@
 import type { InteropType } from '@rollup/types';
-import type { GenerateCodeSnippets } from './generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 
 const INTEROP_DEFAULT_VARIABLE = '_interopDefault';
 const INTEROP_DEFAULT_COMPAT_VARIABLE = '_interopDefaultCompat';

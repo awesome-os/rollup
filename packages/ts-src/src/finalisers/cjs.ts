@@ -1,7 +1,7 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
 import type { ChunkDependency } from '../Chunk';
 import type { NormalizedOutputOptions } from '@rollup/types';
-import type { GenerateCodeSnippets } from '../utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import type { FinaliserOptions } from './index';
 import { getExportBlock, getNamespaceMarkers } from './shared/getExportBlock';
 import getInteropBlock from './shared/getInteropBlock';

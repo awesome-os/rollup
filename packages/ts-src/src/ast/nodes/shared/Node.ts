@@ -1,21 +1,18 @@
-import { locate, type Location } from 'locate-character';
-import type MagicString from 'magic-string';
-import type { AstContext } from '../../../Module';
 import type {
 	ExpressionNode,
 	GenericEsTreeNode,
 	IncludeChildren,
 	Node,
+	RenderOptions,
 	RollupAnnotation
 } from '@rollup/types';
+import { locate, type Location } from 'locate-character';
+import type MagicString from 'magic-string';
+import type { AstContext } from '../../../Module';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from '../../../utils/astConverterHelpers';
-import type { RenderOptions } from '@rollup/types';
 import { childNodeKeys } from '../../childNodeKeys';
-import {
-	createHasEffectsContext,
-	type HasEffectsContext,
-	type InclusionContext
-} from '../../ExecutionContext';
+import { createHasEffectsContext } from '../../ExecutionContext';
 import type { NodeInteractionAssigned } from '../../NodeInteractions';
 import { INTERACTION_ASSIGNED } from '../../NodeInteractions';
 import type ChildScope from '../../scopes/ChildScope';
@@ -23,10 +20,9 @@ import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
 import type { Variable } from '../../variables/Variable';
 import type * as NodeType from '../NodeType';
 import type Program from '../Program';
-import { isFlagSet, setFlag } from './BitFlags';
-import type { InclusionOptions } from './Expression';
+import { Flag, isFlagSet, setFlag } from './BitFlags';
+import type { InclusionOptions } from '@rollup/types';
 import { ExpressionEntity } from './Expression';
-import { Flag } from "./BitFlags";
 
 export class NodeBase extends ExpressionEntity implements ExpressionNode {
 	declare annotations?: readonly RollupAnnotation[];

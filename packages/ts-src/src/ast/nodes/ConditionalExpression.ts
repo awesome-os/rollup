@@ -6,8 +6,8 @@ import {
 	findNonWhiteSpace,
 	removeLineBreaks
 } from '../../utils/renderHelpers';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { createInclusionContext } from '../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
@@ -16,7 +16,8 @@ import { tryCastLiteralValueToBoolean } from '../utils/tryCastLiteralValueToBool
 import type * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
-import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
+import type { ExpressionEntity } from './shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from './shared/Expression';
 import { MultiExpression } from './shared/MultiExpression';
 import type { ExpressionNode, IncludeChildren } from '@rollup/types';

@@ -1,4 +1,4 @@
-import type { MergedRollupOptions } from '../../src/rollup/types';
+import type { MergedRollupOptions } from '@rollup/types';
 import { stderr } from '../logging';
 
 const CLEAR_SCREEN = '\u001Bc';

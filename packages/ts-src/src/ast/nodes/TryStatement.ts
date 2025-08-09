@@ -1,5 +1,5 @@
 import type { NormalizedTreeshakingOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type BlockStatement from './BlockStatement';
 import type CatchClause from './CatchClause';
 import type * as NodeType from './NodeType';

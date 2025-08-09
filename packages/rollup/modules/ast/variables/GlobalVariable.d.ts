@@ -1,7 +1,7 @@
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
-import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import { Variable } from './Variable';
 export default class GlobalVariable extends Variable {

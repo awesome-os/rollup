@@ -1,12 +1,13 @@
 import type MagicString from 'magic-string';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';
 import type Property from './Property';
-import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
+import type { ExpressionEntity } from './shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import type { IncludeChildren } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import SpreadElement from './SpreadElement';

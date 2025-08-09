@@ -1,9 +1,9 @@
 import type { IncludeChildren } from '@rollup/types';
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type { EntityPathTracker, ObjectPath, ObjectPathKey } from '../../utils/PathTracker';
-import type { LiteralValueOrUnknown } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { ExpressionEntity } from './Expression';
 export type ObjectProperty = {
     key: ObjectPathKey;

@@ -1,4 +1,4 @@
-import type { MergedRollupOptions } from '../../src/rollup/types';
+import type { MergedRollupOptions } from '@rollup/types';
 import { mergeOptions } from '../../src/utils/options/mergeOptions';
 import batchWarnings from './batchWarnings';
 import { addCommandPluginsToInputOptions } from './commandPlugins';

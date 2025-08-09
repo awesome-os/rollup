@@ -2,8 +2,8 @@ import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { logIllegalImportReassignment } from '../../../utils/logs';
 import { PureFunctionKey } from '../../../utils/pureFunctions';
 import { markModuleAndImpureDependenciesAsExecuted } from '../../../utils/traverseStaticDependencies';
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import {
 	INTERACTION_ACCESSED,
@@ -18,7 +18,8 @@ import LocalVariable from '../../variables/LocalVariable';
 import type { Variable } from '../../variables/Variable';
 import { isFlagSet, setFlag } from './BitFlags';
 import { Flag } from "./BitFlags";
-import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
+import type { ExpressionEntity } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { UNKNOWN_EXPRESSION } from './Expression';
 import { NodeBase } from './Node';
 import { type IncludeChildren } from '@rollup/types';

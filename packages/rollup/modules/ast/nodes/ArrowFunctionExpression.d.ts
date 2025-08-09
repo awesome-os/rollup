@@ -1,5 +1,5 @@
 import type { ExpressionNode, IncludeChildren } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type ChildScope from '../scopes/ChildScope';
 import ReturnValueScope from '../scopes/ReturnValueScope';

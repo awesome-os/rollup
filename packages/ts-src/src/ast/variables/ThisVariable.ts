@@ -1,5 +1,5 @@
 import type { AstContext } from '../../Module';
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { UNKNOWN_EXPRESSION } from '../nodes/shared/Expression';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';

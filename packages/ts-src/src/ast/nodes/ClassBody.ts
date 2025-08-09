@@ -1,4 +1,4 @@
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type ChildScope from '../scopes/ChildScope';
 import ClassBodyScope from '../scopes/ClassBodyScope';
 import { UNKNOWN_PATH } from '../utils/PathTracker';

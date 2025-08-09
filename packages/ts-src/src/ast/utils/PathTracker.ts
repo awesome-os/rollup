@@ -1,7 +1,7 @@
 import { EMPTY_OBJECT } from '../../utils/blank';
 import { getNewSet, getOrCreate } from '../../utils/getOrCreate';
-import type { Entity } from '../Entity';
-import type { InclusionContext } from '../ExecutionContext';
+import type { Entity } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
 import type { ExpressionEntity } from '../nodes/shared/Expression';
 
 export const UnknownKey = Symbol('Unknown Key');

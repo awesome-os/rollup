@@ -13,10 +13,11 @@ import {
 	renderSystemExportSequenceAfterExpression
 } from '../../utils/systemJsRendering';
 import {
-	createHasEffectsContext,
+	createHasEffectsContext} from '../ExecutionContext';
+import {
 	type HasEffectsContext,
 	type InclusionContext
-} from '../ExecutionContext';
+} from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type { Variable } from '../variables/Variable';

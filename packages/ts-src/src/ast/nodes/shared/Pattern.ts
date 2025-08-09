@@ -1,5 +1,5 @@
-import type { WritableEntity } from '../../Entity';
-import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { WritableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { ObjectPath } from '../../utils/PathTracker';
 import type LocalVariable from '../../variables/LocalVariable';
 import type { ExpressionEntity } from './Expression';

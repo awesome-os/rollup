@@ -1,14 +1,13 @@
+import type { ExpressionNode, GenericEsTreeNode, IncludeChildren, Node, RenderOptions, RollupAnnotation } from '@rollup/types';
 import { type Location } from 'locate-character';
 import type MagicString from 'magic-string';
 import type { AstContext } from '../../../Module';
-import type { ExpressionNode, GenericEsTreeNode, IncludeChildren, Node, RollupAnnotation } from '@rollup/types';
-import type { RenderOptions } from '../../../utils/renderHelpers';
-import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteractionAssigned } from '../../NodeInteractions';
 import type ChildScope from '../../scopes/ChildScope';
 import type { Variable } from '../../variables/Variable';
 import type * as NodeType from '../NodeType';
-import type { InclusionOptions } from './Expression';
+import type { InclusionOptions } from '@rollup/types';
 import { ExpressionEntity } from './Expression';
 export declare class NodeBase extends ExpressionEntity implements ExpressionNode {
     annotations?: readonly RollupAnnotation[];

@@ -1,6 +1,5 @@
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
-import { isFlagSet, setFlag } from './BitFlags';
-import { Flag } from "./BitFlags";
+import { Flag, isFlagSet, setFlag } from './BitFlags';
 export const UnknownValue = Symbol('Unknown Value');
 export const UnknownTruthyValue = Symbol('Unknown Truthy Value');
 export const UnknownFalsyValue = Symbol('Unknown Falsy Value');

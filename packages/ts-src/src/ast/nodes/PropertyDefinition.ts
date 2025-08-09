@@ -1,5 +1,5 @@
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import { checkEffectForNodes } from '../utils/checkEffectForNodes';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
@@ -11,10 +11,10 @@ import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
 import {
 	type ExpressionEntity,
-	type LiteralValueOrUnknown,
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';
 

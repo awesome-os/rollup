@@ -1,6 +1,6 @@
 import type { NormalizedTreeshakingOptions } from '@rollup/types';
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import {
 	INTERACTION_CALLED,
@@ -20,7 +20,8 @@ import RestElement from '../RestElement';
 import type VariableDeclarator from '../VariableDeclarator';
 import { isFlagSet, setFlag } from './BitFlags';
 import { Flag } from "./BitFlags";
-import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
+import type { ExpressionEntity } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION } from './Expression';
 import {
 	doNotDeoptimize,

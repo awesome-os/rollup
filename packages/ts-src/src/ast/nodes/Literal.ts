@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import {
 	INTERACTION_ACCESSED,
@@ -16,10 +16,10 @@ import {
 import type * as NodeType from './NodeType';
 import {
 	type ExpressionEntity,
-	type LiteralValueOrUnknown,
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 import { type GenericEsTreeNode } from '@rollup/types';
 

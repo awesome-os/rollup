@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
-import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
-import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
+import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { type ObjectPath } from '../utils/PathTracker';
 import * as NodeType from './NodeType';

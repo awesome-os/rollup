@@ -9,7 +9,7 @@ import {
 } from '@rollup/types';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import { treeshakeNode } from '../../utils/treeshakeNode';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type ModuleScope from '../scopes/ModuleScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { UNKNOWN_PATH } from '../utils/PathTracker';

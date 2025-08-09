@@ -5,6 +5,7 @@ import Identifier from './Identifier';
 import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from './shared/Expression';
+import {} from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 import {} from '@rollup/types';
 const unaryOperators = {

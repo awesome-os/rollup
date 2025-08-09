@@ -3,6 +3,7 @@ import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
+import {} from '@rollup/types';
 import { doNotDeoptimize, NodeBase } from './shared/Node';
 import {} from '@rollup/types';
 export default class PropertyDefinition extends NodeBase {

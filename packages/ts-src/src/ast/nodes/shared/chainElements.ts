@@ -1,11 +1,11 @@
 import type { ChainElement, ExpressionNode, SkippedChain } from '@rollup/types';
 import { IS_SKIPPED_CHAIN } from '../../../rollup/IS_SKIPPED_CHAIN';
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../../utils/PathTracker';
 import type CallExpression from '../CallExpression';
 import type MemberExpression from '../MemberExpression';
-import type { LiteralValueOrUnknown } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 
 export function getChainElementLiteralValueAtPath(
 	element: CallExpression | MemberExpression,

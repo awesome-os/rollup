@@ -1,8 +1,8 @@
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
 import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import {
@@ -19,10 +19,12 @@ import ExpressionStatement from './ExpressionStatement';
 import type { LiteralValue } from './Literal';
 import type * as NodeType from './NodeType';
 import {
-	type InclusionOptions,
-	type LiteralValueOrUnknown,
 	UnknownValue
 } from './shared/Expression';
+import {
+	type InclusionOptions,
+	type LiteralValueOrUnknown
+} from '@rollup/types';
 import {
 	doNotDeoptimize,
 	NodeBase

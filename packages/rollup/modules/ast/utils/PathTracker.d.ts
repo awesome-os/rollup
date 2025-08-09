@@ -1,5 +1,5 @@
-import type { Entity } from '../Entity';
-import type { InclusionContext } from '../ExecutionContext';
+import type { Entity } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
 import type { ExpressionEntity } from '../nodes/shared/Expression';
 export declare const UnknownKey: unique symbol;
 export declare const UnknownNonAccessorKey: unique symbol;

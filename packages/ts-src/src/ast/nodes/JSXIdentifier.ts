@@ -2,7 +2,7 @@ import type { NormalizedJsxOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
 import { makeMap } from '../../rollup/makeMap';
 import type { RenderOptions } from '@rollup/types';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import type JSXMemberExpression from './JSXMemberExpression';

@@ -1,7 +1,7 @@
 import type ExternalModule from '../../ExternalModule';
 import type Module from '../../Module';
-import type { RenderOptions } from '../../utils/renderHelpers';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { RenderOptions } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { ExpressionEntity } from '../nodes/shared/Expression';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';

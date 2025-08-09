@@ -1,4 +1,4 @@
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type * as NodeType from './NodeType';
 import { StatementBase } from './shared/Node';
 import { type ExpressionNode, type IncludeChildren, type StatementNode } from '@rollup/types';

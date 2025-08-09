@@ -1,4 +1,4 @@
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH } from '../utils/PathTracker';

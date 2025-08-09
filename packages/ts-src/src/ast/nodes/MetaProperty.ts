@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import type { InternalModuleFormat } from '@rollup/types';
 import { escapeId } from '../../utils/escapeId';
-import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import { DOCUMENT_CURRENT_SCRIPT } from '../../utils/interopHelpers';
 import { dirname, normalize, relative } from '../../utils/path';
 import type { PluginDriver } from '../../utils/PluginDriver';

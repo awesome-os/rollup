@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { type IncludeChildren, type StatementNode } from '@rollup/types';
-import { type RenderOptions } from '../../utils/renderHelpers';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import { type RenderOptions } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type ChildScope from '../scopes/ChildScope';
 import * as NodeType from './NodeType';
 import { StatementBase } from './shared/Node';

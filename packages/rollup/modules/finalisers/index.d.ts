@@ -1,7 +1,7 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
 import type { ChunkDependency, ChunkExports } from '../Chunk';
 import type { LogHandler, NormalizedOutputOptions } from '@rollup/types';
-import type { GenerateCodeSnippets } from '../utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 export interface FinaliserOptions {
     accessedGlobals: Set<string>;
     dependencies: ChunkDependency[];

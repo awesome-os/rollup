@@ -1,5 +1,5 @@
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import {
 	type EntityPathTracker,
@@ -10,7 +10,8 @@ import {
 import { UNDEFINED_EXPRESSION, UNKNOWN_LITERAL_NUMBER } from '../values';
 import type * as NodeType from './NodeType';
 import { ARRAY_PROTOTYPE } from './shared/ArrayPrototype';
-import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
+import type { ExpressionEntity } from './shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';
 import { ObjectEntity, type ObjectProperty } from './shared/ObjectEntity';

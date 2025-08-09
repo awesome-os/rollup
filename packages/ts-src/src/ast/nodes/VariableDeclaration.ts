@@ -1,5 +1,6 @@
 import type { IncludeChildren, NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
+import type { InclusionContext } from '@rollup/types';
 import { BLANK } from '../../utils/blank';
 import { isReassignedExportsMember } from '../../utils/reassignedExportsMember';
 import {
@@ -12,14 +13,13 @@ import {
 	renderSystemExportExpression
 } from '../../utils/systemJsRendering';
 import { treeshakeNode } from '../../utils/treeshakeNode';
-import type { InclusionContext } from '../ExecutionContext';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import type { Variable } from '../variables/Variable';
 import ArrayPattern from './ArrayPattern';
 import Identifier, { type IdentifierWithVariable } from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
-import type { InclusionOptions } from './shared/Expression';
+import type { InclusionOptions } from '@rollup/types';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 import type { VariableDeclarationKind } from './shared/VariableKinds';
 import type VariableDeclarator from './VariableDeclarator';

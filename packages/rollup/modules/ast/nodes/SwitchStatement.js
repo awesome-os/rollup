@@ -1,5 +1,7 @@
 import { renderStatementList } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import { createHasEffectsContext } from '../ExecutionContext';
+import {} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 export default class SwitchStatement extends StatementBase {

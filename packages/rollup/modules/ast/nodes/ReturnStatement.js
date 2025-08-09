@@ -1,8 +1,6 @@
-import {} from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { doNotDeoptimize, StatementBase } from './shared/Node';
-import {} from '@rollup/types';
 export default class ReturnStatement extends StatementBase {
     hasEffects(context) {
         if (!context.ignore.returnYield || this.argument?.hasEffects(context))

@@ -1,4 +1,4 @@
-import type { LogHandler, MergedRollupOptions, RollupLog } from '../../src/rollup/types';
+import type { LogHandler, MergedRollupOptions, RollupLog } from '@rollup/types';
 
 export interface BatchWarnings {
 	add: (warning: RollupLog) => void;

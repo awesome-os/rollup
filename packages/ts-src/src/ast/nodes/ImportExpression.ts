@@ -11,7 +11,7 @@ import type {
 	PreRenderedChunkWithFileName
 } from 'rollup';
 import { EMPTY_ARRAY } from '../../utils/blank';
-import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import {
 	INTEROP_NAMESPACE_DEFAULT_ONLY_VARIABLE,
 	namespaceInteropHelpersByInteropType
@@ -19,7 +19,7 @@ import {
 import type { PluginDriver } from '../../utils/PluginDriver';
 import { findFirstOccurrenceOutsideComment } from '../../utils/renderHelpers';
 import { type RenderOptions } from '@rollup/types';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { UnknownKey } from '../utils/PathTracker';

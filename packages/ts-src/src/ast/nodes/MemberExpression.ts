@@ -10,11 +10,11 @@ import type {
 import type MagicString from 'magic-string';
 import type { AstContext } from '../../Module';
 import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logIllegalImportReassignment, logMissingExport } from '../../utils/logs';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
 import { createHasEffectsContext, createInclusionContext } from '../ExecutionContext';
 import type {
 	NodeInteraction,
@@ -56,10 +56,10 @@ import {
 	type ExpressionEntity,
 	includeInteraction,
 	includeInteractionWithoutThis,
-	type LiteralValueOrUnknown,
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import type { PatternNode } from './shared/Pattern';
 import type Super from './Super';

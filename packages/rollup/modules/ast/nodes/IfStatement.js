@@ -1,10 +1,11 @@
-import {} from '../ExecutionContext';
+import {} from '@rollup/types';
 import TrackingScope from '../scopes/TrackingScope';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../utils/PathTracker';
 import { tryCastLiteralValueToBoolean } from '../utils/tryCastLiteralValueToBoolean';
 import BlockStatement from './BlockStatement';
 import * as NodeType from './NodeType';
 import { UnknownValue } from './shared/Expression';
+import {} from '@rollup/types';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 import {} from '@rollup/types';
 const unset = Symbol('unset');

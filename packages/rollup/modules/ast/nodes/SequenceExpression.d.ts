@@ -1,13 +1,9 @@
+import type { DeoptimizableEntity, ExpressionNode, HasEffectsContext, IncludeChildren, InclusionContext, LiteralValueOrUnknown, NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
-import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
-import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
+import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import type { LiteralValueOrUnknown } from './shared/Expression';
 import { NodeBase } from './shared/Node';
-import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 export default class SequenceExpression extends NodeBase {
     expressions: ExpressionNode[];
     type: NodeType.tSequenceExpression;

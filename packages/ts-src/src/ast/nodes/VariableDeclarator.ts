@@ -6,7 +6,7 @@ import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace} from '../../utils/renderHelpers';
 import { type RenderOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../values';
 import ClassExpression from './ClassExpression';

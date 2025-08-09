@@ -1,4 +1,4 @@
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { NodeInteractionCalled } from '../NodeInteractions';
 import type { ExpressionEntity } from '../nodes/shared/Expression';
 import type { NodeBase } from '../nodes/shared/Node';

@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
+import type { RenderOptions } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import TrackingScope from '../scopes/TrackingScope';
 import * as NodeType from './NodeType';
 import { StatementBase } from './shared/Node';

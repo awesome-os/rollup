@@ -1,5 +1,5 @@
 import { env } from 'node:process';
-import type { MergedRollupOptions } from '../../src/rollup/types';
+import type { MergedRollupOptions } from '@rollup/types';
 import { logDuplicateImportOptions, logFailAfterWarnings } from '../../src/utils/logs';
 import { isWatchEnabled } from '../../src/utils/options/mergeOptions';
 import { getAliasName } from '../../src/utils/relativeId';

@@ -2,6 +2,7 @@ import { EMPTY_ARRAY, EMPTY_SET } from '../../../utils/blank';
 import { INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../../NodeInteractions';
 import { UNKNOWN_PATH } from '../../utils/PathTracker';
 import { UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './Expression';
+import {} from '@rollup/types';
 import { NodeBase } from './Node';
 export default class CallExpressionBase extends NodeBase {
     constructor() {

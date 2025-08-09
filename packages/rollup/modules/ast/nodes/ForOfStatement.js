@@ -1,4 +1,5 @@
 import { NO_SEMICOLON } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import { isFlagSet, setFlag } from './shared/BitFlags';

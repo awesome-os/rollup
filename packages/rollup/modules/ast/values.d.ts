@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from './ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteractionCalled } from './NodeInteractions';
 import type { LiteralValueOrBigInt } from './nodes/Literal';
 import { ExpressionEntity } from './nodes/shared/Expression';

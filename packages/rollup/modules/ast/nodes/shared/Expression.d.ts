@@ -1,21 +1,9 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { WritableEntity } from '../../Entity';
-import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity, HasEffectsContext, IncludeChildren, InclusionContext, InclusionOptions, LiteralValueOrUnknown, WritableEntity } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
-import type { EntityPathTracker, ObjectPath, SymbolToStringTag } from '../../utils/PathTracker';
-import type { LiteralValue } from '../Literal';
-import type { IncludeChildren } from '@rollup/types';
+import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 export declare const UnknownValue: unique symbol;
 export declare const UnknownTruthyValue: unique symbol;
 export declare const UnknownFalsyValue: unique symbol;
-export type LiteralValueOrUnknown = LiteralValue | typeof UnknownValue | typeof UnknownTruthyValue | typeof UnknownFalsyValue | typeof SymbolToStringTag;
-export interface InclusionOptions {
-    /**
-     * Include the id of a declarator even if unused to ensure it is a valid
-     * statement.
-     */
-    asSingleStatement?: boolean;
-}
 export declare class ExpressionEntity implements WritableEntity {
     protected flags: number;
     get included(): boolean;

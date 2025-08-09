@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { GenericEsTreeNode } from '@rollup/types';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { type IdentifierWithVariable } from './Identifier';
 import type * as NodeType from './NodeType';
 import ClassNode from './shared/ClassNode';

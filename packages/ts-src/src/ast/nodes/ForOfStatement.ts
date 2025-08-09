@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { NO_SEMICOLON } from '../../utils/renderHelpers';
 import { type RenderOptions } from '@rollup/types';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';

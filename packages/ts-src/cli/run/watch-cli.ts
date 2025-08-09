@@ -1,10 +1,10 @@
+import type { MergedRollupOptions, RollupWatcher } from '@rollup/types';
 import type { FSWatcher } from 'chokidar';
 import { watch } from 'chokidar';
 import dateTime from 'date-time';
 import { readFile } from 'node:fs/promises';
 import ms from 'pretty-ms';
 import { onExit } from 'signal-exit';
-import type { MergedRollupOptions, RollupWatcher } from '../../src/rollup/types';
 import { bold, cyan, green, underline } from '../../src/utils/colors';
 import { relativeId } from '../../src/utils/relativeId';
 import { handleError, stderr } from '../logging';

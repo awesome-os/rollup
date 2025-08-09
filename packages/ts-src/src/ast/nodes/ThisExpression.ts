@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logThisIsUndefined } from '../../utils/logs';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import ChildScope from '../scopes/ChildScope';

@@ -5,7 +5,7 @@ import type { Variable } from './ast/variables/Variable';
 import ExternalChunk from './ExternalChunk';
 import ExternalModule from './ExternalModule';
 import Module from './Module';
-import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import type { HashPlaceholderGenerator } from './utils/hashPlaceholders';
 import type { OutputBundleWithPlaceholders } from './utils/outputBundle';
 import type { PluginDriver } from './utils/PluginDriver';

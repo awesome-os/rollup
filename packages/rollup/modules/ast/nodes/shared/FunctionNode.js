@@ -1,4 +1,4 @@
-import {} from '../../ExecutionContext';
+import {} from '@rollup/types';
 import { INTERACTION_CALLED } from '../../NodeInteractions';
 import FunctionScope from '../../scopes/FunctionScope';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';

@@ -1,4 +1,5 @@
 import { NO_SEMICOLON } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';

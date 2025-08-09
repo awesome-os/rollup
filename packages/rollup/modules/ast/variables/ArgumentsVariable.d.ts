@@ -1,5 +1,5 @@
 import type { AstContext } from '../../Module';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { ExpressionEntity } from '../nodes/shared/Expression';
 import type { ObjectPath } from '../utils/PathTracker';

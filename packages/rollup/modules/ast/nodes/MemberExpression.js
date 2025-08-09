@@ -15,6 +15,7 @@ import Literal from './Literal';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { getChainElementLiteralValueAtPath } from './shared/chainElements';
 import { deoptimizeInteraction, includeInteraction, includeInteractionWithoutThis, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
+import {} from '@rollup/types';
 import { NodeBase } from './shared/Node';
 function getResolvablePropertyKey(memberExpression) {
     return memberExpression.computed

@@ -1,5 +1,6 @@
 import {} from '@rollup/types';
 import { renderStatementList } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import ExpressionStatement from './ExpressionStatement';
 import * as NodeType from './NodeType';

@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import { NODE_INTERACTION_UNKNOWN_CALL } from '../NodeInteractions';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';

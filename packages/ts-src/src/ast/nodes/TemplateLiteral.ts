@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { RenderOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED, INTERACTION_CALLED } from '../NodeInteractions';
 import type { ObjectPath } from '../utils/PathTracker';
@@ -11,7 +11,8 @@ import {
 	literalStringMembers
 } from '../values';
 import type * as NodeType from './NodeType';
-import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
+import type { ExpressionEntity } from './shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { NodeBase } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';

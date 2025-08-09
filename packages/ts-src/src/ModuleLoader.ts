@@ -1,24 +1,22 @@
 import type {
-	LoadModulePromise,
-	ModuleLoaderResolveId,
-	NormalizedResolveIdWithoutDefaults,
-	PreloadType,
-	ResolveDynamicDependencyPromise,
-	ResolveStaticDependencyPromise,
-	UnresolvedModule
-} from '@rollup/types';
-import type {
 	AstNode,
 	EmittedChunk,
 	HasModuleSideEffects,
+	LoadModulePromise,
 	LoadResult,
 	ModuleInfo,
+	ModuleLoaderResolveId,
 	ModuleOptions,
 	NormalizedInputOptions,
+	NormalizedResolveIdWithoutDefaults,
 	PartialNull,
+	PreloadType,
 	ResolvedId,
-	ResolveIdResult
-} from 'rollup';
+	ResolveDynamicDependencyPromise,
+	ResolveIdResult,
+	ResolveStaticDependencyPromise,
+	UnresolvedModule
+} from '@rollup/types';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import Module from './Module';

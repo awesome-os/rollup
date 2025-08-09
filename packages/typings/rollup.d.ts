@@ -1,34 +1,34 @@
+// / <reference types="./declarations" />
+// / <reference types="./fsevents" />
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import type * as estree from 'estree';
 import type MagicString from 'magic-string';
-// import type {
-// 	AstNode,
-// 	NormalizedGeneratedCodeOptions,
-// 	NormalizedJsxOptions,
-// 	NormalizedTreeshakingOptions,
-// 	Plugin,
-// 	PluginContext,
-// 	RollupAnnotation
-// } from 'rollup/modules/rollup/rollup';
-import type { ImportAttributesKey, InternalModuleFormat } from 'rollup';
-import type { DeoptimizableEntity } from '../ts-src/src/ast/DeoptimizableEntity.ts';
-import type { Entity } from '../ts-src/src/ast/Entity.ts';
-import type { HasEffectsContext, InclusionContext } from '../ts-src/src/ast/ExecutionContext.ts';
+import type { FunctionPluginHooks } from 'rollup';
+import type { NodeInteractionAssigned } from '../ts-src/src/ast/NodeInteractions.ts';
+import type { LiteralValue } from '../ts-src/src/ast/nodes/Literal.ts';
 import type {
 	ExpressionEntity,
-	InclusionOptions,
-	LiteralValueOrUnknown
+	UnknownFalsyValue,
+	UnknownTruthyValue,
+	UnknownValue
 } from '../ts-src/src/ast/nodes/shared/Expression.ts';
 import type ChildScope from '../ts-src/src/ast/scopes/ChildScope.ts';
-import type { EntityPathTracker, ObjectPath } from '../ts-src/src/ast/utils/PathTracker.ts';
+import type {
+	DiscriminatedPathTracker,
+	EntityPathTracker,
+	ObjectPath,
+	SymbolToStringTag
+} from '../ts-src/src/ast/utils/PathTracker.ts';
+import type ThisVariable from '../ts-src/src/ast/variables/ThisVariable.ts';
 import type { Variable } from '../ts-src/src/ast/variables/Variable.ts';
 import type Chunk from '../ts-src/src/Chunk.ts';
 import type ExternalChunk from '../ts-src/src/ExternalChunk.ts';
 import type Module from '../ts-src/src/Module.ts';
 import type { DynamicImport } from '../ts-src/src/Module.ts';
 import type { IS_SKIPPED_CHAIN } from '../ts-src/src/rollup/IS_SKIPPED_CHAIN.ts';
-import type { GenerateCodeSnippets } from '../ts-src/src/utils/generateCodeSnippets.ts';
 import type { PluginDriver } from '../ts-src/src/utils/PluginDriver.ts';
+import './declarations';
+import './fsevents';
 
 export type RenderOptions = {
 	accessedDocumentCurrentScript: boolean;
@@ -59,6 +59,114 @@ export type NodeRenderOptions = {
 	start?: number;
 };
 
+type ExecutionContextIgnore = {
+	breaks: boolean;
+	continues: boolean;
+	labels: Set<string>;
+	returnYield: boolean;
+	this: boolean;
+};
+type ControlFlowContext = {
+	brokenFlow: boolean;
+	hasBreak: boolean;
+	hasContinue: boolean;
+	includedLabels: Set<string>;
+};
+
+export type InclusionContext = {
+	includedCallArguments: Set<Entity>;
+} & ControlFlowContext;
+
+export type HasEffectsContext = {
+	accessed: EntityPathTracker;
+	assigned: EntityPathTracker;
+	brokenFlow: boolean;
+	called: DiscriminatedPathTracker;
+	ignore: ExecutionContextIgnore;
+	instantiated: DiscriminatedPathTracker;
+	replacedVariableInits: Map<ThisVariable, ExpressionEntity>;
+} & ControlFlowContext;
+export type DeoptimizableEntity = {
+	deoptimizeCache(): void;
+};
+
+export type Entity = object;
+
+export type WritableEntity = {
+	/**
+	 * Reassign a given path of an object.
+	 * E.g., node.deoptimizePath(['x', 'y']) is called when something
+	 * is assigned to node.x.y. If the path is [UnknownKey], then the return
+	 * expression of this node is reassigned as well.
+	 */
+	deoptimizePath(path: ObjectPath): void;
+
+	hasEffectsOnInteractionAtPath(
+		path: ObjectPath,
+		interaction: NodeInteractionAssigned,
+		context: HasEffectsContext
+	): boolean;
+} & Entity;
+export type LiteralValueOrUnknown =
+	| LiteralValue
+	| typeof UnknownValue
+	| typeof UnknownTruthyValue
+	| typeof UnknownFalsyValue
+	| typeof SymbolToStringTag;
+
+export type InclusionOptions = {
+	/**
+	 * Include the id of a declarator even if unused to ensure it is a valid
+	 * statement.
+	 */
+	asSingleStatement?: boolean;
+}; /**
+ * Coerce a promise union to always be a promise.
+ * @example EnsurePromise<string | Promise<string>> -> Promise<string>
+ */
+export type EnsurePromise<T> = Promise<Awaited<T>>;
+/**
+ * Get the type of the first argument in a function.
+ * @example Arg0<(a: string, b: number) => void> -> string
+ */
+export type Argument0<H extends keyof FunctionPluginHooks> = Parameters<FunctionPluginHooks[H]>[0];
+
+export type GenerateCodeSnippets = {
+	_: string;
+	cnst: string;
+	n: string;
+	s: string;
+	getDirectReturnFunction(
+		parameters: string[],
+		options: {
+			functionReturn: boolean;
+			lineBreakIndent: { base: string; t: string } | null;
+			name: string | null;
+		}
+	): [left: string, right: string];
+	getDirectReturnIifeLeft(
+		parameters: string[],
+		returned: string,
+		options: {
+			needsArrowReturnParens: boolean | undefined;
+			needsWrappedFunction: boolean | undefined;
+		}
+	): string;
+	getFunctionIntro(
+		parameters: string[],
+		options: { isAsync: boolean; name: string | null }
+	): string;
+	getNonArrowFunctionIntro(
+		parameters: string[],
+		options: { isAsync: boolean; name: string | null }
+	): string;
+	getObject(
+		fields: [key: string | null, value: string][],
+		options: { lineBreakIndent: { base: string; t: string } | null }
+	): string;
+	getPropertyAccess(name: string): string;
+};
+
 export type * from '../ts-src/src/rollup/rollup';
 declare module 'estree' {
 	export type Decorator = {
@@ -78,10 +186,10 @@ declare module 'estree' {
 
 export const VERSION: string;
 // utils
-type NullValue = null | undefined | void;
-type MaybeArray<T> = T | T[];
-type MaybePromise<T> = T | Promise<T>;
-type PartialNull<T> = {
+export type NullValue = null | undefined | void;
+export type MaybeArray<T> = T | T[];
+export type MaybePromise<T> = T | Promise<T>;
+export type PartialNull<T> = {
 	[P in keyof T]: T[P] | null;
 };
 

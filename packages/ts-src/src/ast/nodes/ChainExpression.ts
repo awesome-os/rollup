@@ -1,12 +1,12 @@
 import type MagicString from 'magic-string';
 import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type CallExpression from './CallExpression';
 import type MemberExpression from './MemberExpression';
 import type * as NodeType from './NodeType';
-import type { LiteralValueOrUnknown } from './shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 export default class ChainExpression extends NodeBase implements DeoptimizableEntity {
 	declare expression: CallExpression | MemberExpression;

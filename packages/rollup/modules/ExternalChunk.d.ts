@@ -1,6 +1,6 @@
 import type { NormalizedOutputOptions } from '@rollup/types';
 import type ExternalModule from './ExternalModule';
-import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 export default class ExternalChunk {
     defaultVariableName: string;
     id: string;

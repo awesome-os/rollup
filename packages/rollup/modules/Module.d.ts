@@ -1,6 +1,6 @@
 import type { AstNode, CustomPluginOptions, DecodedSourceMapOrMissing, EmittedFile, ExistingDecodedSourceMap, LogLevel, ModuleInfo, ModuleJSON, ModuleOptions, NormalizedInputOptions, PartialNull, PreserveEntrySignaturesOption, ResolvedIdMap, RollupError, RollupLog, TransformModuleJSON } from '@rollup/types';
 import MagicString from 'magic-string';
-import type { InclusionContext } from './ast/ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import ExportAllDeclaration from './ast/nodes/ExportAllDeclaration';
 import ExportDefaultDeclaration from './ast/nodes/ExportDefaultDeclaration';
 import type ExportNamedDeclaration from './ast/nodes/ExportNamedDeclaration';
@@ -17,7 +17,7 @@ import type { Variable } from './ast/variables/Variable';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
 import type { PureFunctions } from './utils/pureFunctions';
-import type { RenderOptions } from './utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 type ImportDescription = {
     module: Module | ExternalModule;
     name: string;

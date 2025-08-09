@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import type { RenderOptions } from '@rollup/types';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED, NODE_INTERACTION_UNKNOWN_ASSIGNMENT } from '../NodeInteractions';
 import {
@@ -16,13 +16,13 @@ import type { LiteralValue } from './Literal';
 import type * as NodeType from './NodeType';
 import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
-import type { InclusionOptions } from './shared/Expression';
+import type { InclusionOptions } from '@rollup/types';
 import {
-	type LiteralValueOrUnknown,
 	UnknownFalsyValue,
 	UnknownTruthyValue,
 	UnknownValue
 } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import type { IncludeChildren } from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';

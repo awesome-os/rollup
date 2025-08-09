@@ -1,6 +1,6 @@
 import type { Bundle as MagicStringBundle } from 'magic-string';
 import type { NormalizedOutputOptions } from '@rollup/types';
-import type { GenerateCodeSnippets } from '../utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import { error, logMissingNameOptionForUmdExport } from '../utils/logs';
 import type { FinaliserOptions } from './index';
 import getCompleteAmdId from './shared/getCompleteAmdId';

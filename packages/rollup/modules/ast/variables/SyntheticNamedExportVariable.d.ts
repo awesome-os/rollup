@@ -1,6 +1,6 @@
 import type Module from '../../Module';
 import type { AstContext } from '../../Module';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import { type ObjectPath } from '../utils/PathTracker';
 import { Variable } from './Variable';
 export default class SyntheticNamedExportVariable extends Variable {

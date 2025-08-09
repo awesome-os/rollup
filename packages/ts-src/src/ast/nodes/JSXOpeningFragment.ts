@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import type { NormalizedJsxOptions } from '@rollup/types';
 import type { RenderOptions } from '@rollup/types';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';
 import { getAndIncludeFactoryVariable } from './shared/jsxHelpers';

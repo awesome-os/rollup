@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
-import type { InclusionContext } from '../ExecutionContext';
+import type { RenderOptions } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
 import type JSXClosingFragment from './JSXClosingFragment';
 import type JSXOpeningFragment from './JSXOpeningFragment';
 import type * as NodeType from './NodeType';

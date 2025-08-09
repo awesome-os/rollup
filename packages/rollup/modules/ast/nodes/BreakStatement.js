@@ -1,4 +1,4 @@
-import {} from '../ExecutionContext';
+import {} from '@rollup/types';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';
 import {} from '@rollup/types';
 export default class BreakStatement extends StatementBase {

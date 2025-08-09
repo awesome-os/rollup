@@ -1,7 +1,7 @@
 
 import ms from 'pretty-ms';
 import { rollup } from '../node-entry';
-import type { MergedRollupOptions } from '../../src/rollup/types';
+import type { MergedRollupOptions } from '@rollup/types';
 import { bold, cyan, green } from '../../src/utils/colors';
 import { logOnlyInlineSourcemapsForStdout } from '../../src/utils/logs';
 import { relativeId } from '../../src/utils/relativeId';

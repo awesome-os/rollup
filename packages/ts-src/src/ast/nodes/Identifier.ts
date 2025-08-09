@@ -4,7 +4,7 @@ import type MagicString from 'magic-string';
 import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { BLANK } from '../../utils/blank';
 import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { INTERACTION_ACCESSED, NODE_INTERACTION_UNKNOWN_ACCESS } from '../NodeInteractions';
 import type FunctionScope from '../scopes/FunctionScope';

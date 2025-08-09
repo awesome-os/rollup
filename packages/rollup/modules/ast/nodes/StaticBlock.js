@@ -1,4 +1,5 @@
 import { findFirstOccurrenceOutsideComment, renderStatementList } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import * as NodeType from './NodeType';
 import { doNotDeoptimize, onlyIncludeSelfNoDeoptimize, StatementBase } from './shared/Node';

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
-import type { InclusionContext } from '../ExecutionContext';
+import type { RenderOptions } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 export default class JSXOpeningFragment extends NodeBase {

@@ -1,4 +1,5 @@
 import { ExpressionEntity } from './Expression';
+import {} from '@rollup/types';
 export class ObjectMember extends ExpressionEntity {
     constructor(object, path) {
         super();

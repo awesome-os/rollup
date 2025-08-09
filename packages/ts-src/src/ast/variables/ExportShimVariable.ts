@@ -1,6 +1,6 @@
 import type Module from '../../Module';
 import { MISSING_EXPORT_SHIM_VARIABLE } from '../../utils/variableNames';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { ObjectPath } from '../utils/PathTracker';
 import { Variable } from './Variable';
 

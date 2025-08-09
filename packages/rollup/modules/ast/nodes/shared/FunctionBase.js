@@ -1,4 +1,4 @@
-import {} from '../../ExecutionContext';
+import {} from '@rollup/types';
 import { INTERACTION_CALLED, NODE_INTERACTION_UNKNOWN_ACCESS, NODE_INTERACTION_UNKNOWN_CALL } from '../../NodeInteractions';
 import { EMPTY_PATH, UNKNOWN_PATH, UnknownKey } from '../../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../../values';

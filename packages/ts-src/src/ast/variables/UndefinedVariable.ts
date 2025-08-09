@@ -1,4 +1,4 @@
-import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { Variable } from './Variable';
 
 export default class UndefinedVariable extends Variable {

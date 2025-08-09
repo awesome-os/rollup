@@ -2,7 +2,7 @@ import type MagicString from 'magic-string';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logModuleLevelDirective } from '../../utils/logs';
 import type { RenderOptions } from '@rollup/types';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import * as NodeType from './NodeType';
 import {
 	doNotDeoptimize,

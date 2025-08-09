@@ -1,4 +1,4 @@
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';

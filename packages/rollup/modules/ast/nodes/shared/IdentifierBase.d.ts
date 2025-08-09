@@ -1,9 +1,10 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import type { Variable } from '../../variables/Variable';
-import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
+import type { ExpressionEntity } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './Node';
 import { type IncludeChildren } from '@rollup/types';
 export default class IdentifierBase extends NodeBase {

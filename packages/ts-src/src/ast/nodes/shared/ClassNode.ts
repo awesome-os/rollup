@@ -1,5 +1,5 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import { INTERACTION_CALLED } from '../../NodeInteractions';
 import ChildScope from '../../scopes/ChildScope';
@@ -18,7 +18,8 @@ import Identifier from '../Identifier';
 import type Literal from '../Literal';
 import MethodDefinition from '../MethodDefinition';
 import { isStaticBlock } from '../StaticBlock';
-import { type ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
+import { type ExpressionEntity } from './Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './Node';
 import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import { ObjectEntity, type ObjectProperty } from './ObjectEntity';

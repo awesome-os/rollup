@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { type Node } from '@rollup/types';
 import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import { ClassDeclaration } from './ClassDeclaration';
 import type ExportSpecifier from './ExportSpecifier';
 import type FunctionDeclaration from './FunctionDeclaration';

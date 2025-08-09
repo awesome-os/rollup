@@ -1,10 +1,11 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import type ReturnValueScope from '../../scopes/ReturnValueScope';
 import type { EntityPathTracker, ObjectPath } from '../../utils/PathTracker';
 import BlockStatement from '../BlockStatement';
-import type { ExpressionEntity, LiteralValueOrUnknown } from './Expression';
+import type { ExpressionEntity } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './Node';
 import { type ExpressionNode, type GenericEsTreeNode, type IncludeChildren } from '@rollup/types';
 import type { ObjectEntity } from './ObjectEntity';

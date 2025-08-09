@@ -3,6 +3,7 @@ import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../../utils/PathTracker';
 import { isFlagSet, setFlag } from './BitFlags';
 import { Flag } from "./BitFlags";
 import { UNKNOWN_RETURN_EXPRESSION } from './Expression';
+import {} from '@rollup/types';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './Node';
 import {} from '@rollup/types';
 export default class MethodBase extends NodeBase {

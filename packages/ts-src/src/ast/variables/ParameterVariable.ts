@@ -1,13 +1,14 @@
 import type { AstContext } from '../../Module';
 import { EMPTY_ARRAY } from '../../utils/blank';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { InclusionContext } from '../ExecutionContext';
-import { type HasEffectsContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
+import { type HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../NodeInteractions';
 import type ExportDefaultDeclaration from '../nodes/ExportDefaultDeclaration';
 import Identifier from '../nodes/Identifier';
-import type { ExpressionEntity, LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type { ExpressionEntity } from '../nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import {
 	deoptimizeInteraction,
 	UNKNOWN_EXPRESSION,

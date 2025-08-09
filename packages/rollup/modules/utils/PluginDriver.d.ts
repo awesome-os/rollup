@@ -1,14 +1,9 @@
-import type { HookAction, ReplaceContext } from '@rollup/types';
+import type { Argument0, HookAction, ReplaceContext } from '@rollup/types';
 import type { AddonHookFunction, AddonHooks, AsyncPluginHooks, EmitFile, FirstPluginHooks, FunctionPluginHooks, NormalizedInputOptions, NormalizedOutputOptions, ParallelPluginHooks, Plugin, SequentialPluginHooks, SerializablePluginCache, SyncPluginHooks } from 'rollup';
 import type Chunk from '../Chunk';
 import type Graph from '../Graph';
 import type Module from '../Module';
 import type { OutputBundleWithPlaceholders } from './outputBundle';
-/**
- * Get the type of the first argument in a function.
- * @example Arg0<(a: string, b: number) => void> -> string
- */
-type Argument0<H extends keyof FunctionPluginHooks> = Parameters<FunctionPluginHooks[H]>[0];
 export declare class PluginDriver {
     readonly emitFile: EmitFile;
     finaliseAssets: () => void;

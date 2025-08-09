@@ -1,8 +1,9 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import { type EntityPathTracker, type ObjectPath } from '../../utils/PathTracker';
-import { type ExpressionEntity, type LiteralValueOrUnknown } from './Expression';
+import { type ExpressionEntity } from './Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './Node';
 export default abstract class CallExpressionBase extends NodeBase implements DeoptimizableEntity {
     protected interaction: NodeInteractionCalled;

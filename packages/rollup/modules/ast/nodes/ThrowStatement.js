@@ -1,4 +1,4 @@
-import {} from '../ExecutionContext';
+import {} from '@rollup/types';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import { StatementBase } from './shared/Node';
 import {} from '@rollup/types';

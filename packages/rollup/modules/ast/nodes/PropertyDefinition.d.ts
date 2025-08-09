@@ -1,11 +1,12 @@
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type Decorator from './Decorator';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
-import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
+import { type ExpressionEntity } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import { type ExpressionNode } from '@rollup/types';
 export default class PropertyDefinition extends NodeBase {

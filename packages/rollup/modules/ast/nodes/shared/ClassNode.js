@@ -1,4 +1,4 @@
-import {} from '../../ExecutionContext';
+import {} from '@rollup/types';
 import { INTERACTION_CALLED } from '../../NodeInteractions';
 import ChildScope from '../../scopes/ChildScope';
 import { checkEffectForNodes } from '../../utils/checkEffectForNodes';
@@ -7,6 +7,7 @@ import Identifier from '../Identifier';
 import MethodDefinition from '../MethodDefinition';
 import { isStaticBlock } from '../StaticBlock';
 import {} from './Expression';
+import {} from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './Node';
 import {} from '@rollup/types';
 import { ObjectEntity } from './ObjectEntity';

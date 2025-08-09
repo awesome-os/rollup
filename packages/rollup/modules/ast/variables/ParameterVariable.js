@@ -1,5 +1,5 @@
 import { EMPTY_ARRAY } from '../../utils/blank';
-import {} from '../ExecutionContext';
+import {} from '@rollup/types';
 import { INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../NodeInteractions';
 import Identifier from '../nodes/Identifier';
 import { deoptimizeInteraction, UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from '../nodes/shared/Expression';

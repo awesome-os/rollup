@@ -2,6 +2,7 @@ import { locate } from 'locate-character';
 import { LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../utils/logging';
 import { logFirstSideEffect, logInvalidAnnotation } from '../../utils/logs';
 import { findFirstLineBreakOutsideComment, renderStatementList } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 import {} from '@rollup/types';

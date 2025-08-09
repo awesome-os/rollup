@@ -1,5 +1,9 @@
-import type { NormalizedTreeshakingOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type {
+	ExpressionNode,
+	HasEffectsContext,
+	InclusionContext,
+	NormalizedTreeshakingOptions
+} from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { NODE_INTERACTION_UNKNOWN_ACCESS } from '../NodeInteractions';
 import {
@@ -10,7 +14,6 @@ import {
 } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
-import { type ExpressionNode } from '@rollup/types';
 
 export default class SpreadElement extends NodeBase {
 	declare argument: ExpressionNode;

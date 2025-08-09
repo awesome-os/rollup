@@ -1,5 +1,5 @@
+import type { SerializedTimings } from '@rollup/types';
 import prettyBytes from 'pretty-bytes';
-import type { SerializedTimings } from '../../src/rollup/types';
 import { bold, underline } from '../../src/utils/colors';
 
 export function printTimings(timings: SerializedTimings): void {

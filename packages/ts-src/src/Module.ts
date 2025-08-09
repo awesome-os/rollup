@@ -22,7 +22,7 @@ import { locate } from 'locate-character';
 import MagicString from 'magic-string';
 import { parseAsync } from '../native';
 import { convertProgram } from './ast/bufferParsers';
-import type { InclusionContext } from './ast/ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import { createInclusionContext } from './ast/ExecutionContext';
 import { nodeConstructors } from './ast/nodes';
 import ExportAllDeclaration from './ast/nodes/ExportAllDeclaration';

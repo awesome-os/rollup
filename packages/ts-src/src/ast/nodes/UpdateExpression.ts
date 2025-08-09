@@ -5,7 +5,7 @@ import {
 	renderSystemExportSequenceAfterExpression,
 	renderSystemExportSequenceBeforeExpression
 } from '../../utils/systemJsRendering';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionAssigned } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';

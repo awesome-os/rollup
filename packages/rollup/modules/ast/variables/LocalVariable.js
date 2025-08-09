@@ -2,6 +2,7 @@ import { EMPTY_ARRAY } from '../../utils/blank';
 import { INTERACTION_ACCESSED, INTERACTION_ASSIGNED, INTERACTION_CALLED } from '../NodeInteractions';
 import * as NodeType from '../nodes/NodeType';
 import { deoptimizeInteraction, includeInteraction, UNKNOWN_EXPRESSION, UNKNOWN_RETURN_EXPRESSION, UnknownValue } from '../nodes/shared/Expression';
+import {} from '@rollup/types';
 import { isArrowFunctionExpressionNode, isCallExpressionNode, isFunctionExpressionNode, isIdentifierNode, isImportExpressionNode, isMemberExpressionNode } from '../utils/identifyNode';
 import { limitConcatenatedPathDepth, MAX_PATH_DEPTH } from '../utils/limitPathLength';
 import { IncludedFullPathTracker, UNKNOWN_PATH, UnknownKey } from '../utils/PathTracker';

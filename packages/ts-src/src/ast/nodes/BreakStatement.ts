@@ -1,4 +1,4 @@
-import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
 import {

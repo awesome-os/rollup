@@ -1,7 +1,7 @@
 import type { ModuleInfo, NormalizedOutputOptions } from '@rollup/types';
 import type ExternalModule from './ExternalModule';
 import { escapeId } from './utils/escapeId';
-import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import { normalize, relative } from './utils/path';
 import { getImportPath } from './utils/relativeId';
 

@@ -1,7 +1,7 @@
 import type ExternalModule from '../../ExternalModule';
 import type Module from '../../Module';
 import type { RenderOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import type CallExpression from '../nodes/CallExpression';

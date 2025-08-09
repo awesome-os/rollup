@@ -1,6 +1,6 @@
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace } from '../../utils/logs';
-import {} from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import { INTERACTION_CALLED } from '../NodeInteractions';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER } from '../utils/PathTracker';
 import MemberExpression from './MemberExpression';

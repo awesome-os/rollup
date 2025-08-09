@@ -1,9 +1,10 @@
 import type MagicString from 'magic-string';
-import type { HasEffectsContext } from '../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type { ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import { type ExpressionEntity, type LiteralValueOrUnknown } from './shared/Expression';
+import { type ExpressionEntity } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { NodeBase } from './shared/Node';
 import { type GenericEsTreeNode } from '@rollup/types';
 export type LiteralValue = string | boolean | null | number | RegExp | undefined;

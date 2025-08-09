@@ -33,7 +33,7 @@ import { EMPTY_OBJECT } from './utils/blank';
 import { deconflictChunk } from './utils/deconflictChunk';
 import { escapeId } from './utils/escapeId';
 import { assignExportsToMangledNames, assignExportsToNames } from './utils/exportNames';
-import type { GenerateCodeSnippets } from './utils/generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 import getExportMode from './utils/getExportMode';
 import getIndentString from './utils/getIndentString';
 import { getNewArray, getOrCreate } from './utils/getOrCreate';

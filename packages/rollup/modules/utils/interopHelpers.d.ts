@@ -1,5 +1,5 @@
 import type { InteropType } from '@rollup/types';
-import type { GenerateCodeSnippets } from './generateCodeSnippets';
+import type { GenerateCodeSnippets } from "@rollup/types";
 export declare const INTEROP_NAMESPACE_DEFAULT_ONLY_VARIABLE = "_interopNamespaceDefaultOnly";
 export declare const MERGE_NAMESPACES_VARIABLE = "_mergeNamespaces";
 export declare const DOCUMENT_CURRENT_SCRIPT = "_documentCurrentScript";

@@ -1,4 +1,4 @@
-import type { InclusionContext } from '../../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { Variable } from '../../variables/Variable';
 import type JSXElement from '../JSXElement';
 import type JSXExpressionContainer from '../JSXExpressionContainer';

@@ -1,9 +1,8 @@
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { ExpressionNode, HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
-import { type ExpressionNode } from '@rollup/types';
 export default class SpreadElement extends NodeBase {
     argument: ExpressionNode;
     type: NodeType.tSpreadElement;

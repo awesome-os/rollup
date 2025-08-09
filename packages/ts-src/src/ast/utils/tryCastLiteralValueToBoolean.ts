@@ -1,4 +1,4 @@
-import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { UnknownFalsyValue, UnknownTruthyValue, UnknownValue } from '../nodes/shared/Expression';
 
 export function tryCastLiteralValueToBoolean(

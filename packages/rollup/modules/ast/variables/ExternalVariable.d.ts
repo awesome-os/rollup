@@ -1,5 +1,5 @@
 import type ExternalModule from '../../ExternalModule';
-import type { InclusionContext } from '../ExecutionContext';
+import type { InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';
 import type { ObjectPath } from '../utils/PathTracker';

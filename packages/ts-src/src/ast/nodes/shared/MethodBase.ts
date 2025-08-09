@@ -1,5 +1,5 @@
-import type { DeoptimizableEntity } from '../../DeoptimizableEntity';
-import type { HasEffectsContext } from '../../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../../NodeInteractions';
 import {
 	INTERACTION_ACCESSED,
@@ -18,9 +18,9 @@ import { isFlagSet, setFlag } from './BitFlags';
 import { Flag } from "./BitFlags";
 import {
 	type ExpressionEntity,
-	type LiteralValueOrUnknown,
 	UNKNOWN_RETURN_EXPRESSION
 } from './Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import {
 	doNotDeoptimize,
 	NodeBase,

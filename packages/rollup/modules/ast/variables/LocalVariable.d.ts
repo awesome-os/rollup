@@ -1,10 +1,11 @@
 import type { AstContext, default as Module } from '../../Module';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
+import type { DeoptimizableEntity } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import type ExportDefaultDeclaration from '../nodes/ExportDefaultDeclaration';
 import type Identifier from '../nodes/Identifier';
-import { type ExpressionEntity, type LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import { type ExpressionEntity } from '../nodes/shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import type { VariableKind } from '../nodes/shared/VariableKinds';
 import type { IncludedPathTracker } from '../utils/PathTracker';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';

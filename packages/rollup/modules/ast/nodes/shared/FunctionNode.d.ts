@@ -1,4 +1,4 @@
-import { type HasEffectsContext, type InclusionContext } from '../../ExecutionContext';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../../NodeInteractions';
 import type ChildScope from '../../scopes/ChildScope';
 import FunctionScope from '../../scopes/FunctionScope';

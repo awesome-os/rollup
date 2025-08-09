@@ -6,8 +6,8 @@ import {
 	findNonWhiteSpace,
 	removeLineBreaks} from '../../utils/renderHelpers';
 import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
-import type { DeoptimizableEntity } from '../DeoptimizableEntity';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { DeoptimizableEntity } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import { createInclusionContext } from '../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import {
@@ -23,11 +23,11 @@ import { isFlagSet, setFlag } from './shared/BitFlags';
 import { Flag } from "./shared/BitFlags";
 import {
 	type ExpressionEntity,
-	type LiteralValueOrUnknown,
 	UnknownFalsyValue,
 	UnknownTruthyValue,
 	UnknownValue
 } from './shared/Expression';
+import { type LiteralValueOrUnknown } from '@rollup/types';
 import { MultiExpression } from './shared/MultiExpression';
 import {
 	doNotDeoptimize,

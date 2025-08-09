@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import type { InternalModuleFormat } from '@rollup/types';
 import type { PluginDriver } from '../../utils/PluginDriver';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
-import { type RenderOptions } from '../../utils/renderHelpers';
-import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
+import { type RenderOptions } from '@rollup/types';
+import { type HasEffectsContext, type InclusionContext } from '@rollup/types';
 import type ChildScope from '../scopes/ChildScope';
 import type * as NodeType from './NodeType';
 import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from '@rollup/types';

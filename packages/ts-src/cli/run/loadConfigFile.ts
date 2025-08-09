@@ -6,7 +6,7 @@ import type {
 	GenericConfigObject,
 	ImportAttributesKey,
 	MergedRollupOptions
-} from '../../src/rollup/types';
+} from '@rollup/types';
 import { bold } from '../../src/utils/colors';
 import {
 	error,

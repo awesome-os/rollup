@@ -1,4 +1,5 @@
 import { findFirstOccurrenceOutsideComment, renderStatementList } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 import {} from '@rollup/types';
 export default class SwitchCase extends NodeBase {

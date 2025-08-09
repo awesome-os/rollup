@@ -3,6 +3,7 @@ import ExternalModule from '../../ExternalModule';
 import { EMPTY_ARRAY } from '../../utils/blank';
 import { INTEROP_NAMESPACE_DEFAULT_ONLY_VARIABLE, namespaceInteropHelpersByInteropType } from '../../utils/interopHelpers';
 import { findFirstOccurrenceOutsideComment } from '../../utils/renderHelpers';
+import {} from '@rollup/types';
 import { UnknownKey } from '../utils/PathTracker';
 import ArrowFunctionExpression from './ArrowFunctionExpression';
 import AwaitExpression from './AwaitExpression';

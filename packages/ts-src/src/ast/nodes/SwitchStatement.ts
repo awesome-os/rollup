@@ -2,10 +2,11 @@ import type MagicString from 'magic-string';
 import { renderStatementList } from '../../utils/renderHelpers';
 import { type RenderOptions } from '@rollup/types';
 import {
-	createHasEffectsContext,
+	createHasEffectsContext} from '../ExecutionContext';
+import {
 	type HasEffectsContext,
 	type InclusionContext
-} from '../ExecutionContext';
+} from '@rollup/types';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import type * as NodeType from './NodeType';

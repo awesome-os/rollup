@@ -1,7 +1,7 @@
 /* eslint sort-keys: "off" */
 
 import { doNothing } from '../../../utils/doNothing';
-import type { HasEffectsContext } from '../../ExecutionContext';
+import type { HasEffectsContext } from '@rollup/types';
 import type { NodeInteractionCalled } from '../../NodeInteractions';
 import {
 	INTERACTION_CALLED,
@@ -18,7 +18,7 @@ import {
 	UNKNOWN_PATH
 } from '../../utils/PathTracker';
 import ArrayExpression from '../ArrayExpression';
-import type { LiteralValueOrUnknown } from './Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import { ExpressionEntity, UnknownValue } from './Expression';
 
 const ValueProperties = Symbol('Value Properties');

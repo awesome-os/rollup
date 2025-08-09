@@ -1,12 +1,12 @@
 import { locate } from 'locate-character';
+import {} from '@rollup/types';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from '../../../utils/astConverterHelpers';
 import { childNodeKeys } from '../../childNodeKeys';
 import { createHasEffectsContext } from '../../ExecutionContext';
 import { INTERACTION_ASSIGNED } from '../../NodeInteractions';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../../utils/PathTracker';
-import { isFlagSet, setFlag } from './BitFlags';
+import { Flag, isFlagSet, setFlag } from './BitFlags';
 import { ExpressionEntity } from './Expression';
-import { Flag } from "./BitFlags";
 export class NodeBase extends ExpressionEntity {
     /**
      * Nodes can apply custom deoptimizations once they become part of the

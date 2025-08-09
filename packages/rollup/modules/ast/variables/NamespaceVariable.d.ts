@@ -1,8 +1,8 @@
 import type { AstContext, default as Module } from '../../Module';
-import type { RenderOptions } from '../../utils/renderHelpers';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { RenderOptions } from '@rollup/types';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
-import type { LiteralValueOrUnknown } from '../nodes/shared/Expression';
+import type { LiteralValueOrUnknown } from '@rollup/types';
 import type IdentifierBase from '../nodes/shared/IdentifierBase';
 import type ChildScope from '../scopes/ChildScope';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';

@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
-import { type NodeRenderOptions, type RenderOptions } from '../../utils/renderHelpers';
-import type { InclusionContext } from '../ExecutionContext';
+import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
+import type { InclusionContext } from '@rollup/types';
 import type ModuleScope from '../scopes/ModuleScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import type ExportDefaultVariable from '../variables/ExportDefaultVariable';

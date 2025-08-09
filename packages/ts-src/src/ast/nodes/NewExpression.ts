@@ -2,7 +2,7 @@ import type MagicString from 'magic-string';
 import type { NormalizedTreeshakingOptions } from '@rollup/types';
 import { renderCallArguments } from '../../utils/renderCallArguments';
 import type { RenderOptions } from '@rollup/types';
-import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
+import type { HasEffectsContext, InclusionContext } from '@rollup/types';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
 import { INTERACTION_ACCESSED, INTERACTION_CALLED } from '../NodeInteractions';
 import {
