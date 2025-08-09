@@ -1,5 +1,5 @@
+import type { Plugin } from '@rollup/types';
 import { rm } from 'node:fs/promises';
-import type { Plugin } from 'rollup';
 
 export default function cleanBeforeWrite(directory: string): Plugin {
 	let removePromise: Promise<void>;

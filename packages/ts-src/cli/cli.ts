@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import help from 'help.md';
 import process from 'node:process';
+import { VERSION } from 'rollup';
 import argParser from 'yargs-parser';
-import { version } from '../package.json';
 import { commandAliases } from '../src/utils/options/mergeOptions';
 import run from './run/index';
 
@@ -12,9 +12,9 @@ const command = argParser(process.argv.slice(2), {
 });
 
 if (command.help || (process.argv.length <= 2 && process.stdin.isTTY)) {
-	console.log(`\n${help.replace('__VERSION__', version)}\n`);
+	console.log(`\n${help.replace('__VERSION__', VERSION)}\n`);
 } else if (command.version) {
-	console.log(`rollup v${version}`);
+	console.log(`rollup v${VERSION}`);
 } else {
 	try {
 		// eslint-disable-next-line @typescript-eslint/no-require-imports

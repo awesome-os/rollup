@@ -6,7 +6,7 @@ import type {
 	Plugin,
 	RollupLog
 } from 'rollup';
-import { version as rollupVersion } from '../../package.json';
+import { rollupVersion } from 'rollup/version';
 import { getSortedValidatedPlugins } from './PluginDriver';
 import { EMPTY_SET } from './blank';
 import { doNothing } from './doNothing';

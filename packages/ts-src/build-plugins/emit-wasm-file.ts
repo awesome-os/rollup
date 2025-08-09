@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import type { Plugin } from 'rollup';
+import type { Plugin } from '@rollup/types';
 
 export default function emitWasmFile(): Plugin {
 	return {

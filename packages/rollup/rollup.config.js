@@ -1,3 +1,16 @@
+import addCliEntry from '@rollup/build-plugins/add-cli-entry';
+import { moduleAliases } from '@rollup/build-plugins/aliases';
+import cleanBeforeWrite from '@rollup/build-plugins/clean-before-write';
+import { copyBrowserTypes, copyNodeTypes } from '@rollup/build-plugins/copy-types';
+import emitModulePackageFile from '@rollup/build-plugins/emit-module-package-file';
+import { emitNativeEntry } from '@rollup/build-plugins/emit-native-entry';
+import emitWasmFile from '@rollup/build-plugins/emit-wasm-file';
+import esmDynamicImport from '@rollup/build-plugins/esm-dynamic-import';
+import { externalNativeImport } from '@rollup/build-plugins/external-native-import';
+import { fsEventsReplacement } from '@rollup/build-plugins/fs-events-replacement';
+import getLicenseHandler from '@rollup/build-plugins/generate-license-file';
+import getBanner from '@rollup/build-plugins/get-banner';
+import replaceBrowserModules from '@rollup/build-plugins/replace-browser-modules';
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -8,19 +21,6 @@ import typescript from '@rollup/plugin-typescript';
 import '@rollup/types/declarations';
 import { fileURLToPath } from 'node:url';
 import { string } from 'rollup-plugin-string';
-import addCliEntry from './build-plugins/add-cli-entry';
-import { moduleAliases } from './build-plugins/aliases';
-import cleanBeforeWrite from './build-plugins/clean-before-write';
-import { copyBrowserTypes, copyNodeTypes } from './build-plugins/copy-types';
-import emitModulePackageFile from './build-plugins/emit-module-package-file';
-import { emitNativeEntry } from './build-plugins/emit-native-entry';
-import emitWasmFile from './build-plugins/emit-wasm-file';
-import esmDynamicImport from './build-plugins/esm-dynamic-import';
-import { externalNativeImport } from './build-plugins/external-native-import';
-import { fsEventsReplacement } from './build-plugins/fs-events-replacement';
-import getLicenseHandler from './build-plugins/generate-license-file';
-import getBanner from './build-plugins/get-banner';
-import replaceBrowserModules from './build-plugins/replace-browser-modules';
 const onwarn = warning => {
 	console.error(
 		'Building Rollup produced warnings that need to be resolved. ' +

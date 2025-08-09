@@ -1,4 +1,4 @@
-import type { Plugin } from 'rollup';
+import type { Plugin } from '@rollup/types';
 
 const expectedImports = 3;
 

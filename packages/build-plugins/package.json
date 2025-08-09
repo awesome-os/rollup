@@ -1,0 +1,4 @@
+{
+    "name": "@rollup/build-plugins",
+    "type": "module"
+}

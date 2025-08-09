@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import type { Plugin } from 'rollup';
+import type { Plugin } from '@rollup/types';
 
 export function emitNativeEntry(): Plugin {
 	return {

@@ -1,5 +1,2 @@
-import package_ from '../package.json' with { type: 'json' };
-
-export const VERSION = package_.version;
-export { defineConfig, rollup } from './rollup/rollup';
-export { default as watch } from './watch/watch-proxy';
+export * from './browser-entry';
+export { watch } from './watch/watch-proxy';

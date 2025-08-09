@@ -12,8 +12,8 @@ import type {
 	RollupOptionsFunction,
 	RollupOutput,
 	RollupWatcher
-} from 'rollup';
-import { version as rollupVersion } from '../../package.json';
+} from '@rollup/types';
+import { rollupVersion } from 'rollup/version.js';
 import Bundle from '../Bundle';
 import Graph from '../Graph';
 import { catchUnfinishedHookActions } from '../utils/hookActions';

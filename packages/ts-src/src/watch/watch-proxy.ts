@@ -1,10 +1,5 @@
+import type { MaybeArray, MergedRollupOptions, RollupOptions, RollupWatcher } from '@rollup/types';
 import { handleError } from '../../cli/logging';
-import type {
-	MaybeArray,
-	MergedRollupOptions,
-	RollupOptions,
-	RollupWatcher
-} from 'rollup';
 import { ensureArray } from '../utils/ensureArray';
 import { error, logInvalidOption } from '../utils/logs';
 import { mergeOptions } from '../utils/options/mergeOptions';
@@ -12,7 +7,7 @@ import { URL_WATCH } from '../utils/urls';
 import { loadFsEvents } from './fsevents-importer';
 import { WatchEmitter } from './WatchEmitter';
 
-export default function watch(configs: RollupOptions[] | RollupOptions): RollupWatcher {
+export function watch(configs: RollupOptions[] | RollupOptions): RollupWatcher {
 	const emitter = new WatchEmitter() as RollupWatcher;
 
 	watchInternal(configs, emitter).catch(error => {

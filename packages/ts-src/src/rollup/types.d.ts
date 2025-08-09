@@ -1,9 +1,15 @@
+import type {
+	NormalizedGeneratedCodeOptions,
+	NormalizedJsxOptions,
+	NormalizedTreeshakingOptions,
+	Plugin,
+	PluginContext
+} from '@rollup/types';
 import type * as estree from 'estree';
 import type Chunk from '../Chunk';
 import type ExternalChunk from '../ExternalChunk';
 import type Module from '../Module';
 import type { DynamicImport } from '../Module';
-import type { NormalizedTreeshakingOptions, NormalizedGeneratedCodeOptions, NormalizedJsxOptions, Plugin, PluginContext } from 'rollup';
 
 declare module 'estree' {
 	export type Decorator = {
@@ -1285,15 +1291,16 @@ export type RollupAnnotation = {
 	start: number;
 	end: number;
 	type: AnnotationType;
-};export type OrderedExecutionUnit = {
+};
+export type OrderedExecutionUnit = {
 	execIndex: number;
 };
 export type ObjectValue<Base> = Base extends Record<string, any> ? Base : never;
-export type ObjectOptionWithPresets = Partial<NormalizedTreeshakingOptions> |
-	Partial<NormalizedGeneratedCodeOptions> |
-	Partial<NormalizedJsxOptions>;
+export type ObjectOptionWithPresets =
+	| Partial<NormalizedTreeshakingOptions>
+	| Partial<NormalizedGeneratedCodeOptions>
+	| Partial<NormalizedJsxOptions>;
 export type ReplaceContext = (context: PluginContext, plugin: Plugin) => PluginContext;
 
 export type HookAction = [plugin: string, hook: string, args: unknown[]];
 export type GetHash = (input: string | Uint8Array) => string;
-

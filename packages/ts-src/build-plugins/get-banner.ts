@@ -1,5 +1,4 @@
 import { exec } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
 import { env } from 'node:process';
 import { promisify } from 'node:util';
 
@@ -15,7 +14,8 @@ function generateBanner(commitHash: string, version: string): string {
 	Rollup.js v${version}
 	${date} - commit ${commitHash}
 
-	https://github.com/rollup/rollup
+	https://github.com/awesome-os/rollup
+	a https://github.com/rollup/rollup fork
 
 	Released under the MIT License.
 */`;
@@ -31,6 +31,6 @@ export default function getBanner(): Promise<string> {
 				console.error('Could not determine commit hash:', error);
 				return 'unknown';
 			}),
-		readFile(new URL('../package.json', import.meta.url), 'utf8')
-	]).then(([commit, package_]) => generateBanner(commit, JSON.parse(package_).version)));
+		import('rollup/package.json', { with: { type: 'json' } })
+	]).then(([commit, package_]) => generateBanner(commit, package_.version)));
 }

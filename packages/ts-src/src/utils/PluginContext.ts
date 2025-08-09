@@ -5,7 +5,7 @@ import type {
 	PluginContext,
 	SerializablePluginCache
 } from 'rollup';
-import { version as rollupVersion } from '../../package.json' with { type: 'json' };
+import { rollupVersion } from 'rollup/version';
 import type Graph from '../Graph';
 import { BLANK, EMPTY_OBJECT } from './blank';
 import type { FileEmitter } from './FileEmitter';

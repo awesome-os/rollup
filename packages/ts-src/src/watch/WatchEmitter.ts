@@ -1,4 +1,4 @@
-import type { AwaitedEventListener, AwaitingEventEmitter } from 'rollup';
+import type { AwaitedEventListener, AwaitingEventEmitter } from '@rollup/types';
 
 export class WatchEmitter<T extends Record<string, (...parameters: any) => any>>
 	implements AwaitingEventEmitter<T>

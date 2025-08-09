@@ -1,8 +1,8 @@
+import type { PluginImpl } from '@rollup/types';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import type { PluginImpl } from 'rollup';
-import license from 'rollup-plugin-license'; 
-import type { Dependency, Person } from 'rollup-plugin-license';
+import type { Dependency } from 'rollup-plugin-license';
+import license from 'rollup-plugin-license';
 
 async function generateLicenseFile(
 	directory: string,
@@ -66,10 +66,10 @@ async function generateLicenseFile(
 	}
 }
 
-interface LicenseHandler {
+type LicenseHandler = {
 	collectLicenses: PluginImpl;
 	writeLicense: PluginImpl;
-}
+};
 
 export default function getLicenseHandler(directory: string): LicenseHandler {
 	const licenses: Record<string, Dependency> = {};

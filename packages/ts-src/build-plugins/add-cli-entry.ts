@@ -1,6 +1,6 @@
+import type { Plugin } from '@rollup/types';
 import { chmod } from 'node:fs/promises';
 import path from 'node:path';
-import type { Plugin } from 'rollup';
 
 const CLI_CHUNK = 'bin/rollup';
 

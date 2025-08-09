@@ -1,7 +1,4 @@
 import { createFilter } from '@rollup/pluginutils';
-import path from 'node:path';
-import process from 'node:process';
-import { rollupInternal } from '../rollup/rollup';
 import type {
 	ChangeEvent,
 	MergedRollupOptions,
@@ -10,7 +7,10 @@ import type {
 	RollupCache,
 	RollupWatcher,
 	WatcherOptions
-} from 'rollup';
+} from '@rollup/types';
+import path from 'node:path';
+import process from 'node:process';
+import { rollupInternal } from '../rollup/rollup';
 import { FileWatcher } from './fileWatcher';
 
 const eventsRewrites: Record<ChangeEvent, Record<ChangeEvent, ChangeEvent | 'buggy' | null>> = {

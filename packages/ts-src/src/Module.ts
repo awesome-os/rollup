@@ -1,4 +1,23 @@
 import { extractAssignedNames } from '@rollup/pluginutils';
+import type {
+	AstNode,
+	CustomPluginOptions,
+	DecodedSourceMapOrMissing,
+	EmittedFile,
+	ExistingDecodedSourceMap,
+	LogLevel,
+	ModuleInfo,
+	ModuleJSON,
+	ModuleOptions,
+	NormalizedInputOptions,
+	PartialNull,
+	PreserveEntrySignaturesOption,
+	ResolvedId,
+	ResolvedIdMap,
+	RollupError,
+	RollupLog,
+	TransformModuleJSON
+} from '@rollup/types';
 import { locate } from 'locate-character';
 import MagicString from 'magic-string';
 import { parseAsync } from '../native';
@@ -32,25 +51,6 @@ import SyntheticNamedExportVariable from './ast/variables/SyntheticNamedExportVa
 import type Variable from './ast/variables/Variable';
 import ExternalModule from './ExternalModule';
 import type Graph from './Graph';
-import type {
-	AstNode,
-	CustomPluginOptions,
-	DecodedSourceMapOrMissing,
-	EmittedFile,
-	ExistingDecodedSourceMap,
-	LogLevel,
-	ModuleInfo,
-	ModuleJSON,
-	ModuleOptions,
-	NormalizedInputOptions,
-	PartialNull,
-	PreserveEntrySignaturesOption,
-	ResolvedId,
-	ResolvedIdMap,
-	RollupError,
-	RollupLog,
-	TransformModuleJSON
-} from 'rollup';
 import { EMPTY_OBJECT } from './utils/blank';
 import type { LiteralStringNode, TemplateLiteralNode } from './utils/bufferToAst';
 import { BuildPhase } from './utils/buildPhase';
