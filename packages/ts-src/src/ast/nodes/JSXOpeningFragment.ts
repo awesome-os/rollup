@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { NormalizedJsxOptions } from '@rollup/types';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { InclusionContext } from '../ExecutionContext';
 import type { Variable } from '../variables/Variable';
 import type * as NodeType from './NodeType';

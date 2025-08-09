@@ -4,10 +4,8 @@ import {
 	findFirstOccurrenceOutsideComment,
 	findLastWhiteSpaceReverse,
 	findNonWhiteSpace,
-	type NodeRenderOptions,
-	removeLineBreaks,
-	type RenderOptions
-} from '../../utils/renderHelpers';
+	removeLineBreaks} from '../../utils/renderHelpers';
+import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { createInclusionContext } from '../ExecutionContext';

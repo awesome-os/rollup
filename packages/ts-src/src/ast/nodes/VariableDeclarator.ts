@@ -4,9 +4,8 @@ import { BLANK } from '../../utils/blank';
 import { isReassignedExportsMember } from '../../utils/reassignedExportsMember';
 import {
 	findFirstOccurrenceOutsideComment,
-	findNonWhiteSpace,
-	type RenderOptions
-} from '../../utils/renderHelpers';
+	findNonWhiteSpace} from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';
 import { UNDEFINED_EXPRESSION } from '../values';

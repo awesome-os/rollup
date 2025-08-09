@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import { type Node } from '@rollup/types';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type { HasEffectsContext } from '../ExecutionContext';
 import { ClassDeclaration } from './ClassDeclaration';
 import type ExportSpecifier from './ExportSpecifier';

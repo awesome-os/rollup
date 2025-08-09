@@ -2,7 +2,9 @@ import type {
 	ChainElement,
 	ExpressionNode,
 	IncludeChildren,
+	NodeRenderOptions,
 	NormalizedTreeshakingOptions,
+	RenderOptions,
 	SkippedChain
 } from '@rollup/types';
 import type MagicString from 'magic-string';
@@ -11,7 +13,6 @@ import { IS_SKIPPED_CHAIN } from '../../rollup/IS_SKIPPED_CHAIN';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logIllegalImportReassignment, logMissingExport } from '../../utils/logs';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { createHasEffectsContext, createInclusionContext } from '../ExecutionContext';

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';

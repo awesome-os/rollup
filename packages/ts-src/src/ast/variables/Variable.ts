@@ -1,6 +1,6 @@
 import type ExternalModule from '../../ExternalModule';
 import type Module from '../../Module';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';

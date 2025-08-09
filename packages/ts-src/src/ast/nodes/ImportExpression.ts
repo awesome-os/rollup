@@ -17,7 +17,8 @@ import {
 	namespaceInteropHelpersByInteropType
 } from '../../utils/interopHelpers';
 import type { PluginDriver } from '../../utils/PluginDriver';
-import { findFirstOccurrenceOutsideComment, type RenderOptions } from '../../utils/renderHelpers';
+import { findFirstOccurrenceOutsideComment } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { InclusionContext } from '../ExecutionContext';
 import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';

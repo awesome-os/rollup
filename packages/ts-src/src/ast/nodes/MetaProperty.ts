@@ -5,7 +5,7 @@ import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
 import { DOCUMENT_CURRENT_SCRIPT } from '../../utils/interopHelpers';
 import { dirname, normalize, relative } from '../../utils/path';
 import type { PluginDriver } from '../../utils/PluginDriver';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import type ChildScope from '../scopes/ChildScope';

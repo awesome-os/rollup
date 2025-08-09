@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import TrackingScope from '../scopes/TrackingScope';

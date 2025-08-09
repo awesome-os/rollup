@@ -5,9 +5,9 @@ import { LOGLEVEL_INFO, LOGLEVEL_WARN } from '../../utils/logging';
 import { logFirstSideEffect, logInvalidAnnotation } from '../../utils/logs';
 import {
 	findFirstLineBreakOutsideComment,
-	type RenderOptions,
 	renderStatementList
 } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { createHasEffectsContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';

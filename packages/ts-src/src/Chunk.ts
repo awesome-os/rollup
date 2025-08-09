@@ -63,7 +63,7 @@ import { getAttributesFromImportExpression } from './utils/parseImportAttributes
 import { basename, extname, isAbsolute, normalize, resolve } from './utils/path';
 import type { PluginDriver } from './utils/PluginDriver';
 import { getAliasName, getImportPath } from './utils/relativeId';
-import type { RenderOptions } from './utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { makeUnique, renderNamePattern } from './utils/renderNamePattern';
 import { MISSING_EXPORT_SHIM_VARIABLE } from './utils/variableNames';
 

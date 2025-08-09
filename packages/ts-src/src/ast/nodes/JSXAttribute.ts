@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
 import { stringifyObjectKeyIfNeeded } from '../../utils/identifierHelpers';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type JSXElement from './JSXElement';
 import type JSXExpressionContainer from './JSXExpressionContainer';
 import type JSXFragment from './JSXFragment';

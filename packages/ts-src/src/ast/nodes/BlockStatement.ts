@@ -1,6 +1,7 @@
 import type MagicString from 'magic-string';
 import { type IncludeChildren, type Node, type StatementNode } from '@rollup/types';
-import { type RenderOptions, renderStatementList } from '../../utils/renderHelpers';
+import { renderStatementList } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';

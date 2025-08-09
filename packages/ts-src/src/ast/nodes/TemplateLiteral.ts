@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
 import { INTERACTION_ACCESSED, INTERACTION_CALLED } from '../NodeInteractions';

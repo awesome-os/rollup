@@ -2,10 +2,8 @@ import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
 import {
 	getCommaSeparatedNodesWithBoundaries,
-	type NodeRenderOptions,
-	removeLineBreaks,
-	type RenderOptions
-} from '../../utils/renderHelpers';
+	removeLineBreaks} from '../../utils/renderHelpers';
+import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';

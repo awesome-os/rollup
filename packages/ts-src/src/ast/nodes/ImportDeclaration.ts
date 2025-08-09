@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type ImportAttribute from './ImportAttribute';
 import type ImportDefaultSpecifier from './ImportDefaultSpecifier';
 import type ImportNamespaceSpecifier from './ImportNamespaceSpecifier';

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { Variable } from '../ast/variables/Variable';
-import type { RenderOptions } from './renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 
 export function getSystemExportStatement(
 	exportedVariables: readonly Variable[],

@@ -2,7 +2,9 @@ import type {
 	ChainElement,
 	ExpressionNode,
 	IncludeChildren,
+	NodeRenderOptions,
 	NormalizedTreeshakingOptions,
+	RenderOptions,
 	SkippedChain
 } from '@rollup/types';
 import type MagicString from 'magic-string';
@@ -11,7 +13,6 @@ import { BLANK } from '../../utils/blank';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace, logEval } from '../../utils/logs';
 import { renderCallArguments } from '../../utils/renderCallArguments';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { INTERACTION_CALLED } from '../NodeInteractions';

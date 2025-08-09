@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import { LOGLEVEL_WARN } from '../../utils/logging';
 import { logCannotCallNamespace } from '../../utils/logs';
-import { type RenderOptions } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { INTERACTION_CALLED } from '../NodeInteractions';
 import type { EntityPathTracker } from '../utils/PathTracker';

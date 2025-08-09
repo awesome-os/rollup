@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { InclusionContext } from '../ExecutionContext';
 import type JSXClosingFragment from './JSXClosingFragment';
 import type JSXOpeningFragment from './JSXOpeningFragment';

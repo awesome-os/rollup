@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import { BLANK, EMPTY_ARRAY } from '../../utils/blank';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace,

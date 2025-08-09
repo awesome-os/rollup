@@ -1,39 +1,6 @@
+import type { Node, NodeRenderOptions, RenderOptions, StatementNode } from '@rollup/types';
 import type MagicString from 'magic-string';
-import type { Node, StatementNode } from '@rollup/types';
-import type { Variable } from '../ast/variables/Variable';
-import type { ImportAttributesKey, InternalModuleFormat } from '@rollup/types';
-import type { GenerateCodeSnippets } from './generateCodeSnippets';
-import type { PluginDriver } from './PluginDriver';
 import { treeshakeNode } from './treeshakeNode';
-
-export interface RenderOptions {
-	accessedDocumentCurrentScript: boolean;
-	exportNamesByVariable: Map<Variable, string[]>;
-	format: InternalModuleFormat;
-	freeze: boolean;
-	indent: string;
-	importAttributesKey: ImportAttributesKey;
-	pluginDriver: PluginDriver;
-	snippets: GenerateCodeSnippets;
-	symbols: boolean;
-	useOriginalName: ((variable: Variable) => boolean) | null;
-}
-
-export interface NodeRenderOptions {
-	end?: number;
-	isCalleeOfRenderedParent?: boolean;
-	isNoStatement?: boolean;
-	isShorthandProperty?: boolean;
-	jsxMode?: 'preserve' | 'classic' | 'automatic';
-	preventASI?: boolean;
-	/* Indicates if the direct parent of an element changed.
-	Necessary for determining the "this" context of callees. */
-	renderedParentType?: string;
-	/* Indicates if the parent or ancestor surrounding an element has changed and what it changed to.
-	Necessary for adding parentheses. */
-	renderedSurroundingElement?: string;
-	start?: number;
-}
 
 export const NO_SEMICOLON: NodeRenderOptions = { isNoStatement: true };
 

@@ -9,7 +9,7 @@ import type {
 	RollupAnnotation
 } from '@rollup/types';
 import { ANNOTATION_KEY, INVALID_ANNOTATION_KEY } from '../../../utils/astConverterHelpers';
-import type { RenderOptions } from '../../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { childNodeKeys } from '../../childNodeKeys';
 import {
 	createHasEffectsContext,

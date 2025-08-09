@@ -2,10 +2,11 @@ import type MagicString from 'magic-string';
 import { type ExpressionNode, type IncludeChildren } from '@rollup/types';
 import {
 	findFirstOccurrenceOutsideComment,
-	findNonWhiteSpace,
+	findNonWhiteSpace} from '../../utils/renderHelpers';
+import {
 	type NodeRenderOptions,
 	type RenderOptions
-} from '../../utils/renderHelpers';
+} from '@rollup/types';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import type { InclusionContext } from '../ExecutionContext';

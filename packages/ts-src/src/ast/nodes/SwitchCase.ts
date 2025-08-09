@@ -1,10 +1,12 @@
 import type MagicString from 'magic-string';
 import {
 	findFirstOccurrenceOutsideComment,
-	type NodeRenderOptions,
-	type RenderOptions,
 	renderStatementList
 } from '../../utils/renderHelpers';
+import {
+	type NodeRenderOptions,
+	type RenderOptions
+} from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type * as NodeType from './NodeType';
 import {

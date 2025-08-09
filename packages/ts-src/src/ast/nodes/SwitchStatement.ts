@@ -1,5 +1,6 @@
 import type MagicString from 'magic-string';
-import { type RenderOptions, renderStatementList } from '../../utils/renderHelpers';
+import { renderStatementList } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import {
 	createHasEffectsContext,
 	type HasEffectsContext,

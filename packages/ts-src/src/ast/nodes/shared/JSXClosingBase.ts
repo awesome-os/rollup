@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { NormalizedJsxOptions } from '@rollup/types';
-import type { RenderOptions } from '../../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { NodeBase, onlyIncludeSelf } from './Node';
 
 export default class JSXClosingBase extends NodeBase {

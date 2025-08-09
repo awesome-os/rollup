@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import * as NodeType from './NodeType';
 import ClassNode from './shared/ClassNode';
 

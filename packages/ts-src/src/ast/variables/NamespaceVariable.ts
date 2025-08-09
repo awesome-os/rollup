@@ -1,7 +1,7 @@
 import type { AstContext, default as Module } from '../../Module';
 import { stringifyObjectKeyIfNeeded } from '../../utils/identifierHelpers';
 import { getToStringTagValue, MERGE_NAMESPACES_VARIABLE } from '../../utils/interopHelpers';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';

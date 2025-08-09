@@ -1,12 +1,11 @@
+import type { IncludeChildren, NodeRenderOptions, RenderOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
 import { isReassignedExportsMember } from '../../utils/reassignedExportsMember';
 import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace,
-	getCommaSeparatedNodesWithBoundaries,
-	type NodeRenderOptions,
-	type RenderOptions
+	getCommaSeparatedNodesWithBoundaries
 } from '../../utils/renderHelpers';
 import {
 	getSystemExportStatement,
@@ -21,12 +20,7 @@ import Identifier, { type IdentifierWithVariable } from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import type { InclusionOptions } from './shared/Expression';
-import {
-	doNotDeoptimize,
-	NodeBase,
-	onlyIncludeSelfNoDeoptimize
-} from './shared/Node';
-import { type IncludeChildren } from '@rollup/types';
+import { doNotDeoptimize, NodeBase, onlyIncludeSelfNoDeoptimize } from './shared/Node';
 import type { VariableDeclarationKind } from './shared/VariableKinds';
 import type VariableDeclarator from './VariableDeclarator';
 

@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import type { GenericEsTreeNode } from '@rollup/types';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { getSystemExportStatement } from '../../utils/systemJsRendering';
 import type ChildScope from '../scopes/ChildScope';
 import type { Variable } from '../variables/Variable';

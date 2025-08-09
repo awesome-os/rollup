@@ -1,5 +1,5 @@
 import type MagicString from 'magic-string';
-import type { RenderOptions } from '../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { getCommaSeparatedNodesWithBoundaries } from '../../utils/renderHelpers';
 import { treeshakeNode } from '../../utils/treeshakeNode';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';

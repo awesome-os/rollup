@@ -1,9 +1,8 @@
 import type MagicString from 'magic-string';
 import {
 	findFirstOccurrenceOutsideComment,
-	findNonWhiteSpace,
-	type RenderOptions
-} from '../../utils/renderHelpers';
+	findNonWhiteSpace} from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import { UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';

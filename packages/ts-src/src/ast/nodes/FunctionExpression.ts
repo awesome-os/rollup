@@ -1,6 +1,6 @@
 import type MagicString from 'magic-string';
 import { BLANK } from '../../utils/blank';
-import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers';
+import type { NodeRenderOptions, RenderOptions } from '@rollup/types';
 import ChildScope from '../scopes/ChildScope';
 import type CallExpression from './CallExpression';
 import type { IdentifierWithVariable } from './Identifier';

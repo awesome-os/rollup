@@ -6,10 +6,10 @@ export const FILE_PLACEHOLDER = {
 	type: 'placeholder' as const
 };
 
-export interface OutputBundleWithPlaceholders {
+export type OutputBundleWithPlaceholders = {
 	[fileName: string]: OutputAsset | OutputChunk | typeof FILE_PLACEHOLDER;
 	[lowercaseBundleKeys]: Set<string>;
-}
+};
 
 export const getOutputBundle = (outputBundleBase: OutputBundle): OutputBundleWithPlaceholders => {
 	const reservedLowercaseBundleKeys = new Set<string>();

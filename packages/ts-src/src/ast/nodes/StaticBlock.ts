@@ -1,9 +1,9 @@
 import type MagicString from 'magic-string';
 import {
 	findFirstOccurrenceOutsideComment,
-	type RenderOptions,
 	renderStatementList
 } from '../../utils/renderHelpers';
+import { type RenderOptions } from '@rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';

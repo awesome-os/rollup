@@ -2,8 +2,8 @@
   "name": "rollup",
   "version": "4.46.2",
   "description": "Next-generation ES module bundler",
-  "main": "dist/rollup.js",
-  "module": "dist/es/rollup.js",
+  "main": "./modules/browser-entry.js",
+  "module": "./modules/browser-entry.js",
   "types": "rollup.d.ts",
   "bin": {
     "rollup": "dist/bin/rollup"

@@ -2,7 +2,7 @@ import type { NormalizedJsxOptions } from '@rollup/types';
 import type MagicString from 'magic-string';
 import type { IncludeChildren } from '@rollup/types';
 import { getRenderedJsxChildren } from '../../../utils/jsx';
-import type { RenderOptions } from '../../../utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import type { InclusionContext } from '../../ExecutionContext';
 import type { Variable } from '../../variables/Variable';
 import JSXEmptyExpression from '../JSXEmptyExpression';

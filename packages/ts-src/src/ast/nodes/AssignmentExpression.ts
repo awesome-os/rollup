@@ -5,10 +5,8 @@ import { logConstVariableReassignError } from '../../utils/logs';
 import {
 	findFirstOccurrenceOutsideComment,
 	findNonWhiteSpace,
-	type NodeRenderOptions,
-	removeLineBreaks,
-	type RenderOptions
-} from '../../utils/renderHelpers';
+	removeLineBreaks} from '../../utils/renderHelpers';
+import { type NodeRenderOptions, type RenderOptions } from '@rollup/types';
 import {
 	renderSystemExportExpression,
 	renderSystemExportFunction,

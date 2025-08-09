@@ -1,3 +1,6 @@
+/**
+ * This file is ahead of the typescript src file!!!!
+ */
 /* eslint-disable sort-keys */
 import addCliEntry from '@rollup/build-plugins/add-cli-entry';
 import { moduleAliases } from '@rollup/build-plugins/aliases';

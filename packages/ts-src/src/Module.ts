@@ -86,7 +86,7 @@ import {
 } from './utils/parseImportAttributes';
 import { basename, extname } from './utils/path';
 import type { PureFunctions } from './utils/pureFunctions';
-import type { RenderOptions } from './utils/renderHelpers';
+import type { RenderOptions } from '@rollup/types';
 import { timeEnd, timeStart } from './utils/timers';
 import { markModuleAndImpureDependenciesAsExecuted } from './utils/traverseStaticDependencies';
 import { MISSING_EXPORT_SHIM_VARIABLE } from './utils/variableNames';
