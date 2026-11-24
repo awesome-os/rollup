@@ -132,3 +132,13 @@ TNG has been supporting the work of [Lukas Taegert-Atkinson](https://github.com/
 ## License
 
 [MIT](https://github.com/rollup/rollup/blob/master/LICENSE.md)
+
+## Quick Install & Run (Windows / Linux / macOS)
+
+```sh
+# Install globally via awesome-os/pnpm (all platforms)
+pnpm add -g github:awesome-os/rollup
+
+# Run directly (all platforms)
+rollup --help
+```
