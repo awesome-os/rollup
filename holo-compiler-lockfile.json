@@ -1,0 +1,52 @@
+{
+  "schema": "holo-compiler-lockfile-v1",
+  "abiMagic": "0x33564742",
+  "casLayout": "v11",
+  "repo": "awesome-os/rollup",
+  "targets": [
+    "win64",
+    "linux-x64",
+    "linux-arm64",
+    "macos-arm64",
+    "wasm32-wasi"
+  ],
+  "generatedAt": "2026-11-24T23:53:02.473Z",
+  "dependencies": [
+    {
+      "id": "awesome-os/rollup/rollup-v0.1.0.tar.zst",
+      "kind": "object",
+      "version": "v0.1.0",
+      "target": "any",
+      "sha512": "76ec42f1e901a16c00efff74ea5154fffe723af750e5abfd9cf07f3d77667b3db2c2facc5383e64dc6a5741f200e2e79c2ccf6dab42c5986a464e562e2a7f1fa",
+      "size": 2027131,
+      "executable": false,
+      "blob": "v11/files/76/76ec42f1e901a16c00efff74ea5154fffe723af750e5abfd9cf07f3d77667b3db2c2facc5383e64dc6a5741f200e2e79c2ccf6dab42c5986a464e562e2a7f1fa",
+      "url": "https://github.com/awesome-os/rollup/releases/download/v0.1.0/rollup-v0.1.0.tar.zst",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/rollup/SHA256SUMS.txt",
+      "kind": "object",
+      "version": "v0.1.0",
+      "target": "any",
+      "sha512": "782dc8d4299f8a46a948b7b1c611d64680b41bc3ef54d09556eda4175a48b4fd004c7995a69d2c22b09a377205c593357339ce5220e55a949ecb6b04c402523c",
+      "size": 88,
+      "executable": false,
+      "blob": "v11/files/78/782dc8d4299f8a46a948b7b1c611d64680b41bc3ef54d09556eda4175a48b4fd004c7995a69d2c22b09a377205c593357339ce5220e55a949ecb6b04c402523c",
+      "url": "https://github.com/awesome-os/rollup/releases/download/v0.1.0/SHA256SUMS.txt",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/rollup/SHA512SUMS.txt",
+      "kind": "object",
+      "version": "v0.1.0",
+      "target": "any",
+      "sha512": "f3261da3f6293a3e5160659bf4212ad91b59cdfc34f4b494fde9c1d0ed02b4812235db564f2ff4e31e50a60ddc1484da108654125a31aed2cfc277f6fc93e8ef",
+      "size": 152,
+      "executable": false,
+      "blob": "v11/files/f3/f3261da3f6293a3e5160659bf4212ad91b59cdfc34f4b494fde9c1d0ed02b4812235db564f2ff4e31e50a60ddc1484da108654125a31aed2cfc277f6fc93e8ef",
+      "url": "https://github.com/awesome-os/rollup/releases/download/v0.1.0/SHA512SUMS.txt",
+      "dependencies": []
+    }
+  ]
+}
