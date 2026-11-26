@@ -1,3 +1,6 @@
+> [!WARNING]
+> Archived / Superseded by the unified Holo v11 core stack at https://github.com/awesome-os/awesome-os and https://github.com/awesome-os/chromium-baseline.
+
 <p align="center">
 	<a href="https://rollupjs.org/"><img src="https://rollupjs.org/rollup-logo.svg" width="150" /></a>
 </p>
